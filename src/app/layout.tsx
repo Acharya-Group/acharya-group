@@ -18,7 +18,7 @@ const theme = createTheme({
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen bg-gray-50 text-gray-900">
+      <body className="flex flex-col min-h-screen">
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Header />
