@@ -1,7 +1,9 @@
-import Image from "next/image";
+import Hero from "@/componets/sections/Hero";
 
 export default function Home() {
   return (
-   <h1 className="bg-amber-300">this is home page</h1>
+   <>
+   <Hero />
+   </>
   );
 }

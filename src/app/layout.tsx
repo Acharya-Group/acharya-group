@@ -1,24 +1,31 @@
-import Header from "@/components/layout/Header"
-import "./globals.css"
-import Footer from "@/components/layout/Footer"
+"use client"; // ⚠️ MUST be client component
 
-export const metadata = {
-  title: "My Website",
-  description: "My awesome Next.js site",
-}
+import "./globals.css";
+import Header from "../componets/layout/Header";
+import Footer from "../componets/layout/Footer";
+import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
 
-export default function SiteLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+// Create MUI theme
+const theme = createTheme({
+  palette: {
+    primary: { main: "#2563EB" },
+    secondary: { main: "#F59E0B" },
+    mode: "light",
+  },
+  typography: { fontFamily: "'Inter', sans-serif" },
+});
+
+export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-gray-50 text-gray-900">
-        <Header />      
-        <main>{children}</main>  
-        <Footer />      
+      <body className="flex flex-col min-h-screen bg-gray-50 text-gray-900">
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Header />
+          <main className="flex-grow pt-20">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
