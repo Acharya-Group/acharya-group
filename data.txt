@@ -1,41 +1,4 @@
-<ul class="navbar-nav ml-lg-auto ">
-                             <li class="nav-item ">
-                                <a class="nav-link" href="index.aspx">
-                                    Home
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#!" id="aboutUs" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  About Us
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="aboutUs">
-                                  <a class="dropdown-item" href="aboutus.aspx">About Us</a>
-                                  <a class="dropdown-item" href="directorMessage.aspx">Director's Message</a>
-                                </div>
-                             </li>
-                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#!" id="Services" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Projects
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="Services">
-                                    <a class="dropdown-item" href="shopNeo.aspx">ShopNeo</a>
-                                  
-                                  <a class="dropdown-item" href="emitra.aspx">e-Mitra</a>
-                                  <a class="dropdown-item" href="bankBC.aspx">Kiosk Banking/BankBc</a>
-                                  
-                                  
-                                  <a class="dropdown-item" href="#!">Insurance</a>
-                                  <a class="dropdown-item" href="RKCL.aspx">RKCL</a>
-                                  
-                                  <a class="dropdown-item" href="schoolEasy.aspx">School Easy</a>
-                                  <a class="dropdown-item" href="paytmUPI.aspx">Paytm Registration</a>
-                                </div>
-                              </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#!" id="navbarBlog" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Downloads
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarBlog">
+<div class="dropdown-menu" aria-labelledby="navbarBlog">
                                   
                                   <a class="dropdown-item" href="downloads/cogent.zip">Cogent Driver</a>
                                   <a class="dropdown-item" href="downloads/Mantra_Iris.zip">Mantra Iris Driver</a>
@@ -50,23 +13,3 @@
                                   <a class="dropdown-item" href="downloads/Windows_RDService_V2.0.1.42_HTTPs_127.0.0.1.zip">Windows RD Service V2.0.1</a>
                                   <a class="dropdown-item" href="downloads/BOB_MorphoMSO1300Esetup 2.2.1.8_06July2017.zip">BOB Morpho MSO 1300 Esetup</a>
                                 </div>
-                              </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="category.aspx">
-                                    News &amp; Media
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="contactus.aspx">
-                                    Contact us
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="rkclNetwork.aspx" target="_blank" style="color:#f51f8a;">
-                                     RKCL Network
-                                </a>
-                            </li>
-                            
-                            
-                             
-                        </ul>

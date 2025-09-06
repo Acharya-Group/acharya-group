@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FiPhone, FiMail, FiFacebook, FiTwitter, FiInstagram } from "react-icons/fi";
+import { FiPhone, FiMail, FiFacebook,FiTwitter, FiInstagram, FiYoutube, FiLinkedin } from "react-icons/fi";
 
 export default function TopBar() {
   return (
@@ -21,13 +21,19 @@ export default function TopBar() {
 
         <div className="md:flex items-center gap-3 hidden">
           <span>Follow us:</span>
-          <Link href="" className="h-8 w-8 rounded-full group bg-white text-[#261b7d] transition-all duration-300 flex hover:bg-blue-500 items-center justify-center">
+          <Link href="https://www.facebook.com/myachariya" className="h-8 w-8 rounded-full group bg-white text-[#261b7d] transition-all duration-300 flex hover:bg-blue-500 items-center justify-center">
               <FiFacebook className=" cursor-pointer group-hover:text-white transition-all duration-300" />
           </Link>
-          <Link href="" className="h-8 w-8 rounded-full group bg-white text-[#261b7d] transition-all duration-300 flex hover:bg-blue-500 items-center justify-center">
+          <Link href="https://x.com/achariyagroup" className="h-8 w-8 rounded-full group bg-white text-[#261b7d] transition-all duration-300 flex hover:bg-blue-500 items-center justify-center">
              <FiTwitter className="group-hover:text-white cursor-pointer transition-all duration-300" />
           </Link>
-          <Link href="" className="h-8 w-8 rounded-full group bg-white text-[#261b7d] transition-all duration-300 flex hover:bg-blue-500 items-center justify-center">
+          <Link href="https://www.youtube.com/channel/UCS-2gyn-Fon-QUyO61HPtCA" className="h-8 w-8 rounded-full group bg-white text-[#261b7d] transition-all duration-300 flex hover:bg-blue-500 items-center justify-center">
+            <FiLinkedin className="group-hover:text-white cursor-pointer transition-all duration-300" />
+          </Link>
+          <Link href="linkedin.com/in/achariyagroup" className="h-8 w-8 rounded-full group bg-white text-[#261b7d] transition-all duration-300 flex hover:bg-blue-500 items-center justify-center">
+            <FiYoutube className="group-hover:text-white cursor-pointer transition-all duration-300" />
+          </Link>
+          <Link href="https://www.instagram.com/achariyagroup" className="h-8 w-8 rounded-full group bg-white text-[#261b7d] transition-all duration-300 flex hover:bg-blue-500 items-center justify-center">
             <FiInstagram className="group-hover:text-white cursor-pointer transition-all duration-300" />
           </Link>
         </div>
