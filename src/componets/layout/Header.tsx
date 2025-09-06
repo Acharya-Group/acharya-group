@@ -44,6 +44,9 @@ export default function Header() {
         { name: "e-Mitra", href: "/projects/emitra", type: "link" },
         { name: "Kiosk Banking/BankBc", href: "/projects/kiosk-banking", type: "link" },
         { name: "Insurance", href: "/projects/insurance", type: "link" },
+        { name: "RKCL", href: "/projects/rkcl", type: "link" },
+        { name: "School Easy", href: "/projects/school-easy", type: "link" },
+        { name: "Paytm Registration", href: "/projects/paytm-registration", type: "link" },
       ],
     },
     {

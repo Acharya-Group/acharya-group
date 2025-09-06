@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @layer utilities {
   /* ========================
      Responsive Fonts (px + clamp)
@@ -29,30 +27,39 @@
     font-size: clamp(36px, 6vw, 48px);
   }
 
+  @layer utilities {
   /* ========================
-     Color Utilities
+     Text Colors
      ======================== */
-  /* Text colors */
-  .text-primary { color: #261b7d; }    /* Blue-800 */
-  .text-secondary { color: #9333EA; }  /* Purple-600 */
-  .text-accent { color: #F59E0B; }     /* Amber-500 */
-
-  /* Background colors */
-  .bg-primary { background-color: #261b7d; }
-  .bg-secondary { background-color: #9333EA; }
-  .bg-accent { background-color: #F59E0B; }
-
-  /* Border colors */
-  .border-primary { border-color: #1E40AF; }
-  .border-secondary { border-color: #9333EA; }
-
-  /* ========================
-     Container
-     ======================== */
-  .container-common {
-    max-width: 1420px;
-margin: 0 auto;
-padding: 0 1rem;
+  .text-primary { 
+    color: #261b7d; 
+  }
+  .text-secondary { 
+    color: #7a0706; 
   }
 
+  /* ========================
+     Background Colors
+     ======================== */
+  .bg-primary { 
+    background-color: #261b7d; 
+  }
+  .bg-secondary { 
+    background-color: #7a0706; 
+  }
+  .bg-primary-50 {
+    background-color: rgba(38, 27, 125, 0.1);
+  }
+  .bg-secondary-50 {
+    background-color: rgba(122, 7, 6, 0.1);
+  }
+
+  /* Hover states */
+  .hover\:bg-primary:hover { 
+    background-color: #261b7d; 
+  }
+  .hover\:bg-secondary:hover { 
+    background-color: #7a0706; 
+  }
+}
 }
