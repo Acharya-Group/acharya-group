@@ -17,8 +17,6 @@ import "swiper/css/pagination";
 import { projects } from "@/lib/utils";
 
 const Projects = () => {
-  const prevRef = useRef<HTMLButtonElement | null>(null);
-  const nextRef = useRef<HTMLButtonElement | null>(null);
 
   return (
     <section>

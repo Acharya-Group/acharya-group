@@ -3,6 +3,7 @@ import React from 'react';
 import SubHeading from '../ui/SubHeading';
 import Button from '../ui/Button';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const About = () => {
   return (
@@ -36,7 +37,9 @@ const About = () => {
             {/* Image Content */}
             <div className='order-1 lg:order-2 relative'>
               <div className='relative overflow-hidden rounded-2xl shadow-2xl'>
-                <img
+                <Image
+                height={400}
+                width={600}
                   src="/images/about-img.png"
                   alt="About Achariya Group"
                   className='w-full h-auto transform transition-all duration-700 hover:scale-105'

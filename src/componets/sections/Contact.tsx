@@ -2,6 +2,7 @@
 import React from 'react'
 import SubHeading from '../ui/SubHeading'
 import Button from '../ui/Button'
+import Image from 'next/image'
 
 const Contact = () => {
     return (
@@ -11,9 +12,12 @@ const Contact = () => {
                 <div className="flex flex-wrap items-center mt-8 bg-white rounded-2xl shadow-lg overflow-hidden">
                     {/* Left Image */}
                     <div className="w-full md:w-1/2">
-                        <img
+
+                        <Image
                             src="/images/contact.jpg"
                             alt="Contact illustration"
+                            width={600}
+                            height={400}
                             className="w-full h-full object-cover"
                         />
                     </div>

@@ -7,6 +7,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Image from "next/image";
 
 const Testimonials = () => {
 const Testimonial = [
@@ -84,7 +85,9 @@ const Testimonial = [
             <SwiperSlide key={project.id}>
           <div className="p-[2px] rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 bg-[length:200%_200%] animate-borderSpin">
         <div className="bg-white p-6 rounded-xl shadow-md flex flex-col items-center">
-          <img
+          <Image
+          height={80}
+          width={80}
             src={project.image}
             alt={project.title}
             className="w-20 h-20 rounded-full mb-4 shadow-lg"

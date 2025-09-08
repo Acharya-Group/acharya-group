@@ -8,7 +8,7 @@ import {FiFacebook,FiTwitter, FiInstagram, FiYoutube, FiLinkedin } from "react-i
       title: "About Us",
       links: [
         { name: "About Us", href: "/about", type: "link" },
-        { name: "Director's Message", href: "/directors-message", type: "link" },
+        { name: "Director&apos;s Message", href: "/directors-message", type: "link" },
       ],
     },
     {
@@ -178,6 +178,7 @@ export const socialLinks = [
   { href: "https://www.instagram.com/achariyagroup", icon: FiInstagram },
 ];
 
+
   // export const pages = ["About Us", "Careers", "Contact Us", "Media", "FAQ", "Privacy Policy"];
   export const pages = [{title:"Home",url:"/"},{url: "/about", title: "About Us"}, {url: "/directors-message", title: "Directors message"}, {url: "/contact", title: "Contact Us"}, {url: "/news-media", title: "News & Media"},{url: "/rkcl-network", title: "RKCL Network"}, {url: "/faq", title: "FAQ"}, {url: "/privacy-policy", title: "Privacy Policy"}];
  export const projectsLink = [
@@ -189,14 +190,6 @@ export const socialLinks = [
   { title: "School Easy", url: "/school-easy" },
   { title: "Payment Registration", url: "/payment-registration" },
 
-];
-
-export const collections = [
-  { title: "Amazing India", url: "/collections/amazing-india" },
-  { title: "Direct from Farmers", url: "/collections/farmers" },
-  { title: "Fashion on ONDC", url: "/collections/fashion" },
-  { title: "Home Decor on ONDC", url: "/collections/home-decor" },
-  { title: "Summer Collection", url: "/collections/summer" },
 ];
 
 // Footer support links

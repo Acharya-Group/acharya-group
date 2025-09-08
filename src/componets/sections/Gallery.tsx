@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import SubHeading from '../ui/SubHeading'
 import Button from '../ui/Button'
+import Image from 'next/image'
 
 // Example gallery items
 const galleryItems = [
@@ -28,8 +29,11 @@ const Gallery = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
         {previewItems.map((item) => (
           <div key={item.id} className="overflow-hidden rounded-lg shadow-md">
-            <img
+            <Image
+            height={200}
+            width={300}
               src={item.image}
+              alt='Gallery Image'
               className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
             />
           </div>
