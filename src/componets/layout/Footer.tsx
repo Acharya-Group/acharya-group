@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
-import { pages, collections, ondcNetwork, socialLinks, projectsLink } from "../../lib/utils";
+import { pages, support, socialLinks, projectsLink, navdropdowns } from "../../lib/utils";
+const downloadsSection = navdropdowns.find(item => item.title === "Downloads");
 import Image from "next/image";
 export default function Footer() {
 
@@ -73,36 +74,46 @@ export default function Footer() {
 
           {/* Collections */}
           <div className="md:col-span-2">
-            <h5 className="text-lg font-semibold mb-3">Collections</h5>
-            <ul className="space-y-2 text-sm">
-              {collections.map((item, i) => (
-                <li key={i}>
-                  <Link
-                    href={item.url}
-                    className="transition-all duration-300 opacity-75 hover:text-yellow-400 hover:opacity-100"
-                  >
-                   {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <h5 className="text-lg font-semibold mb-3">Downloads</h5>
+           <ul className="space-y-2 text-sm">
+    {downloadsSection?.links.map((link, index) => (
+      <li key={index}>
+        <Link
+          href={link.href}
+          className="transition-all duration-300 opacity-75 hover:text-yellow-400 hover:opacity-100"
+          target={link.type === "download" ? "_blank" : "_self"}
+          download={link.type === "download"}
+        >
+          {link.name}
+        </Link>
+      </li>
+    ))}
+  </ul>
           </div>
 
           {/* ONDC Network */}
           <div className="md:col-span-2">
-            <h5 className="text-lg font-semibold mb-3">ONDC Network</h5>
-            <ul className="space-y-2 text-sm">
-              {ondcNetwork.map((item, i) => (
-                <li key={i}>
-                  <Link
-                    href={item.url}
-                    className="transition-all duration-300 opacity-75 hover:text-yellow-400 hover:opacity-100"
-                  >
-                     {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <h5 className="text-lg font-semibold mb-3">Support</h5>
+     <ul className="space-y-2 text-sm">
+  {support.map((item, i) => (
+    <li key={i}>
+      {item.type === "heading" ? (
+        <span className="font-semibold">{item.title}</span>
+      ) : (
+        <a
+          href={item.url}
+          className="transition-all duration-300 opacity-75 hover:text-yellow-400 hover:opacity-100"
+          target={item.type !== "internal" ? "_blank" : "_self"}
+          rel={item.type !== "internal" ? "noopener noreferrer" : undefined}
+        >
+          {item.title}
+        </a>
+      )}
+    </li>
+  ))}
+</ul>
+
+
           </div>
         </div>
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import SubHeading from '../ui/SubHeading'
+import Button from '../ui/Button'
 
 // Example gallery items
 const galleryItems = [
@@ -38,10 +39,11 @@ const Gallery = () => {
       {/* Show More Button */}
       <div className="flex justify-center mt-8">
         <Link
-          href="/gallery"
-          className="px-6 py-3 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition"
-        >
-          Show More
+          href="/gallery">
+              <Button
+                                content="Show more"
+                                className="w-auto px-6 cursor-pointer"
+                            />
         </Link>
       </div>
     </div>

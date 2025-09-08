@@ -1,6 +1,47 @@
 import {FiFacebook,FiTwitter, FiInstagram, FiYoutube, FiLinkedin } from "react-icons/fi";
 
 
+
+// nav dropdowns
+ export const navdropdowns = [
+    {
+      title: "About Us",
+      links: [
+        { name: "About Us", href: "/about", type: "link" },
+        { name: "Director's Message", href: "/directors-message", type: "link" },
+      ],
+    },
+    {
+      title: "Projects",
+      links: [
+        { name: "Shopneo", href: "/projects/shopneo", type: "link" },
+        { name: "e-Mitra", href: "/projects/emitra", type: "link" },
+        { name: "Kiosk Banking/BankBc", href: "/projects/kiosk-banking", type: "link" },
+        { name: "Insurance", href: "/projects/insurance", type: "link" },
+        { name: "RKCL", href: "/projects/rkcl", type: "link" },
+        { name: "School Easy", href: "/projects/school-easy", type: "link" },
+        { name: "Paytm Registration", href: "/projects/paytm-registration", type: "link" },
+      ],
+    },
+    {
+      title: "Downloads",
+       links: [
+        { name: "Cogent Driver", href: "/files/cogent.zip", type: "download" },
+        { name: "Mantra Iris Driver", href: "/files/MMantra_Iris.zip", type: "download" },
+        { name: "Mantra MFS100 Driver", href: "/files/Mantra_MFS100.zip", type: "download" },
+        { name: "Mantra MFS110 Driver", href: "/files/Mantra_MFS110.zip", type: "download" },
+        { name: "Morpho Driver", href: "/files/morpho.zip", type: "download" },
+        { name: "Starteck Driver", href: "/files/starteck.zip", type: "download" },
+        { name: "Kiosks Identity Card", href: "/downloads/Kiosk-id-card", type: "link" },
+        { name: "E-Mitra Services Forms", href: "/downloads/e-mitra-services", type: "link" },
+        { name: "Application Form For New e-Mitra Kiosk", href: "/files/Application Form For New e-Mitra Kiosk.pdf", type: "download" },
+        { name: "RMGB Installation Process", href: "/files/rmgb_installation.docs", type: "download" },
+        { name: "Windows RD Service V2.0.1", href: "/files/Windows_RDService_V2.0.1.42_HTTPs_127.0.0.1.zip", type: "download" },
+        { name: "BOB Morpho MSO 1300 Esetup", href: "/files/BOB_MorphoMSO1300Esetup 2.2.1.8_06July2017.zip", type: "download" },
+      ],
+    },
+  ];
+
 //   our collaborations logos
 export const ourCollaborations = [
   "/images/demo-slide.webp",
@@ -158,10 +199,22 @@ export const collections = [
   { title: "Summer Collection", url: "/collections/summer" },
 ];
 
-export const ondcNetwork = [
-  { title: "About ONDC Network", url: "/ondc/about" },
-  { title: "Sell on ONDC Network", url: "/ondc/sell" },
-  { title: "Seller Manager on ONDC Network", url: "/ondc/seller-manager" },
-  { title: "Amazon Sellers on ONDC Network", url: "/ondc/amazon-sellers" },
+// Footer support links
+export const support = [
+  { title: "Contact Us", type: "heading" }, 
+
+  // Separate phone numbers
+  { title: "+91 890-190-3333", url: "tel:+918901903333", type: "tel" },
+  { title: "+91 903-404-0243", url: "tel:+919034040243", type: "tel" },
+  { title: "+91 958-788-7702", url: "tel:+919587887702", type: "tel" },
+
+  // Separate emails
+  { title: "info@achariyagroup.com", url: "mailto:info@achariyagroup.com", type: "email" },
+  { title: "manager@achariyagroup.com", url: "mailto:manager@achariyagroup.com", type: "email" },
+
+  { title: "Privacy Policy", url: "/privacy-policy", type: "internal" },
+  { title: "Terms & Conditions", url: "/terms-conditions", type: "internal" },
 ];
+
+
 

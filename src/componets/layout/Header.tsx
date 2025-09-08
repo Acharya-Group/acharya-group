@@ -20,6 +20,7 @@ import {
 import { Menu as MenuIcon, Close as CloseIcon, ExpandMore, ExpandLess } from "@mui/icons-material";
 import Image from "next/image";
 import TopBar from "../ui/TopBar";
+import { navdropdowns } from "../../lib/utils";
 
 export default function Header() {
   const pathname = usePathname();
@@ -29,44 +30,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
 
-  const dropdowns = [
-    {
-      title: "About Us",
-      links: [
-        { name: "About Us", href: "/about", type: "link" },
-        { name: "Director's Message", href: "/directors-message", type: "link" },
-      ],
-    },
-    {
-      title: "Projects",
-      links: [
-        { name: "Shopneo", href: "/projects/shopneo", type: "link" },
-        { name: "e-Mitra", href: "/projects/emitra", type: "link" },
-        { name: "Kiosk Banking/BankBc", href: "/projects/kiosk-banking", type: "link" },
-        { name: "Insurance", href: "/projects/insurance", type: "link" },
-        { name: "RKCL", href: "/projects/rkcl", type: "link" },
-        { name: "School Easy", href: "/projects/school-easy", type: "link" },
-        { name: "Paytm Registration", href: "/projects/paytm-registration", type: "link" },
-      ],
-    },
-    {
-      title: "Downloads",
-       links: [
-        { name: "Cogent Driver", href: "/files/cogent.zip", type: "download" },
-        { name: "Mantra Iris Driver", href: "/files/MMantra_Iris.zip", type: "download" },
-        { name: "Mantra MFS100 Driver", href: "/files/Mantra_MFS100.zip", type: "download" },
-        { name: "Mantra MFS110 Driver", href: "/files/Mantra_MFS110.zip", type: "download" },
-        { name: "Morpho Driver", href: "/files/morpho.zip", type: "download" },
-        { name: "Starteck Driver", href: "/files/starteck.zip", type: "download" },
-        { name: "Kiosks Identity Card", href: "/downloads/Kiosk-id-card", type: "link" },
-        { name: "E-Mitra Services Forms", href: "/downloads/e-mitra-services", type: "link" },
-        { name: "Application Form For New e-Mitra Kiosk", href: "/files/Application Form For New e-Mitra Kiosk.pdf", type: "download" },
-        { name: "RMGB Installation Process", href: "/files/rmgb_installation.docs", type: "download" },
-        { name: "Windows RD Service V2.0.1", href: "/files/Windows_RDService_V2.0.1.42_HTTPs_127.0.0.1.zip", type: "download" },
-        { name: "BOB Morpho MSO 1300 Esetup", href: "/files/BOB_MorphoMSO1300Esetup 2.2.1.8_06July2017.zip", type: "download" },
-      ],
-    },
-  ];
+
 
   const isLinkActive = (linkHref: string) => pathname === linkHref;
   const isDropdownActive = (dropdownLinks: { href: string }[]) =>
@@ -114,7 +78,7 @@ export default function Header() {
             </Button>
 
             {/* Dropdowns */}
-            {dropdowns.map((dropdown, index) => (
+            {navdropdowns.map((dropdown, index) => (
               <Box key={index}>
                 <Button
                   endIcon={<ExpandMore />}
@@ -239,7 +203,7 @@ export default function Header() {
             </ListItem>
 
             {/* Mobile Dropdowns */}
-            {dropdowns.map((dropdown, index) => (
+            {navdropdowns.map((dropdown, index) => (
               <Box key={index} sx={{ mb: 1 }}>
                 <ListItem disablePadding>
                   <ListItemButton
