@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -18,9 +18,13 @@ const Hero = () => {
     <div className="relative w-full">
       {/* Swiper */}
       <Swiper
-        modules={[Navigation]}
+        modules={[Navigation,Autoplay]}
         loop={true}
-        speed={600}
+        speed={800}
+         autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
         slidesPerView={1}
         navigation={{
           nextEl: ".hero-next",

@@ -101,7 +101,7 @@ export default function Header() {
               href="/"
               sx={{
                 color: isLinkActive("/") ? "#7a0706" : "#261b7d",
-                fontWeight: isLinkActive("/") ? 600 : 400,
+                fontWeight: isLinkActive("/") ? 600 : 600,
                 borderBottom: isLinkActive("/") ? "2px solid #7a0706" : "2px solid transparent",
                 borderRadius: 0,
                 minWidth: "auto",

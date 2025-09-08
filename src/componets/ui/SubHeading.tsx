@@ -8,7 +8,7 @@ interface SubHeadingProps {
 const SubHeading: React.FC<SubHeadingProps> = ({ content, align = "center" }) => {
   return (
     <h2
-      className={`text-2xl md:text-3xl font-semibold text-primary mb-6 text-${align}`}
+      className={`text-2xl md:text-3xl font-semibold text-primary mb-3 sm:mb-6 text-${align}`}
     >
       {content}
     </h2>

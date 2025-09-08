@@ -14,58 +14,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
-const projects = [
-  {
-    id: 1,
-    title: "Shopneo",
-    desc: "A modern e-commerce platform designed to provide seamless shopping experiences for customers with intuitive design and robust functionality.",
-    img: "/images/hero-slide-1.jpg",
-    link: "/projects/shopneo",
-  },
-  {
-    id: 2,
-    title: "e-Mitra",
-    desc: "An advanced digital service portal enabling easy access to government services and information for citizens.",
-    img: "/images/hero-slide-2.jpg",
-    link: "/projects/e-mitra",
-  },
-  {
-    id: 3,
-    title: "Kiosk Banking/BankBc",
-    desc: "A futuristic banking solution with kiosk services for convenient access to financial services in remote areas.",
-    img: "/images/hero-slide-3.jpg",
-    link: "/projects/kiosk-banking",
-  },
-  {
-    id: 4,
-    title: "Insurance",
-    desc: "Comprehensive insurance management platform simplifying claims, policies, and customer service.",
-    img: "/images/hero-slide-1.jpg",
-    link: "/projects/insurance",
-  },
-  {
-    id: 5,
-    title: "RKCL",
-    desc: "Smart learning and training solutions with interactive features for students and professionals.",
-    img: "/images/hero-slide-2.jpg",
-    link: "/projects/rkcl",
-  },
-  {
-    id: 6,
-    title: "School Easy",
-    desc: "School management system that streamlines administration, student tracking, and communication.",
-    img: "/images/hero-slide-2.jpg",
-    link: "/projects/school-easy",
-  },
-  {
-    id: 7,
-    title: "Paytm Registration",
-    desc: "A platform enabling quick and secure registration and onboarding for digital payment services.",
-    img: "/images/hero-slide-2.jpg",
-    link: "/projects/paytm-registration",
-  },
-];
+import { projects } from "@/lib/utils";
 
 const Projects = () => {
   const prevRef = useRef<HTMLButtonElement | null>(null);
@@ -125,6 +74,7 @@ const Projects = () => {
                       <CardMedia
                         component="img"
                         height="180"
+                        className="max-h-[90px]"
                         image={project.img}
                         alt={project.title}
                       />
