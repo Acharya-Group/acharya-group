@@ -1,3 +1,6 @@
+import {FiFacebook,FiTwitter, FiInstagram, FiYoutube, FiLinkedin } from "react-icons/fi";
+
+
 //   our collaborations logos
 export const ourCollaborations = [
   "/images/demo-slide.webp",
@@ -121,3 +124,44 @@ export const faqs = [
       "You can contact our dedicated support team. We provide complete technical assistance for driver installation, RD service setup, and registration issues.",
   },
 ];
+
+
+// footer data
+
+// footer array
+export const socialLinks = [
+  { href: "https://www.facebook.com/myachariya", icon: FiFacebook },
+  { href: "https://x.com/achariyagroup", icon: FiTwitter },
+  { href: "https://www.linkedin.com/in/achariyagroup", icon: FiLinkedin },
+  { href: "https://www.youtube.com/channel/UCS-2gyn-Fon-QUyO61HPtCA", icon: FiYoutube },
+  { href: "https://www.instagram.com/achariyagroup", icon: FiInstagram },
+];
+
+  // export const pages = ["About Us", "Careers", "Contact Us", "Media", "FAQ", "Privacy Policy"];
+  export const pages = [{title:"Home",url:"/"},{url: "/about", title: "About Us"}, {url: "/directors-message", title: "Directors message"}, {url: "/contact", title: "Contact Us"}, {url: "/news-media", title: "News & Media"},{url: "/rkcl-network", title: "RKCL Network"}, {url: "/faq", title: "FAQ"}, {url: "/privacy-policy", title: "Privacy Policy"}];
+ export const projectsLink = [
+  { title: "Shopneo", url: "/shopneo" },
+  { title: "e-Mitra", url: "/emitra" },
+  { title: "Kiosk Banking", url: "/kiosk-banking" },
+  { title: "Insurance", url: "/insurance" },
+  { title: "RKCL", url: "/rkcl" },
+  { title: "School Easy", url: "/school-easy" },
+  { title: "Payment Registration", url: "/payment-registration" },
+
+];
+
+export const collections = [
+  { title: "Amazing India", url: "/collections/amazing-india" },
+  { title: "Direct from Farmers", url: "/collections/farmers" },
+  { title: "Fashion on ONDC", url: "/collections/fashion" },
+  { title: "Home Decor on ONDC", url: "/collections/home-decor" },
+  { title: "Summer Collection", url: "/collections/summer" },
+];
+
+export const ondcNetwork = [
+  { title: "About ONDC Network", url: "/ondc/about" },
+  { title: "Sell on ONDC Network", url: "/ondc/sell" },
+  { title: "Seller Manager on ONDC Network", url: "/ondc/seller-manager" },
+  { title: "Amazon Sellers on ONDC Network", url: "/ondc/amazon-sellers" },
+];
+

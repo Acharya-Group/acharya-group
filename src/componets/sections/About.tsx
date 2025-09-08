@@ -1,5 +1,8 @@
+"use client"
 import React from 'react';
 import SubHeading from '../ui/SubHeading';
+import Button from '../ui/Button';
+import Link from 'next/link';
 
 const About = () => {
   return (
@@ -25,23 +28,9 @@ const About = () => {
                 </span>
               </p>
         
-              <div className="group mt-6 inline-block">
-                <a
-                  href="#"
-                  className="inline-flex items-center px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-md hover:shadow-xl transition-all duration-300 group-hover:scale-105 hover:bg-secondary"
-                >
-                  Learn More
-                  <svg
-                    className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </a>
-              </div>
+             <Link href="/about" className='inline-block mt-6'>
+                <Button content="Read More" className="px-6" onClick={() => {}} />
+             </Link>
             </div>
         
             {/* Image Content */}

@@ -13,9 +13,9 @@ export default function Faqs() {
   };
 
   return (
-      <section className="bg-primary-50">
+      <section>
           <div className="container mx-auto px-4 py-12 relative">
-              <SubHeading content="Our Collaborations" align="center" />
+              <SubHeading content="Faqs" align="center" />
             {/* FAQ List */}
             <div className="max-w-4xl mx-auto px-4 flex flex-col gap-3">
               {faqs.map((faq, index) => (
