@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import Link from "next/link";
 import SubHeading from "../ui/SubHeading";
 import Card from "@mui/material/Card";
@@ -21,7 +21,7 @@ const Projects = () => {
   return (
     <section>
       <div className="container mx-auto px-4 py-12 relative">
-        <SubHeading content="Our Projects" align="center" />
+        <SubHeading content="Our Projects"  />
 
         <div className="relative">
           <Swiper

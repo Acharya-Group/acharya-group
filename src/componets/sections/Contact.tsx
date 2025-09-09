@@ -8,7 +8,7 @@ const Contact = () => {
     return (
         <section className="bg-primary-50">
             <div className="container mx-auto px-4 py-16 relative">
-                <SubHeading content="Get in Touch" align="center" />
+                <SubHeading content="Get in Touch" />
                 <div className="flex flex-wrap items-center mt-8 bg-white rounded-2xl shadow-lg overflow-hidden">
                     {/* Left Image */}
                     <div className="w-full md:w-1/2">

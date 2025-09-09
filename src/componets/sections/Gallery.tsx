@@ -24,7 +24,7 @@ const Gallery = () => {
 
   return (
     <div className="container mx-auto px-4 py-12 relative">
-      <SubHeading content="Gallery" align="center" />
+      <SubHeading content="Gallery" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
         {previewItems.map((item) => (

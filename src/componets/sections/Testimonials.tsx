@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 const Testimonials = () => {
 const Testimonial = [
@@ -52,7 +53,7 @@ const Testimonial = [
   return (
     <section className="bg-primary-50">
         <div className="container mx-auto px-4 py-12 relative">
-          <SubHeading content="What Our Clients Say" align="center" />
+          <SubHeading content="What Our Clients Say" />
           <div className="relative">
             <Swiper
               modules={[Autoplay, Navigation, Pagination]}
@@ -105,10 +106,10 @@ const Testimonial = [
             </Swiper>
             {/* Custom Navigation */}
             <button className="absolute cursor-pointer hidden project-prev left-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full h-10 w-10 sm:flex justify-center items-center shadow hover:bg-secondary transition-all">
-              ◀
+               <FiArrowLeft/>
             </button>
             <button className="absolute cursor-pointer hidden project-next right-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full h-10 w-10 sm:flex justify-center items-center shadow hover:bg-secondary transition-all">
-              ▶
+             <FiArrowRight/>
             </button>
           </div>
           {/* Pagination Dots */}

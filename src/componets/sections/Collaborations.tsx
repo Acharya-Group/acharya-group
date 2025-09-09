@@ -10,7 +10,7 @@ const Collaborations = () => {
   return (
       <section className='bg-primary-50'>
           <div className="container mx-auto px-4 py-12">
-            <SubHeading content="Our Collaborations" align="center" />
+            <SubHeading content="Our Collaborations"  />
             <div>
                  {/* Swiper Slider */}
             <Swiper
