@@ -1,3 +1,4 @@
+import Header from "@/componets/layout/Header";
 import About from "@/componets/sections/About";
 import Collaborations from "@/componets/sections/Collaborations";
 import Contact from "@/componets/sections/Contact";
@@ -11,6 +12,7 @@ import VerifyApply from "@/componets/sections/VerifyApply";
 export default function Home() {
   return (
    <>
+   <Header/>
    <Hero />
    <VerifyApply/>
    <About/>

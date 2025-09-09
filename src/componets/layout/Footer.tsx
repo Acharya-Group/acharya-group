@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Footer() {
 
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-black text-white overflow-hidden">
       <div className="container mx-auto px-4 pt-10 pb-3">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* About Shopneo */}
@@ -46,7 +46,7 @@ export default function Footer() {
                 <li key={i}>
                   <Link
                    href={item.url}
-                    className="transition-all duration-300 opacity-75 hover:text-yellow-400 hover:opacity-100"
+                    className="transition-all duration-300 opacity-75 hover:text-white hover:opacity-100"
                   >
                     {item.title}
                   </Link>
@@ -63,7 +63,7 @@ export default function Footer() {
     <li key={i}>
       <Link
         href={item.url}
-        className="transition-all duration-300 opacity-75 hover:text-yellow-400 hover:opacity-100"
+        className="transition-all duration-300 opacity-75 hover:text-white hover:opacity-100"
       >
         {item.title}
       </Link>
@@ -80,7 +80,7 @@ export default function Footer() {
       <li key={index}>
         <Link
           href={link.href}
-          className="transition-all duration-300 opacity-75 hover:text-yellow-400 hover:opacity-100"
+          className="transition-all duration-300 opacity-75 hover:text-white hover:opacity-100"
           target={link.type === "download" ? "_blank" : "_self"}
           download={link.type === "download"}
         >
@@ -102,7 +102,7 @@ export default function Footer() {
       ) : (
         <a
           href={item.url}
-          className="transition-all duration-300 opacity-75 hover:text-yellow-400 hover:opacity-100"
+          className="transition-all duration-300 opacity-75 hover:text-white hover:opacity-100"
           target={item.type !== "internal" ? "_blank" : "_self"}
           rel={item.type !== "internal" ? "noopener noreferrer" : undefined}
         >

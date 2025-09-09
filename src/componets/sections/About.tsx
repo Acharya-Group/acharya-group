@@ -9,7 +9,7 @@ const About = () => {
   return (
     <section className='bg-primary-50'>
         <div className='container mx-auto px-4 py-12 overflow-hidden'>
-          <SubHeading content='About Achariya Group' align='center' />
+          <SubHeading content='About Achariya Group'  />
         
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 items-center mt-8'>
             {/* Text Content */}

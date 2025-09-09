@@ -1,31 +1,19 @@
-"use client"; // ⚠️ MUST be client component
-
+import Footer from "@/componets/layout/Footer";
 import "./globals.css";
-import Header from "../componets/layout/Header";
-import Footer from "../componets/layout/Footer";
-import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
+import type { Metadata } from "next";
 
-// Create MUI theme
-const theme = createTheme({
-  palette: {
-    primary: { main: "#2563EB" },
-    secondary: { main: "#F59E0B" },
-    mode: "light",
-  },
-  typography: { fontFamily: "'Inter', sans-serif" },
-});
+export const metadata: Metadata = {
+  title: "Achariya Technologies Private Limited",
+  description: "My awesome Next.js site with MUI",
+};
 
-export default function SiteLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </ThemeProvider>
-      </body>
+        {children}
+        <Footer/>
+        </body>
     </html>
   );
 }

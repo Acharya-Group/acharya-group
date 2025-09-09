@@ -2,13 +2,14 @@ import React from "react";
 
 interface SubHeadingProps {
   content: string;
-  align?: "left" | "center" | "right";
+  color?: string; // custom hex/rgb color support
 }
 
-const SubHeading: React.FC<SubHeadingProps> = ({ content, align = "center" }) => {
+const SubHeading: React.FC<SubHeadingProps> = ({ content, color }) => {
   return (
     <h2
-      className={`text-2xl md:text-3xl font-semibold text-primary mb-3 sm:mb-6 text-${align}`}
+      className="text-2xl md:text-3xl font-semibold mb-3 sm:mb-6 text-center"
+      style={{ color: color || "#261b7d" }} 
     >
       {content}
     </h2>
