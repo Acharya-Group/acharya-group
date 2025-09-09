@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['randomuser.me'],
+    // allow all paths from randomuser.me
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "randomuser.me",
+        pathname: "/**",
+      },
+    ],
+
   },
 };
 

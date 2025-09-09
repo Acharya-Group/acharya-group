@@ -14,35 +14,35 @@ const Testimonials = () => {
 const Testimonial = [
   {
     id: 1,
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    image: "/images/review1.jpg",
     title: "Rahul Sharma",
     description:
       "Acharya Group’s team was very supportive and guided us at every step. Their service quality is excellent.",
   },
   {
     id: 2,
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    image: "/images/review2.jpg",
     title: "Priya Mehta",
     description:
       "Working with Acharya Group was a smooth experience. They delivered our project on time with great results.",
   },
   {
     id: 3,
-    image: "https://randomuser.me/api/portraits/men/75.jpg",
+    image: "/images/review3.jpg",
     title: "Amit Verma",
     description:
       "I truly appreciate the professionalism and expertise of the Acharya Group team. Highly recommended!",
   },
   {
     id: 4,
-    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    image: "/images/review4.jpg",
     title: "Neha Patel",
     description:
       "The dedication by Acharya Group was remarkable. They understood our needs and executed",
   },
   {
     id: 5,
-    image: "https://randomuser.me/api/portraits/men/12.jpg",
+    image: "/images/review5.jpg",
     title: "Suresh Iyer",
     description:
       "We are very satisfied with the outcome. Acharya Group provided innovative solutions and reliable support.",

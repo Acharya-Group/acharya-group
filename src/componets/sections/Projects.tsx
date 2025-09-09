@@ -15,6 +15,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { projects } from "@/lib/utils";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 const Projects = () => {
 
@@ -108,10 +109,10 @@ const Projects = () => {
 
           {/* Custom Navigation */}
           <button className="absolute cursor-pointer hidden project-prev left-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full h-10 w-10 sm:flex justify-center items-center shadow hover:bg-secondary transition-all">
-            ◀
+              <FiArrowLeft/>
           </button>
           <button className="absolute cursor-pointer hidden project-next right-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full h-10 w-10 sm:flex justify-center items-center shadow hover:bg-secondary transition-all">
-            ▶
+               <FiArrowRight/>
           </button>
         </div>
 
