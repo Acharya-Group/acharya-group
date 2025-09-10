@@ -44,20 +44,18 @@ export const navdropdowns = [
 
 //   our collaborations logos
 export const ourCollaborations = [
-  "/images/demo-slide.webp",
-  "/images/demo-slide.webp",
-  "/images/demo-slide.webp",
-  "/images/demo-slide.webp",
-  "/images/demo-slide.webp",
-  "/images/demo-slide.webp",
-  "/images/demo-slide.webp",
-  "/images/demo-slide.webp",
-  "/images/demo-slide.webp",
-  "/images/demo-slide.webp",
-  "/images/demo-slide.webp",
-  "/images/demo-slide.webp",
-  "/images/demo-slide.webp",
-  "/images/demo-slide.webp",
+  "/images/collbration-slide-1.jpg",
+  "/images/collbration-slide-2.jpg",
+  "/images/collbration-slide-3.jpg",
+  "/images/collbration-slide-4.jpg",
+  "/images/collbration-slide-5.jpg",
+  "/images/collbration-slide-6.jpg",
+  "/images/collbration-slide-7.jpg",
+  "/images/collbration-slide-1.jpg",
+  "/images/collbration-slide-2.jpg",
+  "/images/collbration-slide-3.jpg",
+  "/images/collbration-slide-4.jpg",
+ 
 ];
 // projects
 export const projects = [

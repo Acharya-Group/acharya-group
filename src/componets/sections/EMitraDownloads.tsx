@@ -9,7 +9,7 @@ export default function EMitraDownloads() {
     },
     {
       name: "e-Mitra Services / Rate List",
-      link: "/pdfs/emitra-services-rate.pdf",
+      link: "/pdf/Ratelist New.pdf",
     },
     {
       name: "For - Lost Articles Report",

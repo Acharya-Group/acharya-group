@@ -20,7 +20,7 @@ const Collaborations = () => {
               speed={1000}
               slidesPerView={8}
               breakpoints={{
-                1200: { slidesPerView: 8 },
+                1200: { slidesPerView: 7 },
                 992: { slidesPerView: 6 },
                 768: { slidesPerView: 4 },
                 0: { slidesPerView: 3 },
@@ -30,14 +30,14 @@ const Collaborations = () => {
               {ourCollaborations.map((logo, idx) => (
                 <SwiperSlide
                   key={idx}
-                  className="flex justify-center items-center px-4 py-2"
+                  className="flex justify-center items-center px-2 py-2 h-[80px]"
                 >
                   <Image
                     src={logo}
                     alt={`Logistics Partner ${idx + 1}`}
                     width={150}
                     height={80}
-                    className="object-contain w-full h-auto hover:scale-105 transition-transform duration-300"
+                    className="object-contain w-full h-[80px] hover:scale-105 transition-transform duration-300"
                   />
                 </SwiperSlide>
               ))}
