@@ -65,7 +65,7 @@ const DirectorMessage = () => {
           <div className="mt-8">
             <p className="font-semibold text-lg text-gray-900">Yespal Singh</p>
             <p className="text-gray-500 italic mb-1">Managing Director</p>
-            <p className="text-gray-500">director@achariyagroup.com</p>
+            <p className="text-gray-500">director@Achariyagroup.com</p>
             <p className="text-gray-500">Achariya Technologies Private Limited</p>
           </div>
         </div>

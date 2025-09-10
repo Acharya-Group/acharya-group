@@ -17,35 +17,35 @@ const Testimonial = [
     image: "/images/review1.jpg",
     title: "Rahul Sharma",
     description:
-      "Acharya Group’s team was very supportive and guided us at every step. Their service quality is excellent.",
+      "Achariya Group’s team was very supportive and guided us at every step. Their service quality is excellent.",
   },
   {
     id: 2,
     image: "/images/review2.jpg",
     title: "Priya Mehta",
     description:
-      "Working with Acharya Group was a smooth experience. They delivered our project on time with great results.",
+      "Working with Achariya Group was a smooth experience. They delivered our project on time with great results.",
   },
   {
     id: 3,
     image: "/images/review3.jpg",
     title: "Amit Verma",
     description:
-      "I truly appreciate the professionalism and expertise of the Acharya Group team. Highly recommended!",
+      "I truly appreciate the professionalism and expertise of the Achariya Group team. Highly recommended!",
   },
   {
     id: 4,
     image: "/images/review4.jpg",
     title: "Neha Patel",
     description:
-      "The dedication by Acharya Group was remarkable. They understood our needs and executed",
+      "The dedication by Achariya Group was remarkable. They understood our needs and executed",
   },
   {
     id: 5,
     image: "/images/review5.jpg",
     title: "Suresh Iyer",
     description:
-      "We are very satisfied with the outcome. Acharya Group provided innovative solutions and reliable support.",
+      "We are very satisfied with the outcome. Achariya Group provided innovative solutions and reliable support.",
   },
 ];
 

@@ -77,7 +77,11 @@ export default function KioskBank() {
           <h3 className="text-lg font-semibold text-gray-800 mb-2">Services Offered By BC (Bank Mitra)</h3>
           <table className="w-full border border-gray-200 text-sm text-left text-gray-700">
             <tbody>
-              <tr className="border-b"><td className="p-3">Tatkal Money Transfer (IMPS)</td><td className="p-3">Balance Enquiry / Mini Statement</td><td className="p-3">Deposit / Withdrawal of Cash</td></tr>
+            <tr className="border-b">
+  <td className="p-3 font-medium">Savings Account</td>
+  <td className="p-3">Balance Enquiry / Mini Statement</td>
+  <td className="p-3">Cash Deposit / Cash Withdrawal</td>
+</tr>
               <tr className="border-b"><td className="p-3">Fixed Deposit / E-KYC Enrolment</td><td className="p-3">Aadhaar Enabled Payment System (AEPS)</td><td className="p-3">Rupay ATM Card / Identity Card</td></tr>
               <tr className="border-b"><td className="p-3">Loan Deposit / Recurring Deposit</td><td className="p-3">Social Security Schemes (PMJJBY, PMSBY & APY)</td><td className="p-3">Pass Book Printing</td></tr>
               <tr><td className="p-3">DBT Enabled Facility in Accounts</td><td className="p-3">Saving Account Opening</td><td className="p-3">3rd Party Financial Products (Insurance, Pension etc.)</td></tr>
@@ -90,7 +94,7 @@ export default function KioskBank() {
           <h3 className="text-lg font-semibold text-gray-800">How to Become a Banking Correspondent (BC)</h3>
           <ol className="mt-3 list-decimal list-inside space-y-2 text-gray-700">
             <li>Download the application form and BC selection format from the website.</li>
-            <li>Submit filled forms with self-attested copies of Aadhaar, PAN, qualification certificate (min. 10th), and latest police verification report by email to <strong>fi@achariyagroup.com</strong>.</li>
+            <li>Submit filled forms with self-attested copies of Aadhaar, PAN, qualification certificate (min. 10th), and latest police verification report by email to <strong>fi@Achariyagroup.com</strong>.</li>
             <li>Company verifies documents and checks location availability in consultation with the Bank.</li>
             <li>Company forwards the candidate request with appointment letter to the concerned Bank of Baroda branch to open a BC settlement account and complete bank formalities.</li>
             <li>After account opening, Company applies to Bank for K.O.Code generation for the BC.</li>

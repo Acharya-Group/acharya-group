@@ -26,10 +26,10 @@ export default function EMitraDownloads() {
         To open new e-Mitra Kiosk in Rajasthan please download this new eMitra
         Application Form and send to{" "}
         <a
-          href="mailto:info@achariyagroup.com"
+          href="mailto:info@Achariyagroup.com"
           className="text-primary font-medium"
         >
-          info@achariyagroup.com
+          info@Achariyagroup.com
         </a>{" "}
         with these documents.
       </p>
@@ -37,10 +37,10 @@ export default function EMitraDownloads() {
         राजस्थान में ई-मित्र कीओस्क खोलने के लिए यहाँ दिए गए फॉर्म को डाउनलोड कर के
         और नीचे दिए गए डॉक्यूमेंट्स के साथ ईमेल करें :{" "}
         <a
-          href="mailto:info@achariyagroup.com"
+          href="mailto:info@Achariyagroup.com"
           className="text-primary font-medium"
         >
-          info@achariyagroup.com
+          info@Achariyagroup.com
         </a>
       </p>
 

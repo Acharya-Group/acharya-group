@@ -12,10 +12,10 @@ export default function Footer() {
           {/* About Shopneo */}
           <div className="md:col-span-4">
             <div className="bg-white inline-block px-2 mb-3 rounded">
-                <Image src="/images/logo.png" alt="Aacharya Group Logo" width={150} height={50} className="mb-4"/>
+                <Image src="/images/logo.png" alt="AAchariya Group Logo" width={150} height={50} className="mb-4"/>
             </div>
             <p className="text-sm opacity-75 mb-3">
-             "Aacharya Group is dedicated to delivering innovative solutions and exceptional services. Committed to excellence, we build lasting value for our clients and communities."
+             "Achariya Group is dedicated to delivering innovative solutions and exceptional services. Committed to excellence, we build lasting value for our clients and communities."
             </p>
             {/* Social Media */}
              <p className="font-semibold mb-0">Social Links</p>
@@ -120,7 +120,7 @@ export default function Footer() {
         {/* Footer bottom */}
         <div className="py-3 border-t border-gray-700 mt-8">
           
-            <p className="text-sm opacity-75 text-center">© {new Date().getFullYear()} AcharyaGroup All Rights Reserved.</p>
+            <p className="text-sm opacity-75 text-center">© {new Date().getFullYear()} AchariyaGroup All Rights Reserved.</p>
         </div>
       </div>
     </footer>

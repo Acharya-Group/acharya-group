@@ -1,5 +1,5 @@
 import Header from '@/componets/layout/Header'
-import AboutAcharya from '@/componets/sections/AboutAcharya'
+import AboutAchariya from '@/componets/sections/AboutAchariya'
 import CommonHero from '@/componets/sections/CommonHero'
 import React from 'react'
 
@@ -8,7 +8,7 @@ const page = () => {
     <>
     <Header/>
 <CommonHero  title="About Us" />  
-<AboutAcharya/> 
+<AboutAchariya/> 
     </>
   )
 }

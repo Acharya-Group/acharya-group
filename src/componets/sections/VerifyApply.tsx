@@ -19,7 +19,7 @@ const VerifyApply = () => {
     {
       id: 3,
       title: "Join Telegram Channel",
-      link: "https://t.me/myachariya",
+      link: "https://t.me/myAchariya",
       icon: "📢",
       external: true
     },

@@ -113,19 +113,19 @@ export const projects = [
 
 export const faqs = [
   {
-    question: "What services does Acharya Group Private Limited provide?",
+    question: "What services does Achariya Group Private Limited provide?",
     answer:
       "We provide a wide range of services including Shopneo e-commerce, e-Mitra services, kiosk banking/Bank BC, insurance solutions, RKCL training, School Easy software, Paytm registration, and technical support for biometric devices and banking kiosks.",
   },
   {
-    question: "How can I register for Shopneo through Acharya Group?",
+    question: "How can I register for Shopneo through Achariya Group?",
     answer:
       "You can register for Shopneo easily by visiting our official website at https://shopneo.org and completing the online process. Alternatively, you can also visit our office or contact our support team, and we will guide you step-by-step with the documentation and onboarding process. Once registered, you can not only sell your products as a seller but also buy products from other businesses. Shopneo is powered by the ONDC government portal, making digital commerce more accessible and trustworthy.",
   },
   {
     question: "What is e-Mitra and how can I get started?",
     answer:
-      "e-Mitra is a government initiative that allows citizens to access various services digitally. Through Acharya Group, you can apply for a new e-Mitra kiosk, get identity cards, access forms, and complete the installation process with proper guidance.",
+      "e-Mitra is a government initiative that allows citizens to access various services digitally. Through Achariya Group, you can apply for a new e-Mitra kiosk, get identity cards, access forms, and complete the installation process with proper guidance.",
   },
   {
     question: "Do you provide support for Kiosk Banking and Bank BC?",
@@ -150,7 +150,7 @@ export const faqs = [
   {
     question: "How do I apply for insurance services?",
     answer:
-      "Acharya Group provides insurance support for individuals and businesses. You can reach out to our team to explore suitable insurance plans and get registered.",
+      "Achariya Group provides insurance support for individuals and businesses. You can reach out to our team to explore suitable insurance plans and get registered.",
   },
   {
     question: "How long does it take to activate services like e-Mitra or Shopneo?",
@@ -169,11 +169,11 @@ export const faqs = [
 
 // footer array
 export const socialLinks = [
-  { href: "https://www.facebook.com/myachariya", icon: FiFacebook },
-  { href: "https://x.com/achariyagroup", icon: FiTwitter },
-  { href: "https://www.linkedin.com/in/achariyagroup", icon: FiLinkedin },
+  { href: "https://www.facebook.com/myAchariya", icon: FiFacebook },
+  { href: "https://x.com/Achariyagroup", icon: FiTwitter },
+  { href: "https://www.linkedin.com/in/Achariyagroup", icon: FiLinkedin },
   { href: "https://www.youtube.com/channel/UCS-2gyn-Fon-QUyO61HPtCA", icon: FiYoutube },
-  { href: "https://www.instagram.com/achariyagroup", icon: FiInstagram },
+  { href: "https://www.instagram.com/Achariyagroup", icon: FiInstagram },
 ];
 
 
@@ -200,8 +200,8 @@ export const support = [
   { title: "+91 958-788-7702", url: "tel:+919587887702", type: "tel" },
 
   // Separate emails
-  { title: "info@achariyagroup.com", url: "mailto:info@achariyagroup.com", type: "email" },
-  { title: "manager@achariyagroup.com", url: "mailto:manager@achariyagroup.com", type: "email" },
+  { title: "info@Achariyagroup.com", url: "mailto:info@Achariyagroup.com", type: "email" },
+  { title: "manager@Achariyagroup.com", url: "mailto:manager@Achariyagroup.com", type: "email" },
 
   { title: "Privacy Policy", url: "/privacy-policy", type: "internal" },
   { title: "Terms & Conditions", url: "/terms-conditions", type: "internal" },

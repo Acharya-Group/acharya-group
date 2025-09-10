@@ -16,9 +16,9 @@ export default function TopBar() {
   <span>+91 890-190-3333</span>
 </Link>
 
-     <a href="mailto:info@achariyagroup.com" className="flex items-center gap-1 hover:underline">
+     <a href="mailto:info@Achariyagroup.com" className="flex items-center gap-1 hover:underline">
   <FiMail />
-  <span>info@achariyagroup.com</span>
+  <span>info@Achariyagroup.com</span>
 </a>
 
        <div className="flex items-center gap-3">

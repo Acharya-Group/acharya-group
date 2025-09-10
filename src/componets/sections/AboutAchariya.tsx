@@ -1,6 +1,6 @@
 import React from "react";
 
-const AboutAcharya = () => {
+const AboutAchariya = () => {
   return (
      <section className="bg-gray-50 py-16">
       <div className="container mx-auto px-6 lg:px-12">
@@ -82,4 +82,4 @@ const AboutAcharya = () => {
   );
 };
 
-export default AboutAcharya;
+export default AboutAchariya;

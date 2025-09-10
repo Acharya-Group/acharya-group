@@ -555,7 +555,7 @@ const RkclSection = () => {
           <div className="mb-8">
             <h3 className="text-xl font-semibold mb-3 text-gray-800">NCR आवेदन फार्म</h3>
             <p className="text-gray-700 mb-4">
-              Click Here to <a href="https://achariyagroup.in/downloads/rkcl_form.pdf" download className="text-blue-600 hover:underline">Download Form</a>
+              Click Here to <a href="https://Achariyagroup.in/downloads/rkcl_form.pdf" download className="text-blue-600 hover:underline">Download Form</a>
             </p>
           </div>
         </div>
