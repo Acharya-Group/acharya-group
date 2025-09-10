@@ -1,8 +1,15 @@
+import Header from '@/componets/layout/Header'
+import CommonHero from '@/componets/sections/CommonHero'
+import KioskBank from '@/componets/sections/KioskBank'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <>
+    <Header/>
+    <CommonHero title='Kiosk Banking'/>
+    <KioskBank/>
+    </>
   )
 }
 
