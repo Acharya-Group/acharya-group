@@ -1,8 +1,27 @@
 "use client";
 import Image from "next/image";
+import { FaRegCheckCircle } from "react-icons/fa";
 import EMitraForms from "./EMitraForms";
+import EMitraDownloads from "./EMitraDownloads";
 
 export default function EMitra() {
+const documents = [
+  { name: "Aadhaar Card", highlight: true },
+  { name: "PAN Card" },
+  { name: "10th Marksheet" },
+  { name: "Bank Passbook" },
+  { name: "Police Verification" },
+  { name: "Passport Size Photo" },
+  { name: "Jan Aadhar Card" },
+  { name: "Mobile Number" },
+  { name: "Email ID" },
+  { name: "Address of e-Mitra Kiosk (where you want to register)" },
+  { name: "e-Mitra Registration Fees: ₹1180" },
+  { name: "Affidavit (₹50 Stamp Paper)" },
+  { name: "RS-CIT Certificate" },
+];
+
+
   return (
     <section className="bg-gray-50 py-12">
       <div className="container mx-auto px-4">
@@ -111,6 +130,32 @@ export default function EMitra() {
           </ul>
         </div>
 
+        {/* Documents Section */}
+       <div className="mt-12">
+  <h2 className="text-2xl font-bold text-gray-800 mb-4">
+    ई-मित्र खोलने के लिए आवश्यक दस्तावेज़
+  </h2>
+  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
+    {documents.map((doc, index) => (
+      <li
+        key={index}
+        className="flex items-center gap-2 text-base md:text-lg"
+      >
+        <FaRegCheckCircle className="text-primary w-4 h-4" />
+        <span
+          className={doc.highlight ? "text-primary font-semibold" : ""}
+        >
+          {doc.name}
+        </span>
+      </li>
+    ))}
+  </ul>
+</div>
+
+
+        {/* download section */}
+        <EMitraDownloads/>
+
         {/* Two Sub Images */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="relative h-64 rounded-2xl overflow-hidden shadow-md">
@@ -130,7 +175,8 @@ export default function EMitra() {
             />
           </div>
         </div>
-        <EMitraForms/>
+
+        <EMitraForms />
 
         {/* Hashtags */}
         <div className="mt-10 text-center text-gray-600 font-medium">

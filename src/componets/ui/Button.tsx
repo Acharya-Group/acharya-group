@@ -12,7 +12,7 @@ const Button: React.FC<ButtonProps> = ({ content, onClick, type = "button", clas
     <button
       type={type}
       onClick={onClick}
-      className={`w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white py-3 rounded-lg font-medium shadow-md hover:opacity-90 transition ${className}`}
+      className={`w-full cursor-pointer bg-gradient-to-r from-purple-600 to-pink-500 text-white py-3 rounded-lg font-medium shadow-md hover:opacity-90 transition ${className}`}
     >
       {content}
     </button>

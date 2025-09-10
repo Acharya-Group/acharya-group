@@ -51,7 +51,7 @@ const Testimonial = [
 
 
   return (
-    <section className="bg-primary-50">
+    <section className="bg-gray-50">
         <div className="container mx-auto px-4 py-12 relative">
           <SubHeading content="What Our Clients Say" />
           <div className="relative">

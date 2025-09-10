@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Collaborations = () => {
   return (
-      <section className='bg-primary-50'>
+      <section className='bg-gray-50'>
           <div className="container mx-auto px-4 py-12">
             <SubHeading content="Our Collaborations"  />
             <div>

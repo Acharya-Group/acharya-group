@@ -218,91 +218,91 @@ export const emitradocuments = [
     sn: '1',
     name: 'मूल निवास प्रमाण – पत्र आवेदन पत्र (Bonafied Certificate)',
     category: 'miscellaneous',
-    link: 'downloads/mul-niwas-rajasthan-form.pdf'
+    link: '/pdf/mul-niwas-rajasthan-form.pdf'
   },
   {
     id: 2,
     sn: '2.(a)',
     name: 'जाति प्रमाण-पत्र (General Cast Certificate (Emitra Rajasthan))',
     category: 'caste-certificate',
-    link: 'downloads/generalCategory.pdf'
+    link: '/pdf/generalCategory.pdf'
   },
   {
     id: 3,
     sn: '2.(b)',
     name: 'जाति प्रमाण-पत्र (OBC CASTE APPLICATION FORM RAJASTHAN STATE (Emitra Rajasthan))',
     category: 'caste-certificate',
-    link: 'downloads/OBC-CASTE-APPLICATION-FORM-RAJASTHAN-STATE.pdf'
+    link: '/pdf/OBC-CASTE-APPLICATION-FORM-RAJASTHAN-STATE.pdf'
   },
   {
     id: 4,
     sn: '2.(c)',
     name: 'जाति प्रमाण-पत्र (OBC CENTRAL NEW FORMAT 2024(Scholarship)(Emitra Rajasthan))',
     category: 'caste-certificate',
-    link: 'downloads/OBC-CENTRAL-NEW-FORMAT-2024.pdf'
+    link: '/pdf/OBC-CENTRAL-NEW-FORMAT-2024.pdf'
   },
   {
     id: 5,
     sn: '2.(d)',
     name: 'जाति प्रमाण-पत्र (SC_ST CASTE APPLICATION FORM Rajasthan)',
     category: 'caste-certificate',
-    link: 'downloads/SC_ST-CASTE-APPLICATION-FORM-2019.pdf'
+    link: '/pdf/SC_ST-CASTE-APPLICATION-FORM-2019.pdf'
   },
   {
     id: 6,
     sn: '2.(e)',
     name: 'जाति प्रमाण-पत्र (Caste Certificate for SC ST for Central (Emitra Rajasthan))',
     category: 'caste-certificate',
-    link: 'downloads/Caste-Certificate-for-SC-ST-for-Central.pdf'
+    link: '/pdf/Caste-Certificate-for-SC-ST-for-Central.pdf'
   },
   {
     id: 7,
     sn: '3',
     name: 'आर्थिक रूप से कमजोर वर्ग (EWS) प्रमाण पत्र के लिए आवेदन पत्र',
     category: 'miscellaneous',
-    link: 'downloads/EWS-New-Form-3.pdf'
+    link: '/pdf/EWS-New-Form-3.pdf'
   },
   {
     id: 8,
     sn: '4',
     name: 'अल्पसंख्यक जाति प्रमाण-पत्र (Minority Caste Certificate)',
     category: 'caste-certificate',
-    link: 'downloads/Alapsankhayak_Jati_Parman_Patr.pdf'
+    link: '/pdf/Alapsankhayak_Jati_Parman_Patr.pdf'
   },
   {
     id: 9,
     sn: '5.(a)',
     name: 'न्यू राशन कार्ड आवेदन फॉर्म (Ration Card)',
     category: 'ration-card',
-    link: 'downloads/new-Ration-card-application-form.pdf'
+    link: '/pdf/new-Ration-card-application-form.pdf'
   },
   {
     id: 10,
     sn: '5.(b)',
     name: 'राशन कार्ड में सुधार हेतु आवेदन फॉर्म (Ration Card)',
     category: 'ration-card',
-    link: 'downloads/GAndE_1493702947052.pdf'
+    link: '/pdf/GAndE_1493702947052.pdf'
   },
   {
     id: 11,
     sn: '5.(c)',
     name: 'नाम जुडवाने हेतु शपथ-पत्र (Ration Card)',
     category: 'ration-card',
-    link: 'downloads/Add-Name-sapath-patra.pdf'
+    link: '/pdf/Add-Name-sapath-patra.pdf'
   },
   {
     id: 12,
     sn: '5.(d)',
     name: 'नाम हटाने हेतु शपथ-पत्र (Ration Card)',
     category: 'ration-card',
-    link: 'downloads/Remove-name-rasan-card-sapath-patra.pdf'
+    link: '/pdf/Remove-name-rasan-card-sapath-patra.pdf'
   },
   {
     id: 13,
     sn: '5.(e)',
     name: 'राशन कार्ड निरस्त करने हेतु शपथ-पत्र (Ration Card)',
     category: 'ration-card',
-    link: 'downloads/Cancel-RAtion-card-sapath-patra.pdf'
+    link: '/pdf/Cancel-RAtion-card-sapath-patra.pdf'
   },
   {
     id: 14,
@@ -316,440 +316,440 @@ export const emitradocuments = [
     sn: '6.(a)',
     name: 'शहरी क्षेत्र हेतु आवेदन पत्र',
     category: 'ration-card',
-    link: 'downloads/city_People.pdf'
+    link: '/pdf/city_People.pdf'
   },
   {
     id: 16,
     sn: '6.(b)',
     name: 'ग्रामीण क्षेत्र हेतु आवेदन पत्र',
     category: 'ration-card',
-    link: 'downloads/NFSA-Rural-Form-1.pdf'
+    link: '/pdf/NFSA-Rural-Form-1.pdf'
   },
   {
     id: 17,
     sn: '7.(a)',
     name: 'सामाजिक सुरक्षा पेंशन योजना आवेदन फॉर्म',
     category: 'pension',
-    link: 'downloads/Pension-Application-Form.pdf'
+    link: '/pdf/Pension-Application-Form.pdf'
   },
   {
     id: 18,
     sn: '7.(b)',
     name: 'सामाजिक सुरक्षा पेंशन योजना (आय प्रमाण पत्र)',
     category: 'pension',
-    link: 'downloads/Pension-Income-certificate1.pdf'
+    link: '/pdf/Pension-Income-certificate1.pdf'
   },
   {
     id: 19,
     sn: '8',
     name: 'पालनहार योजना हेतु आवेदन फॉर्म',
     category: 'pension',
-    link: 'downloads/palanhar-application-form.pdf'
+    link: '/pdf/palanhar-application-form.pdf'
   },
   {
     id: 20,
     sn: '9',
     name: 'जन्म प्रमाण-पत्र ( Birth Certificate)',
     category: 'birth-death-marriage',
-    link: 'downloads/birthcertificate.pdf'
+    link: '/pdf/birthcertificate.pdf'
   },
   {
     id: 21,
     sn: '9.(a)',
     name: 'जन्म प्रमाण-पत्र 21 दिन ( Birth Certificate 21 Days)',
     category: 'birth-death-marriage',
-    link: 'downloads/BirthCertificate21Days.pdf'
+    link: '/pdf/BirthCertificate21Days.pdf'
   },
   {
     id: 22,
     sn: '9.(b)',
     name: 'जन्म प्रमाण-पत्र 1 महिना ( Birth Certificate 1 Month)',
     category: 'birth-death-marriage',
-    link: 'downloads/BirthCertificate1Month.pdf'
+    link: '/pdf/BirthCertificate1Month.pdf'
   },
   {
     id: 23,
     sn: '9.(c)',
     name: 'जन्म प्रमाण-पत्र 1 साल ( Birth Certificate 1 Year )',
     category: 'birth-death-marriage',
-    link: 'downloads/BirthCertificate1Year.pdf'
+    link: '/pdf/BirthCertificate1Year.pdf'
   },
   {
     id: 24,
     sn: '10',
     name: 'मृत्यू प्रमाण-पत्र ( Death Certificate)',
     category: 'birth-death-marriage',
-    link: 'downloads/deathcertificate.pdf'
+    link: '/pdf/deathcertificate.pdf'
   },
   {
     id: 25,
     sn: '11',
     name: 'विवाह प्रमाण-पत्र (Marriage Certificate)',
     category: 'birth-death-marriage',
-    link: 'downloads/vivahpanjiyan.pdf'
+    link: '/pdf/vivahpanjiyan.pdf'
   },
   {
     id: 26,
     sn: '12',
     name: 'श्रम विभाग : निर्माण श्रमिक सुलभ्य आवास योजना (Emitra Rajasthan)',
     category: 'miscellaneous',
-    link: 'downloads/aavas-yojna-application-form.pdf'
+    link: '/pdf/aavas-yojna-application-form.pdf'
   },
   {
     id: 27,
     sn: '13',
     name: 'आय प्रमाण-पत्र',
     category: 'income-certificate',
-    link: 'downloads/INCOME-CERTIFICATE-4-PAGE-2_compressed.pdf'
+    link: '/pdf/INCOME-CERTIFICATE-4-PAGE-2_compressed.pdf'
   },
   {
     id: 28,
     sn: '13.(a)',
     name: 'आय प्रमाण-पत्र नया',
     category: 'income-certificate',
-    link: 'downloads/आय-प्रमाण-धोषणा.pdf'
+    link: '/pdf/आय-प्रमाण-धोषणा.pdf'
   },
   {
     id: 29,
     sn: '13.(b)',
     name: 'आय प्रमाण-पत्र हेतु आवेदन फॉर्म नया (राजस्थान सरकार की विभिन्न छात्रवृति हेतु)',
     category: 'income-certificate',
-    link: 'downloads/Scholarship-new-Income-Certificate-Form.pdf'
+    link: '/pdf/Scholarship-new-Income-Certificate-Form.pdf'
   },
   {
     id: 30,
     sn: '13.(c)',
     name: 'आय प्रमाण-पत्र हेतु आवेदन फॉर्म (राजस्थान सरकार की विभिन्न छात्रवृति हेतु)',
     category: 'income-certificate',
-    link: 'downloads/Income-Certificate-for-Scholarship.pdf'
+    link: '/pdf/Income-Certificate-for-Scholarship.pdf'
   },
   {
     id: 31,
     sn: '14',
     name: 'बेरोगाजगारी भत्ते हेतु शपथ-पत्र',
     category: 'miscellaneous',
-    link: 'downloads/berojgari-bhatta-sapath-patra.pdf'
+    link: '/pdf/berojgari-bhatta-sapath-patra.pdf'
   },
   {
     id: 32,
     sn: '15.(a)',
     name: 'निजी चरित्र सत्यापन का फॉर्म',
     category: 'miscellaneous',
-    link: 'downloads/police-carecter-verification-certificate.pdf'
+    link: '/pdf/police-carecter-verification-certificate.pdf'
   },
   {
     id: 33,
     sn: '15.(b)',
     name: 'घरेलु नोकर का पुलिस चरित्र सत्यापन का फॉर्म',
     category: 'miscellaneous',
-    link: 'downloads/Police-Certificate-for-Servant-Varification.pdf'
+    link: '/pdf/Police-Certificate-for-Servant-Varification.pdf'
   },
   {
     id: 33,
     sn: '15.(c)',
     name: 'किरायेदार के पुलिस चरित्र सत्यापन का फॉर्म',
     category: 'miscellaneous',
-    link: 'downloads/Police-Certificate-for-tenent-verification.pdf'
+    link: '/pdf/Police-Certificate-for-tenent-verification.pdf'
   },
   {
     id: 34,
     sn: '16',
     name: 'नामांतरण के लिए प्रार्थना पत्र (Application for Mutation)',
     category: 'miscellaneous',
-    link: 'downloads/Application-form-Mutation.pdf'
+    link: '/pdf/Application-form-Mutation.pdf'
   },
   {
     id: 35,
     sn: '17',
     name: 'गोदनामा हेतु आवेदन फॉर्म',
     category: 'miscellaneous',
-    link: 'downloads/godnama-application-form.pdf'
+    link: '/pdf/godnama-application-form.pdf'
   },
   {
     id: 36,
     sn: '18',
     name: 'जन आधार आय प्रमाण पत्र ( JAN AADHAR INCOME FORM )',
     category: 'income-certificate',
-    link: 'downloads/JanAadhar-Income-Forms.pdf'
+    link: '/pdf/JanAadhar-Income-Forms.pdf'
   },
   {
     id: 37,
     sn: '19',
     name: 'तारबंदी योजना हेतु आवेदन फॉर्म',
     category: 'miscellaneous',
-    link: 'downloads/taar-bandhi-application-form.pdf'
+    link: '/pdf/taar-bandhi-application-form.pdf'
   },
   {
     id: 38,
     sn: '20',
     name: 'कृषि यंत्रों के लिए सब्सिडी हेतु आवेदन फॉर्म ( Application for subsidy on farm implements )',
     category: 'miscellaneous',
-    link: 'downloads/KRASHI-yantro-anudan-application-form.pdf'
+    link: '/pdf/KRASHI-yantro-anudan-application-form.pdf'
   },
   {
     id: 39,
     sn: '21',
     name: 'फव्वारा पाईप लाईन के लिए सब्सिडी हेतु आवेदन फॉर्म ( Application for subsidy on farm implements )',
     category: 'miscellaneous',
-    link: 'downloads/FwaraPipelineSubsidyFom.pdf'
+    link: '/pdf/FwaraPipelineSubsidyFom.pdf'
   },
   {
     id: 40,
     sn: '22',
     name: 'हैसियत प्रमाण पत्र के लिए आवेदन फॉर्म ( Application for subsidy on farm implements )',
     category: 'income-certificate',
-    link: 'downloads/हैसियत_प्रमाण_पत्र_के_लिए_आवेदन_पत्र.pdf'
+    link: '/pdf/हैसियत_प्रमाण_पत्र_के_लिए_आवेदन_पत्र.pdf'
   },
   {
     id: 41,
     sn: '23',
     name: 'यदि आपका ब्राउज़र नोट सिक्योर दिखा रहा है तो इसे डाउनलोड करके इनस्टॉल करें',
     category: 'miscellaneous',
-    link: 'downloads/Global_Signin.zip'
+    link: '/pdf/Global_Signin.zip'
   },
   {
     id: 42,
     sn: '24',
     name: 'Application form for NFSA Rural area',
     category: 'ration-card',
-    link: 'downloads/Application%20form%20for%20NFSA%20Rural%20area.pdf'
+    link: '/pdf/Application%20form%20for%20NFSA%20Rural%20area.pdf'
   },
   {
     id: 43,
     sn: '25',
     name: 'Application form for NFSA Urban area',
     category: 'ration-card',
-    link: 'downloads/Application%20form%20for%20NFSA%20Urban%20area.pdf'
+    link: '/pdf/Application%20form%20for%20NFSA%20Urban%20area.pdf'
   },
   {
     id: 44,
     sn: '26',
     name: 'Solvency Form',
     category: 'income-certificate',
-    link: 'downloads/Solvency_Form.pdf'
+    link: '/pdf/Solvency_Form.pdf'
   },
   {
     id: 45,
     sn: '27',
     name: 'Seed licnese Form',
     category: 'miscellaneous',
-    link: 'downloads/Seed-licnese-Form.pdf'
+    link: '/pdf/Seed-licnese-Form.pdf'
   },
   {
     id: 46,
     sn: '28',
     name: 'PM Awas Yojana Urban Housing for All by 2022',
     category: 'miscellaneous',
-    link: 'downloads/PM-Awas-Yojana-Urban-Housing-for-All-by-2022.pdf'
+    link: '/pdf/PM-Awas-Yojana-Urban-Housing-for-All-by-2022.pdf'
   },
   {
     id: 47,
     sn: '29',
     name: 'Physical Verification Document',
     category: 'miscellaneous',
-    link: 'downloads/Physical_Verification_Document.pdf'
+    link: '/pdf/Physical_Verification_Document.pdf'
   },
   {
     id: 48,
     sn: '30',
     name: 'Lease Deed patta form',
     category: 'miscellaneous',
-    link: 'downloads/Lease-Deed-patta-form.pdf'
+    link: '/pdf/Lease-Deed-patta-form.pdf'
   },
   {
     id: 49,
     sn: '31',
     name: 'IGSCCY Shapath Patra Format',
     category: 'miscellaneous',
-    link: 'downloads/IGSCCY-Shapath-Patra-Format.pdf'
+    link: '/pdf/IGSCCY-Shapath-Patra-Format.pdf'
   },
   {
     id: 50,
     sn: '32',
     name: 'EWS For State form',
     category: 'miscellaneous',
-    link: 'downloads/EWS-For-State-form.pdf'
+    link: '/pdf/EWS-For-State-form.pdf'
   },
   {
     id: 51,
     sn: '33',
     name: 'Digi Subsidy form',
     category: 'miscellaneous',
-    link: 'downloads/Digi-subsidy-form.pdf'
+    link: '/pdf/Digi-subsidy-form.pdf'
   },
   {
     id: 52,
     sn: '34',
     name: 'BONAFIED TSP',
     category: 'miscellaneous',
-    link: 'downloads/BONAFIED-TSP.pdf'
+    link: '/pdf/BONAFIED-TSP.pdf'
   },
   {
     id: 53,
     sn: '35',
     name: 'Application form Low Cost Onion Cold Storage',
     category: 'miscellaneous',
-    link: 'downloads/Application-form-Low-cost-onion-cold-storage.docx'
+    link: '/pdf/Application-form-Low-cost-onion-cold-storage.docx'
   },
   {
     id: 54,
     sn: '36',
     name: 'Bonafide Form',
     category: 'miscellaneous',
-    link: 'downloads/bonafide-form.pdf'
+    link: '/pdf/bonafide-form.pdf'
   },
   {
     id: 55,
     sn: '37',
     name: 'Bhumi heen praman pratra',
     category: 'miscellaneous',
-    link: 'downloads/Bhumi-heen-praman-pratra.pdf'
+    link: '/pdf/Bhumi-heen-praman-pratra.pdf'
   },
   {
     id: 56,
     sn: '38',
     name: 'Laghu krashak praman patra',
     category: 'miscellaneous',
-    link: 'downloads/Laghu-krashak-praman-patra.jpeg'
+    link: '/pdf/Laghu-krashak-praman-patra.jpeg'
   },
   {
     id: 57,
     sn: '39',
     name: 'डिग्गी अधिकारी रिपोर्ट फॉर्म Diggi Reports Forms',
     category: 'miscellaneous',
-    link: 'downloads/Diggi-Reports-Forms.pdf'
+    link: '/pdf/Diggi-Reports-Forms.pdf'
   },
   {
     id: 58,
     sn: '40',
     name: 'कृषि यंत्रो के लिए सब्सिडी हेतु आवदेन फॉर्म (farm implements )',
     category: 'miscellaneous',
-    link: 'downloads/farm-implements.pdf'
+    link: '/pdf/farm-implements.pdf'
   },
   {
     id: 59,
     sn: '41',
     name: 'कुसुम योजना सौर ऊर्जा फॉर्म Kusum Scheme Solar panel Application Form',
     category: 'miscellaneous',
-    link: 'downloads/Kusum-Scheme-Solar-panel-Application-Form.pdf'
+    link: '/pdf/Kusum-Scheme-Solar-panel-Application-Form.pdf'
   },
   {
     id: 60,
     sn: '42',
     name: 'जल हौज़ पर अनदुान हेतु Application for subsidy on Water Storage Tank',
     category: 'miscellaneous',
-    link: 'downloads/Application-for-subsidy-on-Water-Storage-Tank.pdf'
+    link: '/pdf/Application-for-subsidy-on-Water-Storage-Tank.pdf'
   },
   {
     id: 61,
     sn: '43',
     name: 'तारबन्दी योजना हेतु आवेदन फॉर्म Wire Fencing',
     category: 'miscellaneous',
-    link: 'downloads/Wire-Fencing.pdf'
+    link: '/pdf/Wire-Fencing.pdf'
   },
   {
     id: 62,
     sn: '44',
     name: 'नामांतरण के लिए प्रार्थना पत्र (Application for Mutation)',
     category: 'miscellaneous',
-    link: 'downloads/Application-for-Mutation.pdf'
+    link: '/pdf/Application-for-Mutation.pdf'
   },
   {
     id: 63,
     sn: '45',
     name: 'शौचालय हेतु फॉर्म Shouchalay Form',
     category: 'miscellaneous',
-    link: 'downloads/Shouchalay-Form.pdf'
+    link: '/pdf/Shouchalay-Form.pdf'
   },
   {
     id: 64,
     sn: '46',
     name: 'मुख्यमंत्री कन्या शादी सहयोग योजना Application For Sahyog Scheme',
     category: 'miscellaneous',
-    link: 'downloads/Application-For-Sahyog-Scheme.pdf'
+    link: '/pdf/Application-For-Sahyog-Scheme.pdf'
   },
   {
     id: 65,
     sn: '47',
     name: 'विवाह प्रमाण-पत्र (Marriage Certificate)',
     category: 'birth-death-marriage',
-    link: 'downloads/Marriage-Certificate.pdf'
+    link: '/pdf/Marriage-Certificate.pdf'
   },
   {
     id: 66,
     sn: '48',
     name: 'ठेकेदार का प्रमाण पत्र Labour Contractor Certificate',
     category: 'miscellaneous',
-    link: 'downloads/Labour-Contractor-Certificate.pdf'
+    link: '/pdf/Labour-Contractor-Certificate.pdf'
   },
   {
     id: 67,
     sn: '49',
     name: 'नियोजक का प्रमाण पत्र Labour Niyojak Certificate',
     category: 'miscellaneous',
-    link: 'downloads/Labour-Niyojak-Certificate.pdf'
+    link: '/pdf/Labour-Niyojak-Certificate.pdf'
   },
   {
     id: 68,
     sn: '50',
     name: 'राज श्री आवेदन फॉर्म Application For Rajshree',
     category: 'miscellaneous',
-    link: 'downloads/Application-For-Rajshree.pdf'
+    link: '/pdf/Application-For-Rajshree.pdf'
   },
   {
     id: 69,
     sn: '51',
     name: 'दिव्यांग आवेदन फॉर्म Application For Disabililty',
     category: 'miscellaneous',
-    link: 'downloads/Application-For-Disabililty.pdf'
+    link: '/pdf/Application-For-Disabililty.pdf'
   },
   {
     id: 70,
     sn: '52',
     name: 'प्रधानमंत्री आवास योजना ग्रामीण PM Aawas Rural',
     category: 'miscellaneous',
-    link: 'downloads/PM-Aawas-Rural.pdf'
+    link: '/pdf/PM-Aawas-Rural.pdf'
   },
   {
     id: 71,
     sn: '53',
     name: 'पशु छपरा टिन शेड Animal Chhapra Teen Shed',
     category: 'miscellaneous',
-    link: 'downloads/Animal-Chhapra-Teen-Shed.pdf'
+    link: '/pdf/Animal-Chhapra-Teen-Shed.pdf'
   },
   {
     id: 72,
     sn: '54',
     name: 'परित्यक्ता पेंशन फॉर्म Abandonment Pension Form',
     category: 'pension',
-    link: 'downloads/Abandonment-Pension-Form.pdf'
+    link: '/pdf/Abandonment-Pension-Form.pdf'
   },
   {
     id: 73,
     sn: '55',
     name: 'दिव्यांग चिकित्सा प्रमाण पत्र Disability Medical Certificate',
     category: 'miscellaneous',
-    link: 'downloads/Disability-Medical-Certificate.pdf'
+    link: '/pdf/Disability-Medical-Certificate.pdf'
   },
   {
     id: 74,
     sn: '56',
     name: 'आंगनवाड़ी फॉर्म Anganwadi Form',
     category: 'miscellaneous',
-    link: 'downloads/Anganwadi-Form.pdf'
+    link: '/pdf/Anganwadi-Form.pdf'
   },
   {
     id: 75,
     sn: '57',
     name: 'बेरोजगारी इंटर्नशिप प्रमाण पत्र Unemployment Internship Certificate',
     category: 'miscellaneous',
-    link: 'downloads/Unemployment-Internship-Certificate.pdf'
+    link: '/pdf/Unemployment-Internship-Certificate.pdf'
   },
   {
     id: 76,
     sn: '58',
     name: 'मुख्यमंत्री कोरोना मृत्यु सहायता योजना फॉर्म Covid Death Claim Form',
     category: 'miscellaneous',
-    link: 'downloads/Covid-Death-Claim-Form.pdf'
+    link: '/pdf/Covid-Death-Claim-Form.pdf'
   }
 ];
