@@ -17,7 +17,7 @@ export const navdropdowns = [
       { name: "Shopneo", href: "/shopneo", type: "link" },
       { name: "e-Mitra", href: "/e-mitra", type: "link" },
       { name: "Kiosk Banking/BankBc", href: "/kiosk-banking", type: "link" },
-      { name: "Insurance", href: "/insurance", type: "link" },
+      { name: "Atpl Drone", href: "/atpl-drone", type: "link" },
       { name: "RKCL", href: "/rkcl", type: "link" },
       { name: "School Easy", href: "/school-easy", type: "link" },
       { name: "Paytm Registration", href: "/paytm-registration", type: "link" },

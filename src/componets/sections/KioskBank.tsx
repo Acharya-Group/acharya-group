@@ -196,17 +196,13 @@ export default function KioskBank() {
           BOB Morpho MSO 1300 Esetup
         </a>
       </li>
-
       {/* Others as normal links */}
       <li><a href="/pdf/BOB-BANNER.pdf" download="BOB-BANNER.pdf" className="hover:underline">BOB Banner</a></li>
       <li><a href="/pdf/BOB-REGISTER.pdf" download="BOB-REGISTER.pdf" className="hover:underline">BOB Register</a></li>
-      <li><a href="/pdf/BRKGB-BANNER.pdf" download="BRKGB-BANNER.pdf" className="hover:underline">BRKGB Banner</a></li>
-      <li><a href="/pdf/BRKGB-REGISTER.pdf" download="BRKGB-REGISTER.pdf" className="hover:underline">BRKGB Register</a></li>
-      <li><a href="/pdf/RMGB-REGISTER.pdf" download="RMGB-REGISTER.pdf" className="hover:underline">RMGB Register</a></li>
-      <li><a href="/pdf/RMGB-BANNER.pdf" download="RMGB-BANNER.pdf" className="hover:underline">RMGB Banner</a></li>
+      <li><a href="/pdf/BRKGB-BANNER.pdf" download="RGB-BANNER.pdf" className="hover:underline">RGB Banner</a></li>
+      <li><a href="/pdf/BRKGB-REGISTER.pdf" download="RGB-REGISTER.pdf" className="hover:underline">RGB Register</a></li>
     </ul>
   </div>
-
   {/* Categories Section */}
   <div className="p-4 border rounded-xl bg-gray-50">
     <h3 className="font-semibold text-gray-800 mb-3">Categories</h3>
