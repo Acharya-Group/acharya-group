@@ -42,6 +42,38 @@ export const navdropdowns = [
   },
 ];
 
+// gallery items
+// Example gallery items
+export const galleryItems = [
+  { id: 1, image: '/images/gallery/gallery-1.jpg'},
+  { id: 2, image: '/images/gallery/gallery-2.jpg'},
+  { id: 3, image: '/images/gallery/gallery-3.jpg'},
+  { id: 4, image: '/images/gallery/gallery-4.jpg'},
+  { id: 5, image: '/images/gallery/gallery-5.jpg'},
+  { id: 6, image: '/images/gallery/gallery-6.jpg'},
+  { id: 7, image: '/images/gallery/gallery-7.jpg'},
+  { id: 8, image: '/images/gallery/gallery-8.jpg'},
+  { id: 9, image: '/images/gallery/gallery-9.jpg'},
+  { id: 10, image: '/images/gallery/gallery-10.jpg'},
+  { id: 11, image: '/images/gallery/gallery-11.jpg'},
+  { id: 12, image: '/images/gallery/gallery-12.jpg'},
+  { id: 13, image: '/images/gallery/gallery-13.jpg'},
+  { id: 14, image: '/images/gallery/gallery-14.jpg'},
+  { id: 15, image: '/images/gallery/gallery-15.jpg'},
+  { id: 16, image: '/images/gallery/gallery-16.jpg'},
+  { id: 17, image: '/images/gallery/gallery-17.jpg'},
+  { id: 18, image: '/images/gallery/gallery-18.jpg'},
+  { id: 19, image: '/images/gallery/gallery-19.jpg'},
+  { id: 20, image: '/images/gallery/gallery-20.jpg'},
+  { id: 21, image: '/images/gallery/gallery-21.jpg'},
+  { id: 22, image: '/images/gallery/gallery-22.jpg'},
+  { id: 23, image: '/images/gallery/gallery-23.jpg'},
+  { id: 24, image: '/images/gallery/gallery-24.jpg'},
+  { id: 25, image: '/images/gallery/gallery-25.jpg'},
+  { id: 26, image: '/images/gallery/gallery-26.jpg'},
+  { id: 27, image: '/images/gallery/gallery-27.jpg'},
+]
+
 //   our collaborations logos
 export const ourCollaborations = [
   "/images/collbration-slide-1.jpg",
