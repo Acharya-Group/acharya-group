@@ -88,30 +88,29 @@ export default function SchoolEasy() {
         </div>
 
         {/* Key Features */}
-        <div className="bg-white p-8 rounded-2xl shadow-md space-y-6">
-          <h3 className="text-2xl font-semibold text-gray-800">Key Features</h3>
-          <ul className="list-decimal list-inside text-gray-600 text-sm space-y-2">
-            <li>School Website Design along with CMS</li>
-            <li>School Website Domain Integration</li>
-            <li>School Registration & Management</li>
-            <li>Staff Registration & Management</li>
-            <li>Fee Management + Payment Gateway Integration</li>
-            <li>Student Admission Management</li>
-            <li>Old Admission Data Import</li>
-            <li>Student & Staff Attendance Management</li>
-            <li>Microsoft Teams Integration for Online Classes</li>
-            <li>Inbuilt LMS for Assignments & Assessments</li>
-            <li>Exam Marks Entry & Result Generation</li>
-            <li>Certificates, Payroll, Transport, Library & Assets Management</li>
-            <li>Complaint Management & Messaging System</li>
-            <li>Android Mobile App (under development)</li>
-          </ul>
-        </div>
-
-        {/* Benefits Section */}
-        <div className="bg-white p-8 rounded-2xl shadow-md space-y-6">
-          <h3 className="text-2xl font-semibold text-gray-800">Major Benefits</h3>
-          <ul className="list-disc list-inside text-gray-600 text-sm space-y-2">
+        <div className="bg-white flex flex-wrap p-8 rounded-2xl shadow-md space-y-6">
+          <div className="md:w-6/12">
+              <h3 className="text-2xl font-semibold text-gray-800">Key Features</h3>
+              <ul className="list-decimal list-inside text-gray-600 text-sm space-y-2 mt-3">
+                <li>School Website Design along with CMS</li>
+                <li>School Website Domain Integration</li>
+                <li>School Registration & Management</li>
+                <li>Staff Registration & Management</li>
+                <li>Fee Management + Payment Gateway Integration</li>
+                <li>Student Admission Management</li>
+                <li>Old Admission Data Import</li>
+                <li>Student & Staff Attendance Management</li>
+                <li>Microsoft Teams Integration for Online Classes</li>
+                <li>Inbuilt LMS for Assignments & Assessments</li>
+                <li>Exam Marks Entry & Result Generation</li>
+                <li>Certificates, Payroll, Transport, Library & Assets Management</li>
+                <li>Complaint Management & Messaging System</li>
+                <li>Android Mobile App (under development)</li>
+              </ul>
+          </div>
+          <div className="md:w-6/12">
+              <h3 className="text-2xl font-semibold text-gray-800">Major Benefits</h3>
+          <ul className="list-disc list-inside text-gray-600 text-sm space-y-2 mt-3">
             <li>Dedicated & comprehensive website for school</li>
             <li>Transparency in school operations</li>
             <li>Real-time information availability</li>
@@ -123,6 +122,7 @@ export default function SchoolEasy() {
             <li>High-level data security</li>
             <li>Complete operational automation with minimal hardware requirements</li>
           </ul>
+          </div>
         </div>
 
         {/* Benefits by Role */}
