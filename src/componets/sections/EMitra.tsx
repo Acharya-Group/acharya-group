@@ -15,6 +15,7 @@ const documents = [
   { name: "Jan Aadhar Card" },
   { name: "Mobile Number" },
   { name: "Email ID" },
+  { name: "Electricity bill" },
   { name: "Address of e-Mitra Kiosk (where you want to register)" },
   { name: "e-Mitra Registration Fees: ₹1180" },
   { name: "Affidavit (₹50 Stamp Paper)" },
