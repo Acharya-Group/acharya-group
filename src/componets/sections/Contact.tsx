@@ -5,6 +5,7 @@ import Button from '../ui/Button'
 import Image from 'next/image'
 
 const Contact = () => {
+    
     return (
         <section className="bg-gray-50">
             <div className="container mx-auto px-4 py-16 relative">

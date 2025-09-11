@@ -3,14 +3,14 @@ import Link from "next/link";
 
 const NewsAndMedia = () => {
   const cards = [
-    { title: "Videos", link: "/videos" },
-    { title: "RKCL'S ITGK AWARD FUNCTION - 2025", link: "/award-2025" },
-    { title: "Annual Meeting / Awards - 2024", link: "/annual-meeting-2024" },
-    { title: "Best Wishes / Appreciation", link: "/best-wishes" },
-    { title: "e-Mitra Samman Samaroh", link: "/samman-samaroh" },
-    { title: "Events / Programs", link: "/events" },
-    { title: "NewsPapers", link: "/newspapers" },
-    { title: "e-Mitra Kiosk Training Programs", link: "/training-programs" },
+    { title: "Videos", link: "/gallery" },
+    { title: "RKCL'S ITGK AWARD FUNCTION - 2025", link: "/gallery" },
+    { title: "Annual Meeting / Awards - 2024", link: "/gallery" },
+    { title: "Best Wishes / Appreciation", link: "/gallery" },
+    { title: "e-Mitra Samman Samaroh", link: "/gallery" },
+    { title: "Events / Programs", link: "/gallery" },
+    { title: "NewsPapers", link: "/gallery" },
+    { title: "e-Mitra Kiosk Training Programs", link: "/gallery" },
   ];
 
   return (

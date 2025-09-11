@@ -9,6 +9,7 @@ export const navdropdowns = [
     links: [
       { name: "About Us", href: "/about", type: "link" },
       { name: "Director's Message", href: "/directors-message", type: "link" },
+      { name: "Our Team", href: "/team", type: "link" },
     ],
   },
   {
@@ -268,6 +269,326 @@ export const eventItems: GalleryItem[] = [
   { id: 12, image: "/images/events/event-12.jpg", category: 7 },
   { id: 13, image: "/images/events/event-13.jpg", category: 7 },
   { id: 14, image: "/images/events/event-14.jpg", category: 7 },
+];
+
+export const projectManagersContact = [
+  {
+    name: "E-Mitra",
+    manager: "Mrs. Parmila Dagar - 9587887704",
+    team: [
+      "9587887748",
+      "7230003320",
+      "9034040242",
+      "9587887707",
+      "9034040241",
+      "7230003311",
+      "9587887703",
+    ],
+  },
+  {
+    name: "Bank of Baroda (BOB)",
+    manager: "Mr. Ateendra - 7230003306",
+    team: ["9587887706", "9587887773", "9587887156", "9587895958"],
+  },
+  {
+    name: "Rajasthan Gramin Bank (RGB)",
+    manager: "Mr. Ramlal Yadav - 9587887755, Meenakshi Ray - 9587887651",
+    team: [
+      "9587887771",
+      "9587887860",
+      "9587887153",
+      "9587887834",
+      "9587887772",
+      "9587887752",
+    ],
+  },
+  {
+    name: "Bank Of India (BOI)",
+    manager: "Mr. Indra Kumar - 9587887789",
+    team: ["9587887781"],
+  },
+  {
+    name: "Central Bank Of India (CBI)",
+    manager: "Ms Radhika - 9587887781",
+    team: ["9257028322"],
+  },
+  {
+    name: "RKCL",
+    manager: "Mr. Karan Parihar - 7230003324",
+    team: ["9587887775", "9587887161"],
+  },
+  {
+    name: "E-Mitra Stationery",
+    manager: "Mr. Hanuman Yogi",
+    team: ["9587887703"],
+  },
+];
+
+export const districtCoordinators = [
+  {
+    id: 1,
+    district: "Ajmer",
+    name: "Mr. Vishal Dev Gaur",
+    phNo: "9587887708",
+    emailId: "Ajmer@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., Police Line, Naya Bara, Opp. Basant Vihar Colony, Ajmer- 305001 (Raj.)"
+  },
+  {
+    id: 2,
+    district: "Alwar",
+    name: "Mr. Manoj Saini",
+    phNo: "9587887709",
+    emailId: "Alwar@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., Ward No  28 ,Near Jai Ambe Marriage Garden, Jyoti Rav Fule Circle , Bus Stand Road, Alwar- 301001 (Raj.)"
+  },
+  {
+    id: 3,
+    district: "Banswara",
+    name: "Mr. Vikesh Jain",
+    phNo: "9587887710",
+    emailId: "Banswara@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd. ,Near Bharat Gas Office, College Road ,Banswara -327001  (Raj.)"
+  },
+  {
+    id: 4,
+    district: "Baran",
+    name: "Mr. Rajesh Suman",
+    phNo: "9587887711",
+    emailId: "Baran@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., Shop No.- 7, Namdev Bhawan, Charighat Road Near Amber Circle ,Baran - 325205 (Raj.)"
+  },
+  {
+    id: 5,
+    district: "Barmer",
+    name: "Mr. Moulabaksh Khan",
+    phNo: "9587887712",
+    emailId: "Barmer@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd.,Opp. PG Collage , Malinath ShiKshan Sansthan, Shop N. -1 Sindhary Choraya ,Barmer - 344001 (Raj.)"
+  },
+  {
+    id: 6,
+    district: "Bharatpur",
+    name: "Mr. Vikram Singh",
+    phNo: "9587887713",
+    emailId: "Bharatpur@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd. ,C-Block Ward No.-15, Near Kalsi Hospital , Indra Nagar, Bharatpur -321001 (Raj)"
+  },
+  {
+    id: 7,
+    district: "Bhilwara",
+    name: "Mr. Jagdish Ladha",
+    phNo: "9587887714",
+    emailId: "Bhilwara@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., 3-M-7, Bapunagar ,Bhilwara -311001 (Raj.)"
+  },
+  {
+    id: 8,
+    district: "Bikaner",
+    name: "Mr. Sajjan Singh",
+    phNo: "9587887715",
+    emailId: "Bikaner@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd.,Government  Press Road ,Court Parishar ,Bikaner -334001 (Raj.)"
+  },
+  {
+    id: 9,
+    district: "Bundi",
+    name: "Mr. Manish Kumar",
+    phNo: "9587887716",
+    emailId: "Bundi@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., Nainwa Road, Matunda Choraha, Bundi - 323001 (Raj.)"
+  },
+  {
+    id: 10,
+    district: "Chittorgarh",
+    name: "Mr. Nana Goswami",
+    phNo: "9587887717",
+    emailId: "Chittorgarh@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., C-29 Meera Market , Near HDFC Bank ,Chittoragarh -312001 (Raj. )"
+  },
+  {
+   id: 11,  
+    district: "Churu",
+    name: "Mr. Sourabh",
+    phNo: "9587887718",
+    emailId: "Churu@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., 1st Floor, Priya Printing Press, Near Eye Hospital, Sainik Basti, Churu -331001 (Raj.)"
+  },
+  {
+     id: 12,
+    district: "Dausa",
+    name: "Mr. Dinesh Gurjar",
+    phNo: "9587887719",
+    emailId: "Dausa@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., Baswa Road , Near Rajesh Pilot College, Bandikui. Dausa - 303313 ( Raj.)"
+  },
+  {
+     id: 13,
+    district: "Dholpur",
+    name: "Mr. Gourav",
+    phNo: "9587887720",
+    emailId: "Dholpur@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., Avanti Bai Colony ,Ward No.- 46, Below RajaKhera By Pass Road , Distt.- Dholpur  - 328001 (Raj.)"
+  },
+  {
+     id: 14,
+    district: "Dungarpur",
+    name: "Mr. Vinod Parmar",
+    phNo: "9587887721",
+    emailId: "Dungarpur@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd.,Shop No.-7,New Sabji Mandi , Dungarpur - 314001 (Raj.)"
+  },
+  {
+     id: 15,
+    district: "Hanumangarh",
+    name: "Mr. Vikas Kumar",
+    phNo: "9587887723",
+    emailId: "Hanumangarh@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd.,Ward No. 50, Near Chuna Fatak, Behind Kamra Tent House, Hanumangarh Jn.- 335512 (Raj.)"
+  },
+  {
+     id: 16,
+    district: "Jaipur",
+    name: "Mr. Rahul Kumar",
+    phNo: "9587887724",
+    emailId: "Jaipur@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd. , #107, Shiv Vihar AB, Near Maharani Bagh Palace, Lalarpura, Gandhi Path (West), Vaishali Nagar, Jaipur - 302021 (Raj.)"
+  },
+  {
+     id: 17,
+    district: "Jaisalmer",
+    name: "Mr. Nepal Singh",
+    phNo: "9587887725",
+    emailId: "Jaisalmer@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd.,Dr. Kanhaiya Lal Achalvanshi Colony, Dedansar Road, Jaisalmer-345001 (Raj.)"
+  },
+  {
+     id: 18,
+    district: "Jalore",
+    name: "Mr. Sudarshan Singh",
+    phNo: "9587887726",
+    emailId: "Jalore@achariyagroupcom",
+    address: "Achariya Technologies Pvt. Ltd. , Kalka Colony , Bhinmal Bypass Road , Jalore - 343001 (Raj.)"
+  },
+  {
+     id: 19,
+    district: "Jhalawar",
+    name: "Mr. Durgesh Kumar",
+    phNo: "9587887727",
+    emailId: "Jhalawar@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., B-36, Shop No.-3 Near Khel Sankul Javahar Colony - Jhalawar - 326001 (Raj.)"
+  },
+  {
+     id: 20,
+    district: "Jhunjhunu",
+    name: "Mr. Praveen Kumar",
+    phNo: "9587887728",
+    emailId: "Jhunjhunu@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd.,House No.-1/250 Near By Housing Board Office ,Churu Road ,Jhunjhunu - 333001 (Raj.)"
+  },
+  {
+     id: 21,
+    district: "Jodhpur",
+    name: "Mr. Kamlesh",
+    phNo: "9587887729",
+    emailId: "Jodhpur@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd. , Ujawal Niwas, Paota B Road Opp. Labour Office , Poata, Jodhpur – 342001 (Raj.)"
+  },
+  {
+     id: 22,
+    district: "Karauli",
+    name: "Mr. Rajesh Saini",
+    phNo: "9587887730",
+    emailId: "Karauli@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd. , Radha Rani Market , In Front Of ParshuRam Vatika Hindaun City ,Karauli - 322230 ( Raj.)"
+  },
+  {
+     id: 23,
+    district: "Kota",
+    name: "Mr. Jitendra Kumar Nagar",
+    phNo: "9587887731",
+    emailId: "Kota@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., HN-743 , A.R.K Puram ,Near Ahinsa Circle ,Kota - 324010 (Raj.)"
+  },
+  {
+     id: 24,
+    district: "Nagaur",
+    name: "Mr. Ram Prakash",
+    phNo: "9587887732  9587887792",
+    emailId: "Nagaur@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd.,Shop-9 ,Hari Om Market , Didwana Road , Nagaur - 341001 (Raj.)"
+  },
+  {
+     id: 25,
+    district: "Pali",
+    name: "Mr. Rakesh Kumar",
+    phNo: "9587887733",
+    emailId: "Pali@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd. ,Vinayak Complax, Opp RMGB Bank, Pratap Bazar Rani, Pali - 306115 (Raj.)"
+  },
+  {
+     id: 26,
+    district: "Pratapgarh",
+    name: "Mr. Hitesh Rathor",
+    phNo: "9587887734",
+    emailId: "Pratapgarh@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd. ,Lohar Gali ,In Front Of Govt. School ,Pratapgarh - 313605 (Raj.)"
+  },
+  {
+     id: 27,
+    district: "Rajasamand",
+    name: "Mr.Naresh Kumar",
+    phNo: "9587887735",
+    emailId: "Rajasamand@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., Opposite Primary School ,Bus Stand ,Pasoond ,Rajasamand -313324 (Raj.)"
+  },
+  {
+     id: 28,
+    district: "Sawai Madhopur",
+    name: "Mr. Ramsahay Saini",
+    phNo: "9587887736",
+    emailId: "Swaimadhopur@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd. , Shop No.- 4 ,1st Floor _Shiv Mandir Main Gate Building , Bazriya ,Sawai Madhopur - 322001 (Raj.)"
+  },
+  {
+     id: 29,
+    district: "Sikar",
+    name: "Mr. Ashok Kumar Dhaka",
+    phNo: "9587887737",
+    emailId: "Sikar@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd.,Shop No.-111,First Floor Ganga Gaurav Tower,Rani Sati Road,Near New Nagar Parishad,Sikar -332001 (Raj.)"
+  },
+  {
+     id: 30,
+    district: "Sirohi",
+    name: "Mr. Ujjawal Tiwari",
+    phNo: "9587887738",
+    emailId: "Sirohi@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., Rupava Bus Stand,Main Road, Kailashnagar, Sirohi - 307801 (Raj.)"
+  },
+  {
+     id: 31,
+    district: "Sri Ganganagar",
+    name: "Mr. Man Singh",
+    phNo: "9587887722",
+    emailId: "sriganganagar@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., City Hospital C Block  near Meera Chowk ,Sri Ganganagar -335001 (Raj.)"
+  },
+  {
+     id: 32,
+    district: "Tonk",
+    name: "Mr. Ram Avtar Saini",
+    phNo: "9587887739",
+    emailId: "Tonk@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd.,Malipura House ,Near Rajiv Gandhi Law College , Modi Ki Chowki ,Tonk -304001 (Raj.)"
+  },
+  {
+     id: 33,
+    district: "Udaipur",
+    name: "Mr. Hemant Acharya",
+    phNo: "9587887740",
+    emailId: "Udaipur@achariyagroup.com",
+    address: "Achariya Technologies Pvt. Ltd., 98- B, Dore Nagar ,Sector-3 ,Hiran Magri ,Sevaasharam Chouraha,Udaipur -313001 (Raj.)"
+  }
 ];
 
 //   our collaborations logos
