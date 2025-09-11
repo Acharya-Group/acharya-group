@@ -126,12 +126,12 @@ export default function Header() {
             ))}
 
             {/* Other Links */}
-            {["/news-media", "/rkcl-network", "/contact"].map((path, idx) => {
+            {["/news-media", "/gallery", "/contact"].map((path, idx) => {
               const name =
                 path === "/news-media"
                   ? "News & Media"
-                  : path === "/rkcl-network"
-                  ? "RKCL Network"
+                  : path === "/gallery"
+                  ? "Gallery"
                   : "Contact Us";
               return (
                 <Button
@@ -252,12 +252,12 @@ export default function Header() {
             ))}
 
             {/* Other Links */}
-            {["/news-media", "/rkcl-network", "/contact"].map((path, idx) => {
+            {["/news-media", "/gallery", "/contact"].map((path, idx) => {
               const name =
                 path === "/news-media"
                   ? "News & Media"
-                  : path === "/rkcl-network"
-                  ? "RKCL Network"
+                  : path === "/gallery"
+                  ? "Gallery"
                   : "Contact Us";
               return (
                 <ListItem disablePadding sx={{ mb: 1 }} key={idx}>
