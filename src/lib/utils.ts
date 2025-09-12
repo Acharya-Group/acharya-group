@@ -289,11 +289,6 @@ export const wishesItems: GalleryItem[] = [
   { id: 11, image: "/images/wishes/wishes-12.jpg", category: 5 },
 ];
 
-// export const sammanItems: GalleryItem[] = [
-//   { id: 1, image: "/gallery/samman/1.jpg", category: 6 },
-//   { id: 2, image: "/gallery/samman/2.jpg", category: 6 },
-//   { id: 3, image: "/gallery/samman/3.jpg", category: 6 },
-// ];
 
 export const eventItems: GalleryItem[] = [
   { id: 1, image: "/images/events/event-1.jpg", category: 7 },
