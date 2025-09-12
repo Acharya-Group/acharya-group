@@ -210,6 +210,7 @@ const ContactUsPage = () => {
       <th className="p-4 text-left">Name</th>
       <th className="p-4 text-left">Project</th>
       <th className="p-4 text-left">Designation</th>
+      <th className="p-4 text-left">mobile</th>
       <th className="p-4 text-left">Location</th>
     </tr>
   </thead>
@@ -224,6 +225,7 @@ const ContactUsPage = () => {
         <td className="p-4">{project.name}</td>
         <td className="p-4">{project.project}</td>
         <td className="p-4">{project.designation}</td>
+        <td className="p-4">{project.mobile}</td>
         <td className="p-4">{project.location}</td>
       </tr>
     ))}
