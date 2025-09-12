@@ -1,6 +1,5 @@
 import { socialLinks } from "@/lib/utils";
 import Link from "next/link";
-import { FiPhone, FiMail} from "react-icons/fi";
 
 export default function TopBar() {
   return (
@@ -9,17 +8,8 @@ export default function TopBar() {
    <p className="text-sm md:text-base text-center md:text-start">
   {"Note : Achariya Tech. doesn't accept any cash payments."}
 </p>
-      {/* Right: Contact & social */}
-      <div className="flex flex-wrap justify-center gap-1 items-center sm:gap-4 text-sm md:text-base">
-       <Link href="tel:+918901903333" className="flex items-center gap-1 hover:underline">
-  <FiPhone />
-  <span>+91 890-190-3333</span>
-</Link>
-
-     <a href="mailto:info@Achariyagroup.com" className="flex items-center gap-1 hover:underline">
-  <FiMail />
-  <span>info@Achariyagroup.com</span>
-</a>
+<div className="flex flex-wrap items-center justify-center gap-3 lg:gap-6">
+   <Link className="hover:underline ms-2" href={"/order-e-mittra-stationery"}>Order e-mitra Stationery </Link>
 
        <div className="flex items-center gap-3">
   <span>Follow us:</span>

@@ -44,7 +44,7 @@ const Gallery = () => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-4 py-2 rounded-lg font-medium transition-all duration-300
+            className={`px-4 py-2 rounded-lg cursor-pointer font-medium transition-all duration-300
               ${
                 activeTab === tab.id
                   ? "bg-primary text-white shadow-md"
