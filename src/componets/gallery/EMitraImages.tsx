@@ -9,6 +9,7 @@ const EMitraImages = () => {
  {eMitraItems.map((item) => (
           <div key={item.id} className="overflow-hidden rounded-lg shadow-md">
             <Image
+              unoptimized
               height={200}
               width={300}
               src={item.image}

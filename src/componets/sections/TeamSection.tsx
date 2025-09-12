@@ -10,64 +10,29 @@ import SubHeading from "../ui/SubHeading";
 const teamMembers = [
   {
     id: 1,
-    name: "Sumit Sharma",
-    position: "Founder & CEO",
-    image: "/images/team/sumit-developer.jpg",
+    name: "Yespal Singh",
+    position: "CEO & Founder",
+    image: "/images/directorImg.png",
   },
   {
     id: 2,
-    name: "Sunil Patel",
-    position: "Marketing Head",
-   image: "/images/team/sumit-developer.jpg",
+    name: "M L Jhalani",
+    position: "General manager",
+    image: "/images/team/gm.jpg",
   },
   {
     id: 3,
-    name: "Rahul Verma",
-    position: "Lead Developer",
-   image: "/images/team/sumit-developer.jpg",
+    name: "Ritika Nain",
+    position: "Project Manager (YOGA/e-Mitra)",
+   image: "/images/team/ritika.jpg",
   },
   {
     id: 4,
-    name: "Suraj Singh",
-    position: "UI/UX Designer",
-   image: "/images/team/sumit-developer.jpg",
+    name: "Bharti",
+    position: "Team Leader (Shopneo)",
+   image: "/images/team/bharti.jpg",
   },
-  {
-    id: 5,
-    name: "Anjali Mehta",
-    position: "HR Manager",
-    image: "/images/team/charu.jpg",
-  },
-  {
-    id: 6,
-    name: "Vikram Rao",
-    position: "Backend Engineer",
-    image: "/images/team/charu.jpg",
-  },
-  {
-    id: 7,
-    name: "Neha Gupta",
-    position: "Frontend Engineer",
-    image: "/images/team/charu.jpg",
-  },
-  {
-    id: 8,
-    name: "Amit Kumar",
-    position: "QA Engineer",
-    image: "/images/team/charu.jpg",
-  },
-  {
-    id: 9,
-    name: "Riya Sharma",
-    position: "Content Strategist",
-    image: "/images/team/charu.jpg",
-  },
-  {
-    id: 10,
-    name: "Karan Yadav",
-    position: "Business Analyst",
-    image: "/images/team/charu.jpg",
-  },
+
 ];
 
 const TeamSection = () => {
@@ -95,7 +60,7 @@ const TeamSection = () => {
               <img
                 src={member.image}
                 alt={member.name}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
               />
             </div>
 

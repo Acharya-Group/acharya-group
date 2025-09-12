@@ -211,7 +211,6 @@ export default function KioskBank() {
       <li><a href="/kiosk-banking" className="hover:underline">Kiosk Banking</a></li>
       <li><a href="/aadhar" className="hover:underline">Aadhar</a></li>
       <li><a href="/fastag" className="hover:underline">Fastag</a></li>
-      <li><a href="/insurance" className="hover:underline">Insurance</a></li>
       <li><a href="/school-easy" className="hover:underline">School Easy</a></li>
       <li><a href="/rkcl" className="hover:underline">RKCL</a></li>
     </ul>
