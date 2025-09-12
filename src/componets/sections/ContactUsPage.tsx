@@ -204,33 +204,32 @@ const ContactUsPage = () => {
       {/* Project Managers Table */}
       <SubHeading content="Projects Manager & Technical Team Phone Numbers :" />
       <div className="overflow-x-auto ">
-        <table className="border border-gray-300 rounded-lg overflow-hidden min-w-[400px] sm:min-w-full">
-          <thead className="bg-primary text-white">
-            <tr>
-              <th className="p-4 text-left">Project Name</th>
-              <th className="p-4 text-left">Project Manager</th>
-              <th className="p-4 text-left">Technical Support Team</th>
-            </tr>
-          </thead>
-          <tbody>
-            {projectManagersContact.map((project, index) => (
-              <tr
-                key={index}
-                className={`border-b border-gray-200 hover:bg-gray-100 transition-colors duration-200 ${
-                  index % 2 === 0 ? "bg-gray-50" : "bg-white"
-                }`}
-              >
-                <td className="p-4">{project.name}</td>
-                <td className="p-4">{project.manager}</td>
-                <td className="p-4">
-                  {project.team.map((num, idx) => (
-                    <div key={idx}>{num}</div>
-                  ))}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+       <table className="border border-gray-300 rounded-lg overflow-hidden min-w-[400px] sm:min-w-full">
+  <thead className="bg-primary text-white">
+    <tr>
+      <th className="p-4 text-left">Name</th>
+      <th className="p-4 text-left">Project</th>
+      <th className="p-4 text-left">Designation</th>
+      <th className="p-4 text-left">Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    {projectManagersContact.map((project, index) => (
+      <tr
+        key={index}
+        className={`border-b border-gray-200 hover:bg-gray-100 transition-colors duration-200 ${
+          index % 2 === 0 ? "bg-gray-50" : "bg-white"
+        }`}
+      >
+        <td className="p-4">{project.name}</td>
+        <td className="p-4">{project.project}</td>
+        <td className="p-4">{project.designation}</td>
+        <td className="p-4">{project.location}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
       </div>
 
       {/* District Coordinators Table */}
