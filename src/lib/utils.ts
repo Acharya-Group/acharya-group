@@ -21,7 +21,7 @@ export const navdropdowns = [
       { name: "Atpl Drone", href: "/atpl-drone", type: "link" },
       { name: "RKCL", href: "/rkcl", type: "link" },
       { name: "School Easy", href: "/school-easy", type: "link" },
-      { name: "Paytm Registration", href: "/paytm-registration", type: "link" },
+      // { name: "Paytm Registration", href: "/paytm-registration", type: "link" },
     ],
   },
   {
@@ -1015,13 +1015,13 @@ export const projects = [
     img: "/images/school-Easy.jpg",
     link: "/projects/school-easy",
   },
-  {
-    id: 7,
-    title: "Paytm Registration",
-    desc: "A platform enabling quick and secure registration and onboarding for digital payment services.",
-    img: "/images/Paytm-Registration.jpg",
-    link: "/projects/paytm-registration",
-  },
+  // {
+  //   id: 7,
+  //   title: "Paytm Registration",
+  //   desc: "A platform enabling quick and secure registration and onboarding for digital payment services.",
+  //   img: "/images/Paytm-Registration.jpg",
+  //   link: "/projects/paytm-registration",
+  // },
 ];
 
 
