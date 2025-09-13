@@ -7,7 +7,7 @@ const page = () => {
   return (
     <>
     <Header/>
-    <CommonHero title="Order e-Mitra Stationery" />
+    <CommonHero title="Fastag" />
     <Fastag/>
     </>
   )
