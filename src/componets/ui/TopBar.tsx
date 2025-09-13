@@ -9,7 +9,22 @@ export default function TopBar() {
   {"Note : Achariya Tech. doesn't accept any cash payments."}
 </p>
 <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-6">
-   <Link className="hover:underline ms-2" href={"/order-e-mittra-stationery"}>Order e-mitra Stationery </Link>
+
+  <div className="flex items-center">
+      {/* Ping Circle */}
+      <div className="relative flex">
+        <span className="absolute inline-flex h-3 w-3 animate-ping rounded-full bg-white opacity-75"></span>
+        <span className="relative inline-flex h-3 w-3 rounded-full bg-white"></span>
+      </div>
+
+      {/* The link */}
+      <Link
+        href="/order-e-mittra-stationery"
+        className="ms-2 hover:underline text-white font-semibold"
+      >
+        Order e-mitra Stationery
+      </Link>
+    </div>
 
        <div className="flex items-center gap-3">
   <span>Follow us:</span>

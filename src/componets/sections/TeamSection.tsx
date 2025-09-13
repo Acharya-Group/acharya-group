@@ -22,15 +22,39 @@ const teamMembers = [
   },
   {
     id: 3,
-    name: "Ritika Nain",
-    position: "Project Manager (YOGA/e-Mitra)",
-   image: "/images/team/ritika.jpg",
+    name: "Sanjay Kumar",
+    position: "Project Manager (RKCL)",
+   image: "/images/team/sanjay-rkcl.jpg",
   },
   {
     id: 4,
-    name: "Bharti",
-    position: "Team Leader (Shopneo)",
-   image: "/images/team/bharti.jpg",
+    name: "Ritika Nain",
+    position: "Project Manager (YOGA/Emitra)",
+   image: "/images/team/ritikaNew.jpg",
+  },
+  // {
+  //   id: 5,
+  //   name: "Parmila Dagar",
+  //   position: "State Coordinator (Emitra)",
+  //  image: "/images/team/parmila.jpg",
+  // },
+  {
+    id: 6,
+    name: "Ram lal",
+    position: "Project manager ( RGB)",
+   image: "/images/team/ramlal.jpg",
+  },
+  {
+    id: 7,
+    name: "Sachin Kumar",
+    position: "Operation manager",
+   image: "/images/team/sachin.jpg",
+  },
+  {
+    id: 8,
+    name: "Attender sir",
+    position: "Project manager (bob)",
+   image: "/images/team/bob.jpg",
   },
 
 ];
