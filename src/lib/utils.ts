@@ -1092,7 +1092,7 @@ export const socialLinks = [
 
 
 // export const pages = ["About Us", "Careers", "Contact Us", "Media", "FAQ", "Privacy Policy"];
-export const pages = [{ title: "Home", url: "/" }, { url: "/about", title: "About Us" }, { url: "/directors-message", title: "Directors message" }, { url: "/contact", title: "Contact Us" }, { url: "/news-media", title: "News & Media" }, { url: "/gallery", title: "Gallery" }, { url: "/faq", title: "FAQ" }, { url: "/privacy-policy", title: "Privacy Policy" }, { title: "Complaint & Feedback", url: "complaint-feedback" },{ title: "Order e-mitra Stationery", url: "order-e-mittra-stationery" }];
+export const pages = [{ title: "Home", url: "/" }, { url: "/about", title: "About Us" }, { url: "/directors-message", title: "Directors message" }, { url: "/contact", title: "Contact Us" }, { url: "/news-media", title: "News & Media" }, { url: "/gallery", title: "Gallery" },{ url: "/fastag", title: "Fastag" }, { url: "/faq", title: "FAQ" }, { title: "Complaint & Feedback", url: "complaint-feedback" },{ title: "Order e-mitra Stationery", url: "order-e-mittra-stationery" }];
 export const projectsLink = [
   { title: "Shopneo", url: "/shopneo" },
   { title: "e-Mitra", url: "/emitra" },
