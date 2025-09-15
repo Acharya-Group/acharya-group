@@ -29,7 +29,7 @@ export default function Footer() {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-8 w-8 rounded-full group bg-white text-[#261b7d] transition-all duration-300 flex hover:bg-blue-500 items-center justify-center"
+              className="h-8 w-8 rounded-full group bg-white text-[#261b7d] transition-all duration-300 flex bg-gradient-to-r border border-transparent hover:border-white hover:from-[#261b7d] hover:to-[#7a0706] items-center justify-center"
             >
               <Icon className="cursor-pointer group-hover:text-white transition-all duration-300" />
             </Link>

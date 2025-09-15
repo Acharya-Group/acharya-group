@@ -37,7 +37,7 @@ export default function TopBar() {
         href={item.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="h-8 w-8 rounded-full group bg-white text-[#261b7d] flex items-center justify-center hover:bg-blue-500 transition-all duration-300"
+        className="h-8 w-8 rounded-full group bg-white text-[#261b7d] flex items-center justify-center bg-gradient-to-r border border-transparent hover:border-white hover:from-[#261b7d] hover:to-[#7a0706] transition-all duration-300"
       >
         <Icon className="group-hover:text-white transition-all duration-300" />
       </Link>
