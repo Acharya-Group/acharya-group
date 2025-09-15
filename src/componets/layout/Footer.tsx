@@ -58,7 +58,7 @@ export default function Footer() {
 
           {/* Projects */}
           <div className="md:col-span-2">
-            <h5 className="text-lg font-semibold mb-3">Projects</h5>
+            <p className="text-lg font-semibold mb-3">Projects</p>
             <ul className="space-y-2 text-sm">
                {projectsLink.map((item, i) => (
     <li key={i}>
@@ -75,7 +75,7 @@ export default function Footer() {
 
           {/* Collections */}
           <div className="md:col-span-2">
-            <h5 className="text-lg font-semibold mb-3">Downloads</h5>
+            <p className="text-lg font-semibold mb-3">Downloads</p>
            <ul className="space-y-2 text-sm">
     {downloadsSection?.links.map((link, index) => (
       <li key={index}>
@@ -94,7 +94,7 @@ export default function Footer() {
 
           {/* ONDC Network */}
           <div className="md:col-span-2">
-            <h5 className="text-lg font-semibold mb-3">Support</h5>
+            <p className="text-lg font-semibold mb-3">Support</p>
      <ul className="space-y-2 text-sm">
   {support.map((item, i) => (
     <li key={i}>
