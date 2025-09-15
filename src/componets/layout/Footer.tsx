@@ -41,7 +41,7 @@ export default function Footer() {
 
           {/* Pages */}
           <div className="md:col-span-2">
-            <h5 className="text-lg font-semibold mb-3">Pages</h5>
+            <p className="text-lg font-semibold mb-3">Pages</p>
             <ul className="space-y-2 text-sm">
               {pages.map((item, i) => (
                 <li key={i}>
