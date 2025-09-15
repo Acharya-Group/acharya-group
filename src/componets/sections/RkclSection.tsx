@@ -18,7 +18,7 @@ const RkclSection = () => {
           />
         </div>
         
-        <h2 className="text-2xl font-bold text-blue-800 mb-4 flex items-center">
+        <h2 className="text-2xl font-bold text-primary mb-4 flex items-center">
           <i className="fa fa-angle-double-right mr-2"></i>
           About RKCL (Rajasthan Knowledge Corporation Ltd.)
         </h2>
@@ -38,7 +38,7 @@ const RkclSection = () => {
 
       {/* Our Company */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h2 className="text-2xl font-bold text-blue-800 mb-4 flex items-center">
+        <h2 className="text-2xl font-bold text-primary mb-4 flex items-center">
           <i className="fa fa-angle-double-right mr-2"></i>
           Our Company
         </h2>
@@ -54,7 +54,7 @@ const RkclSection = () => {
 
       {/* Our Achievement */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h2 className="text-2xl font-bold text-blue-800 mb-4 flex items-center">
+        <h2 className="text-2xl font-bold text-primary mb-4 flex items-center">
           <i className="fa fa-angle-double-right mr-2"></i>
           Our Achievement
         </h2>
@@ -67,7 +67,7 @@ const RkclSection = () => {
 
       {/* Project Summary */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h2 className="text-2xl font-bold text-blue-800 mb-4 flex items-center">
+        <h2 className="text-2xl font-bold text-primary mb-4 flex items-center">
           <i className="fa fa-angle-double-right mr-2"></i>
           Project Summary
         </h2>
@@ -96,7 +96,7 @@ const RkclSection = () => {
         </div>
         
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4 flex items-center">
+          <h2 className="text-2xl font-bold text-primary mb-4 flex items-center">
             <i className="fa fa-angle-double-right mr-2"></i>
             RS-CIT Introduction
           </h2>
@@ -107,7 +107,7 @@ const RkclSection = () => {
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4 flex items-center">
+          <h2 className="text-2xl font-bold text-primary mb-4 flex items-center">
             <i className="fa fa-angle-double-right mr-2"></i>
             Course Objective
           </h2>
@@ -148,7 +148,7 @@ const RkclSection = () => {
         </div>
         
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4 flex items-center">
+          <h2 className="text-2xl font-bold text-primary mb-4 flex items-center">
             <i className="fa fa-angle-double-right mr-2"></i>
             RS-CFA Introduction
           </h2>
@@ -159,7 +159,7 @@ const RkclSection = () => {
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4 flex items-center">
+          <h2 className="text-2xl font-bold text-primary mb-4 flex items-center">
             <i className="fa fa-angle-double-right mr-2"></i>
             Course Objective
           </h2>
@@ -205,7 +205,7 @@ const RkclSection = () => {
         </div>
         
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4 flex items-center">
+          <h2 className="text-2xl font-bold text-primary mb-4 flex items-center">
             <i className="fa fa-angle-double-right mr-2"></i>
             RS-CEE Introduction
           </h2>
@@ -216,7 +216,7 @@ const RkclSection = () => {
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4 flex items-center">
+          <h2 className="text-2xl font-bold text-primary mb-4 flex items-center">
             <i className="fa fa-angle-double-right mr-2"></i>
             Course Objective
           </h2>
@@ -242,25 +242,25 @@ const RkclSection = () => {
       {/* Tabs for navigation */}
       <div className="flex flex-wrap border-b border-gray-200 mb-6">
         <button
-          className={`py-2 px-4 font-medium ${activeTab === 'eligibility' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}
+          className={`py-2 px-4 font-medium ${activeTab === 'eligibility' ? 'text-primary border-b-2 border-[#7a0706]' : 'text-gray-500'}`}
           onClick={() => setActiveTab('eligibility')}
         >
           Eligibility Criteria
         </button>
         <button
-          className={`py-2 px-4 font-medium ${activeTab === 'requirements' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}
+          className={`py-2 px-4 font-medium ${activeTab === 'requirements' ? 'text-primary border-b-2 border-[#7a0706]' : 'text-gray-500'}`}
           onClick={() => setActiveTab('requirements')}
         >
           Requirements
         </button>
         <button
-          className={`py-2 px-4 font-medium ${activeTab === 'process' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}
+          className={`py-2 px-4 font-medium ${activeTab === 'process' ? 'text-primary border-b-2 border-[#7a0706]' : 'text-gray-500'}`}
           onClick={() => setActiveTab('process')}
         >
           Application Process
         </button>
         <button
-          className={`py-2 px-4 font-medium ${activeTab === 'documents' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}
+          className={`py-2 px-4 font-medium ${activeTab === 'documents' ? 'text-primary border-b-2 border-[#7a0706]' : 'text-gray-500'}`}
           onClick={() => setActiveTab('documents')}
         >
           Documents
@@ -270,7 +270,7 @@ const RkclSection = () => {
       {/* Eligibility Criteria Section */}
       {activeTab === 'eligibility' && (
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-blue-800 mb-6 flex items-center">
+          <h2 className="text-2xl font-bold text-primary mb-6 flex items-center">
             <i className="fa fa-angle-double-right mr-2"></i>
             New RKCL Center Eligibility Criteria
           </h2>
@@ -417,7 +417,7 @@ const RkclSection = () => {
       {/* Requirements Section */}
       {activeTab === 'requirements' && (
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-blue-800 mb-6 flex items-center">
+          <h2 className="text-2xl font-bold text-primary mb-6 flex items-center">
             <i className="fa fa-angle-double-right mr-2"></i>
             Requirement for ITGK Center (non-mandatory)
           </h2>
@@ -498,7 +498,7 @@ const RkclSection = () => {
       {/* Application Process Section */}
       {activeTab === 'process' && (
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-blue-800 mb-6 flex items-center">
+          <h2 className="text-2xl font-bold text-primary mb-6 flex items-center">
             <i className="fa fa-angle-double-right mr-2"></i>
             NCR Application Form
           </h2>
@@ -555,7 +555,7 @@ const RkclSection = () => {
           <div className="mb-8">
             <h3 className="text-xl font-semibold mb-3 text-gray-800">NCR आवेदन फार्म</h3>
             <p className="text-gray-700 mb-4">
-              Click Here to <a href="https://Achariyagroup.in/downloads/rkcl_form.pdf" download className="text-blue-600 hover:underline">Download Form</a>
+              Click Here to <a href="https://Achariyagroup.in/downloads/rkcl_form.pdf" download className="text-primary hover:underline">Download Form</a>
             </p>
           </div>
         </div>
@@ -565,7 +565,7 @@ const RkclSection = () => {
         <div className="space-y-8">
           <div>
             <h3 className="text-xl font-semibold mb-3 text-gray-800 flex items-center">
-              <span className="bg-blue-100 text-blue-800 rounded-full w-8 h-8 flex items-center justify-center mr-2">1</span>
+              <span className="bg-blue-100 text-primary rounded-full w-8 h-8 flex items-center justify-center mr-2">1</span>
               चरण I - आवेदन के साथ जमा करने हेतु
             </h3>
             <ul className="list-disc pl-6 space-y-3 text-gray-700 ml-8">
@@ -592,7 +592,7 @@ const RkclSection = () => {
 
           <div>
             <h3 className="text-xl font-semibold mb-3 text-gray-800 flex items-center">
-              <span className="bg-blue-100 text-blue-800 rounded-full w-8 h-8 flex items-center justify-center mr-2">2</span>
+              <span className="bg-blue-100 text-primary rounded-full w-8 h-8 flex items-center justify-center mr-2">2</span>
               चरण II - सेवा प्रदाता (Service Provider) द्वारा साइट निरीक्षण के समय
             </h3>
             <ul className="list-disc pl-6 space-y-3 text-gray-700 ml-8">
@@ -616,7 +616,7 @@ const RkclSection = () => {
 
           <div>
             <h3 className="text-xl font-semibold mb-3 text-gray-800 flex items-center">
-              <span className="bg-blue-100 text-blue-800 rounded-full w-8 h-8 flex items-center justify-center mr-2">3</span>
+              <span className="bg-blue-100 text-primary rounded-full w-8 h-8 flex items-center justify-center mr-2">3</span>
               चरण III - DPO (जिला परियोजना अधिकारी) द्वारा AC स्थल निरीक्षण के समय
             </h3>
             <ul className="list-disc pl-6 space-y-3 text-gray-700 ml-8">
