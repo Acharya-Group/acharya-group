@@ -32,6 +32,7 @@ export default function TopBar() {
     const Icon = item.icon;
     return (
       <Link
+      aria-label="Follow us on social media"
         key={i}
         href={item.href}
         target="_blank"

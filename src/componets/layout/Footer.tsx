@@ -25,6 +25,7 @@ export default function Footer() {
         return (
           <li key={i}>
             <Link
+            aria-label="Follow us on social media"
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"

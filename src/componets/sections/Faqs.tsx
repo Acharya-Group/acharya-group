@@ -29,7 +29,7 @@ export default function Faqs() {
                     onClick={() => toggleFAQ(index)}
                     className="w-full flex justify-between items-center text-left cursor-pointer"
                   >
-                    <h5 className="text-white font-semibold">{faq.question}</h5>
+                    <p className="text-white font-semibold">{faq.question}</p>
                     <ChevronDown
                       className={`text-white transition-transform duration-300 ${
                         openIndex === index ? "rotate-180" : ""

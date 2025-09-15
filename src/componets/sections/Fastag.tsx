@@ -201,7 +201,7 @@ Basically, the readers can to scan the FASTag card while it is in motion by emit
               <td className="p-3 font-medium border border-gray-300">{row.class}</td>
               <td className="p-3 border border-gray-300">{row.description}</td>
               <td className="p-3 border-t  border-gray-300 flex justify-center">
-                <row.icon className="text-2xl text-blue-600" />
+                <row.icon className="text-2xl text-primary" />
               </td>
               <td className="p-3 border border-gray-300">{row.tagCost}</td>
               <td className="p-3 border border-gray-300">{row.deposit}</td>

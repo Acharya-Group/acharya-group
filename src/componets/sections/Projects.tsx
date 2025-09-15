@@ -108,10 +108,10 @@ const Projects = () => {
           </Swiper>
 
           {/* Custom Navigation */}
-          <button className="absolute cursor-pointer hidden project-prev left-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full h-10 w-10 sm:flex justify-center items-center shadow hover:bg-secondary transition-all">
+          <button aria-label="left arrow" className="absolute cursor-pointer hidden project-prev left-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full h-10 w-10 sm:flex justify-center items-center shadow hover:bg-secondary transition-all">
               <FiArrowLeft/>
           </button>
-          <button className="absolute cursor-pointer hidden project-next right-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full h-10 w-10 sm:flex justify-center items-center shadow hover:bg-secondary transition-all">
+          <button aria-label="right arrow" className="absolute cursor-pointer hidden project-next right-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full h-10 w-10 sm:flex justify-center items-center shadow hover:bg-secondary transition-all">
                <FiArrowRight/>
           </button>
         </div>
