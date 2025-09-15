@@ -46,7 +46,7 @@ export default function Header() {
   };
 
   return (
-    <>
+    <div className="max-w-[1920px] mx-auto">
       <TopBar />
 
       {/* Desktop & Mobile Navbar */}
@@ -282,6 +282,6 @@ export default function Header() {
           </List>
         </Box>
       </Drawer>
-    </>
+    </div>
   );
 }

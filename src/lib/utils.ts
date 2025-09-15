@@ -23,7 +23,7 @@ export const navdropdowns = [
       { name: "Shopneo", href: "/shopneo", type: "link" },
       { name: "e-Mitra", href: "/e-mitra", type: "link" },
       { name: "Kiosk Banking/BankBc", href: "/kiosk-banking", type: "link" },
-      { name: "Atpl Drone", href: "/atpl-drone", type: "link" },
+      // { name: "Atpl Drone", href: "/atpl-drone", type: "link" },
       { name: "RKCL", href: "/rkcl", type: "link" },
       { name: "School Easy", href: "/school-easy", type: "link" },
       // { name: "Paytm Registration", href: "/paytm-registration", type: "link" },
@@ -1017,7 +1017,7 @@ export const projects = [
     id: 6,
     title: "School Easy",
     desc: "School management system that streamlines administration, student tracking, and communication.",
-    img: "/images/school-Easy.jpg",
+    img: "/images/School-Easy.jpg",
     link: "/projects/school-easy",
   },
   // {
