@@ -54,7 +54,7 @@ export default function Header() {
         <Toolbar sx={{ justifyContent: "space-between", px: { xs: 2, md: 6 }, py: { xs: 1 } }}>
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image src="/images/logo.png" alt="Company Logo" width={100} height={40} />
+            <Image className="object-cover" src="/images/logo.png" alt="Company Logo" width={100} height={40} />
           </Link>
 
           {/* Desktop Nav */}
