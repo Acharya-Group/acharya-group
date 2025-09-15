@@ -1,4 +1,9 @@
-import { FiFacebook, FiTwitter, FiInstagram, FiYoutube, FiLinkedin } from "react-icons/fi";
+import { FiFacebook, FiTwitter, FiInstagram, FiYoutube, FiLinkedin, FiTruck,
+  FiPackage,
+  FiCpu,
+
+ } from "react-icons/fi";
+import { FaCar,FaBus } from "react-icons/fa";
 
 
 
@@ -1120,6 +1125,91 @@ export const support = [
   { title: "Privacy Policy", url: "/privacy-policy", type: "internal" },
   { title: "Terms & Conditions", url: "/terms-conditions", type: "internal" },
 ];
+
+// fastag vehicle types
+export const vehicleData = [
+  {
+    class: "4 Class",
+    description: "Car / Jeep / Van",
+    icon: FaCar,
+    tagCost: "99.99",
+    deposit: "100",
+    recharge: "200",
+    total: "399.99",
+  },
+  {
+    class: "4 Class",
+    description: "TATA Ace / Mini Light Commercial",
+    icon: FiPackage ,
+    tagCost: "99.99",
+    deposit: "100",
+    recharge: "200",
+    total: "399.99",
+  },
+  {
+    class: "5 Class",
+    description: "Mini Truck",
+    icon: FiTruck ,
+    tagCost: "99.99",
+    deposit: "100",
+    recharge: "140",
+    total: "339.99",
+  },
+  {
+    class: "5 Class",
+    description: "Mini Bus",
+    icon: FaBus ,
+    tagCost: "99.99",
+    deposit: "100",
+    recharge: "140",
+    total: "339.99",
+  },
+  {
+    class: "6 Class",
+    description: "3-axle Bus",
+    icon: FaBus,
+    tagCost: "99.99",
+    deposit: "100",
+    recharge: "300",
+    total: "499.99",
+  },
+  {
+    class: "6 Class",
+    description: "3-axle Truck",
+    icon: FiTruck,
+    tagCost: "99.99",
+    deposit: "100",
+    recharge: "300",
+    total: "499.99",
+  },
+  {
+    class: "7 Class",
+    description: "2-axle Commercial Bus/Truck",
+    icon: FiTruck ,
+    tagCost: "99.99",
+    deposit: "100",
+    recharge: "300",
+    total: "499.99",
+  },
+  {
+    class: "12 Class",
+    description: "4 to 6-axle",
+    icon: FiCpu,
+    tagCost: "99.99",
+    deposit: "100",
+    recharge: "300",
+    total: "499.99",
+  },
+  {
+    class: "15 Class",
+    description: "7 or more axle",
+    icon: FiCpu, 
+    tagCost: "99.99",
+    deposit: "100",
+    recharge: "300",
+    total: "499.99",
+  },
+]; 
 
 
 
