@@ -25,7 +25,6 @@ export default function TopBar() {
         Order e-mitra Stationery
       </Link>
     </div>
-
        <div className="flex items-center gap-3">
   <span>Follow us:</span>
   {socialLinks.map((item, i) => {

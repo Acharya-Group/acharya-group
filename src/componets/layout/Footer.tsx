@@ -119,7 +119,7 @@ export default function Footer() {
         </div>
 
         {/* Footer bottom */}
-        <div className="py-3 border-t border-white mt-8 flex justify-between flex-wrap items-center">
+        <div className="py-3 border-t border-white mt-8 justify-center flex sm:justify-between flex-wrap items-center">
           
             <p className="text-sm opacity-75 text-center">© {new Date().getFullYear()} AchariyaGroup All Rights Reserved.</p>
             <div className="flex gap-3">
