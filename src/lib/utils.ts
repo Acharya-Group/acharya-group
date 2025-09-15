@@ -3,7 +3,7 @@ import { FiFacebook, FiTwitter, FiInstagram, FiYoutube, FiLinkedin, FiTruck,
   FiCpu,
 
  } from "react-icons/fi";
-import { FaCar,FaBus } from "react-icons/fa";
+import { FaCar,FaBus ,FaTags, FaShoppingCart, FaLock, FaTruck, FaUsers, FaStore  } from "react-icons/fa";
 
 
 
@@ -292,6 +292,41 @@ export const wishesItems: GalleryItem[] = [
   { id: 9, image: "/images/wishes/wishes-10.jpg", category: 5 },
   { id: 10, image: "/images/wishes/wishes-11.jpg", category: 5 },
   { id: 11, image: "/images/wishes/wishes-12.jpg", category: 5 },
+];
+
+// shopneo feature
+
+export const shopneoFeatures = [
+  {
+    icon: FaTags,
+    title: "Wide Selection",
+    description: "Thousands of products across multiple categories to choose from.",
+  },
+  {
+    icon: FaShoppingCart,
+    title: "Exclusive Deals",
+    description: "Regular discounts, festive sales, and special offers for buyers.",
+  },
+  {
+    icon: FaLock,
+    title: "Secure Payments",
+    description: "Safe transactions with multiple payment options and encryption.",
+  },
+  {
+    icon: FaTruck,
+    title: "Fast Delivery",
+    description: "Reliable shipping services for quick doorstep delivery.",
+  },
+  {
+    icon: FaUsers,
+    title: "User-Friendly Interface",
+    description: "Seamless browsing, personalized recommendations, and easy checkout.",
+  },
+  {
+    icon: FaStore,
+    title: "Seller Support",
+    description: "Tools for managing inventory, tracking sales, and marketing products.",
+  },
 ];
 
 
@@ -1120,10 +1155,7 @@ export const support = [
 
   // Separate emails
   { title: "info@Achariyagroup.com", url: "mailto:info@Achariyagroup.com", type: "email" },
-  { title: "manager@Achariyagroup.com", url: "mailto:manager@Achariyagroup.com", type: "email" },
-
-  { title: "Privacy Policy", url: "/privacy-policy", type: "internal" },
-  { title: "Terms & Conditions", url: "/terms-conditions", type: "internal" },
+  { title: "manager@Achariyagroup.com", url: "mailto:manager@Achariyagroup.com", type: "email" }, 
 ];
 
 // fastag vehicle types

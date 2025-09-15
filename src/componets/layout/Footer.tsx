@@ -6,9 +6,9 @@ import Image from "next/image";
 export default function Footer() {
 
   return (
-    <footer className="bg-black text-white overflow-hidden">
+    <footer className="bg-gradient-to-r from-[#261b7d] to-[#7a0706]  text-white overflow-hidden">
       <div className="container mx-auto px-4 pt-10 pb-3">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-12 gap-4 md:gap-2 lg:gap-6">
           {/* About Shopneo */}
           <div className="md:col-span-4">
             <div className="bg-white inline-block px-2 mb-3 rounded">
@@ -47,7 +47,7 @@ export default function Footer() {
                 <li key={i}>
                   <Link
                    href={item.url}
-                    className="transition-all duration-300 opacity-75 hover:text-white hover:opacity-100"
+                    className="transition-all hover:underline duration-300 opacity-75 hover:text-white hover:opacity-100"
                   >
                     {item.title}
                   </Link>
@@ -64,7 +64,7 @@ export default function Footer() {
     <li key={i}>
       <Link
         href={item.url}
-        className="transition-all duration-300 opacity-75 hover:text-white hover:opacity-100"
+        className="transition-all duration-300 opacity-75 hover:underline hover:text-white hover:opacity-100"
       >
         {item.title}
       </Link>
@@ -81,7 +81,7 @@ export default function Footer() {
       <li key={index}>
         <Link
           href={link.href}
-          className="transition-all duration-300 opacity-75 hover:text-white hover:opacity-100"
+          className="transition-all duration-300 opacity-75 hover:underline hover:text-white hover:opacity-100"
           target={link.type === "download" ? "_blank" : "_self"}
           download={link.type === "download"}
         >
@@ -103,7 +103,7 @@ export default function Footer() {
       ) : (
         <a
           href={item.url}
-          className="transition-all duration-300 opacity-75 hover:text-white hover:opacity-100"
+          className="transition-all duration-300 opacity-75 hover:text-white hover:underline hover:opacity-100"
           target={item.type !== "internal" ? "_blank" : "_self"}
           rel={item.type !== "internal" ? "noopener noreferrer" : undefined}
         >
@@ -119,9 +119,14 @@ export default function Footer() {
         </div>
 
         {/* Footer bottom */}
-        <div className="py-3 border-t border-gray-700 mt-8">
+        <div className="py-3 border-t border-white mt-8 flex justify-between flex-wrap items-center">
           
             <p className="text-sm opacity-75 text-center">© {new Date().getFullYear()} AchariyaGroup All Rights Reserved.</p>
+            <div className="flex gap-3">
+              <Link className="text-sm opacity-75 text-center hover:opacity-100 transition-all duration-300 hover:underline" href="/privacy-policy">Privacy Policy</Link>
+              <Link className="text-sm opacity-75 text-center hover:opacity-100 transition-all duration-300 hover:underline" href="/terms-conditions">Terms & Conditions</Link>
+              <Link className="text-sm opacity-75 text-center hover:opacity-100 transition-all duration-300 hover:underline" href="cookie-notice">Cookie Notice</Link>
+            </div>
         </div>
       </div>
     </footer>

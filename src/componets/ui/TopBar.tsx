@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function TopBar() {
   return (
-    <div className="bg-[#261b7d] text-white font-semibold py-2 px-5 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-0">
+    <div className="bg-gradient-to-r from-[#7a0706] to-[#261b7d]  text-white font-semibold py-2 px-5 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-0">
       {/* Left: Info text */}
    <p className="text-sm md:text-base text-center md:text-start">
   {"Note : Achariya Tech. doesn't accept any cash payments."}

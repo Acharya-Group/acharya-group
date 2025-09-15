@@ -82,7 +82,7 @@ const OrderStationery = () => {
       formDataToSubmit.append("_template", "table");
       
       // Send to FormSubmit
-      const response = await fetch("https://formsubmit.co/ajax/sumitkhan.dhana@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/info@Achariyagroup.com", {
         method: "POST",
         body: formDataToSubmit,
       });

@@ -1,8 +1,11 @@
+import Image from "next/image";
 import React from "react";
 
 const AboutAchariya = () => {
   return (
-     <section className="bg-gray-50 py-16">
+     <section className="bg-gray-50 py-12 relative overflow-hidden">
+      <Image className="absolute hidden sm:flex top-[20px] end-[-40px] animate-spin" src="/images/icons/red-circel.png" alt="Decorative Dots" width={100} height={100}  />
+
       <div className="container mx-auto px-6 lg:px-12">
         {/* Heading */}
         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8">
@@ -52,7 +55,9 @@ const AboutAchariya = () => {
         {/* Vision & Mission Section */}
         <div className="mt-12 grid md:grid-cols-2 gap-8">
           {/* Vision */}
-          <div className="bg-white shadow-md rounded-2xl p-8 border-l-4 border-primary">
+          <div className="bg-white shadow-md rounded-2xl p-8 border-l-4 border-primary relative overflow-hidden">
+ <div className="bg-secondary h-[100px] w-[100px] absolute  opacity-10 top-[-40px] left-[-40px] rounded-full"></div>
+ <div className="bg-secondary h-[100px] w-[100px] absolute  opacity-10 bottom-[-40px] right-[-40px] rounded-full"></div>
             <h3 className="text-2xl font-semibold text-primary mb-4">
               Our Vision
             </h3>
@@ -65,7 +70,9 @@ const AboutAchariya = () => {
           </div>
 
           {/* Mission */}
-          <div className="bg-white shadow-md rounded-2xl p-8 border-l-4 border-secondary">
+          <div className="bg-white shadow-md rounded-2xl p-8 border-l-4 border-secondary overflow-hidden relative">
+             <div className="bg-secondary h-[100px] w-[100px] absolute  opacity-10 top-[-40px] left-[-40px] rounded-full"></div>
+ <div className="bg-secondary h-[100px] w-[100px] absolute  opacity-10 bottom-[-40px] right-[-40px] rounded-full"></div>
             <h3 className="text-2xl font-semibold text-secondary mb-4">
               Our Mission
             </h3>

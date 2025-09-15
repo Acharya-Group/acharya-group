@@ -28,7 +28,7 @@ const ComplaintAndFeedback = () => {
     
     try {
       const res = await fetch(
-        `https://formsubmit.co/ajax/sumitkhan.dhana@gmail.com`,
+        `https://formsubmit.co/ajax/info@Achariyagroup.com`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

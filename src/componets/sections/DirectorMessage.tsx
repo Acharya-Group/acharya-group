@@ -3,7 +3,9 @@ import Image from "next/image";
 
 const DirectorMessage = () => {
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white py-16 relative overflow-hidden">
+       <div className="bg-secondary h-[100px] w-[100px] absolute  opacity-10 top-[-40px] left-[-40px] rounded-full"></div>
+ <div className="bg-secondary h-[100px] w-[100px] absolute  opacity-10 bottom-[-40px] right-[-40px] rounded-full"></div>
       <div className="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center gap-10">
           {/* Message Content */}
         <div className="flex-1">
@@ -53,12 +55,12 @@ const DirectorMessage = () => {
        
         {/* Director Image */}
         <div className="flex-shrink-0 w-full md:w-1/3">
-          <div className="relative w-full h-80 md:h-[400px] rounded-xl overflow-hidden shadow-lg">
+          <div className="relative w-full h-80 md:h-[450px]  rounded-xl overflow-hidden shadow-lg">
             <Image
+            className="object-cover"
               src="/images/directorImg.png"
               alt="Managing Director - Yespal Singh"
               layout="fill"
-              objectFit="cover"
             />
           </div>
            {/* Signature */}
