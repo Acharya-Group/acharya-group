@@ -204,7 +204,7 @@ const BankBcCommission = () => {
           </thead>
           <tbody>
             {bankCommissions.map((row, index) => (
-              <tr key={index} className="hover:bg-yellow-50 transition duration-200">
+              <tr key={index} className="hover:bg-blue-50 transition duration-200">
                 <td className="px-4 py-2 border text-center">{index + 1}</td>
                 <td className="px-4 py-2 border">{row.product}</td>
                 <td className="px-4 py-2 border">{row.commission}</td>
