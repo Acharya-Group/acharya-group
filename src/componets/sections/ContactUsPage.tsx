@@ -202,8 +202,8 @@ const ContactUsPage = () => {
       </div>
 
       {/* Project Managers Table */}
-      <SubHeading content="Projects Manager & Technical Team Phone Numbers :" />
-      <div className="overflow-x-auto ">
+      <SubHeading content="Projects Manager & Technical Team Phone Numbers" />
+      <div className="overflow-x-auto border rounded-[10px] border-gray-300">
        <table className="border border-gray-300 rounded-lg overflow-hidden min-w-[400px] sm:min-w-full">
   <thead className="bg-primary text-white">
     <tr>
@@ -237,7 +237,7 @@ const ContactUsPage = () => {
       {/* District Coordinators Table */}
       <div className="mt-10">
         <SubHeading content="District Co-Ordinators Contact Details :" />
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto border rounded-[10px] border-gray-300">
           <table className="border border-gray-300 rounded-lg overflow-hidden min-w-[400px] sm:min-w-full">
             <thead className="bg-primary text-white">
               <tr>

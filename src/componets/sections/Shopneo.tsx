@@ -101,7 +101,7 @@ const Shopneo = () => {
             Join ShopNeo Today!
           </h3>
           <p className="text-gray-700 mb-6">
-            Free registration for <strong>buyers and sellers</strong> across Pan India. Grow your business or shop with ease!
+            Free registration for <strong>sellers</strong> across Pan India. Grow your business or shop with ease!
           </p>
           <a
             href="https://shopneo.org"
