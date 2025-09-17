@@ -50,7 +50,7 @@ export default function Header() {
       <TopBar />
 
       {/* Desktop & Mobile Navbar */}
-      <div className="bg-white sticky top-0 shadow">
+      <div className="bg-white sticky top-0 shadow z-[1100]">
         <div className="container mx-auto px-4">
           <AppBar position="sticky" color="default" sx={{ bgcolor: "#fff", boxShadow: 0,top: 0,
               zIndex: 1100, }}>
