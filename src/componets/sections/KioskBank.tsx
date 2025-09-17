@@ -3,6 +3,7 @@
 import React from "react";
 import { MapPin, Clock, CheckCircle, FileText } from "lucide-react";
 import { kisokConst } from "@/lib/utils";
+import BankBcCommision from "./BankBcCommision";
 
 export default function KioskBank() {
   return (
@@ -117,10 +118,11 @@ export default function KioskBank() {
             <li>Atal Pension Yojana: pension Rs.1,000–5,000 p.m. for eligible members</li>
           </ul>
         </section>
+        <BankBcCommision/>
 
         {/* Location & Hours */}
         <section className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="flex items-start gap-3">
+          <div className="flex items-start gap-3 border p-5 rounded-lg">
             <MapPin size={18} />
             <div>
               <h4 className="font-semibold text-gray-800">Location</h4>
@@ -128,7 +130,7 @@ export default function KioskBank() {
             </div>
           </div>
 
-          <div className="flex items-start gap-3">
+          <div className="flex items-start gap-3 border p-5 rounded-lg">
             <Clock size={18} />
             <div>
               <h4 className="font-semibold text-gray-800">Hours</h4>
