@@ -91,6 +91,7 @@ export default function Header() {
                           ? "2px solid #7a0706"
                           : "2px solid transparent",
                         borderRadius: 0,
+                        fontSize:"14px",
                         minWidth: "auto",
                         px: 1,
                         pb: 0.5,
