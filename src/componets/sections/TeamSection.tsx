@@ -22,39 +22,46 @@ const teamMembers = [
   },
   {
     id: 3,
-    name: "Sanjay Kumar",
-    position: "Project Manager (RKCL)",
-   image: "/images/team/sanjay-rkcl.jpg",
+      name: "Sachin Kumar",
+    position: "Operation Manager",
+   image: "/images/team/sachin.jpg",
+   
   },
    {
-    id: 6,
+    id: 4,
     name: "Ram lal",
     position: "Project Manager ( RGB)",
    image: "/images/team/ramlal.jpg",
   },
   {
-    id: 7,
-    name: "Sachin Kumar",
-    position: "Operation Manager",
-   image: "/images/team/sachin.jpg",
+    id: 5,
+   name: "Sanjay Kumar",
+    position: "Project Manager (RKCL)",
+   image: "/images/team/sanjay-rkcl.jpg",
   },
   {
-    id: 8,
+    id: 6,
     name: "Attender sir",
     position: "Project Manager (BOB)",
    image: "/images/team/bob.jpg",
   },
   {
-    id: 4,
+    id: 7,
     name: "Ritika Nain",
     position: "Project Manager (YOGA/Emitra)",
    image: "/images/team/ritikaNew.jpg",
   },
    {
-    id: 5,
+    id: 8,
     name: "Parmila Dagar",
     position: "State Coordinator (Emitra)",
    image: "/images/team/parmila.jpg",
+  },
+   {
+    id: 9,
+    name: "Miss Vaibhavi",
+    position: "Project Manager (CBI/BOI)",
+   image: "/images/team/vaibhavi.jpg",
   },
  
 

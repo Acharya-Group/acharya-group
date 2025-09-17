@@ -2,6 +2,7 @@
 
 import React from "react";
 import { MapPin, Clock, CheckCircle, FileText } from "lucide-react";
+import { kisokConst } from "@/lib/utils";
 
 export default function KioskBank() {
   return (
@@ -150,57 +151,17 @@ export default function KioskBank() {
   <div className="p-4 border rounded-xl bg-gray-50">
     <h3 className="font-semibold text-gray-800 mb-3">Download Application Form</h3>
     <ul className="space-y-2 text-sm text-primary">
-      {/* ✅ PDF downloads */}
-      <li>
-        <a 
-          href="/pdf/combined.pdf" 
-          download="BankBC.pdf" 
-          className="hover:underline font-semibold text-primary"
-        >
-          Bank BC
-        </a>
-      </li>
-      <li>
-        <a 
-          href="/pdf/combined.pdf" 
-          download="BC-Selection-Format.pdf" 
-          className="hover:underline font-semibold text-primary"
-        >
-          BC Selection Format
-        </a>
-      </li>
-      <li>
-        <a 
-          href="/files/rmgb_installation.docs" 
-          download="RMGB-Installation-Process.pdf" 
-          className="hover:underline"
-        >
-          RMGB Installation Process
-        </a>
-      </li>
-      <li>
-        <a 
-          href="/files/Windows_RDService_V2.0.1.42_HTTPs_127.0.0.1.zip" 
-          download="Windows-RD-Service.pdf" 
-          className="hover:underline"
-        >
-          Windows RD Service V2.0.1
-        </a>
-      </li>
-      <li>
-        <a 
-          href="/files/BOB_MorphoMSO1300Esetup 2.2.1.8_06July2017.zip" 
-          download="BOB_MorphoMSO1300Esetup 2.2.1.8_06July2017.zip" 
-          className="hover:underline"
-        >
-          BOB Morpho MSO 1300 Esetup
-        </a>
-      </li>
-      {/* Others as normal links */}
-      <li><a href="/pdf/BOB-BANNER.pdf" download="BOB-BANNER.pdf" className="hover:underline">BOB Banner</a></li>
-      <li><a href="/pdf/BOB-REGISTER.pdf" download="BOB-REGISTER.pdf" className="hover:underline">BOB Register</a></li>
-      <li><a href="/pdf/BRKGB-BANNER.pdf" download="RGB-BANNER.pdf" className="hover:underline">RGB Banner</a></li>
-      <li><a href="/pdf/BRKGB-REGISTER.pdf" download="RGB-REGISTER.pdf" className="hover:underline">RGB Register</a></li>
+       {kisokConst.map((file, index) => (
+          <li key={index}>
+            <a
+              href={file.href}
+              download={file.download}
+              className="hover:underline font-semibold text-primary"
+            >
+              {file.label}
+            </a>
+          </li>
+        ))}
     </ul>
   </div>
   {/* Categories Section */}

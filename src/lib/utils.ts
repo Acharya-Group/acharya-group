@@ -1158,6 +1158,62 @@ export const support = [
   { title: "manager@Achariyagroup.com", url: "mailto:manager@Achariyagroup.com", type: "email" }, 
 ];
 
+
+// kisok downloads
+
+export const kisokConst  = [
+    {
+      label: "Bank BC Application Form",
+      href: "/files/BC Application FORM (5).docx",
+      download: "Application-form.docx",
+    },
+    {
+      label: "Bank BC",
+      href: "/pdf/combined.pdf",
+      download: "BankBC.pdf",
+    },
+    {
+      label: "BC Selection Format",
+      href: "/pdf/combined.pdf",
+      download: "BC-Selection-Format.pdf",
+    },
+    {
+      label: "RMGB Installation Process",
+      href: "/files/rmgb_installation.docs",
+      download: "RMGB-Installation-Process.pdf",
+    },
+    {
+      label: "Windows RD Service V2.0.1",
+      href: "/files/Windows_RDService_V2.0.1.42_HTTPs_127.0.0.1.zip",
+      download: "Windows-RD-Service.pdf",
+    },
+    {
+      label: "BOB Morpho MSO 1300 Esetup",
+      href: "/files/BOB_MorphoMSO1300Esetup 2.2.1.8_06July2017.zip",
+      download: "BOB_MorphoMSO1300Esetup 2.2.1.8_06July2017.zip",
+    },
+    {
+      label: "BOB Banner",
+      href: "/pdf/BOB-BANNER.pdf",
+      download: "BOB-BANNER.pdf",
+    },
+    {
+      label: "BOB Register",
+      href: "/pdf/BOB-REGISTER.pdf",
+      download: "BOB-REGISTER.pdf",
+    },
+    {
+      label: "RGB Banner",
+      href: "/pdf/BRKGB-BANNER.pdf",
+      download: "RGB-BANNER.pdf",
+    },
+    {
+      label: "RGB Register",
+      href: "/pdf/BRKGB-REGISTER.pdf",
+      download: "RGB-REGISTER.pdf",
+    },
+  ];
+
 // fastag vehicle types
 export const vehicleData = [
   {
