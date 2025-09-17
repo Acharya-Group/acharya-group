@@ -1214,6 +1214,53 @@ export const kisokConst  = [
     },
   ];
 
+
+  // bank bc commision
+ export  const bankCommissions = [
+    { product: "INSTANT SB A/C OPENING, EKYC", commission: "Rs. 10/- per account (Funded)" },
+    { product: "INSTANT SB A/C OPENING, NON-EKYC", commission: "Rs. 15 (Initial funding of Rs. 501 to Rs. 1000), Rs. 20 (Rs. 1001 to Rs. 5000), Rs. 30 (Rs. 5001 to Rs. 7500)" },
+    { product: "INSTANT RD A/C OPENING", commission: "Rs. 5/- per account" },
+    { product: "INSTANT FD A/C OPENING", commission: "Rs. 40/- of deposit amount Min. Rs. 1 & Max. of Rs. 20/- per A/c" },
+    { product: "MICRO INSURANCE - PMJJBY", commission: "Rs. 1/- per policy (June, July, August), Rs. 25 (Sept, Oct, Nov), Rs. 50 (Dec, Jan, Feb), Rs. 75 (March, April, May)" },
+    { product: "MICRO INSURANCE - PMSBY", commission: "Rs. 1/- per policy renewed annually" },
+    { product: "ATAL PENSION YOJANA", commission: "Rs. 50/- per application and annually" },
+    { product: "IMPS (AADHAAR AUTHENTICATED IMPS)", commission: "Rs. 40 of the amount (Min. Rs. 1 & Max. of Rs. 10) per A/c" },
+    { product: "AADHAAR SEEDING", commission: "Rs. 3/- per Account duly verified by branch in CBS" },
+    { product: "AADHAAR AUTHENTICATION", commission: "Rs. 3/-" },
+    { product: "MOBILE SEEDING", commission: "Rs. 5/- per successful seeding" },
+    { product: "AEPS ON US CASH DEPOSIT", commission: "Rs. 40% of deposit amount Min. Rs. 1 & Max. of Rs. 25" },
+    { product: "AEPS ON US CASH WITHDRAWAL", commission: "Rs. 40% of deposit amount Min. Rs. 1 & Max. of Rs. 20" },
+    { product: "AEPS ON US FUND TRANSFER", commission: "Rs. 40% of deposit amount Min. Rs. 1 & Max. of Rs. 20" },
+    { product: "AEPS OFF-US CASH DEPOSIT", commission: "Rs. 40% of deposit amount Min. Rs. 1 & Max. of Rs. 20" },
+    { product: "AEPS OFF-US CASH WITHDRAWAL", commission: "Rs. 40% of deposit amount Min. Rs. 1 & Max. of Rs. 20" },
+    { product: "AEPS OFF-US FUND TRANSFER", commission: "Rs. 40% of deposit amount Min. Rs. 1 & Max. of Rs. 10" },
+    { product: "BALANCE INQUIRY ON US", commission: "NIL" },
+    { product: "BALANCE INQUIRY OFF US", commission: "NIL" },
+    { product: "MINI STATEMENT ON US", commission: "NIL" },
+    { product: "MINI STATEMENT OFF US", commission: "NIL" },
+    { product: "SHG DUAL AUTHENTICATION TRANSACTION", commission: "Rs. 40% of deposit amount Min. Rs. 1 & Max. of Rs. 25" },
+    { product: "CARD WITHDRAWAL ON US TIN/NPI (RUPAY OFFUS)", commission: "Rs. 50% of deposit amount Min. Rs. 1 & Max. of Rs. 30" },
+    { product: "DEBIT CARD BALANCE INQUIRY", commission: "NIL" },
+    { product: "THIRD PARTY DEPOSIT", commission: "Rs. 20% of deposit amount Min. Rs. 1 & Max. of Rs. 20" },
+    { product: "PASS BOOK PRINTING", commission: "Rs. 5/- per page upto 300, 300- Rs. 6/- per page" },
+    { product: "ELEVY PAYMENT", commission: "NIL" },
+    { product: "BHARAT BILL PAYMENT SYSTEM (BBPS)", commission: "Rs. 40% of deposit amount Min. Rs. 1 & Max. of Rs. 10" },
+    { product: "REQUEST FOR NEW CHEQUE BOOK", commission: "Rs. 5/-" },
+    { product: "STOP PAYMENT OF CHEQUE", commission: "NIL" },
+    { product: "APPLY FOR RUPAY DEBIT CARDS", commission: "NIL" },
+    { product: "AADHAAR CARD ENROLMENT", commission: "NIL" },
+    { product: "REQUEST FOR LOAN STATEMENT", commission: "Rs. 20/- per Request" },
+    { product: "REQUEST FOR ACCOUNT STATEMENT", commission: "NIL" },
+    { product: "LOCKER FACILITY", commission: "NIL" },
+    { product: "NEFT", commission: "Rs. 25/- per transaction" },
+    { product: "DISBURSEMENT", commission: "Rs. 25/- per successful loan disbursement" },
+    { product: "IMPS (LOCAL AUTHENTICATION IMPS)", commission: "Rs. 40% of deposit amount Min. Rs. 1 & Max. of Rs. 10" },
+    { product: "AADHAAR BASED ONUS", commission: "Rs. 40% of deposit amount Min. Rs. 1 & Max. of Rs. 25" },
+    { product: "CASH WITHDRAWAL NON-AEPS ONUS", commission: "Rs. 40% of deposit amount Min. Rs. 1 & Max. of Rs. 20" },
+    { product: "BALANCE INQUIRY NON-AEPS ONUS", commission: "NIL" },
+    { product: "MINI STATEMENT NON-AEPS ONUS", commission: "NIL" },
+  ];
+
 // fastag vehicle types
 export const vehicleData = [
   {
