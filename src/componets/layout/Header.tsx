@@ -46,49 +46,29 @@ export default function Header() {
   };
 
   return (
-    <div className="max-w-[1920px] mx-auto">
+    <>
       <TopBar />
 
       {/* Desktop & Mobile Navbar */}
-      <AppBar position="sticky" color="default" sx={{ bgcolor: "#fff", boxShadow: 1 }}>
-        <Toolbar sx={{ justifyContent: "space-between", px: { xs: 2, md: 6 }, py: { xs: 1 } }}>
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image className="object-cover" src="/images/logo.png" alt="Company Logo" width={100} height={40} />
-          </Link>
-
-          {/* Desktop Nav */}
-          <Box sx={{ display: { xs: "none", lg: "flex" }, alignItems: "center", gap: 2 }}>
-            {/* Home */}
-            <Button
-              component={Link}
-              href="/"
-              sx={{
-                color: isLinkActive("/") ? "#7a0706" : "#261b7d",
-                fontWeight: isLinkActive("/") ? 600 : 600,
-                borderBottom: isLinkActive("/") ? "2px solid #7a0706" : "2px solid transparent",
-                borderRadius: 0,
-                minWidth: "auto",
-                px: 1,
-                pb: 0.5,
-                "&:hover": { color: "#7a0706", backgroundColor: "transparent" },
-              }}
-            >
-              Home
-            </Button>
-
-            {/* Dropdowns */}
-            {navdropdowns.map((dropdown, index) => (
-              <Box key={index}>
+      <div className="bg-white sticky top-0 shadow">
+        <div className="container mx-auto px-4">
+          <AppBar position="sticky" color="default" sx={{ bgcolor: "#fff", boxShadow: 0,top: 0,
+              zIndex: 1100, }}>
+            <Toolbar sx={{ justifyContent: "space-between", px: { xs: 2, md: 6 }, py: { xs: 1 } }}>
+              {/* Logo */}
+              <Link href="/" className="flex items-center">
+                <Image className="object-cover" src="/images/logo.png" alt="Company Logo" width={100} height={40} />
+              </Link>
+              {/* Desktop Nav */}
+              <Box sx={{ display: { xs: "none", lg: "flex" }, alignItems: "center", gap: 2 }}>
+                {/* Home */}
                 <Button
-                  endIcon={<ExpandMore />}
-                  onClick={(e) => handleDropdownOpen(e, index)}
+                  component={Link}
+                  href="/"
                   sx={{
-                    color: isDropdownActive(dropdown.links) ? "#7a0706" : "#261b7d",
-                    fontWeight: isDropdownActive(dropdown.links) ? 600 : 600,
-                    borderBottom: isDropdownActive(dropdown.links)
-                      ? "2px solid #7a0706"
-                      : "2px solid transparent",
+                    color: isLinkActive("/") ? "#7a0706" : "#261b7d",
+                    fontWeight: isLinkActive("/") ? 600 : 600,
+                    borderBottom: isLinkActive("/") ? "2px solid #7a0706" : "2px solid transparent",
                     borderRadius: 0,
                     minWidth: "auto",
                     px: 1,
@@ -96,192 +76,210 @@ export default function Header() {
                     "&:hover": { color: "#7a0706", backgroundColor: "transparent" },
                   }}
                 >
-                  {dropdown.title}
+                  Home
                 </Button>
-
-                <Menu
-                  anchorEl={desktopAnchor}
-                  open={currentDropdown === index}
-                  onClose={handleDropdownClose}
-                  MenuListProps={{ "aria-labelledby": `menu-${index}` }}
-                >
-                  {dropdown.links.map((link, i) => (
-                    <MenuItem
-                      key={i}
-                      component={link.type === "download" ? "a" : Link}
-                      href={link.href}
-                      {...(link.type === "download" ? { download: true } : {})}
-                      onClick={handleDropdownClose}
+                {/* Dropdowns */}
+                {navdropdowns.map((dropdown, index) => (
+                  <Box key={index}>
+                    <Button
+                      endIcon={<ExpandMore />}
+                      onClick={(e) => handleDropdownOpen(e, index)}
                       sx={{
-                        color: "#261b7d",
-                        fontWeight: 600,
-                        "&:hover": { backgroundColor: "rgba(220, 38, 38, 0.08)" },
+                        color: isDropdownActive(dropdown.links) ? "#7a0706" : "#261b7d",
+                        fontWeight: isDropdownActive(dropdown.links) ? 600 : 600,
+                        borderBottom: isDropdownActive(dropdown.links)
+                          ? "2px solid #7a0706"
+                          : "2px solid transparent",
+                        borderRadius: 0,
+                        minWidth: "auto",
+                        px: 1,
+                        pb: 0.5,
+                        "&:hover": { color: "#7a0706", backgroundColor: "transparent" },
                       }}
                     >
-                      {link.name}
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </Box>
-            ))}
-
-            {/* Other Links */}
-            {["/news-media", "/gallery", "/contact"].map((path, idx) => {
-              const name =
-                path === "/news-media"
-                  ? "News & Media"
-                  : path === "/gallery"
-                  ? "Gallery"
-                  : "Contact Us";
-              return (
-                <Button
-                  key={idx}
-                  component={Link}
-                  href={path}
-                  sx={{
-                    color: isLinkActive(path) ? "#7a0706" : "#261b7d",
-                    fontWeight: isLinkActive(path) ? 600 : 600,
-                    borderBottom: isLinkActive(path)
-                      ? "2px solid #7a0706"
-                      : "2px solid transparent",
-                    borderRadius: 0,
-                    minWidth: "auto",
-                    
-                    px: 1,
-                    pb: 0.5,
-                    "&:hover": { color: "#7a0706", backgroundColor: "transparent",fontWeight: 600, },
-                  }}
-                >
-                  {name}
-                </Button>
-              );
-            })}
-          </Box>
-
-          {/* Mobile Menu Button */}
-          <IconButton aria-label="responshiv nav" sx={{ display: { xs: "flex" } }} onClick={() => setMobileOpen(true)}>
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-
-      {/* Mobile Drawer */}
-      <Drawer
-        anchor="left"
-        open={mobileOpen}
-        onClose={() => setMobileOpen(false)}
-        sx={{ "& .MuiDrawer-paper": { width: 280, boxSizing: "border-box" } }}
-      >
-        <Box sx={{ width: 280, height: "100%", p: 3, display: "flex", flexDirection: "column", overflowY: "auto" }}>
-          <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 3 }}>
-            <Link href="/">
-              <Image src="/images/logo.png" alt="Company Logo" width={100} height={40} />
-            </Link>
-            <IconButton onClick={() => setMobileOpen(false)}>
-              <CloseIcon />
-            </IconButton>
-          </Box>
-
-          <List>
-            {/* Home */}
-            <ListItem disablePadding sx={{ mb: 1 }}>
-              <ListItemButton
-                component={Link}
-                href="/"
-                onClick={() => setMobileOpen(false)}
-                selected={isLinkActive("/")}
-                sx={{
-                  borderRadius: 1,
-                  color: isLinkActive("/") ? "#7a0706" : "#261b7d",
-                  fontWeight: isLinkActive("/") ? 600 : 400,
-                  borderBottom: isLinkActive("/") ? "2px solid #7a0706" : "2px solid transparent",
-                  "&.Mui-selected": { backgroundColor: "rgba(220, 38, 38, 0.08)" },
-                }}
-              >
-                <ListItemText primary="Home" />
-              </ListItemButton>
-            </ListItem>
-
-            {/* Mobile Dropdowns */}
-            {navdropdowns.map((dropdown, index) => (
-              <Box key={index} sx={{ mb: 1 }}>
-                <ListItem disablePadding>
-                  <ListItemButton
-                    onClick={() => setOpenAccordion(openAccordion === index ? null : index)}
-                    sx={{
-                      borderRadius: 1,
-                      justifyContent: "space-between",
-                      color: isDropdownActive(dropdown.links) ? "#7a0706" : "#261b7d",
-                      fontWeight: isDropdownActive(dropdown.links) ? 600 : 400,
-                      borderBottom: isDropdownActive(dropdown.links)
-                        ? "2px solid #7a0706"
-                        : "2px solid transparent",
-                      backgroundColor: isDropdownActive(dropdown.links) ? "rgba(220, 38, 38, 0.08)" : "transparent",
-                    }}
-                  >
-                    <ListItemText primary={dropdown.title} />
-                    {openAccordion === index ? <ExpandLess /> : <ExpandMore />}
-                  </ListItemButton>
-                </ListItem>
-
-                {openAccordion === index && (
-                  <List component="div" disablePadding sx={{ pl: 2, flexDirection: "column", gap: 0.5, mt: 0.5 }}>
-                    {dropdown.links.map((link, i) => (
-                      <ListItem disablePadding key={i}>
-                        <ListItemButton
+                      {dropdown.title}
+                    </Button>
+                    <Menu
+                      anchorEl={desktopAnchor}
+                      open={currentDropdown === index}
+                      onClose={handleDropdownClose}
+                      MenuListProps={{ "aria-labelledby": `menu-${index}` }}
+                    >
+                      {dropdown.links.map((link, i) => (
+                        <MenuItem
+                          key={i}
                           component={link.type === "download" ? "a" : Link}
                           href={link.href}
                           {...(link.type === "download" ? { download: true } : {})}
-                          onClick={() => setMobileOpen(false)}
+                          onClick={handleDropdownClose}
                           sx={{
-                            borderRadius: 1,
-                            pl: 3,
                             color: "#261b7d",
-                            fontWeight: 400,
-                            borderBottom: "2px solid transparent",
+                            fontWeight: 600,
                             "&:hover": { backgroundColor: "rgba(220, 38, 38, 0.08)" },
                           }}
                         >
-                          <ListItemText primary={link.name} />
-                        </ListItemButton>
-                      </ListItem>
-                    ))}
-                  </List>
-                )}
+                          {link.name}
+                        </MenuItem>
+                      ))}
+                    </Menu>
+                  </Box>
+                ))}
+                {/* Other Links */}
+                {["/news-media", "/gallery", "/contact"].map((path, idx) => {
+                  const name =
+                    path === "/news-media"
+                      ? "News & Media"
+                      : path === "/gallery"
+                      ? "Gallery"
+                      : "Contact Us";
+                  return (
+                    <Button
+                      key={idx}
+                      component={Link}
+                      href={path}
+                      sx={{
+                        color: isLinkActive(path) ? "#7a0706" : "#261b7d",
+                        fontWeight: isLinkActive(path) ? 600 : 600,
+                        borderBottom: isLinkActive(path)
+                          ? "2px solid #7a0706"
+                          : "2px solid transparent",
+                        borderRadius: 0,
+                        minWidth: "auto",
+        
+                        px: 1,
+                        pb: 0.5,
+                        "&:hover": { color: "#7a0706", backgroundColor: "transparent",fontWeight: 600, },
+                      }}
+                    >
+                      {name}
+                    </Button>
+                  );
+                })}
               </Box>
-            ))}
+              {/* Mobile Menu Button */}
+              <IconButton aria-label="responshiv nav" sx={{ display: { xs: "flex" } }} onClick={() => setMobileOpen(true)}>
+                <MenuIcon />
+              </IconButton>
+            </Toolbar>
+          </AppBar>
+        </div>
+      </div>
 
-            {/* Other Links */}
-            {["/news-media", "/gallery", "/contact"].map((path, idx) => {
-              const name =
-                path === "/news-media"
-                  ? "News & Media"
-                  : path === "/gallery"
-                  ? "Gallery"
-                  : "Contact Us";
-              return (
-                <ListItem disablePadding sx={{ mb: 1 }} key={idx}>
-                  <ListItemButton
-                    component={Link}
-                    href={path}
-                    onClick={() => setMobileOpen(false)}
-                    selected={isLinkActive(path)}
-                    sx={{
-                      borderRadius: 1,
-                      color: isLinkActive(path) ? "#7a0706" : "#261b7d",
-                      fontWeight: isLinkActive(path) ? 600 : 400,
-                      borderBottom: isLinkActive(path) ? "2px solid #7a0706" : "2px solid transparent",
-                      "&.Mui-selected": { backgroundColor: "rgba(220, 38, 38, 0.08)" },
-                    }}
-                  >
-                    <ListItemText primary={name} />
-                  </ListItemButton>
-                </ListItem>
-              );
-            })}
-          </List>
-        </Box>
-      </Drawer>
-    </div>
+      {/* Mobile Drawer */}
+      <div className="max-w-[1920px] mx-auto">
+        <Drawer
+          anchor="left"
+          open={mobileOpen}
+          onClose={() => setMobileOpen(false)}
+          sx={{ "& .MuiDrawer-paper": { width: 280, boxSizing: "border-box" } }}
+        >
+          <Box sx={{ width: 280, height: "100%", p: 3, display: "flex", flexDirection: "column", overflowY: "auto" }}>
+            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 3 }}>
+              <Link href="/">
+                <Image src="/images/logo.png" alt="Company Logo" width={100} height={40} />
+              </Link>
+              <IconButton onClick={() => setMobileOpen(false)}>
+                <CloseIcon />
+              </IconButton>
+            </Box>
+            <List>
+              {/* Home */}
+              <ListItem disablePadding sx={{ mb: 1 }}>
+                <ListItemButton
+                  component={Link}
+                  href="/"
+                  onClick={() => setMobileOpen(false)}
+                  selected={isLinkActive("/")}
+                  sx={{
+                    borderRadius: 1,
+                    color: isLinkActive("/") ? "#7a0706" : "#261b7d",
+                    fontWeight: isLinkActive("/") ? 600 : 400,
+                    borderBottom: isLinkActive("/") ? "2px solid #7a0706" : "2px solid transparent",
+                    "&.Mui-selected": { backgroundColor: "rgba(220, 38, 38, 0.08)" },
+                  }}
+                >
+                  <ListItemText primary="Home" />
+                </ListItemButton>
+              </ListItem>
+              {/* Mobile Dropdowns */}
+              {navdropdowns.map((dropdown, index) => (
+                <Box key={index} sx={{ mb: 1 }}>
+                  <ListItem disablePadding>
+                    <ListItemButton
+                      onClick={() => setOpenAccordion(openAccordion === index ? null : index)}
+                      sx={{
+                        borderRadius: 1,
+                        justifyContent: "space-between",
+                        color: isDropdownActive(dropdown.links) ? "#7a0706" : "#261b7d",
+                        fontWeight: isDropdownActive(dropdown.links) ? 600 : 400,
+                        borderBottom: isDropdownActive(dropdown.links)
+                          ? "2px solid #7a0706"
+                          : "2px solid transparent",
+                        backgroundColor: isDropdownActive(dropdown.links) ? "rgba(220, 38, 38, 0.08)" : "transparent",
+                      }}
+                    >
+                      <ListItemText primary={dropdown.title} />
+                      {openAccordion === index ? <ExpandLess /> : <ExpandMore />}
+                    </ListItemButton>
+                  </ListItem>
+                  {openAccordion === index && (
+                    <List component="div" disablePadding sx={{ pl: 2, flexDirection: "column", gap: 0.5, mt: 0.5 }}>
+                      {dropdown.links.map((link, i) => (
+                        <ListItem disablePadding key={i}>
+                          <ListItemButton
+                            component={link.type === "download" ? "a" : Link}
+                            href={link.href}
+                            {...(link.type === "download" ? { download: true } : {})}
+                            onClick={() => setMobileOpen(false)}
+                            sx={{
+                              borderRadius: 1,
+                              pl: 3,
+                              color: "#261b7d",
+                              fontWeight: 400,
+                              borderBottom: "2px solid transparent",
+                              "&:hover": { backgroundColor: "rgba(220, 38, 38, 0.08)" },
+                            }}
+                          >
+                            <ListItemText primary={link.name} />
+                          </ListItemButton>
+                        </ListItem>
+                      ))}
+                    </List>
+                  )}
+                </Box>
+              ))}
+              {/* Other Links */}
+              {["/news-media", "/gallery", "/contact"].map((path, idx) => {
+                const name =
+                  path === "/news-media"
+                    ? "News & Media"
+                    : path === "/gallery"
+                    ? "Gallery"
+                    : "Contact Us";
+                return (
+                  <ListItem disablePadding sx={{ mb: 1 }} key={idx}>
+                    <ListItemButton
+                      component={Link}
+                      href={path}
+                      onClick={() => setMobileOpen(false)}
+                      selected={isLinkActive(path)}
+                      sx={{
+                        borderRadius: 1,
+                        color: isLinkActive(path) ? "#7a0706" : "#261b7d",
+                        fontWeight: isLinkActive(path) ? 600 : 400,
+                        borderBottom: isLinkActive(path) ? "2px solid #7a0706" : "2px solid transparent",
+                        "&.Mui-selected": { backgroundColor: "rgba(220, 38, 38, 0.08)" },
+                      }}
+                    >
+                      <ListItemText primary={name} />
+                    </ListItemButton>
+                  </ListItem>
+                );
+              })}
+            </List>
+          </Box>
+        </Drawer>
+      </div>
+    </>
   );
 }
