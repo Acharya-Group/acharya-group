@@ -1,14 +1,14 @@
 import Header from '@/componets/layout/Header'
 import CommonHero from '@/componets/sections/CommonHero'
-import NewsAndMedia from '@/componets/sections/NewsAndMedia'
+import RkclNetwork from '@/componets/sections/RkclNetwork'
 import React from 'react'
 
 const page = () => {
   return (
     <>
     <Header/>
-    <CommonHero title='News & Media'/>
-    <NewsAndMedia/>
+    <CommonHero title='RKCL Network'/>
+    <RkclNetwork/>
     </>
   )
 }

@@ -5,7 +5,7 @@ import Button from "../ui/Button";
 const ValidateLetter = () => {
   const [refNumber, setRefNumber] = useState("");
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (refNumber.trim() === "") {
       alert("Please enter a reference number!");

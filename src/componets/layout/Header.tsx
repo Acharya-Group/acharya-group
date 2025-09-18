@@ -126,10 +126,10 @@ export default function Header() {
                   </Box>
                 ))}
                 {/* Other Links */}
-                {["/news-media", "/gallery", "/contact"].map((path, idx) => {
+                {["/rkcl-network", "/gallery", "/contact"].map((path, idx) => {
                   const name =
-                    path === "/news-media"
-                      ? "News & Media"
+                    path === "/rkcl-network"
+                      ? "RKCL network"
                       : path === "/gallery"
                       ? "Gallery"
                       : "Contact Us";
