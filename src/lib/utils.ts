@@ -1132,15 +1132,27 @@ export const socialLinks = [
 
 
 // export const pages = ["About Us", "Careers", "Contact Us", "Media", "FAQ", "Privacy Policy"];
-export const pages = [{ title: "Home", url: "/" }, { url: "/about", title: "About Us" }, { url: "/directors-message", title: "Directors message" }, { url: "/contact", title: "Contact Us" }, { url: "/news-media", title: "News & Media" }, { url: "/gallery", title: "Gallery" },{ url: "/fastag", title: "Fastag" }, { url: "/validate-reference-letters", title: "Validate Reference Letters" }, { title: "Complaint & Feedback", url: "complaint-feedback" },{ title: "Order e-mitra Stationery", url: "order-e-mittra-stationery" }];
+export const pages = [
+  { title: "Home", url: "/" }, 
+  { url: "/about", title: "About Us" }, 
+  { url: "/directors-message", title: "Directors message" },
+   { url: "/contact", title: "Contact Us" }, 
+  //  { url: "/news-media", title: "News & Media" }, 
+   { url: "/gallery", title: "Gallery" },
+   { url: "/fastag", title: "Fastag" }, 
+   { url: "/validate-reference-letters", title: "Validate Reference Letters" },
+    { title: "Complaint & Feedback", url: "complaint-feedback" },
+    { title: "Order e-mitra Stationery", url: "order-e-mittra-stationery" }];
+
+
 export const projectsLink = [
   { title: "Shopneo", url: "/shopneo" },
   { title: "e-Mitra", url: "/emitra" },
   { title: "Kiosk Banking", url: "/kiosk-banking" },
-  { title: "Insurance", url: "/insurance" },
+  // { title: "Insurance", url: "/insurance" },
   { title: "RKCL", url: "/rkcl" },
   { title: "School Easy", url: "/school-easy" },
-  { title: "Payment Registration", url: "/payment-registration" },
+  // { title: "Payment Registration", url: "/payment-registration" },
 
 ];
 

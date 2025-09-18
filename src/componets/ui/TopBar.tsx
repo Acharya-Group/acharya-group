@@ -11,7 +11,7 @@ export default function TopBar() {
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-6">
       
-        <div className="flex items-center">
+        <div className="flex items-center flex-wrap justify-center">
         {/* Ping Circle */}
         <div className="relative flex">
           <span className="absolute inline-flex h-3 w-3 animate-ping rounded-full bg-white opacity-75"></span>
@@ -23,6 +23,12 @@ export default function TopBar() {
           className="ms-2 hover:underline text-white font-semibold"
         >
           Order e-mitra Stationery
+        </Link>
+        <Link
+          href="/complaint-feedback"
+          className="sm:ms-6 ms-3 hover:underline  text-white font-semibold"
+        >
+          Complaint & Feedback
         </Link>
       </div>
          <div className="flex items-center gap-3">
