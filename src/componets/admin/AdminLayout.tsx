@@ -11,7 +11,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   return (
-    <div className="flex bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div className="flex bg-gray-50 shadow-right min-h-screen">
       {/* Sidebar */}
       <AdminSidebar
         isSidebarOpen={isSidebarOpen}
@@ -21,7 +21,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
       {/* Mobile overlay */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-40 z-30 md:hidden"
+          className="fixed inset-0 bg-black/40 backdrop-blur-md z-30 md:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
