@@ -41,19 +41,27 @@ const menuItems: MenuItem[] = [
     children: [{ name: 'Change Password', href: '/admin/change-password', icon: FileText }],
   },
   {
-    name: 'Stationery',
-    icon: ShoppingCart,
-    children: [
-      { name: 'Stationery Orders', href: '/admin/stationery-order', icon: List },
-      { name: 'Stationery Rates', href: '/admin/stationery-rate', icon: List },
-    ],
-  },
-  {
     name: 'Slider',
     icon: LucideImage,
     children: [
         { name: 'Add Slider', href: '/admin/add-slider', icon: PlusSquare },
       { name: 'All Sliders', href: '/admin/all-sliders', icon: List },
+    ],
+  },
+  {
+    name: 'Testimonial',
+    icon: LucideImage,
+    children: [
+        { name: 'Add Testimonial', href: '/admin/add-testimonial', icon: PlusSquare },
+      { name: 'All Testimonial', href: '/admin/all-testimonial', icon: List },
+    ],
+  },
+  {
+    name: 'Blog',
+    icon: LucideImage,
+    children: [
+        { name: 'Add Blog', href: '/admin/add-blog', icon: PlusSquare },
+      { name: 'All Blog', href: '/admin/all-blog', icon: List },
     ],
   },
   {
@@ -88,15 +96,14 @@ const menuItems: MenuItem[] = [
       { name: 'All DC', href: '/admin/all-dc', icon: List },
     ],
   },
-{
-  name: 'Emitra Stationery',
-  icon: ShoppingCart,
-  children: [
-    { name: 'Stationery Orders', href: '/admin/stationery-order', icon: List },
-    { name: 'Stationery Rates', href: '/admin/stationery-rate', icon: List },
-  ],
-},
-
+ {
+    name: 'Stationery',
+    icon: ShoppingCart,
+    children: [
+      { name: 'Stationery Orders', href: '/admin/stationery-order', icon: List },
+      { name: 'Stationery Rates', href: '/admin/stationery-rate', icon: List },
+    ],
+  },
   {
     name: 'Validate Reference',
     icon: FileText,

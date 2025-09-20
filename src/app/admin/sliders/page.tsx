@@ -5,7 +5,6 @@ const SlidersPage = () => {
   return (
     <AdminLayout>
       <h1 className="text-2xl font-bold mb-4">All Sliders</h1>
-      <p>Manage all sliders here.</p>
     </AdminLayout>
   )
 }
