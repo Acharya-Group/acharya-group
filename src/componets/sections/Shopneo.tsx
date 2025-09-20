@@ -1,7 +1,6 @@
 import { shopneoFeatures } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
-import { FaTags, FaTruck, FaLock, FaShoppingCart, FaUsers, FaStore } from "react-icons/fa";
 
 const Shopneo = () => {
   return (

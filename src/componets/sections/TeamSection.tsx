@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Button from "../ui/Button";
 import SubHeading from "../ui/SubHeading";
+import Image from "next/image";
 
 const teamMembers = [
   {
@@ -92,7 +93,9 @@ const TeamSection = () => {
               <div></div>
               {/* Image */}
               <div className="w-full h-56 overflow-hidden rounded-xl">
-                <img
+                <Image
+                height={100}
+                width={100}
                   src={member.image}
                   alt={member.name}
                   className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"

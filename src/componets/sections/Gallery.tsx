@@ -17,8 +17,6 @@ type Tab = {
 };
 
 const Gallery = () => {
-  const pathname = usePathname();
-
   // ✅ Tabs with their corresponding components
   const tabs: Tab[] = [
     { id: 1, title: "Videos", component: Video },

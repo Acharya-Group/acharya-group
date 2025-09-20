@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import AdminLayout from "@/componets/admin/AdminLayout";
 import { CSVLink } from "react-csv";
 import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
 interface DC {
@@ -20,7 +21,7 @@ const Page: React.FC = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true); 
+    setMounted(true);
   }, []);
 
   if (!mounted) return null;
@@ -28,7 +29,6 @@ const Page: React.FC = () => {
   const dcs: DC[] = [
     { id: 1, name: "John Doe", email: "john@example.com", number: "9876543210", district: "Pune", state: "Maharashtra", address: "123 MG Road" },
     { id: 2, name: "Jane Smith", email: "jane@example.com", number: "9876501234", district: "Delhi", state: "Delhi", address: "45 Connaught Place" },
-    // Add more DCs as needed
   ];
 
   const handleUpdate = (id: number) => alert(`Update DC ${id}`);
@@ -49,14 +49,11 @@ const Page: React.FC = () => {
 
     const tableData = dcs.map(dc => [dc.name, dc.email, dc.number, dc.district, dc.state, dc.address]);
 
-    // @ts-ignore
-    if ((doc as any).autoTable) {
-      (doc as any).autoTable({
-        head: [["Name", "Email", "Number", "District", "State", "Address"]],
-        body: tableData,
-        startY: 20,
-      });
-    }
+    autoTable(doc, {
+      head: [["Name", "Email", "Number", "District", "State", "Address"]],
+      body: tableData,
+      startY: 20,
+    });
 
     doc.save("dc-list.pdf");
   };

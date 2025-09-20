@@ -8,7 +8,13 @@ const nextConfig = {
         hostname: "randomuser.me",
         pathname: "/**",
       },
+       {
+        protocol: "https",
+        hostname: "cdn0.iconfinder.com",
+        pathname: "/**",
+      },
     ],
+
 
   },
 };

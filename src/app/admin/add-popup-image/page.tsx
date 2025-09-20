@@ -1,5 +1,6 @@
 "use client";
 import AdminLayout from "@/componets/admin/AdminLayout";
+import Image from "next/image";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 
 const Page: React.FC = () => {
@@ -47,7 +48,9 @@ const Page: React.FC = () => {
           {preview && (
             <div className="mt-4">
               <p className="text-sm text-gray-600 mb-2">Preview:</p>
-              <img
+              <Image
+              height={256}
+              width={256}
                 src={preview}
                 alt="Preview"
                 className="w-full max-h-64 object-contain rounded-lg border"

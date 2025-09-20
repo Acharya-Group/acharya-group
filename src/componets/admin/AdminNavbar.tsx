@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { Menu, Search, LogOut } from 'lucide-react'
+import Image from 'next/image'
 
 interface AdminNavbarProps {
   onSidebarToggle: () => void
@@ -34,7 +35,9 @@ const AdminNavbar: React.FC<AdminNavbarProps> = ({ onSidebarToggle, onLogout }) 
       {/* Avatar and Logout */}
       <div className="flex items-center space-x-4">
         {/* Avatar */}
-        <img
+        <Image
+        height={40}
+        width={40}
           src="https://cdn0.iconfinder.com/data/icons/man-user-human-profile-avatar-person-business/100/10A-1User-512.png"
           alt="Admin Avatar"
           className="w-10 h-10 rounded-full border-2 border-gray-300"

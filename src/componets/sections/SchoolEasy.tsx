@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { FiBarChart2, FiCreditCard, FiFileText, FiUserCheck, FiUsers, FiCloud, FiMessageSquare, FiEdit3, FiSmartphone } from "react-icons/fi";
 
 
