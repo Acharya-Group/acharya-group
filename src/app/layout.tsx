@@ -1,4 +1,3 @@
-import Footer from "@/componets/layout/Footer";
 import "./globals.css";
 import type { Metadata } from "next";
 
@@ -12,7 +11,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         {children}
-        <Footer/>
         </body>
     </html>
   );

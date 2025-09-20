@@ -1,3 +1,4 @@
+import Footer from '@/componets/layout/Footer'
 import Header from '@/componets/layout/Header'
 import CommonHero from '@/componets/sections/CommonHero'
 import KioskBank from '@/componets/sections/KioskBank'
@@ -9,6 +10,7 @@ const page = () => {
     <Header/>
     <CommonHero title='Kiosk Banking'/>
     <KioskBank/>
+    <Footer/>
     </>
   )
 }

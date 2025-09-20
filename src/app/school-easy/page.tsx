@@ -1,3 +1,4 @@
+import Footer from '@/componets/layout/Footer'
 import Header from '@/componets/layout/Header'
 import CommonHero from '@/componets/sections/CommonHero'
 import SchoolEasy from '@/componets/sections/SchoolEasy'
@@ -9,6 +10,7 @@ const page = () => {
     <Header/>
     <CommonHero title='School Easy'/>
     <SchoolEasy/>
+    <Footer/>
     </>
   )
 }

@@ -1,3 +1,4 @@
+import Footer from '@/componets/layout/Footer'
 import Header from '@/componets/layout/Header'
 import CommonHero from '@/componets/sections/CommonHero'
 import EMitra from '@/componets/sections/EMitra'
@@ -9,6 +10,7 @@ const page = () => {
     <Header/>
     <CommonHero  title="E-Mitra" />
     <EMitra/>
+    <Footer/>
     </>
   )
 }

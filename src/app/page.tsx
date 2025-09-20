@@ -1,3 +1,4 @@
+import Footer from "@/componets/layout/Footer";
 import Header from "@/componets/layout/Header";
 import About from "@/componets/sections/About";
 import Collaborations from "@/componets/sections/Collaborations";
@@ -22,6 +23,7 @@ export default function Home() {
    <Testimonials/>
    <Faqs/>
    <Contact/>
+   <Footer/>
    </>
   );
 }
