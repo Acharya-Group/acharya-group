@@ -10,8 +10,7 @@ interface AdminNavbarProps {
 
 const AdminNavbar: React.FC<AdminNavbarProps> = ({ onSidebarToggle, onLogout }) => {
   return (
-    <div className="bg-white sticky top-0 px-4 py-3 flex items-center justify-between shadow-md">
-      
+    <div className="bg-white px-4 py-3 flex items-center justify-between shadow-md">
       {/* Sidebar Toggle */}
       <button
         onClick={onSidebarToggle}
@@ -21,8 +20,8 @@ const AdminNavbar: React.FC<AdminNavbarProps> = ({ onSidebarToggle, onLogout }) 
       </button>
 
       {/* Search Box */}
-      <div className="flex-1 mx-4 max-w-md">
-        <div className="relative">
+      <div className="flex-1 hidden sm:flex mx-4 max-w-md">
+        <div className="relative w-full">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
           <input
             type="text"
@@ -34,16 +33,13 @@ const AdminNavbar: React.FC<AdminNavbarProps> = ({ onSidebarToggle, onLogout }) 
 
       {/* Avatar and Logout */}
       <div className="flex items-center space-x-4">
-        {/* Avatar */}
         <Image
-        height={40}
-        width={40}
+          height={40}
+          width={40}
           src="https://cdn0.iconfinder.com/data/icons/man-user-human-profile-avatar-person-business/100/10A-1User-512.png"
           alt="Admin Avatar"
           className="w-10 h-10 rounded-full border-2 border-gray-300"
         />
-
-        {/* Logout */}
         <button
           onClick={onLogout}
           className="p-2 rounded-md hover:bg-gray-200"

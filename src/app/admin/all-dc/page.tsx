@@ -20,6 +20,10 @@ interface DC {
 const Page: React.FC = () => {
   const [mounted, setMounted] = useState(false);
 
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5; // show 5 per page
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -29,6 +33,10 @@ const Page: React.FC = () => {
   const dcs: DC[] = [
     { id: 1, name: "John Doe", email: "john@example.com", number: "9876543210", district: "Pune", state: "Maharashtra", address: "123 MG Road" },
     { id: 2, name: "Jane Smith", email: "jane@example.com", number: "9876501234", district: "Delhi", state: "Delhi", address: "45 Connaught Place" },
+    { id: 3, name: "Alex Paul", email: "alex@example.com", number: "9876505678", district: "Mumbai", state: "Maharashtra", address: "Bandra West" },
+    { id: 4, name: "Sara Lee", email: "sara@example.com", number: "9876509999", district: "Chennai", state: "Tamil Nadu", address: "T Nagar" },
+    { id: 5, name: "Mike Ross", email: "mike@example.com", number: "9876504321", district: "Kolkata", state: "West Bengal", address: "Park Street" },
+    { id: 6, name: "Rachel Zane", email: "rachel@example.com", number: "9876508765", district: "Jaipur", state: "Rajasthan", address: "MI Road" },
   ];
 
   const handleUpdate = (id: number) => alert(`Update DC ${id}`);
@@ -58,9 +66,15 @@ const Page: React.FC = () => {
     doc.save("dc-list.pdf");
   };
 
+  // Pagination logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = dcs.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(dcs.length / itemsPerPage);
+
   return (
     <AdminLayout>
-      <div className="p-4">
+      <div className="bg-white p-6 rounded-2xl shadow-md">
         <h1 className="text-2xl font-bold mb-6">All DCs</h1>
 
         {/* Buttons */}
@@ -87,7 +101,7 @@ const Page: React.FC = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {dcs.map(dc => (
+              {currentItems.map(dc => (
                 <tr key={dc.id}>
                   <td className="px-4 py-2">{dc.id}</td>
                   <td className="px-4 py-2">{dc.name}</td>
@@ -104,6 +118,27 @@ const Page: React.FC = () => {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Pagination controls */}
+        <div className="flex justify-center items-center gap-2 mt-4">
+          <button
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage(prev => prev - 1)}
+            className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+          >
+            Prev
+          </button>
+
+          <span>Page {currentPage} of {totalPages}</span>
+
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage(prev => prev + 1)}
+            className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+          >
+            Next
+          </button>
         </div>
       </div>
     </AdminLayout>

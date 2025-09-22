@@ -22,7 +22,7 @@ const Page: React.FC = () => {
   return (
     <AdminLayout>
       <div className="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-md">
-        <h1 className="text-2xl font-bold mb-6">Add Popup</h1>
+        <h1 className="text-2xl font-bold mb-6">Add Popup Image</h1>
 
         <form className="space-y-5">
           {/* Image Upload */}
@@ -49,7 +49,7 @@ const Page: React.FC = () => {
             <div className="mt-4">
               <p className="text-sm text-gray-600 mb-2">Preview:</p>
               <Image
-              height={256}
+                  height={256}
               width={256}
                 src={preview}
                 alt="Preview"
