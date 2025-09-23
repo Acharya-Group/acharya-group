@@ -37,7 +37,6 @@ const Page: React.FC = () => {
     { id: 6, referenceNo: "REF006", date: "2025-09-17", issuedTo: "Rachel Zane", issuedBy: "Admin", subject: "Meeting Schedule" },
   ];
 
-  const handleEdit = (id: number) => alert(`Edit reference ${id}`);
   const handleDelete = (id: number) => { if (confirm("Are you sure to delete this reference?")) alert(`Deleted reference ${id}`); };
 
   const copyData = () => {

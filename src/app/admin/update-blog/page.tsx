@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import AdminLayout from "@/componets/admin/AdminLayout"
+import Image from "next/image"
 
 const Page = () => {
   const [title, setTitle] = useState("")
@@ -110,7 +111,9 @@ const Page = () => {
             {preview && (
               <div className="mt-3">
                 <p className="text-sm text-gray-600 mb-1">Preview:</p>
-                <img
+                <Image
+                height={160}
+                width={160}
                   src={preview}
                   alt="Selected Preview"
                   className="w-40 h-40 object-cover rounded-lg border shadow-sm"

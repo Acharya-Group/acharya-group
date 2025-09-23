@@ -7,6 +7,7 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Testimonial {
   id: number;
@@ -99,7 +100,7 @@ const Page: React.FC = () => {
 </td>
 
                   <td className="px-4 py-2">
-                    <img src={t.image} alt={t.name} className="w-16 h-16 object-cover rounded" />
+                    <Image height={64} width={64} src={t.image} alt={t.name} className="w-16 h-16 object-cover rounded" />
                   </td>
                   <td className="px-4 py-2 flex gap-2">
                     <Link href="/admin/update-testimonial"><button className="p-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600"><FaEdit /></button></Link>

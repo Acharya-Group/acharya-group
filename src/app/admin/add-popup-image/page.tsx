@@ -1,15 +1,13 @@
 "use client";
 import AdminLayout from "@/componets/admin/AdminLayout";
 import Image from "next/image";
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
 
 const Page: React.FC = () => {
   const [preview, setPreview] = useState<string | null>(null);
-  const [file, setFile] = useState<File | null>(null);
 
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0] || null;
-    setFile(selectedFile);
     if (selectedFile) {
       setPreview(URL.createObjectURL(selectedFile));
     } else {

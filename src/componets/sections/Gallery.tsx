@@ -1,6 +1,5 @@
 "use client"
 import React, { useState } from "react";
-import { usePathname } from "next/navigation";
 import Video from "../gallery/Video";
 import GalleryImg from "../gallery/GalleryImg";
 import Award2025 from "../gallery/Award2025";

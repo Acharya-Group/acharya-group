@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import AdminLayout from "@/componets/admin/AdminLayout";
-import { FaEdit, FaTrash, FaEye } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 interface ImageItem {
   id: number;
@@ -21,7 +22,7 @@ const Page: React.FC = () => {
     { id: 6, url: "/images/hero-slide-3.jpg", category: "office" },
   ]);
 
-  const [selectedCategory, setSelectedCategory] = useState<string>("school");
+  const [selectedCategory] = useState<string>("school");
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   // Filter by category
@@ -61,7 +62,7 @@ const Page: React.FC = () => {
                 <tr key={img.id}>
                   <td className="px-4 py-2">{idx + 1}</td>
                   <td className="px-4 py-2">
-                    <img
+                    <Image width={128} height={80}
                       src={img.url}
                       alt={`Image ${img.id}`}
                       className="w-32 h-20 object-cover rounded cursor-pointer"

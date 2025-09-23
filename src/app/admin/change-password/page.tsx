@@ -3,7 +3,7 @@
 import AdminLayout from '@/componets/admin/AdminLayout'
 import React, { useState } from 'react'
 
-const page = () => {
+const Page = () => {
   const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -84,4 +84,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

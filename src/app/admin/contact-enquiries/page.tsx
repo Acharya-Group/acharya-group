@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import AdminLayout from "@/componets/admin/AdminLayout";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 
 interface FormEntry {
   id: number;
@@ -67,10 +67,6 @@ const Page: React.FC = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentEntries = entries.slice(indexOfFirstItem, indexOfLastItem);
-
-  const handleEdit = (id: number) => {
-    alert(`Edit entry ${id}`);
-  };
 
   const handleDelete = (id: number) => {
     if (confirm("Are you sure you want to delete this entry?")) {

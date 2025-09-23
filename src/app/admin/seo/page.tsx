@@ -4,16 +4,6 @@ import AdminLayout from '@/componets/admin/AdminLayout'
 import React, { useState } from 'react'
 
 const Page = () => {
-  const [preview, setPreview] = useState<string | null>(null)
-
-  // Handle image select
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      const url = URL.createObjectURL(file)
-      setPreview(url)
-    }
-  }
 
   return (
     <AdminLayout>

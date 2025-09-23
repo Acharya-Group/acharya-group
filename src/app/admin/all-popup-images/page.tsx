@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import AdminLayout from "@/componets/admin/AdminLayout";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import Image from "next/image";
 
 interface Slide {
   id: number;
@@ -61,7 +62,9 @@ const totalPages = Math.ceil(Sliders.length / itemsPerPage);
                 <tr key={slide.id}>
                   <td className="px-4 py-2">{slide.id}</td>
                   <td className="px-4 py-2">
-                    <img
+                    <Image
+                    width={96}
+                    height={64}
                       src={slide.image}
                       alt={`Slide ${slide.id}`}
                       className="w-24 h-16 object-cover rounded"

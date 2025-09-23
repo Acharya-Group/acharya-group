@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import AdminLayout from "@/componets/admin/AdminLayout";
 
-const page: React.FC = () => {
+const Page: React.FC = () => {
   const [formData, setFormData] = useState({
     referenceNo: "",
     date: "",
@@ -105,4 +105,4 @@ const page: React.FC = () => {
   );
 };
 
-export default page;
+export default Page;

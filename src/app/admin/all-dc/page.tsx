@@ -40,7 +40,6 @@ const Page: React.FC = () => {
     { id: 6, name: "Rachel Zane", email: "rachel@example.com", number: "9876508765", district: "Jaipur", state: "Rajasthan", address: "MI Road" },
   ];
 
-  const handleUpdate = (id: number) => alert(`Update DC ${id}`);
   const handleDelete = (id: number) => { if (confirm("Delete this DC?")) alert(`Deleted DC ${id}`); };
 
   const copyData = () => {

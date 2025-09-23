@@ -1,6 +1,7 @@
 "use client"
 
 import AdminLayout from '@/componets/admin/AdminLayout'
+import Image from 'next/image'
 import React, { useState } from 'react'
 
 const Page = () => {
@@ -67,7 +68,9 @@ const Page = () => {
             {preview && (
               <div className="mt-3">
                 <p className="text-sm text-gray-600 mb-1">Preview:</p>
-                <img
+                <Image
+                height={128}
+                width={128}
                   src={preview}
                   alt="Selected Preview"
                   className="w-32 h-32 object-cover rounded-lg border"

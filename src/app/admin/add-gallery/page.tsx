@@ -2,6 +2,7 @@
 
 import React, { useState, ChangeEvent } from 'react';
 import AdminLayout from '@/componets/admin/AdminLayout';
+import Image from 'next/image';
 
 interface Image {
   url: string;
@@ -116,7 +117,9 @@ const Page: React.FC = () => {
           {previewUrls.length > 0 && (
             <div className="flex flex-wrap gap-4 mt-2">
               {previewUrls.map((url, index) => (
-                <img
+                <Image
+                height={128}
+                width={128}
                   key={index}
                   src={url}
                   alt={`preview-${index}`}

@@ -17,6 +17,7 @@ import {
   User,
   Video,
   FileText,
+  LucideIcon,
 } from 'lucide-react'
 import { useState } from 'react'
 import Image from 'next/image'
@@ -24,7 +25,7 @@ import Image from 'next/image'
 type MenuItem = {
   name: string
   href?: string
-  icon: any
+  icon:LucideIcon
   children?: MenuItem[]
 }
 
