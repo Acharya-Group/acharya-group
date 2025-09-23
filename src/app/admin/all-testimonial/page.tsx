@@ -6,6 +6,7 @@ import { CSVLink } from "react-csv";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import Link from "next/link";
 
 interface Testimonial {
   id: number;
@@ -44,7 +45,6 @@ const Page: React.FC = () => {
   if (!mounted) return null;
 
   // Handlers
-  const handleEdit = (id: number) => alert(`Edit testimonial ${id}`);
   const handleDelete = (id: number) => { if (confirm("Are you sure to delete this testimonial?")) alert(`Deleted testimonial ${id}`); };
 
   const copyData = () => {
@@ -102,7 +102,7 @@ const Page: React.FC = () => {
                     <img src={t.image} alt={t.name} className="w-16 h-16 object-cover rounded" />
                   </td>
                   <td className="px-4 py-2 flex gap-2">
-                    <button onClick={() => handleEdit(t.id)} className="p-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600"><FaEdit /></button>
+                    <Link href="/admin/update-testimonial"><button className="p-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600"><FaEdit /></button></Link>
                     <button onClick={() => handleDelete(t.id)} className="p-2 bg-red-500 cursor-pointer text-white rounded hover:bg-red-600"><FaTrash /></button>
                   </td>
                 </tr>

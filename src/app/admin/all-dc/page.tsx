@@ -6,6 +6,7 @@ import { CSVLink } from "react-csv";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import Link from "next/link";
 
 interface DC {
   id: number;
@@ -111,7 +112,7 @@ const Page: React.FC = () => {
                   <td className="px-4 py-2">{dc.state}</td>
                   <td className="px-4 py-2">{dc.address}</td>
                   <td className="px-4 py-2 flex gap-2">
-                    <button onClick={() => handleUpdate(dc.id)} className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"><FaEdit /></button>
+                                       <Link href="/admin/update-dc"><button className="p-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600"><FaEdit /></button></Link>
                     <button onClick={() => handleDelete(dc.id)} className="p-2 bg-red-500 text-white rounded hover:bg-red-600"><FaTrash /></button>
                   </td>
                 </tr>

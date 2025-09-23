@@ -81,7 +81,7 @@ const Page: React.FC = () => {
   return (
     <AdminLayout>
       <div className="bg-white p-6 rounded-2xl shadow-md">
-        <h1 className="text-2xl font-bold mb-6">Form Entries</h1>
+        <h1 className="text-2xl font-bold mb-6">Contact Enquiries</h1>
 
         <div className="overflow-x-auto">
           <table className="min-w-[900px] divide-y divide-gray-200">
@@ -110,7 +110,7 @@ const Page: React.FC = () => {
                   <td className="px-4 py-2">{e.formType}</td>
                   <td className="px-4 py-2">{e.subject}</td>
                  <td className="px-4 py-2">
-  <div className="w-64 h-20 p-2 border rounded overflow-y-auto">
+  <div className="w-40 h-20 p-2 border rounded overflow-y-auto">
     {e.message}
   </div>
 </td>
@@ -132,14 +132,8 @@ const Page: React.FC = () => {
                   </td>
                   <td className="px-4 py-2 flex gap-2">
                     <button
-                      onClick={() => handleEdit(e.id)}
-                      className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                    >
-                      <FaEdit />
-                    </button>
-                    <button
                       onClick={() => handleDelete(e.id)}
-                      className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
+                      className="p-2 bg-red-500 cursor-pointer text-white rounded hover:bg-red-600"
                     >
                       <FaTrash />
                     </button>

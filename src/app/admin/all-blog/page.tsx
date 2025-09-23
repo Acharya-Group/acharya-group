@@ -6,6 +6,7 @@ import { CSVLink } from "react-csv";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import Link from "next/link";
 
 interface Testimonial {
   id: number;
@@ -65,7 +66,7 @@ const Page: React.FC = () => {
   return (
     <AdminLayout>
       <div className="bg-white p-6 rounded-2xl shadow-md">
-        <h1 className="text-2xl font-bold mb-6">All Testimonials</h1>
+        <h1 className="text-2xl font-bold mb-6">All Blogs</h1>
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-2 mb-4">
@@ -99,7 +100,8 @@ const Page: React.FC = () => {
                     <img src={t.image} alt={t.title} className="w-16 h-16 object-cover rounded" />
                   </td>
                   <td className="px-4 py-2 flex gap-2">
-                    <button onClick={() => handleEdit(t.id)} className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"><FaEdit /></button>
+                                        <Link href="/admin/update-blog"><button className="p-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600"><FaEdit /></button></Link>
+
                     <button onClick={() => handleDelete(t.id)} className="p-2 bg-red-500 text-white rounded hover:bg-red-600"><FaTrash /></button>
                   </td>
                 </tr>
