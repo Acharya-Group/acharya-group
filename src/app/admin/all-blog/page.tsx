@@ -7,60 +7,68 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Link from "next/link";
-import Image from "next/image";
-
-interface Testimonial {
-  id: number;
-  title: string;
-  shortDescription: string;
-  description: string;
-  image: string;
-}
+import { Blog, useBlogs } from "@/hooks/blogs";
+import toast from "react-hot-toast";
 
 const Page: React.FC = () => {
   const [mounted, setMounted] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const { allBlogs, deleteBlog } = useBlogs();
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Dummy testimonial data
-  const testimonials: Testimonial[] = [
-    { id: 1, title: "John Doe", shortDescription: "Great service!", description: "Great service and support!", image: "/images/review1.jpg" },
-    { id: 2, title: "Jane Smith", shortDescription: "Amazing experience!", description: "Amazing experience overall.", image: "/images/review1.jpg" },
-    { id: 3, title: "Alex Paul", shortDescription: "Professional team", description: "Very professional team!", image: "/images/review1.jpg" },
-    { id: 4, title: "Sara Lee", shortDescription: "Recommend to others", description: "Would recommend to others.", image: "/images/review1.jpg" },
-    { id: 5, title: "Mike Ross", shortDescription: "Best service", description: "Best service in town.", image: "/images/review1.jpg" },
-    { id: 6, title: "Rachel Zane", shortDescription: "Exceeded expectations", description: "Exceeded my expectations.", image: "/images/review1.jpg" },
-  ];
+  if (!mounted) return null;
+  if (allBlogs.isLoading) return <p>Loading blogs...</p>;
+  if (allBlogs.isError) return <p>Error: {allBlogs.error.message}</p>;
 
+  const blogs: Blog[] = Array.isArray(allBlogs.data) ? allBlogs.data : [];
+
+  // Pagination
   const itemsPerPage = 5;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = testimonials.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(testimonials.length / itemsPerPage);
+  const currentItems = blogs.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(blogs.length / itemsPerPage);
 
-  if (!mounted) return null;
+  // Delete handler
+  const handleDelete = (id: string) => {
+    if (!confirm("Are you sure you want to delete this blog?")) return;
 
-  // Handlers
-  const handleDelete = (id: number) => {
-    if (confirm("Are you sure to delete this testimonial?")) alert(`Deleted testimonial ${id}`);
+    setDeletingId(id); // show loading state
+    deleteBlog.mutate(id, {
+      onSuccess: () => {
+        toast.success("Blog deleted successfully!");
+        setDeletingId(null);
+      },
+      onError: (err: any) => {
+        toast.error(err?.message || "Failed to delete blog!");
+        setDeletingId(null);
+      },
+    });
   };
 
+  // Copy to clipboard
   const copyData = () => {
     if (navigator?.clipboard) {
-      navigator.clipboard.writeText(JSON.stringify(testimonials));
-      alert("Copied to clipboard!");
+      navigator.clipboard.writeText(JSON.stringify(blogs));
+      toast.success("Copied to clipboard!");
     }
   };
 
+  // Export PDF
   const exportPDF = () => {
     const doc = new jsPDF();
-    doc.text("Testimonials", 14, 16);
-    const tableData = testimonials.map(t => [t.title, t.shortDescription, t.description]);
-    autoTable(doc, { head: [["Title", "Short Description", "Description"]], body: tableData, startY: 20 });
-    doc.save("testimonials.pdf");
+    doc.text("Blogs", 14, 16);
+    const tableData = blogs.map(b => [b.title, b.shortDescription, b.description]);
+    autoTable(doc, {
+      head: [["Title", "Short Description", "Description"]],
+      body: tableData,
+      startY: 20,
+    });
+    doc.save("blogs.pdf");
   };
 
   return (
@@ -71,7 +79,7 @@ const Page: React.FC = () => {
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-2 mb-4">
           <button onClick={copyData} className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">Copy</button>
-          <CSVLink data={testimonials} filename="testimonials.csv" className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">CSV</CSVLink>
+          <CSVLink data={blogs} filename="blogs.csv" className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">CSV</CSVLink>
           <button onClick={exportPDF} className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">PDF</button>
           <button onClick={() => window.print()} className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">Print</button>
         </div>
@@ -90,19 +98,26 @@ const Page: React.FC = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {currentItems.map(t => (
-                <tr key={t.id}>
-                  <td className="px-4 py-2">{t.id}</td>
-                  <td className="px-4 py-2">{t.title}</td>
-                  <td className="px-4 py-2 max-w-[200px] truncate">{t.shortDescription}</td>
-                  <td className="px-4 py-2 max-w-[200px] truncate">{t.description}</td>
+              {currentItems.map((b, index) => (
+                <tr key={b._id}>
+                  <td className="px-4 py-2">{indexOfFirstItem + index + 1}</td>
+                  <td className="px-4 py-2">{b.title}</td>
+                  <td className="px-4 py-2 max-w-[200px] truncate">{b.shortDescription}</td>
+                  <td className="px-4 py-2 max-w-[200px] truncate">{b.description}</td>
                   <td className="px-4 py-2">
-                    <Image height={64} width={64} src={t.image} alt={t.title} className="w-16 h-16 object-cover rounded" />
+                    <img src={b.image} alt={b.title} className="w-16 h-16 object-cover rounded" />
                   </td>
                   <td className="px-4 py-2 flex gap-2">
-                                        <Link href="/admin/update-blog"><button className="p-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600"><FaEdit /></button></Link>
-
-                    <button onClick={() => handleDelete(t.id)} className="p-2 bg-red-500 text-white rounded hover:bg-red-600"><FaTrash /></button>
+                    <Link href={`/admin/update-blog/${b._id}`}>
+                      <button className="p-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600"><FaEdit /></button>
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(b._id)}
+                      disabled={deletingId === b._id}
+                      className={`p-2 text-white rounded ${deletingId === b._id ? 'bg-gray-400 cursor-not-allowed' : 'bg-red-500 hover:bg-red-600'}`}
+                    >
+                      <FaTrash />
+                    </button>
                   </td>
                 </tr>
               ))}

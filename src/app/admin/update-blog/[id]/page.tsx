@@ -1,11 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import AdminLayout from "../../../componets/admin/AdminLayout";
+import { useState, useEffect } from "react";
+import { useRouter, useParams } from "next/navigation";
+import AdminLayout from "@/componets/admin/AdminLayout";
 import toast from "react-hot-toast";
-import { useBlogs } from "../../../hooks/blogs";
+import { useBlogs, Blog } from "@/hooks/blogs";
+import axios from "axios";
 
-const Page = () => {
+const UpdateBlogPage = () => {
+  const router = useRouter();
+  const params = useParams();
+  const blogId = Array.isArray(params.id) ? params.id[0] : params.id; 
+
+  const { updateBlog } = useBlogs();
+
   const [title, setTitle] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [description, setDescription] = useState("");
@@ -13,31 +21,46 @@ const Page = () => {
   const [preview, setPreview] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { createBlog } = useBlogs();
+  // Fetch existing blog data
+  useEffect(() => {
+    if (!blogId) return;
+    const fetchBlog = async () => {
+      try {
+        const { data } = await axios.get<{ blog: Blog }>(
+          `${process.env.NEXT_PUBLIC_API_URL}/blogs/${blogId}`
+        );
+        setTitle(data.blog.title);
+        setShortDescription(data.blog.shortDescription);
+        setDescription(data.blog.description);
+        setPreview(data.blog.image);
+      } catch (err: any) {
+        toast.error(err?.message || "Failed to load blog!");
+      }
+    };
+    fetchBlog();
+  }, [blogId]);
 
+  // Handle image change
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       setImageFile(file);
-
       const reader = new FileReader();
-      reader.onloadend = () => {
-        if (typeof reader.result === "string") {
-          setPreview(reader.result);
-        }
-      };
+      reader.onloadend = () => setPreview(reader.result as string);
       reader.readAsDataURL(file);
-    } else {
-      setImageFile(null);
-      setPreview(null);
     }
   };
 
+  // Submit updated blog
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!blogId) {
+      toast.error("Blog ID not found!");
+      return;
+    }
 
-    if (!title || !shortDescription || !description || !imageFile) {
-      toast.error("All fields including image are required!");
+    if (!title || !shortDescription || !description) {
+      toast.error("Please fill all required fields!");
       return;
     }
 
@@ -47,29 +70,30 @@ const Page = () => {
     formData.append("title", title);
     formData.append("shortDescription", shortDescription);
     formData.append("description", description);
-    formData.append("image", imageFile);
+    if (imageFile) formData.append("image", imageFile);
 
-    createBlog.mutate(formData, {
-      onSuccess: () => {
-        toast.success("Blog added successfully!");
-        setTitle("");
-        setShortDescription("");
-        setDescription("");
-        setImageFile(null);
-        setPreview(null);
-        setIsSubmitting(false);
-      },
-      onError: (err: any) => {
-        toast.error(err?.message || "Failed to add blog!");
-        setIsSubmitting(false);
-      },
-    });
+    updateBlog.mutate(
+      { id: blogId, formData },
+      {
+        onSuccess: () => {
+          toast.success("Blog updated successfully!");
+          setIsSubmitting(false);
+          router.push("/admin/all-blog");
+        },
+        onError: (err: any) => {
+          toast.error(err?.message || "Failed to update blog!");
+          setIsSubmitting(false);
+        },
+      }
+    );
   };
 
   return (
     <AdminLayout>
       <div className="mx-auto bg-white p-6 rounded-2xl shadow-md">
-        <h1 className="text-2xl font-bold mb-6 text-gray-800">Add Blog Post</h1>
+        <h1 className="text-2xl font-bold mb-6 text-gray-800">
+          Update Blog Post
+        </h1>
 
         <form className="space-y-5" onSubmit={handleSubmit}>
           {/* Title */}
@@ -102,7 +126,7 @@ const Page = () => {
             />
           </div>
 
-          {/* Full Description */}
+          {/* Description */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Description
@@ -113,7 +137,7 @@ const Page = () => {
               placeholder="Write your full blog description here..."
               className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a0706] focus:border-[#7a0706] hover:border-[#7a0706] transition min-h-[150px]"
               required
-            />
+            ></textarea>
           </div>
 
           {/* Image Upload */}
@@ -121,26 +145,12 @@ const Page = () => {
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Upload Featured Image
             </label>
-
-            {/* Hidden file input */}
             <input
-              id="fileInput"
               type="file"
               accept="image/*"
               onChange={handleImageChange}
-              className="hidden"
-              required
+              className="w-full px-4 py-2 border rounded-lg shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#7a0706] focus:border-[#7a0706] hover:border-[#7a0706] transition"
             />
-
-            {/* Custom Upload Button */}
-            <label
-              htmlFor="fileInput"
-              className="inline-block px-4 py-2 bg-[#7a0706] text-white rounded-lg cursor-pointer shadow-md hover:bg-[#5a0505] transition"
-            >
-              {imageFile ? "Change Image" : "Choose Image"}
-            </label>
-
-            {/* Image Preview */}
             {preview && (
               <div className="mt-3">
                 <p className="text-sm text-gray-600 mb-1">Preview:</p>
@@ -158,10 +168,12 @@ const Page = () => {
             type="submit"
             disabled={isSubmitting}
             className={`w-full ${
-              isSubmitting ? "bg-gray-400" : "bg-[#7a0706] hover:bg-[#5a0505]"
+              isSubmitting
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-[#7a0706] hover:bg-[#5a0505]"
             } text-white py-3 px-4 rounded-lg shadow-md transition transform hover:scale-[1.01] font-medium`}
           >
-            {isSubmitting ? "Publishing..." : "Publish Blog Post"}
+            {isSubmitting ? "Updating..." : "Update Blog Post"}
           </button>
         </form>
       </div>
@@ -169,4 +181,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default UpdateBlogPage;
