@@ -1,96 +1,149 @@
-"use client"
+"use client";
 
-import AdminLayout from '@/componets/admin/AdminLayout'
-import Image from 'next/image'
-import React, { useState } from 'react'
+import { useState } from "react";
+import AdminLayout from "@/componets/admin/AdminLayout";
+import Image from "next/image";
+import toast from "react-hot-toast";
+import { useTestimonials } from "@/hooks/testimonial";
 
 const Page = () => {
-  const [preview, setPreview] = useState<string | null>(null)
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Handle image select
+  const { createTestimonial } = useTestimonials();
+
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+    const file = e.target.files?.[0];
     if (file) {
-      const url = URL.createObjectURL(file)
-      setPreview(url)
+      setImageFile(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        if (typeof reader.result === "string") setPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImageFile(null);
+      setPreview(null);
     }
-  }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!name || !description || !imageFile) {
+      toast.error("All fields including image are required!");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("Image", imageFile);
+
+    createTestimonial.mutate(formData, {
+      onSuccess: () => {
+        toast.success("Testimonial added successfully!");
+        setName("");
+        setDescription("");
+        setImageFile(null);
+        setPreview(null);
+        setIsSubmitting(false);
+      },
+      onError: (err: any) => {
+        toast.error(err?.message || "Failed to add testimonial!");
+        setIsSubmitting(false);
+      },
+    });
+  };
 
   return (
     <AdminLayout>
       <div className="mx-auto bg-white p-6 rounded-2xl shadow-md">
-        <h1 className="text-2xl font-bold mb-6">Add Testimonial</h1>
+        <h1 className="text-2xl font-bold mb-6 text-gray-800">Add Testimonial</h1>
 
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={handleSubmit}>
           {/* Name */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Name
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
             <input
               type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Enter name"
-              className="w-full px-4 py-2 border rounded-lg shadow-sm 
-              focus:outline-none focus:ring-2 focus:ring-[#7a0706] focus:border-[#7a0706]
-              hover:border-[#7a0706] transition"
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a0706] focus:border-[#7a0706] hover:border-[#7a0706] transition"
+              required
             />
           </div>
 
           {/* Description */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Description
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
             <textarea
               rows={4}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
               placeholder="Enter description"
-              className="w-full px-4 py-2 border rounded-lg shadow-sm 
-              focus:outline-none focus:ring-2 focus:ring-[#7a0706] focus:border-[#7a0706]
-              hover:border-[#7a0706] transition"
-            ></textarea>
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a0706] focus:border-[#7a0706] hover:border-[#7a0706] transition"
+              required
+            />
           </div>
 
           {/* Image Upload */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Upload Image
-            </label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Upload Image</label>
+
+            {/* Hidden file input */}
             <input
+              id="testimonialFileInput"
               type="file"
               accept="image/*"
               onChange={handleImageChange}
-              className="w-full px-4 py-2 border rounded-lg shadow-sm cursor-pointer 
-              focus:outline-none focus:ring-2 focus:ring-[#7a0706] focus:border-[#7a0706]
-              hover:border-[#7a0706] transition"
+              className="hidden"
+              required
             />
+
+            {/* Custom Upload Button */}
+            <label
+              htmlFor="testimonialFileInput"
+              className="inline-block px-4 py-2 bg-[#7a0706] text-white rounded-lg cursor-pointer shadow-md hover:bg-[#5a0505] transition"
+            >
+              {imageFile ? "Change Image" : "Choose Image"}
+            </label>
 
             {/* Image Preview */}
             {preview && (
               <div className="mt-3">
                 <p className="text-sm text-gray-600 mb-1">Preview:</p>
                 <Image
-                height={128}
-                width={128}
                   src={preview}
                   alt="Selected Preview"
-                  className="w-32 h-32 object-cover rounded-lg border"
+                  width={160}
+                  height={160}
+                  className="w-40 h-40 object-cover rounded-lg border shadow-sm"
                 />
               </div>
             )}
           </div>
 
-          {/* Submit Button */}
+          {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-[#7a0706] cursor-pointer text-white py-2 px-4 rounded-lg 
-            shadow-md hover:bg-[#261b7d] transition transform hover:scale-[1.02]"
+            disabled={isSubmitting}
+            className={`w-full ${
+              isSubmitting ? "bg-gray-400" : "bg-[#7a0706] hover:bg-[#5a0505]"
+            } text-white py-3 px-4 rounded-lg shadow-md transition transform hover:scale-[1.01] font-medium`}
           >
-            Submit
+            {isSubmitting ? "Adding..." : "Add Testimonial"}
           </button>
         </form>
       </div>
     </AdminLayout>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
