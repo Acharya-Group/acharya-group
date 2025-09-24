@@ -1,49 +1,92 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AdminLayout from "@/componets/admin/AdminLayout";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaTimes } from "react-icons/fa";
 import Image from "next/image";
-
-interface Slide {
-  id: number;
-  image: string;
-}
+import toast, { Toaster } from "react-hot-toast";
+import { useSlider, Slider } from "@/hooks/slider";
 
 const Page: React.FC = () => {
-
+  const { allSliders, deleteSlider, updateSlider } = useSlider();
+  const [mounted, setMounted] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-const itemsPerPage = 4; 
+  const itemsPerPage = 4;
 
+  const [editingSlider, setEditingSlider] = useState<Slider | null>(null);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  // ✅ Dummy Data
-  const Sliders: Slide[] = [
-    { id: 1, image: "/images/hero-slide-1.jpg" },
-    { id: 2, image: "/images/hero-slide-2.jpg" },
-    { id: 3, image: "/images/hero-slide-3.jpg" },
-    { id: 4, image: "/images/hero-slide-1.jpg" },
-    { id: 5, image: "/images/hero-slide-2.jpg" },
-    { id: 6, image: "/images/hero-slide-3.jpg" },
-  ];
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+
+  // Loading and error state
+  if (allSliders.isLoading)
+    return (
+      <AdminLayout>
+        <p className="text-center mt-4">Loading sliders...</p>
+      </AdminLayout>
+    );
+
+  if (allSliders.isError)
+    return (
+      <AdminLayout>
+        <p className="text-center mt-4 text-red-500">
+          Error: {allSliders.error?.message}
+        </p>
+      </AdminLayout>
+    );
+
+  const Sliders = allSliders.data || [];
   const indexOfLastItem = currentPage * itemsPerPage;
-const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-const currentItems = Sliders.slice(indexOfFirstItem, indexOfLastItem);
-const totalPages = Math.ceil(Sliders.length / itemsPerPage);
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = Sliders.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(Sliders.length / itemsPerPage);
 
-
-  // ✅ Handlers
-  const handleUpdate = (id: number) => {
-    alert(`Update Slide ${id}`);
+  const handleDelete = (id: string) => {
+    if (!confirm("Are you sure you want to delete this slide?")) return;
+    deleteSlider.mutate(id, {
+      onSuccess: () => toast.success("Slider deleted successfully!"),
+      onError: () => toast.error("Failed to delete slider!"),
+    });
   };
 
-  const handleDelete = (id: number) => {
-    if (confirm("Delete this slide?")) {
-      alert(`Deleted Slide ${id}`);
+  const handleEdit = (slider: Slider) => {
+    setEditingSlider(slider);
+    setPreviewImage(slider.image);
+    setSelectedFile(null);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+      setPreviewImage(URL.createObjectURL(file));
     }
+  };
+
+  const handleUpdate = () => {
+    if (!editingSlider) return toast.error("No slider selected!");
+    if (!selectedFile) return toast.error("Please select a file!");
+
+    updateSlider.mutate(
+      { id: editingSlider._id, image: selectedFile },
+      {
+        onSuccess: () => {
+          toast.success("Slider updated successfully!");
+          setEditingSlider(null);
+          setSelectedFile(null);
+          setPreviewImage(null);
+        },
+        onError: () => toast.error("Failed to update slider!"),
+      }
+    );
   };
 
   return (
     <AdminLayout>
+      <Toaster position="top-right" />
+
       <div className="bg-white p-6 rounded-2xl shadow-md">
         <h1 className="text-2xl font-bold mb-6">All Slides</h1>
 
@@ -58,28 +101,28 @@ const totalPages = Math.ceil(Sliders.length / itemsPerPage);
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {currentItems.map((slide) => (
-                <tr key={slide.id}>
-                  <td className="px-4 py-2">{slide.id}</td>
+              {currentItems.map((slide, idx) => (
+                <tr key={slide._id}>
+                  <td className="px-4 py-2">{indexOfFirstItem + idx + 1}</td>
                   <td className="px-4 py-2">
                     <Image
-                    height={64}
-                    width={96}
+                      height={64}
+                      width={96}
                       src={slide.image}
-                      alt={`Slide ${slide.id}`}
+                      alt={`Slide ${slide._id}`}
                       className="w-24 h-16 object-cover rounded"
                     />
                   </td>
                   <td className="px-4 py-2 flex gap-2">
                     <button
-                      onClick={() => handleUpdate(slide.id)}
+                      onClick={() => handleEdit(slide)}
                       className="p-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600"
                     >
                       <FaEdit />
                     </button>
                     <button
-                      onClick={() => handleDelete(slide.id)}
-                      className="p-2 bg-red-500 cursor-pointer text-white rounded hover:bg-red-600"
+                      onClick={() => handleDelete(slide._id)}
+                      className="p-2 cursor-pointer bg-red-500 text-white rounded hover:bg-red-600"
                     >
                       <FaTrash />
                     </button>
@@ -88,27 +131,60 @@ const totalPages = Math.ceil(Sliders.length / itemsPerPage);
               ))}
             </tbody>
           </table>
+
+          {/* Pagination */}
           <div className="flex justify-center items-center gap-2 mt-4">
-  <button
-    disabled={currentPage === 1}
-    onClick={() => setCurrentPage(prev => prev - 1)}
-    className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
-  >
-    Prev
-  </button>
-
-  <span>Page {currentPage} of {totalPages}</span>
-
-  <button
-    disabled={currentPage === totalPages}
-    onClick={() => setCurrentPage(prev => prev + 1)}
-    className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
-  >
-    Next
-  </button>
-</div>
-
+            <button
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage((prev) => prev - 1)}
+              className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+            >
+              Prev
+            </button>
+            <span>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage((prev) => prev + 1)}
+              className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
         </div>
+
+        {/* Update Modal */}
+        {editingSlider && (
+          <div className="fixed inset-0 backdrop-blur-3xl bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white p-6 rounded-xl w-96 relative">
+              <button
+                onClick={() => setEditingSlider(null)}
+                className="absolute top-2 right-2 text-gray-500 cursor-pointer hover:animate-spin hover:text-gray-800"
+              >
+                <FaTimes />
+              </button>
+              <h2 className="text-xl font-bold mb-4">Update Slider</h2>
+              <input type="file" onChange={handleFileChange} className="mb-4" />
+              {previewImage && (
+                <img
+                  src={previewImage}
+                  alt="Preview"
+                  className="w-full h-40 object-cover rounded mb-4"
+                />
+              )}
+              <button
+                onClick={handleUpdate}
+                disabled={updateSlider.status === "pending"}
+                className={`px-4 py-2 bg-secondary text-white rounded hover:bg-primary ${
+                  updateSlider.status === "pending" ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+              >
+                {updateSlider.status === "pending" ? "Updating..." : "Update"}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </AdminLayout>
   );
