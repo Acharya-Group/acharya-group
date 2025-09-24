@@ -98,7 +98,9 @@ const Page: React.FC = () => {
             className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
             onClick={() => setPreviewImage(null)}
           >
-            <img
+            <Image
+            height={200}
+            width={200}
               src={previewImage}
               alt="Preview"
               className="max-h-[80%] max-w-[80%] object-contain rounded shadow-lg"

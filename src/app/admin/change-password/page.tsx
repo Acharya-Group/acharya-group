@@ -8,7 +8,7 @@ const Page = () => {
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = () => {
     // Clear fields
     setCurrentPassword('')
     setNewPassword('')

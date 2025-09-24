@@ -9,6 +9,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import Link from "next/link";
 import { Blog, useBlogs } from "@/hooks/blogs";
 import toast from "react-hot-toast";
+import Image from "next/image";
 
 const Page: React.FC = () => {
   const [mounted, setMounted] = useState(false);
@@ -43,7 +44,7 @@ const Page: React.FC = () => {
         toast.success("Blog deleted successfully!");
         setDeletingId(null);
       },
-      onError: (err: any) => {
+      onError: (err) => {
         toast.error(err?.message || "Failed to delete blog!");
         setDeletingId(null);
       },
@@ -105,7 +106,7 @@ const Page: React.FC = () => {
                   <td className="px-4 py-2 max-w-[200px] truncate">{b.shortDescription}</td>
                   <td className="px-4 py-2 max-w-[200px] truncate">{b.description}</td>
                   <td className="px-4 py-2">
-                    <img src={b.image} alt={b.title} className="w-16 h-16 object-cover rounded" />
+                    <Image height={64} width={64} src={b.image} alt={b.title} className="w-16 h-16 object-cover rounded" />
                   </td>
                   <td className="px-4 py-2 flex gap-2">
                     <Link href={`/admin/update-blog/${b._id}`}>

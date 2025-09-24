@@ -5,7 +5,8 @@ import { useRouter, useParams } from "next/navigation";
 import AdminLayout from "@/componets/admin/AdminLayout";
 import toast from "react-hot-toast";
 import { useBlogs, Blog } from "@/hooks/blogs";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import Image from "next/image";
 
 const UpdateBlogPage = () => {
   const router = useRouter();
@@ -33,9 +34,10 @@ const UpdateBlogPage = () => {
         setShortDescription(data.blog.shortDescription);
         setDescription(data.blog.description);
         setPreview(data.blog.image);
-      } catch (err: any) {
-        toast.error(err?.message || "Failed to load blog!");
-      }
+      } catch (err: unknown) {
+      const error = err as AxiosError<{ message: string }>;
+      toast.error(error?.response?.data?.message || "Failed to load blog!");
+    }
     };
     fetchBlog();
   }, [blogId]);
@@ -80,10 +82,11 @@ const UpdateBlogPage = () => {
           setIsSubmitting(false);
           router.push("/admin/all-blog");
         },
-        onError: (err: any) => {
-          toast.error(err?.message || "Failed to update blog!");
-          setIsSubmitting(false);
-        },
+        onError: (err: unknown) => {
+      const error = err as AxiosError<{ message: string }>;
+      toast.error(error?.response?.data?.message || "Failed to update blog!");
+      setIsSubmitting(false);
+    },
       }
     );
   };
@@ -154,7 +157,9 @@ const UpdateBlogPage = () => {
             {preview && (
               <div className="mt-3">
                 <p className="text-sm text-gray-600 mb-1">Preview:</p>
-                <img
+                <Image 
+                height={160}
+                width={160}
                   src={preview}
                   alt="Selected Preview"
                   className="w-40 h-40 object-cover rounded-lg border shadow-sm"
