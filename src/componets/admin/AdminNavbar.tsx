@@ -10,7 +10,7 @@ interface AdminNavbarProps {
 
 const AdminNavbar: React.FC<AdminNavbarProps> = ({ onSidebarToggle, onLogout }) => {
   return (
-    <div className="bg-white px-4 py-3 flex items-center justify-between shadow-md">
+    <div className="bg-white px-4 py-3 flex items-center justify-between">
       {/* Sidebar Toggle */}
       <button
         onClick={onSidebarToggle}
