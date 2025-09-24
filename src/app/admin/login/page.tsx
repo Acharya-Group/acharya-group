@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useAdminLogin } from "../../../hooks/admin";
+import { AxiosError } from "axios";
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -12,17 +13,23 @@ export default function AdminLogin() {
 
   const loginMutation = useAdminLogin();
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    loginMutation.mutate(
-      { email, password },
-      {
-        onSuccess: () => router.push("/admin"),
-        onError: (err: any) =>
-          alert(err.response?.data?.message || "Login failed"),
-      }
-    );
-  };
+const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  loginMutation.mutate(
+    { email, password },
+    {
+      onSuccess: () => router.push("/admin"),
+      onError: (err: unknown) => {
+        // Type guard for AxiosError
+        if (err instanceof AxiosError) {
+          alert(err.response?.data?.message || "Login failed");
+        } else {
+          alert("Login failed");
+        }
+      },
+    }
+  );
+};
 
   const isLoading = loginMutation.status === "pending";
 

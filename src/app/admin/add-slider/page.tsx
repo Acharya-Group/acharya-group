@@ -2,8 +2,9 @@
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import AdminLayout from "@/componets/admin/AdminLayout";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useSlider } from "@/hooks/slider";
+import Image from "next/image";
 
 const AddSliderPage: React.FC = () => {
   const { addSlider } = useSlider();
@@ -90,8 +91,10 @@ const AddSliderPage: React.FC = () => {
           {preview && (
             <div className="mt-4">
               <p className="text-sm text-gray-600 mb-2">Preview:</p>
-              <img
-                src={preview}
+              <Image
+              height={256}
+              width={256}
+              src={preview}
                 alt="Preview"
                 className="w-full max-h-64 object-contain rounded-lg border"
               />

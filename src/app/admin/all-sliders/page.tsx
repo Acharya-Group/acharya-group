@@ -167,7 +167,9 @@ const Page: React.FC = () => {
               <h2 className="text-xl font-bold mb-4">Update Slider</h2>
               <input type="file" onChange={handleFileChange} className="mb-4" />
               {previewImage && (
-                <img
+                <Image
+                height={160}
+                width={160}
                   src={previewImage}
                   alt="Preview"
                   className="w-full h-40 object-cover rounded mb-4"

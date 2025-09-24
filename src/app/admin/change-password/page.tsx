@@ -3,6 +3,7 @@
 import AdminLayout from "@/componets/admin/AdminLayout";
 import React, { useState } from "react";
 import { useUpdatePassword, useVerifyPassword } from "@/hooks/admin";
+import { AxiosError } from "axios";
 
 const Page = () => {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -13,25 +14,30 @@ const Page = () => {
   const verifyPasswordMutation = useVerifyPassword();
   const updatePasswordMutation = useUpdatePassword();
 
-  const handleVerify = (e: React.FormEvent) => {
-    e.preventDefault();
-    verifyPasswordMutation.mutate(
-      { password: currentPassword },
-      {
-        onSuccess: (res) => {
-          if (res.success) {
-            setVerified(true);
-            alert("Current password verified ✅");
-          } else {
-            alert("Current password is incorrect ❌");
-          }
-        },
-        onError: (err: any) => {
+ const handleVerify = (e: React.FormEvent) => {
+  e.preventDefault();
+
+  verifyPasswordMutation.mutate(
+    { password: currentPassword },
+    {
+      onSuccess: (res) => {
+        if (res.success) {
+          setVerified(true);
+          alert("Current password verified ✅");
+        } else {
+          alert("Current password is incorrect ❌");
+        }
+      },
+      onError: (err: unknown) => {
+        if (err instanceof AxiosError) {
           alert(err.response?.data?.message || "Failed to verify password ❌");
-        },
-      }
-    );
-  };
+        } else {
+          alert("Failed to verify password ❌");
+        }
+      },
+    }
+  );
+};
 
   const handleUpdate = (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,8 +56,9 @@ const Page = () => {
           setConfirmPassword("");
           setVerified(false);
         },
-        onError: (err: any) => {
-          alert(err.response?.data?.message || "Failed to update password ❌");
+        onError: (err: unknown) => {
+          const error = err as AxiosError<{ message: string }>;
+  alert(error.response?.data?.message || "Faild To Update Password");
         },
       }
     );
