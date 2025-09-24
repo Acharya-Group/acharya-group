@@ -22,8 +22,6 @@ const Page: React.FC = () => {
   }, []);
 
   if (!mounted) return null;
-  if (allBlogs.isLoading) return <p>Loading blogs...</p>;
-  if (allBlogs.isError) return <p>Error: {allBlogs.error.message}</p>;
 
   const blogs: Blog[] = Array.isArray(allBlogs.data) ? allBlogs.data : [];
 
@@ -38,7 +36,7 @@ const Page: React.FC = () => {
   const handleDelete = (id: string) => {
     if (!confirm("Are you sure you want to delete this blog?")) return;
 
-    setDeletingId(id); // show loading state
+    setDeletingId(id); 
     deleteBlog.mutate(id, {
       onSuccess: () => {
         toast.success("Blog deleted successfully!");
@@ -98,6 +96,7 @@ const Page: React.FC = () => {
                 <th className="px-4 py-2 text-left">Actions</th>
               </tr>
             </thead>
+            
             <tbody className="bg-white divide-y divide-gray-200">
               {currentItems.map((b, index) => (
                 <tr key={b._id}>
@@ -124,6 +123,10 @@ const Page: React.FC = () => {
               ))}
             </tbody>
           </table>
+             {/* Loading / Error */}
+    {allBlogs.isLoading && <p className="mb-4 text-gray-500">Loading blogs...</p>}
+    {allBlogs.isError && <p className="mb-4 text-red-500">Error: {allBlogs.error.message}</p>}
+
         </div>
 
         {/* Pagination */}
