@@ -1,86 +1,71 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AdminLayout from '@/componets/admin/AdminLayout';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import toast from 'react-hot-toast';
+import useStationery, { Stationery } from '@/hooks/stationeryRate';
 
-interface Stationery {
-  id: number;
-  name: string;
-  rateOnLessQuantity: number;
-  quantityThreshold: number;
-  rateOnGreaterQuantity: number;
-}
-
-const Page: React.FC = () => {
-  const [stationeryList, setStationeryList] = useState<Stationery[]>([
-    {
-      id: 1,
-      name: 'Pen',
-      rateOnLessQuantity: 10,
-      quantityThreshold: 50,
-      rateOnGreaterQuantity: 8,
-    },
-    {
-      id: 2,
-      name: 'Notebook',
-      rateOnLessQuantity: 50,
-      quantityThreshold: 20,
-      rateOnGreaterQuantity: 45,
-    },
-  ]);
-
+const StationeryPage: React.FC = () => {
+  const { allStationery, createStationery, updateStationery, deleteStationery } = useStationery();
   const [form, setForm] = useState({
-    id: 0,
+    _id: '',
     name: '',
     rateOnLessQuantity: '',
     quantityThreshold: '',
     rateOnGreaterQuantity: '',
   });
-
   const [isEditing, setIsEditing] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // Handle form input change
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm(prev => ({ ...prev, [name]: value }));
   };
 
-  // Add or update stationery item
+  const resetForm = () =>
+    setForm({ _id: '', name: '', rateOnLessQuantity: '', quantityThreshold: '', rateOnGreaterQuantity: '' });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const itemData = {
+      name: form.name,
+      rateOnLessQuantity: Number(form.rateOnLessQuantity),
+      quantityThreshold: Number(form.quantityThreshold),
+      rateOnGreaterQuantity: Number(form.rateOnGreaterQuantity),
+    };
+
     if (isEditing) {
-      setStationeryList(prev =>
-        prev.map(item =>
-          item.id === form.id
-            ? {
-                ...item,
-                name: form.name,
-                rateOnLessQuantity: Number(form.rateOnLessQuantity),
-                quantityThreshold: Number(form.quantityThreshold),
-                rateOnGreaterQuantity: Number(form.rateOnGreaterQuantity),
-              }
-            : item
-        )
+      if (!form._id) return toast.error('Invalid ID for update');
+      updateStationery.mutate(
+        { _id: form._id, ...itemData },
+        {
+          onSuccess: () => {
+            toast.success('Item updated successfully!');
+            setIsEditing(false);
+            resetForm();
+          },
+          onError: () => toast.error('Failed to update item'),
+        }
       );
-      setIsEditing(false);
     } else {
-      const newItem: Stationery = {
-        id: Date.now(),
-        name: form.name,
-        rateOnLessQuantity: Number(form.rateOnLessQuantity),
-        quantityThreshold: Number(form.quantityThreshold),
-        rateOnGreaterQuantity: Number(form.rateOnGreaterQuantity),
-      };
-      setStationeryList(prev => [...prev, newItem]);
+      createStationery.mutate(itemData, {
+        onSuccess: () => {
+          toast.success('Item added successfully!');
+          resetForm();
+        },
+        onError: () => toast.error('Failed to add item'),
+      });
     }
-    setForm({ id: 0, name: '', rateOnLessQuantity: '', quantityThreshold: '', rateOnGreaterQuantity: '' });
   };
 
-  // Edit item -> populate form
   const handleEdit = (item: Stationery) => {
     setForm({
-      id: item.id,
+      _id: item._id,
       name: item.name,
       rateOnLessQuantity: item.rateOnLessQuantity.toString(),
       quantityThreshold: item.quantityThreshold.toString(),
@@ -89,13 +74,14 @@ const Page: React.FC = () => {
     setIsEditing(true);
   };
 
-  // Delete item
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     if (confirm('Are you sure you want to delete this item?')) {
-      setStationeryList(prev => prev.filter(item => item.id !== id));
-      if (isEditing && form.id === id) {
-        // Clear form if currently editing the deleted item
-        setForm({ id: 0, name: '', rateOnLessQuantity: '', quantityThreshold: '', rateOnGreaterQuantity: '' });
+      deleteStationery.mutate(id, {
+        onSuccess: () => toast.success('Item deleted successfully!'),
+        onError: () => toast.error('Failed to delete item'),
+      });
+      if (isEditing && form._id === id) {
+        resetForm();
         setIsEditing(false);
       }
     }
@@ -166,8 +152,8 @@ const Page: React.FC = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {stationeryList.map((item, idx) => (
-                <tr key={item.id}>
+              {allStationery.data?.map((item, idx) => (
+                <tr key={item._id}>
                   <td className="px-4 py-2">{idx + 1}</td>
                   <td className="px-4 py-2">{item.name}</td>
                   <td className="px-4 py-2">{item.rateOnLessQuantity}</td>
@@ -181,7 +167,7 @@ const Page: React.FC = () => {
                       <FaEdit />
                     </button>
                     <button
-                      onClick={() => handleDelete(item.id)}
+                      onClick={() => handleDelete(item._id)}
                       className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
                     >
                       <FaTrash />
@@ -197,4 +183,4 @@ const Page: React.FC = () => {
   );
 };
 
-export default Page;
+export default StationeryPage;
