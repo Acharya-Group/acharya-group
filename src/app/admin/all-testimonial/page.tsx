@@ -45,7 +45,7 @@ const Page: React.FC = () => {
         toast.success("Testimonial deleted successfully!");
         setDeletingId(null);
       },
-      onError: (err: any) => {
+      onError: (err) => {
         toast.error(err?.message || "Failed to delete testimonial!");
         setDeletingId(null);
       },

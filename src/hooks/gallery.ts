@@ -13,6 +13,18 @@ export interface Gallery {
   images: ImageType[];
 }
 
+// ✅ Custom hook to fetch a single gallery by ID
+export const useSingleGallery = (categoryId: string) => {
+  return useQuery<Gallery, Error>({
+    queryKey: ["gallery", categoryId],
+    queryFn: async () => {
+      const { data } = await api.get(`/gallery/${categoryId}`);
+      return data.data;
+    },
+    enabled: !!categoryId,
+  });
+};
+
 export const useGallery = () => {
   const queryClient = useQueryClient();
 
@@ -24,17 +36,6 @@ export const useGallery = () => {
       return data.data;
     },
   });
-
-  // 2️⃣ Fetch single gallery by ID
-  const getSingleGallery = (categoryId: string) =>
-    useQuery<Gallery, Error>({
-      queryKey: ["gallery", categoryId],
-      queryFn: async () => {
-        const { data } = await api.get(`/gallery/${categoryId}`);
-        return data.data;
-      },
-      enabled: !!categoryId, // only fetch if categoryId exists
-    });
 
   // 3️⃣ Create a category without images
   const createCategory = useMutation<void, Error, { category: string }>({
@@ -56,8 +57,7 @@ export const useGallery = () => {
   });
 
   // 5️⃣ Update a specific image
-const updateImage = useMutation<void, Error, { categoryId: string; imageId: string; image: File }>(
-  {
+  const updateImage = useMutation<void, Error, { categoryId: string; imageId: string; image: File }>({
     mutationFn: ({ categoryId, imageId, image }) => {
       const formData = new FormData();
       formData.append("image", image);
@@ -67,24 +67,18 @@ const updateImage = useMutation<void, Error, { categoryId: string; imageId: stri
     },
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: ["galleries"] });
-      queryClient.invalidateQueries({ queryKey: ["gallery", variables.categoryId] }); // ✅ invalidate single category
+      queryClient.invalidateQueries({ queryKey: ["gallery", variables.categoryId] });
     },
-  }
-);
-
+  });
 
   // 6️⃣ Delete a specific image
-const deleteImage = useMutation<void, Error, { categoryId: string; imageId: string }>(
-  {
-    mutationFn: ({ categoryId, imageId }) =>
-      api.delete(`/gallery/${categoryId}/image/${imageId}`),
+  const deleteImage = useMutation<void, Error, { categoryId: string; imageId: string }>({
+    mutationFn: ({ categoryId, imageId }) => api.delete(`/gallery/${categoryId}/image/${imageId}`),
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: ["galleries"] });
-      queryClient.invalidateQueries({ queryKey: ["gallery", variables.categoryId] }); // ✅ invalidate single category
+      queryClient.invalidateQueries({ queryKey: ["gallery", variables.categoryId] });
     },
-  }
-);
-
+  });
 
   // 7️⃣ Delete entire category
   const deleteGallery = useMutation<void, Error, string>({
@@ -94,7 +88,7 @@ const deleteImage = useMutation<void, Error, { categoryId: string; imageId: stri
 
   return {
     allGalleries,
-    getSingleGallery,
+    useSingleGallery,
     createCategory,
     addImagesToCategory,
     updateImage,

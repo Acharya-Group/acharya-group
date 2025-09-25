@@ -5,14 +5,14 @@ import AdminLayout from "@/componets/admin/AdminLayout";
 import Image from "next/image";
 import toast, { Toaster } from "react-hot-toast";
 import { FaTrash, FaEdit, FaTimes } from "react-icons/fa";
-import { useGallery, ImageType, Gallery } from "@/hooks/gallery";
+import { useGallery, ImageType } from "@/hooks/gallery";
 import { useParams } from "next/navigation";
 
 const SingleCategoryPage: React.FC = () => {
   const { id } = useParams(); // category _id from URL
-  const { getSingleGallery, updateImage, deleteImage } = useGallery();
+  const { useSingleGallery, updateImage, deleteImage } = useGallery();
 
-  const { data: category, isLoading, isError } = getSingleGallery(id as string);
+  const { data: category, isLoading, isError } = useSingleGallery(id as string);
 
   const [editingImage, setEditingImage] = useState<ImageType | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);

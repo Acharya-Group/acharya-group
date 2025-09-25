@@ -54,7 +54,7 @@ const Page = () => {
         setPreview(null);
         setIsSubmitting(false);
       },
-      onError: (err: any) => {
+      onError: (err) => {
         toast.error(err?.message || "Failed to add testimonial!");
         setIsSubmitting(false);
       },
