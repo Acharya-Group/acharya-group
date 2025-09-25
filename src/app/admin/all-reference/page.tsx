@@ -7,41 +7,32 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Link from "next/link";
-
-interface Reference {
-  id: number;
-  referenceNo: string;
-  date: string;
-  issuedTo: string;
-  issuedBy: string;
-  subject: string;
-}
+import useReference, { Reference } from "@/hooks/reference";
+import toast from "react-hot-toast";
 
 const Page: React.FC = () => {
+  const { allReference, deleteReference } = useReference();
   const [mounted, setMounted] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+  useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
-  const references: Reference[] = [
-    { id: 1, referenceNo: "REF001", date: "2025-09-22", issuedTo: "John Doe", issuedBy: "Admin", subject: "Project Approval" },
-    { id: 2, referenceNo: "REF002", date: "2025-09-21", issuedTo: "Jane Smith", issuedBy: "Admin", subject: "Budget Request" },
-    { id: 3, referenceNo: "REF003", date: "2025-09-20", issuedTo: "Alex Paul", issuedBy: "Admin", subject: "Leave Approval" },
-    { id: 4, referenceNo: "REF004", date: "2025-09-19", issuedTo: "Sara Lee", issuedBy: "Admin", subject: "Purchase Request" },
-    { id: 5, referenceNo: "REF005", date: "2025-09-18", issuedTo: "Mike Ross", issuedBy: "Admin", subject: "Policy Update" },
-    { id: 6, referenceNo: "REF006", date: "2025-09-17", issuedTo: "Rachel Zane", issuedBy: "Admin", subject: "Meeting Schedule" },
-  ];
+  const references = allReference.data || [];
 
-  const handleDelete = (id: number) => { if (confirm("Are you sure to delete this reference?")) alert(`Deleted reference ${id}`); };
+  const handleDelete = (id: string) => {
+    if (confirm("Are you sure to delete this reference?")) {
+      deleteReference.mutate(id, {
+        onSuccess: () => toast.success("Reference deleted!"),
+        onError: () => toast.error("Failed to delete reference!"),
+      });
+    }
+  };
 
   const copyData = () => {
     navigator.clipboard.writeText(JSON.stringify(references));
-    alert("Copied to clipboard!");
+    toast.success("Copied to clipboard!");
   };
 
   const exportPDF = () => {
@@ -52,6 +43,7 @@ const Page: React.FC = () => {
     doc.save("references.pdf");
   };
 
+  // Pagination
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = references.slice(indexOfFirstItem, indexOfLastItem);
@@ -85,17 +77,31 @@ const Page: React.FC = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {currentItems.map(ref => (
-                <tr key={ref.id}>
-                  <td className="px-4 py-2">{ref.id}</td>
+              {currentItems.map((ref, index) => (
+                <tr key={ref._id}>
+                  <td className="px-4 py-2">{indexOfFirstItem + index + 1}</td>
                   <td className="px-4 py-2">{ref.referenceNo}</td>
                   <td className="px-4 py-2">{ref.date}</td>
                   <td className="px-4 py-2">{ref.issuedTo}</td>
                   <td className="px-4 py-2">{ref.issuedBy}</td>
-                  <td className="px-4 py-2">{ref.subject}</td>
+                          <td className="px-4 py-2 max-w-[200px]">
+  <div className="max-h-[100px] overflow-y-auto whitespace-pre-line">
+    {ref.subject}
+  </div>
+</td>
+
                   <td className="px-4 py-2 flex gap-2">
-                    <Link href="/admin/update-reference"><button className="p-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600"><FaEdit /></button></Link>
-                    <button onClick={() => handleDelete(ref.id)} className="p-2 bg-red-500 text-white rounded hover:bg-red-600"><FaTrash /></button>
+                    <Link href={`/admin/update-reference/${ref._id}`}>
+                      <button className="p-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600">
+                        <FaEdit />
+                      </button>
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(ref._id)}
+                      className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
+                    >
+                      <FaTrash />
+                    </button>
                   </td>
                 </tr>
               ))}

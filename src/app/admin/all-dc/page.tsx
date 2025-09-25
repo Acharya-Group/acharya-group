@@ -104,10 +104,12 @@ const Page: React.FC = () => {
                   <td className="px-4 py-2">{dc.number}</td>
                   <td className="px-4 py-2">{dc.district}</td>
                   <td className="px-4 py-2">{dc.state}</td>
-                 <td className="px-4 py-2 max-w-[200px] max-h-[100px] overflow-y-auto whitespace-pre-line">
-  {dc.address}
-</td>
 
+                         <td className="px-4 py-2 max-w-[200px]">
+  <div className="max-h-[100px] overflow-y-auto whitespace-pre-line">
+    {dc.address}
+  </div>
+</td>
                   <td className="px-4 py-2 flex gap-2">
                     {/* Update: redirect with ID */}
                     <Link href={`/admin/update-dc/${dc._id}`}>

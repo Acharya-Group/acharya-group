@@ -14,7 +14,6 @@ export interface Dc {
   updatedAt?: string;
 }
 
-// Input type (no _id for creating/updating)
 export type DcInput = Omit<Dc, "_id" | "createdAt" | "updatedAt">;
 
 const useDc = () => {

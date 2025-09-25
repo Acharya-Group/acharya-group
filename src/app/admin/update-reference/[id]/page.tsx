@@ -1,9 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
 import AdminLayout from "@/componets/admin/AdminLayout";
+import useReference, { Reference } from "@/hooks/reference";
+import toast from "react-hot-toast";
 
-const Page: React.FC = () => {
+const UpdateReferencePage: React.FC = () => {
+  const router = useRouter();
+  const params = useParams();
+  const { id } = params as { id: string };
+
+  const { allReference, updateReference } = useReference();
+
   const [formData, setFormData] = useState({
     referenceNo: "",
     date: "",
@@ -12,20 +21,44 @@ const Page: React.FC = () => {
     subject: ""
   });
 
+  // Fetch the reference to pre-fill the form
+  useEffect(() => {
+    const reference = allReference.data?.find(ref => ref._id === id);
+    if (reference) {
+      setFormData({
+        referenceNo: reference.referenceNo,
+        date: reference.date,
+        issuedTo: reference.issuedTo,
+        issuedBy: reference.issuedBy,
+        subject: reference.subject
+      });
+    }
+  }, [allReference.data, id]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitted Reference Data:", formData);
-    alert("Reference added successfully!");
-    setFormData({ referenceNo: "", date: "", issuedTo: "", issuedBy: "", subject: "" });
+
+    updateReference.mutate(
+      { _id: id, ...formData } as Reference,
+      {
+        onSuccess: () => {
+          toast.success("Reference updated successfully!");
+          router.push("/admin/all-reference"); 
+        },
+        onError: () => {
+          toast.error("Failed to update reference!");
+        }
+      }
+    );
   };
 
   return (
     <AdminLayout>
-      <div className="bg-white p-6 rounded-2xl shadow-md  mx-auto mt-6">
+      <div className="bg-white p-6 rounded-2xl shadow-md mx-auto mt-6 max-w-lg">
         <h1 className="text-2xl font-bold mb-6">Update Reference</h1>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
@@ -93,16 +126,19 @@ const Page: React.FC = () => {
             ></textarea>
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-[#7a0706] text-white py-2 px-4 rounded-lg hover:bg-[#261b7d] transition transform hover:scale-[1.02]"
-          >
-            Update Reference
-          </button>
+        <button
+  type="submit"
+  disabled={updateReference.status === "pending"} 
+  className={`w-full px-4 py-2 bg-[#7a0706] text-white rounded-lg hover:bg-[#5a0505] transition ${
+    updateReference.status === "pending" ? "opacity-50 cursor-not-allowed" : ""
+  }`}
+>
+  {updateReference.status === "pending" ? "Saving..." : "Submit"}
+</button>
         </form>
       </div>
     </AdminLayout>
   );
 };
 
-export default Page;
+export default UpdateReferencePage;
