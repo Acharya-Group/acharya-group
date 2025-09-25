@@ -18,7 +18,7 @@ export const useVideo = () => {
       try {
         const { data } = await api.get<{ success: boolean; message: string; data: Video[] }>("/Video");
         return data.data || []; 
-      } catch (err) {
+      } catch{
         throw new Error("Failed to fetch videos");
       }
     },

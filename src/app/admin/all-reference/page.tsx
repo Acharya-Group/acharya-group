@@ -7,7 +7,7 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Link from "next/link";
-import useReference, { Reference } from "@/hooks/reference";
+import useReference from "@/hooks/reference";
 import toast from "react-hot-toast";
 
 const Page: React.FC = () => {

@@ -29,11 +29,11 @@ const Page: React.FC = () => {
     }
 
     createReference.mutate(formData, {
-      onSuccess: (data: Reference) => {
+      onSuccess: () => {
         toast.success("Reference added successfully!");
         setFormData({ referenceNo: "", date: "", issuedTo: "", issuedBy: "", subject: "" });
       },
-      onError: (error: any) => {
+      onError: (error) => {
         toast.error("Failed to add reference!");
         console.error(error);
       }

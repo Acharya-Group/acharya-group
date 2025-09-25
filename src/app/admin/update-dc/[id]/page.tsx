@@ -23,7 +23,7 @@ const Page = () => {
   // Find DC by ID after fetching allDc
   useEffect(() => {
     if (allDc.data && params?.id) {
-      const dcToEdit = allDc.data.find((dc: any) => dc._id === params.id);
+      const dcToEdit = allDc.data.find((dc) => dc._id === params.id);
       if (dcToEdit) {
         setFormData({
           name: dcToEdit.name || "",
