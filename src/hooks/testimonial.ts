@@ -60,7 +60,7 @@ export const useTestimonials = () => {
   // Delete a testimonial
   const deleteTestimonial = useMutation<void, Error, string>({
     mutationFn: async (id: string) => {
-      await api.delete(`/testimonial/${id}`);
+      await api.delete(`/Testimonial/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["testimonials"] });

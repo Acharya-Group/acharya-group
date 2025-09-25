@@ -27,7 +27,7 @@ const UpdateTestimonialPage = () => {
     const fetchTestimonial = async () => {
       try {
         const { data } = await axios.get<{ testimonial: Testimonial }>(
-          `${process.env.NEXT_PUBLIC_API_URL}/testimonial/${testimonialId}`
+          `${process.env.NEXT_PUBLIC_API_URL}/Testimonial/${testimonialId}`
         );
         setName(data.testimonial.name);
         setDescription(data.testimonial.description);
