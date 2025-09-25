@@ -1,76 +1,77 @@
 'use client';
 
-import React, { useState } from "react";
-import AdminLayout from "@/componets/admin/AdminLayout";
-import { FaEdit, FaTrash, FaEye } from "react-icons/fa";
-import Link from "next/link";
-
-interface Category {
-  id: number;
-  name: string;
-}
+import AdminLayout from '@/componets/admin/AdminLayout';
+import React, { useEffect, useState } from 'react';
+import { useGallery, Gallery } from '@/hooks/gallery';
+import Image from 'next/image';
+import toast, { Toaster } from 'react-hot-toast';
+import Link from 'next/link';
 
 const Page: React.FC = () => {
-  const [categories, setCategories] = useState<Category[]>([
-    { id: 1, name: "School" },
-    { id: 2, name: "College" },
-    { id: 3, name: "Hospital" },
-    { id: 4, name: "Office" },
-  ]);
+  const { allGalleries, deleteGallery } = useGallery();
+  const [localGalleries, setLocalGalleries] = useState<Gallery[]>([]);
 
-  const handleEdit = (id: number) => alert(`Edit Category ${id}`);
-  const handleDelete = (id: number) => {
-    if (confirm("Are you sure you want to delete this category?")) {
-      setCategories(prev => prev.filter(cat => cat.id !== id));
-    }
+  // Sync API data to local state
+  useEffect(() => {
+    if (allGalleries.data) setLocalGalleries(allGalleries.data);
+  }, [allGalleries.data]);
+
+  const handleDelete = (e: React.MouseEvent, id: string) => {
+    e.preventDefault(); // Prevent Link navigation
+    if (!confirm('Are you sure you want to delete this category?')) return;
+    deleteGallery.mutate(id, {
+      onSuccess: () => toast.success('Category deleted!'),
+      onError: () => toast.error('Failed to delete category'),
+    });
   };
 
   return (
     <AdminLayout>
-      <div className="bg-white p-6 rounded-2xl shadow-md">
-        <h1 className="text-2xl font-bold mb-6">Categories</h1>
+      <Toaster position="top-right" />
+      <div className="mx-auto bg-white p-6 rounded-2xl shadow-md max-w-6xl">
+        <h1 className="text-2xl font-bold mb-6">All Categories</h1>
 
-        <div className="overflow-x-auto">
-          <table className="min-w-[500px] w-full divide-y divide-gray-200">
-            <thead className="bg-secondary text-white">
-              <tr>
-                <th className="px-4 py-2 text-left">Sr no.</th>
-                <th className="px-4 py-2 text-left">Category</th>
-                <th className="px-4 py-2 text-left">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {categories.map((cat, index) => (
-                <tr key={cat.id}>
-                  <td className="px-4 py-2">{index + 1}</td>
-                  <td className="px-4 py-2">{cat.name}</td>
-                  <td className="px-4 py-2 flex gap-2">
-                    <button
-                      onClick={() => handleEdit(cat.id)}
-                      className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                      title="Edit"
-                    >
-                      <FaEdit />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(cat.id)}
-                      className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
-                      title="Delete"
-                    >
-                      <FaTrash />
-                    </button>
-                    <Link
-                      href={`/admin/gallery/${cat.name.toLowerCase()}`}
-                      className="p-2 flex gap-2 text-nowrap bg-green-500 text-white rounded hover:bg-green-600  items-center"
-                      title="View Images"
-                    >
-                      <FaEye />View Images
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        {allGalleries.isLoading && <p>Loading categories...</p>}
+        {allGalleries.isError && (
+          <p className="text-red-500">Error: {allGalleries.error?.message}</p>
+        )}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          {localGalleries.map((category) => (
+            <Link
+              href={`/admin/all-gallery/${category._id}`} // dynamic page
+              key={category._id}
+              className="bg-gray-50 p-4 rounded-xl shadow hover:shadow-lg transition relative group"
+            >
+              {/* Show first image as preview */}
+              {category.images.length > 0 ? (
+                <Image
+                  src={category.images[0].url}
+                  alt={category.category}
+                  width={300}
+                  height={200}
+                  className="w-full h-40 object-cover rounded-lg mb-2"
+                />
+              ) : (
+                <div className="w-full h-40 bg-gray-200 flex items-center justify-center rounded-lg mb-2">
+                  <span className="text-gray-500">No Image</span>
+                </div>
+              )}
+
+              <h2 className="text-lg font-semibold">{category.category}</h2>
+              <p className="text-sm text-gray-500">
+                {category.images.length} image{category.images.length !== 1 ? 's' : ''}
+              </p>
+
+              {/* Delete Button */}
+              <button
+                onClick={(e) => handleDelete(e, category._id)}
+                className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 text-sm z-10"
+              >
+                Delete
+              </button>
+            </Link>
+          ))}
         </div>
       </div>
     </AdminLayout>

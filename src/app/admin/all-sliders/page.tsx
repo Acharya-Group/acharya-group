@@ -16,6 +16,7 @@ const Page: React.FC = () => {
   const [editingSlider, setEditingSlider] = useState<Slider | null>(null);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [editLink, setEditLink] = useState<string>("");
 
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
@@ -55,6 +56,7 @@ const Page: React.FC = () => {
     setEditingSlider(slider);
     setPreviewImage(slider.image);
     setSelectedFile(null);
+    setEditLink(slider.link);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,16 +69,17 @@ const Page: React.FC = () => {
 
   const handleUpdate = () => {
     if (!editingSlider) return toast.error("No slider selected!");
-    if (!selectedFile) return toast.error("Please select a file!");
+    if (!editLink.trim()) return toast.error("Link cannot be empty!");
 
     updateSlider.mutate(
-      { id: editingSlider._id, image: selectedFile },
+      { id: editingSlider._id, image: selectedFile || undefined, link: editLink },
       {
         onSuccess: () => {
           toast.success("Slider updated successfully!");
           setEditingSlider(null);
           setSelectedFile(null);
           setPreviewImage(null);
+          setEditLink("");
         },
         onError: () => toast.error("Failed to update slider!"),
       }
@@ -96,6 +99,7 @@ const Page: React.FC = () => {
             <thead className="bg-secondary text-white">
               <tr>
                 <th className="px-4 py-2 text-left">Sr no.</th>
+                <th className="px-4 py-2 text-left">Link</th>
                 <th className="px-4 py-2 text-left">Image</th>
                 <th className="px-4 py-2 text-left">Actions</th>
               </tr>
@@ -104,6 +108,7 @@ const Page: React.FC = () => {
               {currentItems.map((slide, idx) => (
                 <tr key={slide._id}>
                   <td className="px-4 py-2">{indexOfFirstItem + idx + 1}</td>
+                  <td className="px-4 py-2">{slide.link}</td>
                   <td className="px-4 py-2">
                     <Image
                       height={64}
@@ -157,7 +162,7 @@ const Page: React.FC = () => {
         {/* Update Modal */}
         {editingSlider && (
           <div className="fixed inset-0 backdrop-blur-3xl bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white p-6 rounded-xl w-96 relative">
+            <div className="bg-white border border-blue-900 p-6 rounded-xl w-96 relative">
               <button
                 onClick={() => setEditingSlider(null)}
                 className="absolute top-2 right-2 text-gray-500 cursor-pointer hover:animate-spin hover:text-gray-800"
@@ -165,21 +170,38 @@ const Page: React.FC = () => {
                 <FaTimes />
               </button>
               <h2 className="text-xl font-bold mb-4">Update Slider</h2>
+
+              {/* Upload File */}
               <input type="file" onChange={handleFileChange} className="mb-4" />
+
+              {/* Update Link */}
+              <input
+                type="text"
+                value={editLink}
+                onChange={(e) => setEditLink(e.target.value)}
+                placeholder="Enter link"
+                className="w-full border px-3 py-2 rounded mb-4"
+              />
+
+              {/* Preview */}
               {previewImage && (
                 <Image
-                height={160}
-                width={160}
+                  height={160}
+                  width={160}
                   src={previewImage}
                   alt="Preview"
                   className="w-full h-40 object-cover rounded mb-4"
                 />
               )}
+
+              {/* Update Button */}
               <button
                 onClick={handleUpdate}
                 disabled={updateSlider.status === "pending"}
                 className={`px-4 py-2 bg-secondary text-white rounded hover:bg-primary ${
-                  updateSlider.status === "pending" ? "opacity-50 cursor-not-allowed" : ""
+                  updateSlider.status === "pending"
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
                 }`}
               >
                 {updateSlider.status === "pending" ? "Updating..." : "Update"}

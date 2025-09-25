@@ -1,145 +1,179 @@
 'use client';
 
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
 import AdminLayout from '@/componets/admin/AdminLayout';
 import Image from 'next/image';
+import toast, { Toaster } from 'react-hot-toast';
+import { useGallery, Gallery } from '@/hooks/gallery';
 
-interface Image {
-  url: string;
-  publicId: string;
-}
+const AddGalleryPage: React.FC = () => {
+  const { allGalleries, createCategory, addImagesToCategory } = useGallery();
 
-interface Gallery {
-  category: string;
-  images: Image[];
-}
-
-const Page: React.FC = () => {
-  const [galleries, setGalleries] = useState<Gallery[]>([
-    {
-      category: 'school',
-      images: [],
-    },
-  ]);
-
-  const [newCategory, setNewCategory] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [mounted, setMounted] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [newCategory, setNewCategory] = useState<string>('');
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
+  const [localGalleries, setLocalGalleries] = useState<Gallery[]>([]);
 
-  // Add new category
-  const handleAddCategory = () => {
-    if (!newCategory) return;
-    if (galleries.find(g => g.category === newCategory.toLowerCase())) {
-      alert('Category already exists!');
-      return;
-    }
-    setGalleries([...galleries, { category: newCategory.toLowerCase(), images: [] }]);
-    setNewCategory('');
-  };
+  useEffect(() => setMounted(true), []);
 
-  // Handle file selection & create preview URLs
+  // Update local galleries when API data changes
+  useEffect(() => {
+    if (allGalleries.data) setLocalGalleries(allGalleries.data);
+  }, [allGalleries.data]);
+
+  // Cleanup preview URLs
+  useEffect(() => {
+    return () => previewUrls.forEach((url) => URL.revokeObjectURL(url));
+  }, [previewUrls]);
+
+  if (!mounted) return null;
+
+  // Handle image selection and preview
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const filesArray = Array.from(e.target.files);
       setSelectedFiles(filesArray);
-      setPreviewUrls(filesArray.map(file => URL.createObjectURL(file)));
+      setPreviewUrls(filesArray.map((file) => URL.createObjectURL(file)));
     }
   };
 
   // Add images to selected category
   const handleAddImages = () => {
-    if (!selectedCategory) return alert('Select a category');
-    if (!selectedFiles.length) return alert('Select image(s)');
+    if (!selectedCategory) return toast.error('Select a category');
+    if (!selectedFiles.length) return toast.error('Select image(s)');
 
-    const updatedGalleries = galleries.map(g => {
-      if (g.category === selectedCategory) {
-        const newImages: Image[] = selectedFiles.map(file => ({
-          url: URL.createObjectURL(file),
-          publicId: file.name,
-        }));
-        return { ...g, images: [...g.images, ...newImages] };
+    addImagesToCategory.mutate(
+      { category: selectedCategory, images: selectedFiles },
+      {
+        onSuccess: () => {
+          toast.success('Images uploaded successfully!');
+          setSelectedFiles([]);
+          setPreviewUrls([]);
+        },
+        onError: () => toast.error('Failed to upload images!'),
       }
-      return g;
-    });
+    );
+  };
 
-    setGalleries(updatedGalleries);
-    setSelectedFiles([]);
-    setPreviewUrls([]);
+  // Create a new category
+  const handleAddCategory = () => {
+    const trimmed = newCategory.trim();
+    if (!trimmed) return toast.error('Enter a category name');
+
+    if (localGalleries.some((g) => g.category.toLowerCase() === trimmed.toLowerCase())) {
+      return toast.error('Category already exists!');
+    }
+
+    createCategory.mutate(
+      { category: trimmed },
+      {
+        onSuccess: () => {
+          toast.success('Category added successfully!');
+          setNewCategory('');
+          setSelectedCategory(trimmed);
+        },
+        onError: () => toast.error('Failed to add category!'),
+      }
+    );
   };
 
   return (
     <AdminLayout>
+      <Toaster position="top-right" />
       <div className="mx-auto bg-white p-6 rounded-2xl shadow-md">
-        <h1 className="text-2xl font-bold mb-4">Add Gallery</h1>
+        <h1 className="text-2xl font-bold mb-4">Add Gallery Images</h1>
 
-        {/* Add Category */}
-        <div className="my-4">
-          <input
-            type="text"
-            value={newCategory}
-            onChange={e => setNewCategory(e.target.value)}
-            placeholder="New Category"
-            className="w-full px-4 py-2 mb-4 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a0706]"
-          />
+        {/* Loading / Error */}
+        {allGalleries.isLoading && <p className="text-center mt-4">Loading categories...</p>}
+        {allGalleries.isError && (
+          <p className="text-center mt-4 text-red-500">
+            Error: {allGalleries.error?.message}
+          </p>
+        )}
+
+        {!allGalleries.isLoading && !allGalleries.isError && (
+          <>
+            {/* Add New Category */}
+            <div className="mb-4 flex gap-2">
+              <input
+                type="text"
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value)}
+                placeholder="New Category"
+                className="flex-1 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a0706]"
+              />
           <button
-            onClick={handleAddCategory}
-            className="w-full px-4 py-2 bg-[#7a0706] text-white rounded-lg hover:bg-[#5a0505] transition"
-          >
-            Add Category
-          </button>
-        </div>
+  onClick={handleAddCategory}
+  disabled={createCategory.status === 'pending'}
+  className={`px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition ${
+    createCategory.status === 'pending' ? 'opacity-50 cursor-not-allowed' : ''
+  }`}
+>
+  {createCategory.status === 'pending' ? 'Adding...' : 'Add'}
+</button>
 
-        {/* Select Category */}
-        <div className="">
-          <select
-            value={selectedCategory}
-            onChange={e => setSelectedCategory(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a0706]"
-          >
-            <option value="">Select Category</option>
-            {galleries.map(g => (
-              <option key={g.category} value={g.category}>
-                {g.category}
-              </option>
-            ))}
-          </select>
-        </div>
 
-        {/* Upload Images */}
-        <div className="my-4">
-          <input
-            type="file"
-            multiple
-            onChange={handleFileChange}
-            className="w-full px-4 py-2 border rounded-lg shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#7a0706]"
-          />
-          {previewUrls.length > 0 && (
-            <div className="flex flex-wrap gap-4 mt-2">
-              {previewUrls.map((url, index) => (
-                <Image
-                height={128}
-                width={128}
-                  key={index}
-                  src={url}
-                  alt={`preview-${index}`}
-                  className="w-32 h-32 object-cover rounded-lg border"
-                />
-              ))}
             </div>
-          )}
-        </div>
 
-        {/* Add Images Button */}
-        <button
-          onClick={handleAddImages}
-          className="w-full px-4 py-2 bg-[#7a0706] text-white rounded-lg hover:bg-[#5a0505] transition"
-        >
-          Add Images to Category
-        </button>
+            {/* Select Category */}
+            <div className="mb-4">
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a0706]"
+              >
+                <option value="">Select Category</option>
+                {localGalleries.map((g) => (
+                  <option key={g._id} value={g.category}>
+                    {g.category}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Upload Images */}
+            <div className="mb-4">
+              <input
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={handleFileChange}
+                className="w-full px-4 py-2 border rounded-lg shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#7a0706]"
+              />
+              {previewUrls.length > 0 && (
+                <div className="flex flex-wrap gap-4 mt-2">
+                  {previewUrls.map((url, index) => (
+                    <Image
+                      key={index}
+                      src={url}
+                      alt={`preview-${index}`}
+                      width={128}
+                      height={128}
+                      className="w-32 h-32 object-cover rounded-lg border"
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Upload Button */}
+           <button
+  onClick={handleAddImages}
+  disabled={addImagesToCategory.status === 'pending'}
+  className={`w-full px-4 py-2 bg-[#7a0706] text-white rounded-lg hover:bg-[#5a0505] transition ${
+    addImagesToCategory.status === 'pending' ? 'opacity-50 cursor-not-allowed' : ''
+  }`}
+>
+  {addImagesToCategory.status === 'pending' ? 'Uploading...' : 'Add Images to Category'}
+</button>
+
+          </>
+        )}
       </div>
     </AdminLayout>
   );
 };
 
-export default Page;
+export default AddGalleryPage;

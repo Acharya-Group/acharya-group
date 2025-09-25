@@ -12,10 +12,13 @@ export interface Slider {
 export const useSlider = () => {
   const queryClient = useQueryClient();
 
+  // Get all sliders
   const allSliders = useQuery<Slider[], Error>({
     queryKey: ["sliders"],
     queryFn: async () => {
-      const { data } = await api.get<{ message: string; sliders: Slider[] }>("/slider");
+      const { data } = await api.get<{ message: string; sliders: Slider[] }>(
+        "/slider"
+      );
       return data.sliders;
     },
   });
@@ -30,28 +33,40 @@ export const useSlider = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
     },
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["sliders"] })
-
+    onSuccess: () =>
+      queryClient.invalidateQueries({
+        queryKey: ["sliders"],
+      }),
   });
 
-  // Delete Slider Mutation
+  // Delete Slider
   const deleteSlider = useMutation<void, Error, string>({
     mutationFn: (id: string) => api.delete(`/slider/${id}`),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["sliders"] })
-
+    onSuccess: () =>
+      queryClient.invalidateQueries({
+        queryKey: ["sliders"],
+      }),
   });
 
-  // Update Slider Mutation
-  const updateSlider = useMutation<void, Error, { id: string; image: File }>({
-    mutationFn: ({ id, image }) => {
+  // Update Slider (✅ link + image both, image optional)
+  const updateSlider = useMutation<
+    void,
+    Error,
+    { id: string; image?: File; link: string }
+  >({
+    mutationFn: ({ id, image, link }) => {
       const formData = new FormData();
-      formData.append("image", image);
+      if (image) formData.append("image", image); // only if selected
+      formData.append("link", link);
+
       return api.put(`/slider/${id}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
     },
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["sliders"] })
-
+    onSuccess: () =>
+      queryClient.invalidateQueries({
+        queryKey: ["sliders"],
+      }),
   });
 
   return { allSliders, addSlider, deleteSlider, updateSlider };
