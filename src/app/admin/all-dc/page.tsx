@@ -7,41 +7,35 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Link from "next/link";
-
-interface DC {
-  id: number;
-  name: string;
-  email: string;
-  number: string;
-  district: string;
-  state: string;
-  address: string;
-}
+import useDc, { Dc } from "@/hooks/dc";
 
 const Page: React.FC = () => {
+  const { allDc, deleteDc } = useDc();
   const [mounted, setMounted] = useState(false);
 
-  // Pagination states
+  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5; // show 5 per page
+  const itemsPerPage = 5;
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+  useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
-  const dcs: DC[] = [
-    { id: 1, name: "John Doe", email: "john@example.com", number: "9876543210", district: "Pune", state: "Maharashtra", address: "123 MG Road" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", number: "9876501234", district: "Delhi", state: "Delhi", address: "45 Connaught Place" },
-    { id: 3, name: "Alex Paul", email: "alex@example.com", number: "9876505678", district: "Mumbai", state: "Maharashtra", address: "Bandra West" },
-    { id: 4, name: "Sara Lee", email: "sara@example.com", number: "9876509999", district: "Chennai", state: "Tamil Nadu", address: "T Nagar" },
-    { id: 5, name: "Mike Ross", email: "mike@example.com", number: "9876504321", district: "Kolkata", state: "West Bengal", address: "Park Street" },
-    { id: 6, name: "Rachel Zane", email: "rachel@example.com", number: "9876508765", district: "Jaipur", state: "Rajasthan", address: "MI Road" },
-  ];
+  if (allDc.isLoading) return <AdminLayout>Loading...</AdminLayout>;
+  if (allDc.isError) return <AdminLayout>Error loading DCs!</AdminLayout>;
 
-  const handleDelete = (id: number) => { if (confirm("Delete this DC?")) alert(`Deleted DC ${id}`); };
+  const dcs = allDc.data || [];
 
+  // Delete handler
+  const handleDelete = (id: string) => {
+    if (confirm("Delete this DC?")) {
+      deleteDc.mutate(id, {
+        onSuccess: () => alert("Deleted successfully!"),
+        onError: () => alert("Delete failed!"),
+      });
+    }
+  };
+
+  // Copy to clipboard
   const copyData = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
       navigator.clipboard.writeText(JSON.stringify(dcs));
@@ -49,6 +43,7 @@ const Page: React.FC = () => {
     }
   };
 
+  // Export PDF
   const exportPDF = () => {
     if (typeof window === "undefined") return;
 
@@ -87,7 +82,7 @@ const Page: React.FC = () => {
 
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="min-w-[800px] divide-y divide-gray-200">
+          <table className="min-w-[800px] divide-y divide-gray-200 w-full">
             <thead className="bg-secondary text-white">
               <tr>
                 <th className="px-4 py-2 text-left">Sr no.</th>
@@ -101,18 +96,29 @@ const Page: React.FC = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {currentItems.map(dc => (
-                <tr key={dc.id}>
-                  <td className="px-4 py-2">{dc.id}</td>
+              {currentItems.map((dc, index) => (
+                <tr key={dc._id}>
+                  <td className="px-4 py-2">{index + 1 + (currentPage-1)*itemsPerPage}</td>
                   <td className="px-4 py-2">{dc.name}</td>
                   <td className="px-4 py-2">{dc.email}</td>
                   <td className="px-4 py-2">{dc.number}</td>
                   <td className="px-4 py-2">{dc.district}</td>
                   <td className="px-4 py-2">{dc.state}</td>
-                  <td className="px-4 py-2">{dc.address}</td>
+                 <td className="px-4 py-2 max-w-[200px] max-h-[100px] overflow-y-auto whitespace-pre-line">
+  {dc.address}
+</td>
+
                   <td className="px-4 py-2 flex gap-2">
-                                       <Link href="/admin/update-dc"><button className="p-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600"><FaEdit /></button></Link>
-                    <button onClick={() => handleDelete(dc.id)} className="p-2 bg-red-500 text-white rounded hover:bg-red-600"><FaTrash /></button>
+                    {/* Update: redirect with ID */}
+                    <Link href={`/admin/update-dc/${dc._id}`}>
+                      <button className="p-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600">
+                        <FaEdit />
+                      </button>
+                    </Link>
+                    {/* Delete */}
+                    <button onClick={() => handleDelete(dc._id!)} className="p-2 bg-red-500 text-white rounded hover:bg-red-600">
+                      <FaTrash />
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -129,9 +135,7 @@ const Page: React.FC = () => {
           >
             Prev
           </button>
-
           <span>Page {currentPage} of {totalPages}</span>
-
           <button
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage(prev => prev + 1)}
