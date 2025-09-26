@@ -1,14 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
-import Button from "../ui/Button";
-import useReference from "@/hooks/reference"; // Your hook to fetch reference data
-import { FiSearch } from "react-icons/fi";
+import useReference from "@/hooks/reference";
+
+interface Reference {
+  _id: string;
+  referenceNo: string;
+  date: string;
+  issuedTo: string;
+  issuedBy: string;
+  subject: string;
+}
 
 const ValidateLetter = () => {
   const { allReference } = useReference();
   const [refNumber, setRefNumber] = useState("");
-  const [filteredRefs, setFilteredRefs] = useState<any[]>([]);
+  const [filteredRefs, setFilteredRefs] = useState<Reference[]>([]);
   const [checked, setChecked] = useState(false);
 
   const handleCheck = (e: React.FormEvent) => {
@@ -20,12 +27,13 @@ const ValidateLetter = () => {
 
     if (!allReference.data) return;
 
-    const filtered = allReference.data.filter((ref) =>
+    const filtered = allReference.data.filter((ref: Reference) =>
       ref.referenceNo.toLowerCase().includes(refNumber.toLowerCase())
     );
 
     setFilteredRefs(filtered);
     setChecked(true);
+    setRefNumber("");
   };
 
   return (
@@ -42,9 +50,9 @@ const ValidateLetter = () => {
           onChange={(e) => setRefNumber(e.target.value)}
           className="w-full px-5 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-400 transition"
         />
-       <button className="px-4 py-3 cursor-pointer font-semibold bg-gradient-to-r from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d] text-white rounded-lg transition duration-300">
-                          Check
-                        </button>
+        <button className="px-4 py-3 cursor-pointer font-semibold bg-gradient-to-r from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d] text-white rounded-lg transition duration-300">
+          Check
+        </button>
       </form>
 
       {/* Message if no data found */}
