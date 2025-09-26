@@ -3,7 +3,7 @@
 import AdminLayout from "@/componets/admin/AdminLayout";
 import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import useSeo, { SeoData } from "@/hooks/seo";
+import useSeo from "@/hooks/seo";
 
 const SeoPage: React.FC = () => {
   const { seoQuery, upsertSeo } = useSeo();
@@ -37,8 +37,8 @@ const SeoPage: React.FC = () => {
     try {
       await upsertSeo.mutateAsync(formData);
       toast.success("SEO saved successfully!");
-    } catch (err: any) {
-      toast.error(err.message || "Failed to save SEO");
+    } catch (err) {
+      toast.error("Failed to save SEO");
     } finally {
       setLoading(false); // ✅ stop loading
     }

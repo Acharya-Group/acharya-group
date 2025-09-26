@@ -45,7 +45,7 @@ const RkclNetwork: React.FC = () => {
         course: "",
         status: "pending",
       });
-    } catch (err) {
+    } catch (error) {
       toast.error("Failed to submit form");
     } finally {
       setIsSubmitting(false);

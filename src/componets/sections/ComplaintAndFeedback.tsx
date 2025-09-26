@@ -43,7 +43,7 @@ const FeedbackComplaintForm: React.FC = () => {
         message: "",
         status: "pending",
       });
-    } catch (err) {
+    } catch (error) {
       toast.error("Failed to submit form");
     } finally {
       setIsSubmitting(false);
