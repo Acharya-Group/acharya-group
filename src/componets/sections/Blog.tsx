@@ -44,10 +44,11 @@ const BlogSection = () => {
               nextEl: nextRef.current,
             }}
             onInit={(swiper) => {
-              // @ts-ignore
-              swiper.params.navigation.prevEl = prevRef.current;
-              // @ts-ignore
-              swiper.params.navigation.nextEl = nextRef.current;
+             // @ts-expect-error – Swiper types don’t allow direct assignment
+swiper.params.navigation.prevEl = prevRef.current;
+// @ts-expect-error – Swiper types don’t allow direct assignment
+swiper.params.navigation.nextEl = nextRef.current;
+
               swiper.navigation.init();
               swiper.navigation.update();
             }}

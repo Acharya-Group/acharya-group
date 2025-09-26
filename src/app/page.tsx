@@ -8,7 +8,7 @@ import Faqs from "@/componets/sections/Faqs";
 import Hero from "@/componets/sections/Hero";
 import Popup from "@/componets/sections/Popup";
 import Projects from "@/componets/sections/Projects";
-import TeamSection from "@/componets/sections/TeamSection";
+import Services from "@/componets/sections/Services";
 import Testimonials from "@/componets/sections/Testimonials";
 import VerifyApply from "@/componets/sections/VerifyApply";
 
@@ -21,7 +21,7 @@ export default function Home() {
       <About />
       <Projects />
       <Collaborations />
-      <TeamSection />
+      <Services />
       <Testimonials />
       <Faqs />
       <Blog/>

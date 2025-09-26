@@ -18,15 +18,14 @@ const OrdersPage: React.FC = () => {
     setMounted(true);
   }, []);
 
-  // ✅ Show toast on fetch success / error
-  useEffect(() => {
-    if (allOrders.isSuccess) {
-      toast.success("Orders fetched successfully!");
-    }
-    if (allOrders.isError) {
-      toast.error(allOrders.error?.message || "Failed to fetch orders");
-    }
-  }, [allOrders.isSuccess, allOrders.isError]);
+ useEffect(() => {
+  if (allOrders.isSuccess) {
+    toast.success("Orders fetched successfully!");
+  }
+  if (allOrders.isError) {
+    toast.error(allOrders.error?.message || "Failed to fetch orders");
+  }
+}, [allOrders.isSuccess, allOrders.isError, allOrders.error?.message]);
 
   if (!mounted) return null;
 

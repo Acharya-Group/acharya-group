@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Button from "../ui/Button";
 import { motion } from "framer-motion";
 import { FaBriefcase, FaEnvelope, FaPhone } from "react-icons/fa";
 import { districtCoordinators, projectManagersContact } from "@/lib/utils";
@@ -18,15 +17,7 @@ const ContactUsPage = () => {
   });
 
   const [success, setSuccess] = useState(false);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   
-
   const contactCards = [
     {
       id: 1,

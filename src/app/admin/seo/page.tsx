@@ -37,10 +37,10 @@ const SeoPage: React.FC = () => {
     try {
       await upsertSeo.mutateAsync(formData);
       toast.success("SEO saved successfully!");
-    } catch (err) {
+    } catch{
       toast.error("Failed to save SEO");
     } finally {
-      setLoading(false); // ✅ stop loading
+      setLoading(false);
     }
   };
 
