@@ -2,13 +2,23 @@
 import React from 'react'
 import { Menu, Search, LogOut } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 interface AdminNavbarProps {
   onSidebarToggle: () => void
-  onLogout?: () => void
 }
 
-const AdminNavbar: React.FC<AdminNavbarProps> = ({ onSidebarToggle, onLogout }) => {
+const AdminNavbar: React.FC<AdminNavbarProps> = ({ onSidebarToggle }) => {
+  const router = useRouter()
+
+  const handleLogout = () => {
+    // 1️⃣ Remove token
+    localStorage.removeItem('adminToken')
+
+    // 2️⃣ Redirect to login page
+    router.push('/admin/login')
+  }
+
   return (
     <div className="bg-white px-4 py-3 flex items-center justify-between">
       {/* Sidebar Toggle */}
@@ -41,8 +51,8 @@ const AdminNavbar: React.FC<AdminNavbarProps> = ({ onSidebarToggle, onLogout }) 
           className="w-10 h-10 rounded-full border-2 border-gray-300"
         />
         <button
-          onClick={onLogout}
-          className="p-2 rounded-md hover:bg-gray-200"
+          onClick={handleLogout}
+          className="p-2 rounded-md cursor-pointer hover:bg-gray-200"
           title="Logout"
         >
           <LogOut className="w-6 h-6 text-gray-800" />
