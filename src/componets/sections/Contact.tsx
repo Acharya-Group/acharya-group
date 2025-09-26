@@ -2,139 +2,175 @@
 import React, { useState } from "react";
 import SubHeading from "../ui/SubHeading";
 import Button from "../ui/Button";
+import useContact, { CreateContactInput } from "@/hooks/contactData";
+import toast from "react-hot-toast";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
+const ContactForm = () => {
+    const pathname = usePathname();
+  const { createContact } = useContact();
+
+  const [formData, setFormData] = useState<CreateContactInput>({
     name: "",
-    email: "",
     number: "",
+    district: "",
+    state: "",
     message: "",
+    status: "pending",
   });
 
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Handle input changes
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submit
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setError("");
+
+    // Simple validation
+    if (!formData.name || !formData.number || !formData.district || !formData.state || !formData.message) {
+      setError("All fields are required.");
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/info@achariyagroup.com`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+      await createContact.mutateAsync(formData);
+      setSuccess(true);
+      setFormData({
+        name: "",
+        number: "",
+        district: "",
+        state: "",
+        message: "",
+        status: "pending",
       });
-
-      if (res.ok) {
-        setSuccess(true);
-        setFormData({
-          name: "",
-          email: "",
-          number: "",
-          message: "",
-        });
-      } else {
-        alert("Something went wrong. Please try again.");
-      }
     } catch (err) {
       console.error(err);
-      alert("Error submitting form");
+      setError("Error submitting contact. Please try again.");
+      toast.error("Failed to submit contact.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <section className="bg-gray-50">
-      <div className="container mx-auto px-4 py-12 relative">
+    <section className={`bg-gray-50 ${pathname === "/"?"py-10":null} relative overflow-hidden}`}>
+
+  {pathname === "/" ? (
+  <>
+    <Image
+      className="absolute hover:scale-75 hover:animate-pulse transition-all flex top-[-10px] lg:top-0 end-[-50px] lg:end-[-50px] animate-spin lg:h-[100px] lg:w-[100px] w-[50px] h-[50px]"
+      src="/images/icons/red-circel.png"
+      alt="Decorative Dots"
+      width={100}
+      height={100}
+    />
+    <Image
+      className="absolute hover:scale-75 hover:animate-pulse transition-all flex bottom-[-10px] lg:bottom-0 start-[-50px] lg:start-[-50px] lg:h-[100px] lg:w-[100px] w-[50px] h-[50px] animate-spin"
+      src="/images/icons/red-circel.png"
+      alt="Decorative Dots"
+      width={100}
+      height={100}
+    />
+  </>
+) : null}
+
+        
+      <div className="container mx-auto px-4 max-w-5xl pb-12">
         <SubHeading content="Get in Touch" />
-        <div className="flex flex-wrap items-center mt-8 bg-white rounded-2xl shadow-lg overflow-hidden">
-          {/* Left Image */}
-          <div className="w-full md:w-1/2">
-            <Image
-              src="/images/contact.jpg"
-              alt="Contact illustration"
-              width={600}
-              height={400}
-              className="w-full h-full object-cover"
+          <p className="text-center text-gray-500 mb-6">
+                Reach out to us and we will respond as soon as possible.
+              </p>
+
+        <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-xl shadow-md">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleChange}
+              className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2"
+              required
+            />
+            <input
+              type="text"
+              name="number"
+              placeholder="Phone No"
+              value={formData.number}
+              onChange={handleChange}
+              className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2"
+              required
+            />
+            <input
+              type="text"
+              name="district"
+              placeholder="District"
+              value={formData.district}
+              onChange={handleChange}
+              className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2"
+              required
+            />
+            <input
+              type="text"
+              name="state"
+              placeholder="State"
+              value={formData.state}
+              onChange={handleChange}
+              className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2"
+              required
             />
           </div>
 
-          {/* Right Form */}
-          <div className="w-full md:w-1/2 p-8">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-6">
-              Send us a Message
-            </h3>
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Type your message here..."
+            className="border border-gray-300 rounded px-4 py-2 w-full h-32 focus:outline-none focus:ring-2"
+            required
+          />
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                name="name"
-                placeholder="Name *"
-                required
-                value={formData.name}
-                onChange={handleChange}
-                className="border-2 border-gray-200 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email *"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                className="border-2 border-gray-200 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-              <input
-                type="tel"
-                name="number"
-                placeholder="Phone Number"
-                value={formData.number}
-                onChange={handleChange}
-                className="border-2 border-gray-200 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-              <textarea
-                name="message"
-                placeholder="Message *"
-                required
-                rows={4}
-                value={formData.message}
-                onChange={handleChange}
-                className="border-2 border-gray-200 p-3 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-primary"
-              ></textarea>
+          {error && (
+            <div className="bg-red-50 text-red-700 p-4 rounded-lg border border-red-200">
+              <p className="font-medium">{error}</p>
+            </div>
+          )}
 
-              <Button
-                content="Submit"
-                type="submit"
-                className="w-auto px-6"
-              />
-            </form>
+          <div className="text-center">
+            <Button
+              type="submit"
+              content={isSubmitting ? "Submitting..." : "Submit"}
+              className="px-6 py-2"
+              
+            />
           </div>
-        </div>
+        </form>
+
+        {success && (
+          <div className="fixed inset-0 flex items-center justify-center overflow-hidden backdrop-blur-2xl bg-opacity-30 z-50">
+            <div className="bg-white p-8 rounded-xl shadow-lg text-center space-y-4 max-w-md">
+              <h3 className="text-2xl font-bold text-green-600">✅ Success!</h3>
+              <p>Your message has been sent successfully.</p>
+              <button
+                onClick={() => setSuccess(false)}
+                className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-green-600"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
       </div>
-
-      {/* Success Popup */}
-      {success && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-xl shadow-lg text-center space-y-4">
-            <h3 className="text-green-600 font-semibold text-lg">✅ Success!</h3>
-            <p>Your message has been sent successfully.</p>
-            <button
-              onClick={() => setSuccess(false)}
-              className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-400"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </section>
   );
 };
 
-export default Contact;
+export default ContactForm;

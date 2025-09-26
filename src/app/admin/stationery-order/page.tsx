@@ -38,7 +38,7 @@ const OrdersPage: React.FC = () => {
     );
   }
 
-  const orders = allOrders.data || [];
+  const orders = allOrders.data;
 
   // ✅ Pagination
   const totalPages = Math.ceil(orders.length / itemsPerPage);
@@ -73,7 +73,7 @@ const OrdersPage: React.FC = () => {
         <h1 className="text-2xl font-bold mb-6">Orders</h1>
 
         <div className="overflow-x-auto">
-          <table className="min-w-[900px] divide-y divide-gray-200">
+          <table className="min-w-[1000px] divide-y divide-gray-200">
             <thead className="bg-secondary text-white">
               <tr>
                 <th className="px-4 py-2 text-left">#</th>
@@ -96,7 +96,11 @@ const OrdersPage: React.FC = () => {
                   <td className="px-4 py-2">{order.name}</td>
                   <td className="px-4 py-2">{order.phoneNo}</td>
                   <td className="px-4 py-2">{order.kioskId}</td>
-                  <td className="px-4 py-2">{order.address}</td>
+                    <td className="px-4 py-2">
+                    <div className="w-30 h-20 p-2 border rounded overflow-y-auto">
+                      {order.address}
+                    </div>
+                  </td>
                   <td className="px-4 py-2">{order.pinCode}</td>
                   <td className="px-4 py-2">
                     <select

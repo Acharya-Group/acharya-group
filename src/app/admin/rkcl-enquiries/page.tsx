@@ -2,30 +2,15 @@
 
 import React, { useState, useEffect } from "react";
 import AdminLayout from "@/componets/admin/AdminLayout";
-import { FaEdit, FaTrash } from "react-icons/fa";
-
-interface Enquiry {
-  id: number;
-  name: string;
-  email: string;
-  number: string;
-  district: string;
-  tehsil: string;
-  city: string;
-  pinCode: string;
-  course: string;
-  status: "pending" | "processing" | "completed" | "cancelled";
-}
+import {FaTrash } from "react-icons/fa";
+import toast from "react-hot-toast";
+import useRkclEnquire, { RkclEnquire } from "@/hooks/rkclEnquire";
 
 const Page: React.FC = () => {
+  const { allEnquiries, deleteEnquiry, updateEnquiry } = useRkclEnquire();
   const [mounted, setMounted] = useState(false);
-  const [enquiries, setEnquiries] = useState<Enquiry[]>([
-    { id: 1, name: "John Doe", email: "john@example.com", number: "9876543210", district: "Pune", tehsil: "Haveli", city: "Pune", pinCode: "411001", course: "Computer Course", status: "pending" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", number: "9876501234", district: "Delhi", tehsil: "New Delhi", city: "Delhi", pinCode: "110001", course: "Accounting", status: "processing" },
-    { id: 3, name: "Alex Paul", email: "alex@example.com", number: "9876505678", district: "Mumbai", tehsil: "Andheri", city: "Mumbai", pinCode: "400050", course: "Math", status: "completed" },
-    { id: 4, name: "Sara Lee", email: "sara@example.com", number: "9876509999", district: "Chennai", tehsil: "Guindy", city: "Chennai", pinCode: "600032", course: "English", status: "cancelled" },
-  ]);
 
+  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
@@ -35,18 +20,28 @@ const Page: React.FC = () => {
 
   if (!mounted) return null;
 
+  const enquiries = allEnquiries.data || [];
   const totalPages = Math.ceil(enquiries.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentEnquiries = enquiries.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handleEdit = (id: number) => {
-    alert(`Edit enquiry ${id}`);
+  const handleStatusChange = (id: string, status: RkclEnquire["status"]) => {
+    updateEnquiry.mutate(
+      { _id: id, status } as RkclEnquire,
+      {
+        onSuccess: () => toast.success("Status updated successfully!"),
+        onError: () => toast.error("Failed to update status"),
+      }
+    );
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     if (confirm("Are you sure you want to delete this enquiry?")) {
-      setEnquiries(prev => prev.filter(e => e.id !== id));
+      deleteEnquiry.mutate(id, {
+        onSuccess: () => toast.success("Enquiry deleted successfully!"),
+        onError: () => toast.error("Failed to delete enquiry"),
+      });
     }
   };
 
@@ -73,9 +68,9 @@ const Page: React.FC = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {currentEnquiries.map(e => (
-                <tr key={e.id}>
-                  <td className="px-4 py-2">{e.id}</td>
+              {currentEnquiries.map((e, idx) => (
+                <tr key={e._id}>
+                  <td className="px-4 py-2">{indexOfFirstItem + idx + 1}</td>
                   <td className="px-4 py-2">{e.name}</td>
                   <td className="px-4 py-2">{e.email}</td>
                   <td className="px-4 py-2">{e.number}</td>
@@ -84,15 +79,11 @@ const Page: React.FC = () => {
                   <td className="px-4 py-2">{e.city}</td>
                   <td className="px-4 py-2">{e.pinCode}</td>
                   <td className="px-4 py-2">{e.course}</td>
+                  
                   <td className="px-4 py-2">
                     <select
-                      value={e.status}
-                      onChange={(ev) => {
-                        const newStatus = ev.target.value as Enquiry["status"];
-                        setEnquiries(prev =>
-                          prev.map(enq => enq.id === e.id ? { ...enq, status: newStatus } : enq)
-                        );
-                      }}
+                      value={e.status || "pending"}
+                      onChange={(ev) => handleStatusChange(e._id, ev.target.value as RkclEnquire["status"])}
                       className="border px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-[#7a0706]"
                     >
                       <option value="pending">Pending</option>
@@ -101,20 +92,12 @@ const Page: React.FC = () => {
                       <option value="cancelled">Cancelled</option>
                     </select>
                   </td>
-                  <td className="px-4 py-2 flex gap-2">
-                    <button
-                      onClick={() => handleEdit(e.id)}
-                      className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                    >
-                      <FaEdit />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(e.id)}
-                      className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
-                    >
-                      <FaTrash />
-                    </button>
-                  </td>
+                 <td className="px-4 py-2"> <button
+                                       onClick={() => handleDelete(e._id)}
+                                       className="p-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:opacity-50"
+                                     >
+                                       <FaTrash />
+                                     </button></td>
                 </tr>
               ))}
             </tbody>
@@ -125,15 +108,17 @@ const Page: React.FC = () => {
         <div className="flex justify-center items-center gap-2 mt-4">
           <button
             disabled={currentPage === 1}
-            onClick={() => setCurrentPage(prev => prev - 1)}
+            onClick={() => setCurrentPage((prev) => prev - 1)}
             className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
           >
             Prev
           </button>
-          <span>Page {currentPage} of {totalPages}</span>
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
           <button
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage(prev => prev + 1)}
+            disabled={currentPage === totalPages || totalPages === 0}
+            onClick={() => setCurrentPage((prev) => prev + 1)}
             className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
           >
             Next

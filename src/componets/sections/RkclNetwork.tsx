@@ -1,17 +1,25 @@
 "use client";
+
 import React, { useState } from "react";
+import toast from "react-hot-toast";
+import useRkclEnquire, { CreateRkclInput } from "@/hooks/rkclEnquire";
 
 const RkclNetwork: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const { createEnquiry } = useRkclEnquire();
+
+  const [formData, setFormData] = useState<CreateRkclInput>({
     name: "",
-    phone: "",
     email: "",
+    number: "",
     district: "",
     tehsil: "",
-    cityVillage: "",
+    city: "",
     pinCode: "",
     course: "",
+    status: "pending",
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -19,25 +27,29 @@ const RkclNetwork: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    console.log("✅ Form Submitted:", formData);
-
-    // Show popup
-    alert("🎉 Form submitted successfully!");
-
-    // Reset form fields
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      district: "",
-      tehsil: "",
-      cityVillage: "",
-      pinCode: "",
-      course: "",
-    });
+    try {
+      await createEnquiry.mutateAsync(formData);
+      toast.success("🎉 Form submitted successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        number: "",
+        district: "",
+        tehsil: "",
+        city: "",
+        pinCode: "",
+        course: "",
+        status: "pending",
+      });
+    } catch (err) {
+      toast.error("Failed to submit form");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -73,9 +85,9 @@ const RkclNetwork: React.FC = () => {
           </label>
           <input
             type="number"
-            name="phone"
+            name="number"
             placeholder="Enter your phone number"
-            value={formData.phone}
+            value={formData.number}
             onChange={handleChange}
             className="w-full border border-gray-300 rounded-lg p-3"
             required
@@ -127,16 +139,16 @@ const RkclNetwork: React.FC = () => {
           />
         </div>
 
-        {/* City/Village */}
+        {/* City */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             CITY / VILLAGE
           </label>
           <input
             type="text"
-            name="cityVillage"
+            name="city"
             placeholder="Enter your city or village"
-            value={formData.cityVillage}
+            value={formData.city}
             onChange={handleChange}
             className="w-full border border-gray-300 rounded-lg p-3"
           />
@@ -157,7 +169,7 @@ const RkclNetwork: React.FC = () => {
           />
         </div>
 
-        {/* Course Dropdown */}
+        {/* Course */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             COURSE
@@ -178,13 +190,42 @@ const RkclNetwork: React.FC = () => {
           </select>
         </div>
 
-        {/* Submit button */}
-        <div className="md:col-span-2">
+        {/* Submit Button */}
+        <div className="md:col-span-2 text-center pt-4">
           <button
             type="submit"
-            className="w-full px-10 py-3 rounded cursor-pointer bg-gradient-to-r duration-300 from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d] transition text-white font-semibold"
+            disabled={isSubmitting}
+            className={`px-6 py-3 rounded-lg cursor-pointer text-white font-medium text-lg w-full
+              bg-gradient-to-r from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d]
+              disabled:opacity-50 flex items-center justify-center transition`}
           >
-            Submit
+            {isSubmitting ? (
+              <>
+                <svg
+                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                SUBMITTING...
+              </>
+            ) : (
+              "SUBMIT"
+            )}
           </button>
         </div>
       </form>

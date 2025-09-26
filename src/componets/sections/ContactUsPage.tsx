@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { FaBriefcase, FaEnvelope, FaPhone } from "react-icons/fa";
 import { districtCoordinators, projectManagersContact } from "@/lib/utils";
 import SubHeading from "../ui/SubHeading";
+import ContactForm from "./Contact";
 
 const ContactUsPage = () => {
   const [formData, setFormData] = useState({
@@ -24,33 +25,7 @@ const ContactUsPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    try {
-      const res = await fetch(`https://formsubmit.co/ajax/info@achariyagroup.com`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        setSuccess(true);
-        setFormData({
-          name: "",
-          phone: "",
-          district: "",
-          state: "",
-          message: "",
-        });
-      } else {
-        alert("Something went wrong. Please try again.");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Error submitting form");
-    }
-  };
+  
 
   const contactCards = [
     {
@@ -104,67 +79,10 @@ const ContactUsPage = () => {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <h2 className="text-2xl font-semibold text-center mb-2">Get In Touch</h2>
-      <p className="text-center text-gray-500 mb-6">
-        Reach out to us and we will respond as soon as possible.
-      </p>
+  
+    
 
-      {/* Contact Form */}
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Name"
-            className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="text"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="Phone No"
-            className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="text"
-            name="district"
-            value={formData.district}
-            onChange={handleChange}
-            placeholder="District"
-            className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="text"
-            name="state"
-            value={formData.state}
-            onChange={handleChange}
-            placeholder="State"
-            className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-        </div>
-
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Type your message here..."
-          className="border border-gray-300 rounded px-4 py-2 w-full h-32 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          required
-        />
-
-        <div className="flex justify-center">
-          <div className="inline-block">
-            <Button type="submit" content="Submit" className="px-6 py-2" />
-          </div>
-        </div>
-      </form>
+   <ContactForm/>
 
       {/* Success Popup */}
       {success && (
