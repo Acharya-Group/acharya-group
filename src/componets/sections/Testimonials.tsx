@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SubHeading from "../ui/SubHeading";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
@@ -9,45 +9,21 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { Testimonial, useTestimonials } from "@/hooks/testimonial";
 
 const Testimonials = () => {
-  const Testimonial = [
-    {
-      id: 1,
-      image: "/images/review1.jpg",
-      title: "Rahul Sharma",
-      description:
-        "Achariya Group’s team was very supportive and guided us at every step. Their service quality is excellent.",
-    },
-    {
-      id: 2,
-      image: "/images/review2.jpg",
-      title: "Priya Mehta",
-      description:
-        "Working with Achariya Group was a smooth experience. They delivered our project on time with great results.",
-    },
-    {
-      id: 3,
-      image: "/images/review3.jpg",
-      title: "Amit Verma",
-      description:
-        "I truly appreciate the professionalism and expertise of the Achariya Group team. Highly recommended!",
-    },
-    {
-      id: 4,
-      image: "/images/review4.jpg",
-      title: "Neha Patel",
-      description:
-        "The dedication by Achariya Group was remarkable. They understood our needs and executed",
-    },
-    {
-      id: 5,
-      image: "/images/review5.jpg",
-      title: "Suresh Iyer",
-      description:
-        "We are very satisfied with the outcome. Achariya Group provided innovative solutions and reliable support.",
-    },
-  ];
+  const { allTestimonials } = useTestimonials();
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+
+  useEffect(() => {
+    if (allTestimonials.isSuccess && allTestimonials.data) {
+      setTestimonials(allTestimonials.data);
+    }
+  }, [allTestimonials.isSuccess, allTestimonials.data]);
+
+  if (allTestimonials.isLoading) return <p>Loading testimonials...</p>;
+  if (allTestimonials.isError) return <p>Error: {allTestimonials.error?.message}</p>;
+  if (!testimonials.length) return <p>No testimonials found</p>;
 
   return (
     <section className="bg-gray-50">
@@ -59,20 +35,11 @@ const Testimonials = () => {
             spaceBetween={20}
             slidesPerView={3}
             centeredSlides={true}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
             speed={800}
             loop={true}
-            pagination={{
-              el: ".projects-pagination",
-              clickable: true,
-            }}
-            navigation={{
-              nextEl: ".project-next",
-              prevEl: ".project-prev",
-            }}
+            pagination={{ el: ".projects-pagination", clickable: true }}
+            navigation={{ nextEl: ".project-next", prevEl: ".project-prev" }}
             breakpoints={{
               0: { slidesPerView: 1 },
               640: { slidesPerView: 1 },
@@ -81,22 +48,22 @@ const Testimonials = () => {
             }}
             className="overflow-visible"
           >
-            {Testimonial.map((project) => (
-              <SwiperSlide key={project.id}>
+            {testimonials.map((testimonial) => (
+              <SwiperSlide key={testimonial._id}>
                 <div className="p-[2px] rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 bg-[length:200%_200%] animate-borderSpin">
                   <div className="bg-white p-6 rounded-xl shadow-md flex flex-col items-center">
                     <Image
                       height={80}
                       width={80}
-                      src={project.image}
-                      alt={project.title}
+                      src={testimonial.Image} 
+                      alt={testimonial.name}
                       className="w-20 h-20 rounded-full mb-4 shadow-lg"
                     />
                     <h3 className="text-lg font-semibold text-center mb-2">
-                      {project.title}
+                      {testimonial.name}
                     </h3>
                     <p className="text-gray-600 text-sm text-center italic">
-                      "{project.description}"
+                      "{testimonial.description}"
                     </p>
                   </div>
                 </div>

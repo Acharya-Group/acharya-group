@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -8,22 +8,21 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import Link from "next/link";
+import { Slider, useSlider } from "@/hooks/slider";
 
 const Hero = () => {
-  const slides = [
-    {
-      image: "/images/hero-slide-1.jpg",
-      link: "/kiosk-banking", 
-    },
-    {
-      image: "/images/hero-slide-2.jpg",
-      link: "/e-mitra", 
-    },
-    {
-      image: "/images/hero-slide-3.jpg",
-      link: "/gallery",
-    },
-  ];
+   const { allSliders } = useSlider();
+  const [sliders, setSliders] = useState<Slider[]>([]);
+
+  useEffect(() => {
+    if (allSliders.isSuccess && allSliders.data) {
+      setSliders(allSliders.data);
+    }
+  }, [allSliders.isSuccess, allSliders.data]);
+
+  if (allSliders.isLoading) return <p>Loading sliders...</p>;
+  if (allSliders.isError) return <p>Error: {allSliders.error?.message}</p>;
+  if (!sliders.length) return <p>No sliders found</p>;
 
   return (
     <div className="relative w-full max-w-[1920px] mx-auto">
@@ -43,7 +42,7 @@ const Hero = () => {
         }}
         className="hero_slider w-full h-[150px] sm:h-[300px] lg:h-[400px]"
       >
-        {slides.map((slide, index) => (
+        {sliders.map((slide, index) => (
           <SwiperSlide key={index}>
             <Link
               href={slide.link}
