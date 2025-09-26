@@ -1025,43 +1025,36 @@ export const projects = [
     title: "Shopneo",
     desc: "A modern e-commerce platform designed to provide seamless shopping experiences for customers with intuitive design and robust functionality.",
     img: "/images/shopneo.png",
-    link: "/projects/shopneo",
+    link: "/shopneo",
   },
   {
     id: 2,
     title: "e-Mitra",
     desc: "An advanced digital service portal enabling easy access to government services and information for citizens.",
     img: "/images/e-Mitra.jpg",
-    link: "/projects/e-mitra",
+    link: "/e-mitra",
   },
   {
     id: 3,
     title: "Kiosk Banking/BankBc",
     desc: "A futuristic banking solution with kiosk services for convenient access to financial services in remote areas.",
     img: "/images/kisok-bank.jpg",
-    link: "/projects/kiosk-banking",
+    link: "/kiosk-banking",
   },
   {
     id: 5,
     title: "RKCL",
     desc: "Smart learning and training solutions with interactive features for students and professionals.",
     img: "/images/RKCL.jpg",
-    link: "/projects/rkcl",
+    link: "/rkcl",
   },
   {
     id: 6,
     title: "School Easy",
     desc: "School management system that streamlines administration, student tracking, and communication.",
     img: "/images/School-Easy.jpg",
-    link: "/projects/school-easy",
+    link: "/school-easy",
   },
-  // {
-  //   id: 7,
-  //   title: "Paytm Registration",
-  //   desc: "A platform enabling quick and secure registration and onboarding for digital payment services.",
-  //   img: "/images/Paytm-Registration.jpg",
-  //   link: "/projects/paytm-registration",
-  // },
 ];
 
 
