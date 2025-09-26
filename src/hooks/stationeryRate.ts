@@ -15,7 +15,7 @@ export interface Stationery {
 // Type for creating a stationery item (exclude _id, timestamps)
 type CreateStationeryInput = Omit<Stationery, "_id" | "createdAt" | "updatedAt">;
 
-const useStationery = () => {
+export const useStationery = () => {
   const queryClient = useQueryClient();
 
   // Fetch all stationery items
@@ -42,7 +42,7 @@ const useStationery = () => {
   // Update a stationery item
   const updateStationery = useMutation<Stationery, Error, Stationery>({
     mutationFn: async (updatedItem) => {
-      const { data } = await api.put(`/stationery/${updatedItem._id}`, updatedItem);
+      const { data } = await api.put(`/StationeryRate/${updatedItem._id}`, updatedItem);
       return data.data;
     },
     onSuccess: (updatedItem) => {

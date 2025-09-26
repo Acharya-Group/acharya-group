@@ -58,7 +58,7 @@ const UpdateReferencePage: React.FC = () => {
 
   return (
     <AdminLayout>
-      <div className="bg-white p-6 rounded-2xl shadow-md mx-auto mt-6 max-w-lg">
+      <div className="bg-white p-6 rounded-2xl shadow-md mx-auto mt-6">
         <h1 className="text-2xl font-bold mb-6">Update Reference</h1>
 
         <form className="space-y-4" onSubmit={handleSubmit}>

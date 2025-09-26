@@ -2,90 +2,69 @@
 
 import React, { useState, useEffect } from "react";
 import AdminLayout from "@/componets/admin/AdminLayout";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
+import toast from "react-hot-toast";
+import useStationeryOrder, { StationeryOrder } from "@/hooks/stationeryOrder";
 
-interface StationeryItem {
-  id: number;
-  type: string;
-  quantity: number;
-}
-
-interface Order {
-  id: number;
-  name: string;
-  phoneNo: string;
-  kioskId: string;
-  address: string;
-  pinCode: string;
-  status: "pending" | "processing" | "completed" | "cancelled";
-  items: StationeryItem[];
-}
-
-const Page: React.FC = () => {
+const OrdersPage: React.FC = () => {
   const [mounted, setMounted] = useState(false);
-  const [orders, setOrders] = useState<Order[]>([
-    {
-      id: 1,
-      name: "John Doe",
-      phoneNo: "9876543210",
-      kioskId: "K123",
-      address: "123 MG Road",
-      pinCode: "411001",
-      status: "pending",
-      items: [
-        { id: 1, type: "Pen", quantity: 10 },
-        { id: 2, type: "Notebook", quantity: 5 },
-      ],
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      phoneNo: "9876501234",
-      kioskId: "K124",
-      address: "45 Connaught Place",
-      pinCode: "110001",
-      status: "processing",
-      items: [
-        { id: 1, type: "Pencil", quantity: 20 },
-        { id: 2, type: "Eraser", quantity: 10 },
-      ],
-    },
-    {
-      id: 3,
-      name: "Alex Paul",
-      phoneNo: "9876505678",
-      kioskId: "K125",
-      address: "Bandra West",
-      pinCode: "400050",
-      status: "completed",
-      items: [
-        { id: 1, type: "Marker", quantity: 15 },
-      ],
-    },
-  ]);
-
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
+
+  // ✅ Using your hook
+  const { allOrders, updateOrder, deleteOrder } = useStationeryOrder();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // ✅ Show toast on fetch success / error
+  useEffect(() => {
+    if (allOrders.isSuccess) {
+      toast.success("Orders fetched successfully!");
+    }
+    if (allOrders.isError) {
+      toast.error(allOrders.error?.message || "Failed to fetch orders");
+    }
+  }, [allOrders.isSuccess, allOrders.isError]);
+
   if (!mounted) return null;
 
+  if (allOrders.isLoading) {
+    return (
+      <AdminLayout>
+        <p>Loading orders...</p>
+      </AdminLayout>
+    );
+  }
+
+  const orders = allOrders.data || [];
+
+  // ✅ Pagination
   const totalPages = Math.ceil(orders.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentOrders = orders.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handleEdit = (id: number) => {
-    alert(`Edit order ${id}`);
+  // ✅ Handle status change with toast
+  const handleStatusChange = (order: StationeryOrder, newStatus: string) => {
+    updateOrder.mutate(
+      { ...order, status: newStatus },
+      {
+        onSuccess: () => toast.success("Order status updated!"),
+        onError: () => toast.error("Failed to update status"),
+      }
+    );
   };
 
-  const handleDelete = (id: number) => {
-    if (confirm("Are you sure you want to delete this order?")) {
-      setOrders(prev => prev.filter(order => order.id !== id));
-    }
+  // ✅ Handle delete with toast
+  const handleDelete = (id: string) => {
+    if (!confirm("Are you sure you want to delete this order?")) return;
+
+    deleteOrder.mutate(id, {
+      onSuccess: () => toast.success("Order deleted!"),
+      onError: () => toast.error("Failed to delete order"),
+    });
   };
 
   return (
@@ -109,9 +88,11 @@ const Page: React.FC = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {currentOrders.map(order => (
-                <tr key={order.id}>
-                  <td className="px-4 py-2">{order.id}</td>
+              {currentOrders.map((order, index) => (
+                <tr key={order._id}>
+                  <td className="px-4 py-2">
+                    {(currentPage - 1) * itemsPerPage + index + 1}
+                  </td>
                   <td className="px-4 py-2">{order.name}</td>
                   <td className="px-4 py-2">{order.phoneNo}</td>
                   <td className="px-4 py-2">{order.kioskId}</td>
@@ -119,14 +100,9 @@ const Page: React.FC = () => {
                   <td className="px-4 py-2">{order.pinCode}</td>
                   <td className="px-4 py-2">
                     <select
-                      value={order.status}
-                      onChange={(e) => {
-                        const newStatus = e.target.value as Order['status'];
-                        setOrders(prev =>
-                          prev.map(o => o.id === order.id ? { ...o, status: newStatus } : o)
-                        );
-                      }}
-                      className="border px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-[#7a0706]"
+                      value={order.status || "pending"}
+                      onChange={(e) => handleStatusChange(order, e.target.value)}
+                      className="px-2 py-1 rounded border-[#7a0706] border-[2px]"
                     >
                       <option value="pending">Pending</option>
                       <option value="processing">Processing</option>
@@ -136,21 +112,18 @@ const Page: React.FC = () => {
                   </td>
                   <td className="px-4 py-2">
                     <ul className="list-disc pl-4">
-                      {order.items.map(item => (
-                        <li key={item.id}>{item.type} - {item.quantity}</li>
+                      {order.items.map((item, idx) => (
+                        <li key={idx}>
+                          {item.type} - {item.quantity}
+                        </li>
                       ))}
                     </ul>
                   </td>
-                  <td className="px-4 py-2 flex gap-2">
+                  <td className="px-4 py-2">
                     <button
-                      onClick={() => handleEdit(order.id)}
-                      className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                    >
-                      <FaEdit />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(order.id)}
-                      className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
+                      onClick={() => handleDelete(order._id)}
+                      disabled={deleteOrder.isPending}
+                      className="p-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:opacity-50"
                     >
                       <FaTrash />
                     </button>
@@ -165,15 +138,17 @@ const Page: React.FC = () => {
         <div className="flex justify-center items-center gap-2 mt-4">
           <button
             disabled={currentPage === 1}
-            onClick={() => setCurrentPage(prev => prev - 1)}
+            onClick={() => setCurrentPage((prev) => prev - 1)}
             className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
           >
             Prev
           </button>
-          <span>Page {currentPage} of {totalPages}</span>
+          <span>
+            Page {currentPage} of {totalPages || 1}
+          </span>
           <button
             disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage(prev => prev + 1)}
+            onClick={() => setCurrentPage((prev) => prev + 1)}
             className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
           >
             Next
@@ -184,4 +159,4 @@ const Page: React.FC = () => {
   );
 };
 
-export default Page;
+export default OrdersPage;

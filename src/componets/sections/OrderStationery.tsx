@@ -1,10 +1,13 @@
 "use client";
 import React, { useState } from "react";
+import useStationeryOrder from "@/hooks/stationeryOrder";
 
 const OrderStationery = () => {
+  const { createOrder } = useStationeryOrder();
+
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
+    phoneNo: "",
     kioskId: "",
     address: "",
     pinCode: "",
@@ -37,7 +40,7 @@ const OrderStationery = () => {
       return;
     }
     setItems([...items, currentItem]);
-    setCurrentItem({ stationery: "", quantity: "" }); 
+    setCurrentItem({ stationery: "", quantity: "" });
     setError("");
   };
 
@@ -55,7 +58,7 @@ const OrderStationery = () => {
 
     if (
       !formData.name ||
-      !formData.phone ||
+      !formData.phoneNo ||
       !formData.kioskId ||
       !formData.address ||
       !formData.pinCode ||
@@ -67,45 +70,31 @@ const OrderStationery = () => {
     }
 
     try {
-      // Prepare the data for FormSubmit
-      const formDataToSubmit = new FormData();
-      formDataToSubmit.append("name", formData.name);
-      formDataToSubmit.append("phone", formData.phone);
-      formDataToSubmit.append("kioskId", formData.kioskId);
-      formDataToSubmit.append("address", formData.address);
-      formDataToSubmit.append("pinCode", formData.pinCode);
-      formDataToSubmit.append(
-        "orders",
-        items.map((item) => `${item.stationery} (Quantity: ${item.quantity})`).join(" | ")
-      );
-      formDataToSubmit.append("_subject", "New Stationery Order Request");
-      formDataToSubmit.append("_template", "table");
-      
-      // Send to FormSubmit
-      const response = await fetch("https://formsubmit.co/ajax/info@Achariyagroup.com", {
-        method: "POST",
-        body: formDataToSubmit,
-      });
+      // Prepare payload for backend
+    const payload = {
+  ...formData,
+  items: items.map((it) => ({
+    type: it.stationery,  
+    quantity: Number(it.quantity),
+  })),
+  status: "pending", 
+};
 
-      const result = await response.json();
-      
-      if (response.ok) {
-        setSuccess(true);
-        setFormData({
-          name: "",
-          phone: "",
-          kioskId: "",
-          address: "",
-          pinCode: "",
-        });
-        setItems([]);
-        setCurrentItem({ stationery: "", quantity: "" });
-      } else {
-        throw new Error(result.message || "Failed to submit form");
-      }
-    } catch (err) {
+      await createOrder.mutateAsync(payload);
+
+      setSuccess(true);
+      setFormData({
+        name: "",
+        phoneNo: "",
+        kioskId: "",
+        address: "",
+        pinCode: "",
+      });
+      setItems([]);
+      setCurrentItem({ stationery: "", quantity: "" });
+    } catch (err: any) {
       console.error("Submission error:", err);
-      setError("Error submitting form. Please try again or contact support.");
+      setError("Error submitting order. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -133,9 +122,9 @@ const OrderStationery = () => {
               <label className="block text-sm font-medium text-gray-700 mb-1">Phone No</label>
               <input
                 type="number"
-                name="phone"
+                name="phoneNo"
                 placeholder="Phone number"
-                value={formData.phone}
+                value={formData.phoneNo}
                 onChange={handleChange}
                 required
                 className="w-full border border-gray-300 outline-none rounded-lg p-3 focus:ring-2"
@@ -185,7 +174,7 @@ const OrderStationery = () => {
           {/* Stationery Input Row */}
           <div className="bg-gray-50 p-4 rounded-lg">
             <h3 className="text-lg font-semibold mb-3 text-gray-800">Add Stationery Items</h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Stationery Type</label>
@@ -222,7 +211,11 @@ const OrderStationery = () => {
                   className="w-full bg-primary text-white px-4 py-3 rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd" />
+                    <path
+                      fillRule="evenodd"
+                      d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                   ADD ITEM
                 </button>
@@ -255,7 +248,11 @@ const OrderStationery = () => {
                             className="text-red-500 hover:text-red-700 flex items-center"
                           >
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                              <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                              <path
+                                fillRule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                clipRule="evenodd"
+                              />
                             </svg>
                             Remove
                           </button>
@@ -280,18 +277,38 @@ const OrderStationery = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`px-6 py-2 rounded-lg text-white font-medium text-lg ${isSubmitting ? 'bg-gradient-to-r duration-300 from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d]' : 'bg-gradient-to-r duration-300 from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d]'} transition-colors flex items-center justify-center mx-auto`}
+              className={`px-6 py-2 rounded-lg cursor-pointer text-white font-medium text-lg ${
+                isSubmitting
+                  ? "bg-gradient-to-r duration-300 from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d]"
+                  : "bg-gradient-to-r duration-300 from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d]"
+              } transition-colors flex items-center justify-center mx-auto`}
             >
               {isSubmitting ? (
                 <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  <svg
+                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
                   </svg>
                   PROCESSING...
                 </>
               ) : (
-                'SUBMIT ORDER'
+                "SUBMIT ORDER"
               )}
             </button>
           </div>
@@ -299,18 +316,29 @@ const OrderStationery = () => {
 
         {/* Success Popup */}
         {success && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="fixed inset-0 flex items-center justify-center backdrop-blur-2xl bg-opacity-50 z-50">
             <div className="bg-white p-8 rounded-xl shadow-lg text-center space-y-6 max-w-md">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-green-600" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-10 w-10 text-green-600"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-gray-800">Order Submitted Successfully!</h3>
-              <p className="text-gray-600">Your stationery order has been received. We will process it and contact you shortly.</p>
+              <p className="text-gray-600">
+                Your stationery order has been received. We will process it and contact you shortly.
+              </p>
               <button
                 onClick={() => setSuccess(false)}
-                className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary transition-colors"
+                className="px-6 py-2 cursor-pointer bg-primary text-white rounded-lg bg-gradient-to-r duration-300 from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d]"
               >
                 Continue
               </button>
