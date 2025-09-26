@@ -1,37 +1,54 @@
-"use client"
-import React, { useState } from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Video from "../gallery/Video";
-import GalleryImg from "../gallery/GalleryImg";
-import Award2025 from "../gallery/Award2025";
-import Award2024 from "../gallery/Award2024";
-import BestWishes from "../gallery/BestWishes";
-import EMitraImages from "../gallery/EMitraImages";
-import Events from "../gallery/Events";
-import NewsPapers from "../gallery/NewsPapers";
-
-type Tab = {
-  id: number;
-  title: string;
-  component: React.ComponentType;
-};
+import { useGallery } from "@/hooks/gallery";
+import Image from "next/image";
 
 const Gallery = () => {
-  // ✅ Tabs with their corresponding components
-  const tabs: Tab[] = [
-    { id: 1, title: "Videos", component: Video },
-    { id: 2, title: "Gallery", component: GalleryImg },
-    { id: 3, title: "RKCL'S ITGK AWARD FUNCTION - 2025", component: Award2025 },
-    { id: 4, title: "Annual Meeting / Awards - 2024", component: Award2024 },
-    { id: 5, title: "Best Wishes / Appreciation", component: BestWishes },
-    { id: 6, title: "e-Mitra Samman Samaroh", component: EMitraImages },
-    { id: 7, title: "Events / Programs", component: Events },
-    { id: 8, title: "NewsPapers", component: NewsPapers },
-  ];
+  const { allGalleries } = useGallery();
+  const [tabs, setTabs] = useState<{ id: string; title: string }[]>([]);
+  const [activeTab, setActiveTab] = useState<string>("videos");
 
-  const [activeTab, setActiveTab] = useState(tabs[0].id);
+  // ✅ Load dynamic categories when data is fetched
+  useEffect(() => {
+    if (allGalleries.isSuccess && allGalleries.data) {
+      const dynamicTabs = allGalleries.data.map((gallery) => ({
+        id: gallery._id,
+        title: gallery.category,
+      }));
+      // "Videos" ko static rakho, baaki backend se add karo
+      setTabs([{ id: "videos", title: "Videos" }, ...dynamicTabs]);
+    }
+  }, [allGalleries.isSuccess, allGalleries.data]);
 
-  // ✅ Get the active tab's component
-  const ActiveComponent = tabs.find(tab => tab.id === activeTab)?.component;
+  // ✅ Render active tab content
+  const renderContent = () => {
+    if (activeTab === "videos") {
+      return <Video />;
+    }
+
+    const activeGallery = allGalleries.data?.find((g) => g._id === activeTab);
+    if (!activeGallery) return <p>No images found.</p>;
+
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {activeGallery.images.map((img) => (
+          <div
+            key={img._id}
+            className="overflow-hidden rounded-xl shadow-md border"
+          >
+            <Image
+              src={img.url}
+              alt={activeGallery.category}
+              width={400}
+              height={300}
+              className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <div className="container mx-auto px-4 py-12 relative">
@@ -52,10 +69,12 @@ const Gallery = () => {
           </button>
         ))}
       </div>
-      
-      {/* Tab Content Section */}
+
+      {/* Tab Content */}
       <div className="tab-content">
-        {ActiveComponent && <ActiveComponent />}
+        {allGalleries.isLoading && <p>Loading...</p>}
+        {allGalleries.isError && <p>Error: {allGalleries.error?.message}</p>}
+        {!allGalleries.isLoading && renderContent()}
       </div>
     </div>
   );
