@@ -61,7 +61,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className={`bg-gray-50 ${pathname === "/"?"py-10":null} relative overflow-hidden}`}>
+    <section className={` ${pathname === "/"?"py-10 bg-gray-50 overflow-hidden":""} relative overflow-hidden}`}>
 
   {pathname === "/" ? (
   <>
