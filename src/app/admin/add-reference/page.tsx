@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import AdminLayout from "@/componets/admin/AdminLayout";
-import useReference, { Reference } from "@/hooks/reference"; 
+import useReference from "@/hooks/reference"; 
 import toast from "react-hot-toast";
 
 const Page: React.FC = () => {

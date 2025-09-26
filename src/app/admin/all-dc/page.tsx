@@ -7,7 +7,7 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Link from "next/link";
-import useDc, { Dc } from "@/hooks/dc";
+import useDc from "@/hooks/dc";
 
 const Page: React.FC = () => {
   const { allDc, deleteDc } = useDc();

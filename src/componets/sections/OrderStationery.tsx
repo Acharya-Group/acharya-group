@@ -92,7 +92,7 @@ const OrderStationery = () => {
       });
       setItems([]);
       setCurrentItem({ stationery: "", quantity: "" });
-    } catch (err: any) {
+    } catch (err) {
       console.error("Submission error:", err);
       setError("Error submitting order. Please try again.");
     } finally {
