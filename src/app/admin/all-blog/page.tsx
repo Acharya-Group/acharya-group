@@ -91,7 +91,6 @@ const Page: React.FC = () => {
                 <th className="px-4 py-2 text-left">Sr No.</th>
                 <th className="px-4 py-2 text-left">Title</th>
                 <th className="px-4 py-2 text-left">Short Description</th>
-                <th className="px-4 py-2 text-left">Description</th>
                 <th className="px-4 py-2 text-left">Image</th>
                 <th className="px-4 py-2 text-left">Actions</th>
               </tr>
@@ -103,7 +102,7 @@ const Page: React.FC = () => {
                   <td className="px-4 py-2">{indexOfFirstItem + index + 1}</td>
                   <td className="px-4 py-2">{b.title}</td>
                   <td className="px-4 py-2 max-w-[200px] truncate">{b.shortDescription}</td>
-                  <td className="px-4 py-2 max-w-[200px] truncate">{b.description}</td>
+                  {/* <td className="px-4 py-2 max-w-[200px] truncate">{b.description}</td> */}
                   <td className="px-4 py-2">
                     <Image height={64} width={64} src={b.image} alt={b.title} className="w-16 h-16 object-cover rounded" />
                   </td>

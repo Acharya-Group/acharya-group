@@ -2,11 +2,47 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
+import dynamic from "next/dynamic";
 import AdminLayout from "@/componets/admin/AdminLayout";
 import toast from "react-hot-toast";
 import { useBlogs, Blog } from "@/hooks/blogs";
 import axios, { AxiosError } from "axios";
 import Image from "next/image";
+import "react-quill-new/dist/quill.snow.css";
+
+// Dynamically import ReactQuill for Next.js (no SSR)
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
+
+// Quill toolbar configuration
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, 4, 5, false] }],
+    ["bold", "italic", "underline"],
+    [{ color: [] }, { background: [] }],
+    ["blockquote", "code-block"],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ align: [] }],
+    [{ size: ["small", false, "large", "huge"] }],
+    ["link", "image"],
+  ],
+};
+
+// Quill allowed formats
+const formats = [
+  "header",
+  "bold",
+  "italic",
+  "underline",
+  "color",
+  "background",
+  "blockquote",
+  "code-block",
+  "list",
+  "align",
+  "size",
+  "link",
+  "image",
+];
 
 const UpdateBlogPage = () => {
   const router = useRouter();
@@ -35,9 +71,9 @@ const UpdateBlogPage = () => {
         setDescription(data.blog.description);
         setPreview(data.blog.image);
       } catch (err: unknown) {
-      const error = err as AxiosError<{ message: string }>;
-      toast.error(error?.response?.data?.message || "Failed to load blog!");
-    }
+        const error = err as AxiosError<{ message: string }>;
+        toast.error(error?.response?.data?.message || "Failed to load blog!");
+      }
     };
     fetchBlog();
   }, [blogId]);
@@ -83,10 +119,10 @@ const UpdateBlogPage = () => {
           router.push("/admin/all-blog");
         },
         onError: (err: unknown) => {
-      const error = err as AxiosError<{ message: string }>;
-      toast.error(error?.response?.data?.message || "Failed to update blog!");
-      setIsSubmitting(false);
-    },
+          const error = err as AxiosError<{ message: string }>;
+          toast.error(error?.response?.data?.message || "Failed to update blog!");
+          setIsSubmitting(false);
+        },
       }
     );
   };
@@ -129,18 +165,20 @@ const UpdateBlogPage = () => {
             />
           </div>
 
-          {/* Description */}
+          {/* Description (React Quill) */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Description
             </label>
-            <textarea
+            <ReactQuill
+              theme="snow"
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={setDescription}
+              modules={modules}
+              formats={formats}
               placeholder="Write your full blog description here..."
-              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a0706] focus:border-[#7a0706] hover:border-[#7a0706] transition min-h-[150px]"
-              required
-            ></textarea>
+              className="h-60"
+            />
           </div>
 
           {/* Image Upload */}
@@ -158,8 +196,8 @@ const UpdateBlogPage = () => {
               <div className="mt-3">
                 <p className="text-sm text-gray-600 mb-1">Preview:</p>
                 <Image 
-                height={160}
-                width={160}
+                  height={160}
+                  width={160}
                   src={preview}
                   alt="Selected Preview"
                   className="w-40 h-40 object-cover rounded-lg border shadow-sm"

@@ -1,54 +1,95 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 import AdminLayout from "@/componets/admin/AdminLayout";
-import useDc from "@/hooks/dc";
 import toast from "react-hot-toast";
+import { useBlogs } from "@/hooks/blogs";
+import Image from "next/image";
+import "react-quill-new/dist/quill.snow.css";
 
-const Page = () => {
-  const { createDc } = useDc();
+// Dynamically import ReactQuill for Next.js (no SSR)
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    number: "",
-    district: "",
-    state: "",
-    address: "",
-  });
+// Quill toolbar configuration
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, 4, 5, false] }],
+    ["bold", "italic", "underline"],
+    [{ color: [] }, { background: [] }],
+    ["blockquote", "code-block"],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ align: [] }],
+    [{ size: ["small", false, "large", "huge"] }],
+    ["link", "image"],
+  ],
+};
+
+// Quill allowed formats
+const formats = [
+  "header",
+  "bold",
+  "italic",
+  "underline",
+  "color",
+  "background",
+  "blockquote",
+  "code-block",
+  "list",
+  "align",
+  "size",
+  "link",
+  "image",
+];
+
+const AddBlogPage = () => {
+  const router = useRouter();
+  const { createBlog } = useBlogs();
+
+  const [title, setTitle] = useState("");
+  const [shortDescription, setShortDescription] = useState("");
+  const [description, setDescription] = useState("");
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  // Handle image change
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImageFile(file);
+      const reader = new FileReader();
+      reader.onloadend = () => setPreview(reader.result as string);
+      reader.readAsDataURL(file);
+    }
   };
 
+  // Submit new blog
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.number) {
-      toast.error("Please fill in all required fields!");
+    if (!title || !shortDescription || !description) {
+      toast.error("Please fill all required fields!");
       return;
     }
 
     setIsSubmitting(true);
 
-    createDc.mutate(formData, {
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("shortDescription", shortDescription);
+    formData.append("description", description);
+    if (imageFile) formData.append("image", imageFile);
+
+    createBlog.mutate(formData, {
       onSuccess: () => {
-        toast.success("DC created successfully!");
-        setFormData({
-          name: "",
-          email: "",
-          number: "",
-          district: "",
-          state: "",
-          address: "",
-        });
+        toast.success("Blog added successfully!");
         setIsSubmitting(false);
+        router.push("/admin/all-blog");
       },
-      onError: (err) => {
-        toast.error(err?.message || "Failed to create DC!");
+      onError: (err: any) => {
+        toast.error(err?.response?.data?.message || "Failed to add blog!");
         setIsSubmitting(false);
       },
     });
@@ -57,53 +98,93 @@ const Page = () => {
   return (
     <AdminLayout>
       <div className="mx-auto bg-white p-6 rounded-2xl shadow-md">
-        <h1 className="text-2xl font-bold mb-6">Add DC</h1>
+        <h1 className="text-2xl font-bold mb-6 text-gray-800">
+          Add New Blog Post
+        </h1>
 
         <form className="space-y-5" onSubmit={handleSubmit}>
-          {["name", "email", "number", "district", "state"].map((field) => (
-            <div key={field}>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                {field.charAt(0).toUpperCase() + field.slice(1)}
-              </label>
-              <input
-                type={
-                  field === "email"
-                    ? "email"
-                    : field === "number"
-                    ? "number"
-                    : "text"
-                }
-                name={field}
-                value={formData[field as keyof typeof formData]}
-                onChange={handleChange}
-                placeholder={`Enter ${field}`}
-                className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a0706] focus:border-[#7a0706] hover:border-[#7a0706] transition"
-              />
-            </div>
-          ))}
-
+          {/* Title */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Address
+              Title
             </label>
-            <textarea
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              rows={3}
-              placeholder="Enter address"
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Enter blog title"
               className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a0706] focus:border-[#7a0706] hover:border-[#7a0706] transition"
+              required
             />
           </div>
 
+          {/* Short Description */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Short Description
+            </label>
+            <input
+              type="text"
+              value={shortDescription}
+              onChange={(e) => setShortDescription(e.target.value)}
+              placeholder="Enter a brief summary"
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a0706] focus:border-[#7a0706] hover:border-[#7a0706] transition"
+              required
+            />
+          </div>
+
+          {/* Description (React Quill) */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Description
+            </label>
+            <ReactQuill
+              theme="snow"
+              value={description}
+              onChange={setDescription}
+              modules={modules}
+              formats={formats}
+              placeholder="Write your full blog description here..."
+              className="h-60"
+            />
+          </div>
+
+          {/* Image Upload */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Upload Featured Image
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="w-full px-4 py-2 border rounded-lg shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#7a0706] focus:border-[#7a0706] hover:border-[#7a0706] transition"
+            />
+            {preview && (
+              <div className="mt-3">
+                <p className="text-sm text-gray-600 mb-1">Preview:</p>
+                <Image
+                  height={160}
+                  width={160}
+                  src={preview}
+                  alt="Selected Preview"
+                  className="w-40 h-40 object-cover rounded-lg border shadow-sm"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Submit */}
           <button
             type="submit"
             disabled={isSubmitting}
             className={`w-full ${
-              isSubmitting ? "bg-gray-400" : "bg-[#7a0706] hover:bg-[#5a0505]"
+              isSubmitting
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-[#7a0706] hover:bg-[#5a0505]"
             } text-white py-3 px-4 rounded-lg shadow-md transition transform hover:scale-[1.01] font-medium`}
           >
-            {isSubmitting ? "Creating..." : "Create DC"}
+            {isSubmitting ? "Adding..." : "Add Blog Post"}
           </button>
         </form>
       </div>
@@ -111,4 +192,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default AddBlogPage;

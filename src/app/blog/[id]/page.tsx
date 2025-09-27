@@ -34,24 +34,27 @@ const BlogDetailsPage: React.FC = () => {
   return (
     <>
       <Header />
-      <CommonHero title="Blog Details" />
+      <CommonHero title={blog.title} />
 
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4 grid lg:grid-cols-3 gap-8">
           {/* Main Blog Content */}
           <div className="lg:col-span-2">
-            <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
+            {/* <h1 className="text-3xl font-bold mb-4"></h1> */}
             <Image
               src={blog.image}
               alt={blog.title}
               width={1200}
-              height={600}
-              className="w-full h-auto rounded-lg mb-6 object-cover"
+              height={400}
+              className="w-full max-h-[350px] rounded-lg mb-6 object-cover"
             />
             <p className="text-gray-700 mb-4 font-semibold">{blog.shortDescription}</p>
-            <div className="prose max-w-full text-gray-800">
-              <p>{blog.description}</p>
-            </div>
+    <div
+  className="prose max-w-full text-gray-800"
+  dangerouslySetInnerHTML={{ __html: blog.description }}
+></div>
+
+
           </div>
 
           {/* Related Blogs Sidebar */}
