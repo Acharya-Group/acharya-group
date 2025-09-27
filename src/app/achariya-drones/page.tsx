@@ -1,16 +1,16 @@
 import Footer from '@/componets/layout/Footer'
 import Header from '@/componets/layout/Header'
+import AchariyaDrone from '@/componets/sections/AchariyaDrone'
 import CommonHero from '@/componets/sections/CommonHero'
-import YogaCertificate from '@/componets/sections/YogaCertificate'
 import React from 'react'
 
 const page = () => {
   return (
     <>
     <Header/>
-    <CommonHero  title="MSPL Personnel Certification Body" />
-    <YogaCertificate/>
-    <Footer/>
+<CommonHero  title="Achariya Drones" />  
+<AchariyaDrone/> 
+<Footer/>
     </>
   )
 }

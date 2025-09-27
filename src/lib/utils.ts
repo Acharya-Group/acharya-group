@@ -23,10 +23,10 @@ export const navdropdowns = [
       { name: "Shopneo", href: "/shopneo", type: "link" },
       { name: "e-Mitra", href: "/e-mitra", type: "link" },
       { name: "Kiosk Banking/BankBc", href: "/kiosk-banking", type: "link" },
-      // { name: "Atpl Drone", href: "/atpl-drone", type: "link" },
+      { name: "Achariya Drones", href: "/drones", type: "link" },
       { name: "RKCL", href: "/rkcl", type: "link" },
       { name: "School Easy", href: "/school-easy", type: "link" },
-      // { name: "Paytm Registration", href: "/paytm-registration", type: "link" },
+      { name: "Mspl Yoga", href: "/yoga-certification", type: "link" },
     ],
   },
   {
@@ -864,6 +864,7 @@ export const pages = [
    { url: "/contact", title: "Contact Us" }, 
    { url: "/gallery", title: "Gallery" },
    { url: "/fastag", title: "Fastag" }, 
+   { url: "/blog", title: "Blogs" }, 
    { url: "/validate-reference-letters", title: "Validate Reference Letters" },
     { title: "Complaint & Feedback", url: "complaint-feedback" },
     { title: "Order e-mitra Stationery", url: "order-e-mittra-stationery" }];
@@ -873,10 +874,10 @@ export const projectsLink = [
   { title: "Shopneo", url: "/shopneo" },
   { title: "e-Mitra", url: "/emitra" },
   { title: "Kiosk Banking", url: "/kiosk-banking" },
-  // { title: "Insurance", url: "/insurance" },
+  { title: "Achariya Droness", url: "/drones" },
   { title: "RKCL", url: "/rkcl" },
   { title: "School Easy", url: "/school-easy" },
-  // { title: "Payment Registration", url: "/payment-registration" },
+  { title: "Mspl Yoga", url: "/yoga-certification" },
 
 ];
 

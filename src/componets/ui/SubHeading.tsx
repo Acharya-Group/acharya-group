@@ -2,14 +2,15 @@ import React from "react";
 
 interface SubHeadingProps {
   content: string;
-  color?: string; // custom hex/rgb color support
+  color?: string;
+  className?: string; 
 }
 
-const SubHeading: React.FC<SubHeadingProps> = ({ content, color }) => {
+const SubHeading: React.FC<SubHeadingProps> = ({ content, color, className }) => {
   return (
     <h2
-      className="text-2xl md:text-3xl font-semibold mb-3 sm:mb-6 text-center"
-      style={{ color: color || "#261b7d" }} 
+      className={`text-2xl md:text-3xl font-semibold mb-3 sm:mb-5 text-center ${className || ""}`}
+      style={{ color: color || "#261b7d" }}
     >
       {content}
     </h2>
