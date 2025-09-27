@@ -15,8 +15,6 @@ import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 const BlogSection = () => {
   const { allBlogs } = useBlogs();
   const [blogs, setBlogs] = useState<Blog[]>([]);
-  const prevRef = useRef<HTMLButtonElement>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (allBlogs.isSuccess && allBlogs.data) {
@@ -36,10 +34,9 @@ const BlogSection = () => {
           <Swiper
             modules={[Autoplay, Navigation]}
             spaceBetween={20}
-            slidesPerView={4}
             centeredSlides={true}
-            autoplay={{ delay: 2500, disableOnInteraction: false }}
-            speed={800}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            speed={1000}
             loop={true}
             pagination={{ el: ".projects-pagination", clickable: true }}
             navigation={{ nextEl: ".project-next", prevEl: ".project-prev" }}
@@ -47,7 +44,7 @@ const BlogSection = () => {
               0: { slidesPerView: 1 },
               640: { slidesPerView: 1 },
               768: { slidesPerView: 2 },
-              1024: { slidesPerView: 4 },
+              1024: { slidesPerView: 3 },
             }}
             className="overflow-visible"
           >
@@ -67,13 +64,11 @@ const BlogSection = () => {
                       <h3 className="text-lg font-semibold text-center mb-2">
                         {blog.title}
                       </h3>
-                      <p className="text-gray-600 text-sm text-center mb-4">
+                      <p className="text-gray-600 text-sm text-center mb-2">
                         {blog.shortDescription}
                       </p>
-                      <Link href={`/blog/${blog._id}`}>
-                        <button className="px-4 py-1 cursor-pointer bg-gradient-to-r from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d] text-white rounded transition duration-300">
+                      <Link className="font-semibold text-primary hover:underline hover:!text-secondary" href={`/blog/${blog._id}`}>
                           Learn More
-                        </button>
                       </Link>
                     </div>
                   </div>
@@ -90,6 +85,12 @@ const BlogSection = () => {
                     <FiArrowRight />
                   </button>
         </div>
+<Link className="flex justify-center mt-8" href="/blogs">
+                        <button className="px-4 py-2 cursor-pointer bg-gradient-to-r from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d] text-white rounded transition duration-300">
+                          View More
+                        </button>
+                      </Link>
+
       </div>
     </section>
   );
