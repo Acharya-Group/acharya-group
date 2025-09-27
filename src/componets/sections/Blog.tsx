@@ -85,7 +85,7 @@ const BlogSection = () => {
                     <FiArrowRight />
                   </button>
         </div>
-<Link className="flex justify-center mt-8" href="/blogs">
+<Link className="flex justify-center mt-8" href="/blog">
                         <button className="px-4 py-2 cursor-pointer bg-gradient-to-r from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d] text-white rounded transition duration-300">
                           View More
                         </button>
