@@ -17,10 +17,10 @@ const FeedbackAdminPage: React.FC = () => {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    if (allFeedbacks.isSuccess) toast.success("Feedback & complaints fetched successfully!");
-    if (allFeedbacks.isError) toast.error(allFeedbacks.error?.message || "Failed to fetch data");
-  }, [allFeedbacks.isSuccess, allFeedbacks.isError]);
+useEffect(() => {
+  if (allFeedbacks.isSuccess) toast.success("Feedback & complaints fetched successfully!");
+  if (allFeedbacks.isError) toast.error(allFeedbacks.error?.message || "Failed to fetch data");
+}, [allFeedbacks.isSuccess, allFeedbacks.isError]);
 
   if (!mounted) return null;
   if (allFeedbacks.isLoading)

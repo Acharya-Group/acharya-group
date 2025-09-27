@@ -250,11 +250,8 @@ export default function Header() {
                 </Box>
               ))}
               {/* Other Links */}
-              {["/news-media", "/gallery", "/contact"].map((path, idx) => {
-                const name =
-                  path === "/news-media"
-                    ? "News & Media"
-                    : path === "/gallery"
+              {[ "/gallery", "/contact"].map((path, idx) => {
+                const name = path === "/gallery"
                     ? "Gallery"
                     : "Contact Us";
                 return (

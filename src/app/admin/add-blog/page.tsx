@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { useBlogs } from "@/hooks/blogs";
 import Image from "next/image";
 import "react-quill-new/dist/quill.snow.css";
+import { AxiosError } from "axios";
 
 // Dynamically import ReactQuill for Next.js (no SSR)
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
@@ -88,10 +89,11 @@ const AddBlogPage = () => {
         setIsSubmitting(false);
         router.push("/admin/all-blog");
       },
-      onError: (err: any) => {
-        toast.error(err?.response?.data?.message || "Failed to add blog!");
-        setIsSubmitting(false);
-      },
+    onError: (err: unknown) => {
+  const error = err as AxiosError<{ message: string }>;
+  toast.error(error?.response?.data?.message || "Failed to add blog!");
+  setIsSubmitting(false);
+},
     });
   };
 
@@ -150,7 +152,7 @@ const AddBlogPage = () => {
           </div>
 
           {/* Image Upload */}
-          <div>
+          <div className="mt-24 lg:mt-20">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Upload Featured Image
             </label>

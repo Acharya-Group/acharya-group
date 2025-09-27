@@ -167,7 +167,7 @@ const UpdateBlogPage = () => {
 
           {/* Description (React Quill) */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700">
               Description
             </label>
             <ReactQuill
@@ -182,7 +182,7 @@ const UpdateBlogPage = () => {
           </div>
 
           {/* Image Upload */}
-          <div>
+          <div className="mt-24 lg:mt-20">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Upload Featured Image
             </label>

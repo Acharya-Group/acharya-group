@@ -8,13 +8,6 @@ import SubHeading from "../ui/SubHeading";
 import ContactForm from "./Contact";
 
 const ContactUsPage = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    district: "",
-    state: "",
-    message: "",
-  });
 
   const [success, setSuccess] = useState(false);
   

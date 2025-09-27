@@ -36,26 +36,17 @@ const BlogSection = () => {
           <Swiper
             modules={[Autoplay, Navigation]}
             spaceBetween={20}
-            slidesPerView={3}
+            slidesPerView={4}
+            centeredSlides={true}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
+            speed={800}
             loop={true}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            }}
-            onInit={(swiper) => {
-             // @ts-expect-error – Swiper types don’t allow direct assignment
-swiper.params.navigation.prevEl = prevRef.current;
-// @ts-expect-error – Swiper types don’t allow direct assignment
-swiper.params.navigation.nextEl = nextRef.current;
-
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }}
+            pagination={{ el: ".projects-pagination", clickable: true }}
+            navigation={{ nextEl: ".project-next", prevEl: ".project-prev" }}
             breakpoints={{
               0: { slidesPerView: 1 },
               640: { slidesPerView: 1 },
-              768: { slidesPerView: 3 },
+              768: { slidesPerView: 2 },
               1024: { slidesPerView: 4 },
             }}
             className="overflow-visible"
@@ -91,13 +82,13 @@ swiper.params.navigation.nextEl = nextRef.current;
             ))}
           </Swiper>
 
-           {/* Custom Navigation */}
-                    <button className="absolute cursor-pointer project-prev left-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full h-10 w-10 flex justify-center items-center shadow hover:bg-secondary transition-all">
-                      <FiArrowLeft />
-                    </button>
-                    <button className="absolute cursor-pointer project-next right-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full h-10 w-10 flex justify-center items-center shadow hover:bg-secondary transition-all">
-                      <FiArrowRight />
-                    </button>
+          {/* Custom Navigation */}
+                  <button className="absolute cursor-pointer project-prev left-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full h-10 w-10 flex justify-center items-center shadow hover:bg-secondary transition-all">
+                    <FiArrowLeft />
+                  </button>
+                  <button className="absolute cursor-pointer project-next right-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-white rounded-full h-10 w-10 flex justify-center items-center shadow hover:bg-secondary transition-all">
+                    <FiArrowRight />
+                  </button>
         </div>
       </div>
     </section>
