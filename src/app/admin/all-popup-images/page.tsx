@@ -171,7 +171,7 @@ const Page: React.FC = () => {
               <h2 className="text-xl font-bold mb-4">Update Popup</h2>
 
               {/* Upload File */}
-              <input type="file" onChange={handleFileChange} className="mb-4 bg-secondary text-white rounded-2xl inline py-2 px-3" />
+              <input type="file" onChange={handleFileChange} className="mb-4 bg-secondary text-white rounded-2xl inline py-2 px-3 max-w-[320px]" />
 
               {/* Update Link */}
               <input

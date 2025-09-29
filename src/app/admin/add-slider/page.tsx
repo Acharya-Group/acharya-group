@@ -2,7 +2,7 @@
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import AdminLayout from "@/componets/admin/AdminLayout";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { useSlider } from "@/hooks/slider";
 import Image from "next/image";
 
@@ -48,6 +48,7 @@ const AddSliderPage: React.FC = () => {
 
   return (
     <AdminLayout>
+         <Toaster />
       <div className="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-md">
         <h1 className="text-2xl font-bold mb-6">Add Slider</h1>
 
