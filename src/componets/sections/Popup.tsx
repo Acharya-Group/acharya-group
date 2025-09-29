@@ -40,7 +40,7 @@ const Popup: React.FC = () => {
           </button>
         </div>
         <div
-          className="bg-white rounded-xl shadow-lg w-full max-w-md h-[600px] relative overflow-auto touch-auto"
+          className="bg-white rounded-xl shadow-lg max-w-[220px] md:w-full sm:max-w-md h-[400px] md:h-[600px] relative overflow-auto touch-auto"
           onClick={(e) => e.stopPropagation()}
           style={{ WebkitOverflowScrolling: "touch" }}
         >

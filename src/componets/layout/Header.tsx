@@ -54,9 +54,9 @@ export default function Header() {
         <div className="container mx-auto px-4">
           <AppBar position="sticky" color="default" sx={{ bgcolor: "#fff", boxShadow: 0,top: 0,
               zIndex: 1100, }}>
-            <Toolbar sx={{ justifyContent: "space-between", px: { xs: 2, md: 6 }, py: { xs: 1 } }}>
+            <Toolbar sx={{ justifyContent: "space-between", px: { xs: 0, md: 6 }, py: { xs: 1 } }}>
               {/* Logo */}
-          <Link href="/" className="relative inline-block w-[150px] h-[50px]">
+          <Link href="/" className="relative inline-block w-[100px] h-[50px]">
   <Image
     src="/images/logo.png"
     alt="Company Logo"
