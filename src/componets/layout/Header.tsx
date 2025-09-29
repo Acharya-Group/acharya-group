@@ -56,9 +56,17 @@ export default function Header() {
               zIndex: 1100, }}>
             <Toolbar sx={{ justifyContent: "space-between", px: { xs: 2, md: 6 }, py: { xs: 1 } }}>
               {/* Logo */}
-              <Link href="/" className="flex items-center">
-                <Image className="object-cover" src="/images/logo.png" alt="Company Logo" width={100} height={40} />
-              </Link>
+          <Link href="/" className="relative inline-block w-[150px] h-[50px]">
+  <Image
+    src="/images/logo.png"
+    alt="Company Logo"
+    fill
+    className="object-contain"
+    sizes="(max-width: 768px) 100px, (max-width: 1200px) 120px, 150px"
+  />
+</Link>
+
+
               {/* Desktop Nav */}
               <Box sx={{ display: { xs: "none", lg: "flex" }, alignItems: "center", gap: 2 }}>
                 {/* Home */}

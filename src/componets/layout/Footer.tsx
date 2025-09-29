@@ -26,15 +26,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-12 gap-4 md:gap-2 lg:gap-6">
           {/* About Shopneo */}
           <div className="md:col-span-4">
-            <div className="bg-white inline-block px-2 mb-3 rounded">
-              <Image
-                src="/images/logo.png"
-                alt="AAchariya Group Logo"
-                width={150}
-                height={50}
-                className="mb-4"
-              />
-            </div>
+           <div className="bg-white inline-block px-2 mb-3 rounded">
+  <Image
+    src="/images/logo.png"
+    alt="AAchariya Group Logo"
+    width={150}       
+    height={50}       
+    style={{ height: "auto" }} 
+    className="mb-4"
+  />
+</div>
+
             <p className="text-sm opacity-75 mb-3">
               "Achariya Group is dedicated to delivering innovative solutions
               and exceptional services. Committed to excellence, we build
