@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, Navigation,EffectFade } from "swiper/modules";
+import "swiper/css/effect-fade";
 import "swiper/css";
 import "swiper/css/navigation";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
@@ -28,11 +29,12 @@ const Hero = () => {
     <div className="relative w-full max-w-[1920px] mx-auto">
       {/* Swiper */}
       <Swiper
-        modules={[Navigation, Autoplay]}
+        modules={[Navigation, Autoplay, EffectFade]}
         loop={true}
         speed={800}
+        effect="fade"
         autoplay={{
-          delay: 2000,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         slidesPerView={1}
@@ -40,13 +42,14 @@ const Hero = () => {
           nextEl: ".hero-next",
           prevEl: ".hero-prev",
         }}
-        className="hero_slider w-full h-[150px] sm:h-[300px] lg:h-[400px]"
+        className="hero_slider w-full h-[150px] sm:h-[300px] min-[400px]:h-[220px]
+ lg:min-h-[400px]"
       >
         {sliders.map((slide, index) => (
           <SwiperSlide key={index}>
             <Link
               href={slide.link}
-              className="block w-full h-[150px] sm:h-[300px] lg:h-[400px]"
+              className="block w-full h-[150px] sm:h-[300px] lg:h-[400px] min-[400px]:h-[220px]"
             >
               <Image
                 src={slide.image}
