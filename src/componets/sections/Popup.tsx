@@ -29,47 +29,50 @@ const Popup: React.FC = () => {
       className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/50 p-4"
       onClick={() => setVisible(false)}
     >
-      <div
-        className="bg-white rounded-xl shadow-lg w-full max-w-md h-[600px] relative overflow-auto touch-auto"
-        onClick={(e) => e.stopPropagation()}
-        style={{ WebkitOverflowScrolling: "touch" }} // for smooth scrolling on iOS
-      >
-        {/* Close Button */}
-        <button
-          onClick={() => setVisible(false)}
-          className="absolute top-4 right-4 text-black hover:text-gray-800 font-bold text-2xl cursor-pointer z-10"
+      <div className="relative">
+           {/* Close Button */}
+        <div onClick={() => setVisible(false)} className="h-8 absolute hover:bg-secondary top-4 right-4  cursor-pointer flex justify-center items-center z-10 w-8 bg-primary rounded-full">
+          <button
+            
+            className=" text-white cursor-pointer font-bold text-2xl"
+          >
+            ✕
+          </button>
+        </div>
+        <div
+          className="bg-white rounded-xl shadow-lg w-full max-w-md h-[600px] relative overflow-auto touch-auto"
+          onClick={(e) => e.stopPropagation()}
+          style={{ WebkitOverflowScrolling: "touch" }}
         >
-          ✕
-        </button>
-
-        {/* Swiper Slider */}
-        <Swiper
-          modules={[Autoplay]}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          loop={true}
-          slidesPerView={1}
-        >
-          {allPopups.data.map((popup: PopupType) => (
-            <SwiperSlide key={popup._id}>
-              <a href={popup.link} target="_blank" rel="noopener noreferrer">
-                {/* Scrollable image container */}
-                <div
-                  className="w-full overflow-auto"
-                  onTouchStart={(e) => e.stopPropagation()} // prevent Swiper swipe from blocking scroll
-                  style={{ WebkitOverflowScrolling: "touch" }}
-                >
-                  <Image
-                    src={popup.image}
-                    alt="Popup Image"
-                    width={400}
-                    height={800} // natural height of image
-                    className="w-full object-contain"
-                  />
-                </div>
-              </a>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        
+          {/* Swiper Slider */}
+          <Swiper
+            modules={[Autoplay]}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop={true}
+            slidesPerView={1}
+          >
+            {allPopups.data.map((popup: PopupType) => (
+              <SwiperSlide key={popup._id}>
+                <a href={popup.link} target="_blank" rel="noopener noreferrer">
+                  <div
+                    className="w-full overflow-auto"
+                    onTouchStart={(e) => e.stopPropagation()}
+                    style={{ WebkitOverflowScrolling: "touch" }}
+                  >
+                    <Image
+                      src={popup.image}
+                      alt="Popup Image"
+                      width={400}
+                      height={800}
+                      className="w-full object-contain"
+                    />
+                  </div>
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </div>
   );

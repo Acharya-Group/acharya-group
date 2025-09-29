@@ -40,7 +40,7 @@ const services = [
     name: "Drone Services",
     description: "Drone training, certification & professional aerial solutions.",
     icon: <FaRobot className="w-10 h-10 text-red-600" />,
-    link: "https://atpldrones.com/index.aspx",
+    link: "/achariya-drones",
   },
 {
   id: 6,
