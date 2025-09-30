@@ -181,12 +181,25 @@ const RkclNetwork: React.FC = () => {
             className="w-full border border-gray-300 rounded-lg p-3"
             required
           >
-            <option value="">Select Course</option>
-            <option value="RS-CFA">RS-CFA</option>
-            <option value="RSCIT">RSCIT</option>
-            <option value="RS-CIT Plus">RS-CIT Plus</option>
-            <option value="O Level">O Level</option>
-            <option value="CCC">CCC</option>
+   <option value="-1">Select Course</option>
+	<option value="1">RS-CFA</option>
+	<option value="2">RS-CFA with tally certificate</option>
+	<option value="3">RCTE</option>
+	<option value="4">RS-CSEP(basic level)</option>
+	<option value="5">RS-CSEP(advance level)</option>
+	<option value="6">RS-CSEP mode</option>
+	<option value="7">RCDM</option>
+	<option value="8">RCADM</option>
+	<option value="9">RCGD</option>
+	<option value="10">RCAGD</option>
+	<option value="11">RCAE</option>
+	<option value="12">RCAEVB</option>
+	<option value="13">RCWDS</option>
+	<option value="14">RCWDPHP</option>
+	<option value="15">RCWDDJ</option>
+	<option value="16">RCBPP</option>
+	<option value="17">RCAPP</option>
+	<option value="18">RS-CIT</option>
           </select>
         </div>
 
