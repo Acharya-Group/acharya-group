@@ -51,7 +51,7 @@ const Page: React.FC = () => {
         <h1 className="text-2xl font-bold mb-6">RKCL Enquiries</h1>
 
         <div className="overflow-x-auto">
-          <table className="min-w-[900px] divide-y divide-gray-200">
+          <table className="min-w-[900px] w-full divide-y divide-gray-200">
             <thead className="bg-secondary text-white">
               <tr>
                 <th className="px-4 py-2 text-left">#</th>
