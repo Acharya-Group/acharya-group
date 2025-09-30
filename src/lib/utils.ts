@@ -872,6 +872,7 @@ export const pages = [
    { url: "/gallery", title: "Gallery" },
    { url: "/fastag", title: "Fastag" }, 
    { url: "/blog", title: "Blogs" }, 
+   { url: "/aadhar", title: "Aadhar" }, 
    { url: "/validate-reference-letters", title: "Validate Reference Letters" },
     { title: "Complaint & Feedback", url: "complaint-feedback" },
     { title: "Order e-mitra Stationery", url: "order-e-mittra-stationery" }];
