@@ -72,10 +72,11 @@ const OrdersPage: React.FC = () => {
         <h1 className="text-2xl font-bold mb-6">Orders</h1>
 
         <div className="overflow-x-auto">
-          <table className="min-w-[1000px] divide-y divide-gray-200">
+          <table className="min-w-[1300px] divide-y divide-gray-200">
             <thead className="bg-secondary text-white">
               <tr>
                 <th className="px-4 py-2 text-left">#</th>
+                <th className="px-4 py-2 text-left">Data</th>
                 <th className="px-4 py-2 text-left">Name</th>
                 <th className="px-4 py-2 text-left">Phone</th>
                 <th className="px-4 py-2 text-left">Kiosk ID</th>
@@ -92,6 +93,7 @@ const OrdersPage: React.FC = () => {
                   <td className="px-4 py-2">
                     {(currentPage - 1) * itemsPerPage + index + 1}
                   </td>
+                  <td className="px-4 py-2">{order.createdAt?.split("T")[0]}</td>
                   <td className="px-4 py-2">{order.name}</td>
                   <td className="px-4 py-2">{order.phoneNo}</td>
                   <td className="px-4 py-2">{order.kioskId}</td>
