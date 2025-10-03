@@ -77,6 +77,7 @@ const ContactsPage: React.FC = () => {
             <thead className="bg-secondary text-white">
               <tr>
                 <th className="px-4 py-2 text-left">#</th>
+                <th className="px-4 py-2 text-left">Date</th>
                 <th className="px-4 py-2 text-left">Name</th>
                 <th className="px-4 py-2 text-left">Phone</th>
                 <th className="px-4 py-2 text-left">District</th>
@@ -91,6 +92,7 @@ const ContactsPage: React.FC = () => {
               {currentContacts.map((contact, index) => (
                 <tr key={contact._id}>
                   <td className="px-4 py-2">{(currentPage - 1) * itemsPerPage + index + 1}</td>
+                        <td className="px-4 py-2">{contact.createdAt?.split("T")[0]}</td>
                   <td className="px-4 py-2">{contact.name}</td>
                   <td className="px-4 py-2">{contact.number}</td>
                   <td className="px-4 py-2">{contact.district}</td>

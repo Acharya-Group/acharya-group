@@ -61,10 +61,11 @@ useEffect(() => {
         <h1 className="text-2xl font-bold mb-6">Feedback & Complaints</h1>
 
         <div className="overflow-x-auto">
-          <table className="min-w-[900px] w-full divide-y divide-gray-200">
+          <table className="min-w-[1300px] w-full divide-y divide-gray-200">
             <thead className="bg-secondary text-white">
               <tr>
                 <th className="px-4 py-2">#</th>
+                <th className="px-4 py-2">Date</th>
                 <th className="px-4 py-2">Name</th>
                 <th className="px-4 py-2">Phone</th>
                 <th className="px-4 py-2">District</th>
@@ -80,6 +81,7 @@ useEffect(() => {
               {currentFeedbacks.map((entry, index) => (
                 <tr key={entry._id}>
                   <td className="px-4 py-2">{(currentPage - 1) * itemsPerPage + index + 1}</td>
+                        <td className="px-4 py-2">{entry.createdAt?.split("T")[0]}</td>
                   <td className="px-4 py-2">{entry.name}</td>
                   <td className="px-4 py-2">{entry.number}</td>
                   <td className="px-4 py-2">{entry.district}</td>

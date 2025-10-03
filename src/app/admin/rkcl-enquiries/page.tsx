@@ -51,10 +51,11 @@ const Page: React.FC = () => {
         <h1 className="text-2xl font-bold mb-6">RKCL Enquiries</h1>
 
         <div className="overflow-x-auto">
-          <table className="min-w-[900px] w-full divide-y divide-gray-200">
+          <table className="min-w-[1300px] w-full divide-y divide-gray-200">
             <thead className="bg-secondary text-white">
               <tr>
                 <th className="px-4 py-2 text-left">#</th>
+                <th className="px-4 py-2 text-left">Date</th>
                 <th className="px-4 py-2 text-left">Name</th>
                 <th className="px-4 py-2 text-left">Email</th>
                 <th className="px-4 py-2 text-left">Number</th>
@@ -71,6 +72,7 @@ const Page: React.FC = () => {
               {currentEnquiries.map((e, idx) => (
                 <tr key={e._id}>
                   <td className="px-4 py-2">{indexOfFirstItem + idx + 1}</td>
+                        <td className="px-4 py-2">{e.createdAt?.split("T")[0]}</td>
                   <td className="px-4 py-2">{e.name}</td>
                   <td className="px-4 py-2">{e.email}</td>
                   <td className="px-4 py-2">{e.number}</td>
