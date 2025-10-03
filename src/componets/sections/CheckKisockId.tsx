@@ -49,7 +49,7 @@ const CheckKioskId = () => {
     const loadExcelFile = async () => {
       try {
         setLoading(true);
-         const response = await fetch('/kioskData/KioskStatus.xlsx'); 
+         const response = await fetch('/KioskData.xlsx'); 
         if (!response.ok) {
           throw new Error('Excel file not found in public folder');
         }
@@ -225,59 +225,59 @@ const CheckKioskId = () => {
             </div>
 
             {/* Main Content Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid gap-6">
               {/* Basic Information */}
               <div className="space-y-3">
                 <h4 className="font-semibold text-lg text-blue-700 border-b pb-2">Basic Information</h4>
-                <InfoRow label="S.No" value={safeDisplay(kiosk["S.No"])} />
+                {/* <InfoRow label="S.No" value={safeDisplay(kiosk["S.No"])} /> */}
                 <InfoRow label="District" value={safeDisplay(kiosk.District)} />
+                <InfoRow  label="LSP Name" value={safeDisplay(kiosk["LSP Name"])} />
                 <InfoRow label="Kiosk Type" value={safeDisplay(kiosk["Kiosk Type"])} />
                 <InfoRow label="Urban/Rural" value={safeDisplay(kiosk["Urban/Rural"])} />
-                <InfoRow label="LSP Name" value={safeDisplay(kiosk["LSP Name"])} />
               </div>
 
               {/* SSO Information */}
-              <div className="space-y-3">
+              {/* <div className="space-y-3">
                 <h4 className="font-semibold text-lg text-green-700 border-b pb-2">SSO Information</h4>
                 <InfoRow label="Kiosk Admin SSOID" value={safeDisplay(kiosk["Kiosk Admin SSOID"])} />
                 <InfoRow label="Kiosk Owner SSOID" value={safeDisplay(kiosk["Kiosk Owner SSOID"])} />
                 <InfoRow label="Kiosk Email" value={safeDisplay(kiosk["Kiosk Email"])} />
                 <InfoRow label="Validity" value={safeDisplay(kiosk.Validity)} />
-              </div>
+              </div> */}
 
               {/* Location Details */}
-              <div className="space-y-3">
+              {/* <div className="space-y-3">
                 <h4 className="font-semibold text-lg text-purple-700 border-b pb-2">Location Details</h4>
                 <InfoRow label="Muncipality" value={safeDisplay(kiosk.Muncipality)} />
                 <InfoRow label="Ward No" value={safeDisplay(kiosk["Ward No"])} />
                 <InfoRow label="Panchayat Samiti" value={safeDisplay(kiosk["Panchayat Samiti"])} />
                 <InfoRow label="Gram Panchayat" value={safeDisplay(kiosk["Gram Panchayat"])} />
                 <InfoRow label="Village" value={safeDisplay(kiosk.Village)} />
-              </div>
+              </div> */}
 
               {/* Dates Information */}
-              <div className="space-y-3">
+              {/* <div className="space-y-3">
                 <h4 className="font-semibold text-lg text-orange-700 border-b pb-2">Dates</h4>
                 <InfoRow label="Registration Date" value={formatDate(kiosk["Registration Date"])} />
                 <InfoRow label="Kiosk Approved Date" value={formatDate(kiosk["Kiosk Approved Date"])} />
                 <InfoRow label="First Transaction Date" value={formatDate(kiosk["First Transaction Date"])} />
                 <InfoRow label="Last Transaction Date" value={formatDate(kiosk["Last Transaction Date"])} />
-              </div>
+              </div> */}
 
               {/* Status Information */}
-              <div className="space-y-3">
+              {/* <div className="space-y-3">
                 <h4 className="font-semibold text-lg text-red-700 border-b pb-2">Status Information</h4>
                 <InfoRow label="Non Functional" value={safeDisplay(kiosk["Non Functional"])} />
                 <InfoRow label="Govt Premise" value={safeDisplay(kiosk["Govt Premise"])} />
-              </div>
+              </div> */}
 
               {/* Address Section - Full Width */}
-              <div className="md:col-span-2 lg:col-span-3 space-y-3">
+              {/* <div className="md:col-span-2 lg:col-span-3 space-y-3">
                 <h4 className="font-semibold text-lg text-gray-700 border-b pb-2">Kiosk Address</h4>
                 <div className="bg-gray-50 p-4 rounded-lg border">
                   <p className="text-gray-700">{safeDisplay(kiosk["Kiosk Address"])}</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         ))}
