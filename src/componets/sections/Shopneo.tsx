@@ -21,17 +21,21 @@ const Shopneo = () => {
       height={300}
       className="rounded-lg shadow-lg mx-auto border-2 border-amber-600"
     />
+    <p className="text-center mt-2"><strong>Powered By ONDC</strong></p>
   </div>
 
   {/* Text Content - 80% width - Comes SECOND in HTML but will be ABOVE on mobile */}
   <div className="lg:col-span-4 text-gray-700 leading-relaxed order-1 lg:order-2">
-    <p className="text-gray-700 leading-relaxed">
-      <strong>“ShopNeo.in”</strong> is the brand of Achariya Technologies Private Limited and serves as your ultimate online shopping destination, bringing together buyers and sellers across <strong>Pan India</strong> on a single, easy-to-use platform. Designed for convenience, efficiency, and security, ShopNeo.in allows customers to browse thousands of products across categories such as fashion, electronics, home essentials, personal care, and much more. The platform provides detailed product descriptions, customer reviews, personalized recommendations, and intuitive search and filter options to help shoppers make informed decisions. 
-    
-      For sellers, ShopNeo.in is a powerful tool to reach a nationwide audience without the need for physical stores. Sellers can easily list products, manage inventory, track sales, access real-time analytics, and run promotional campaigns to boost visibility and growth. Secure payment gateways, reliable shipping options, and a dedicated support system ensure smooth transactions for both buyers and sellers.  
-    
-      With ShopNeo.in, online shopping becomes a seamless experience that combines choice, convenience, and confidence. Whether you're looking for the latest trends, exclusive deals, or a trusted platform to sell your products, ShopNeo.in empowers every user to make the most of the digital marketplace. Join today and explore a world of shopping and selling opportunities designed to make your online experience enjoyable, secure, and rewarding.
-    </p>
+   <p className="text-gray-700 leading-relaxed">
+  <strong>“ShopNeo.in”</strong> is the brand of Achariya Technologies Private Limited and serves as your ultimate online shopping destination, bringing together buyers and sellers across <strong>Pan India</strong> on a single, easy-to-use platform. Designed for convenience, efficiency, and security, ShopNeo.in allows customers to browse thousands of products across categories such as fashion, electronics, home essentials, personal care, and much more. The platform provides detailed product descriptions, customer reviews, personalized recommendations, and intuitive search and filter options to help shoppers make informed decisions.
+
+  ShopNeo.in is also <strong>powered by ONDC (Open Network for Digital Commerce)</strong>, which enhances transparency, interoperability, and access for both buyers and sellers. Being part of ONDC ensures that ShopNeo.in users benefit from a larger digital marketplace ecosystem while maintaining seamless transactions and fair competition.
+
+  For sellers, ShopNeo.in is a powerful tool to reach a nationwide audience without the need for physical stores. Sellers can easily list products, manage inventory, track sales, access real-time analytics, and run promotional campaigns to boost visibility and growth. Secure payment gateways, reliable shipping options, and a dedicated support system ensure smooth transactions for both buyers and sellers.
+
+  With ShopNeo.in, online shopping becomes a seamless experience that combines choice, convenience, and confidence. Whether you're looking for the latest trends, exclusive deals, or a trusted platform to sell your products, ShopNeo.in empowers every user to make the most of the digital marketplace. Join today and explore a world of shopping and selling opportunities designed to make your online experience enjoyable, secure, and rewarding.
+</p>
+
   </div>
 </div>
           
