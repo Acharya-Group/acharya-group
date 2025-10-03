@@ -61,12 +61,12 @@ const BlogSection = () => {
                       className="w-full h-48 object-cover"
                     />
                     <div className="p-4 flex flex-col items-center">
-                      <h3 className="text-lg font-semibold text-center mb-2">
+                      <h3 className="text-lg font-semibold text-center mb-2 line-clamp-1">
                         {blog.title}
                       </h3>
-                      <p className="text-gray-600 text-sm text-center mb-2">
-                        {blog.shortDescription}
-                      </p>
+                    <p className="text-gray-600 text-sm text-center mb-2 line-clamp-2">
+    {blog.shortDescription}
+</p>
                       <Link className="font-semibold text-primary hover:underline hover:!text-secondary" href={`/blog/${blog._id}`}>
                           Learn More
                       </Link>

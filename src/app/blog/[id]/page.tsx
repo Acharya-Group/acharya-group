@@ -33,7 +33,7 @@ const BlogDetailsPage: React.FC = () => {
       <Header />
       <CommonHero title={blog?.title || "Blog"} />
 
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-gray-50 overflow-hidden">
         <div className="container mx-auto px-4">
           {/* Show loading or not found inside the section */}
           {allBlogs.isLoading && (
@@ -78,8 +78,8 @@ const BlogDetailsPage: React.FC = () => {
                         className="w-[100px] h-[70px] object-cover rounded"
                       />
                       <div className="flex flex-col justify-center">
-                        <h3 className="text-lg font-bold">{b.title}</h3>
-                        <p className="text-gray-600 text-sm truncate">
+                        <h3 className="text-base font-bold">{b.title}</h3>
+                        <p className="text-gray-600 text-xs max-w-[200px] truncate">
                           {b.shortDescription}
                         </p>
                         <span className="text-primary hover:underline transition-all duration-300">

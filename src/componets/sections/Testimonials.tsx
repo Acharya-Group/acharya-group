@@ -50,24 +50,26 @@ const Testimonials = () => {
           >
             {testimonials.map((testimonial) => (
               <SwiperSlide key={testimonial._id}>
-                <div className="p-[2px] rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 bg-[length:200%_200%] animate-borderSpin">
-                  <div className="bg-white p-6 rounded-xl shadow-md flex flex-col items-center">
-                    <Image
-                      height={80}
-                      width={80}
-                      src={testimonial.Image} 
-                      alt={testimonial.name}
-                      className="w-20 h-20 rounded-full mb-4 shadow-lg"
-                    />
-                    <h3 className="text-lg font-semibold text-center mb-2">
-                      {testimonial.name}
-                    </h3>
-                    <p className="text-gray-600 text-sm text-center italic">
-                      "{testimonial.description}"
-                    </p>
-                  </div>
-                </div>
-              </SwiperSlide>
+  <div className="p-[2px] rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 bg-[length:200%_200%] animate-borderSpin">
+    <div className="bg-white p-6 rounded-xl shadow-md flex flex-col items-center h-60">
+      <Image
+        height={80}
+        width={80}
+        src={testimonial.Image}
+        alt={testimonial.name}
+        className="w-20 h-20 rounded-full mb-4 shadow-lg"
+      />
+      <h3 className="text-lg font-semibold text-center mb-2">
+        {testimonial.name}
+      </h3>
+      <div className="flex-grow flex items-center"> {/* Flex container for text */}
+        <p className="text-gray-600 text-sm text-center italic line-clamp-3">
+          "{testimonial.description}"
+        </p>
+      </div>
+    </div>
+  </div>
+</SwiperSlide>
             ))}
           </Swiper>
 

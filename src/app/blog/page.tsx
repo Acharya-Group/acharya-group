@@ -47,7 +47,9 @@ const BlogDetailsPage: React.FC = () => {
                     />
                     <div className="p-4 flex flex-col items-center text-center mt-auto">
                       <h3 className="text-lg font-semibold mb-2">{blog.title}</h3>
-                      <p className="text-gray-600 text-sm mb-4">{blog.shortDescription}</p>
+                                     <p className="text-gray-600 text-sm text-center mb-2 line-clamp-2">
+    {blog.shortDescription}
+</p>
                       <Link
                         href={`/blog/${blog._id}`}
                         className="font-semibold text-primary hover:underline hover:!text-secondary"

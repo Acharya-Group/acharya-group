@@ -51,10 +51,10 @@ export default function Header() {
 
       {/* Desktop & Mobile Navbar */}
       <div className="bg-white sticky top-0 shadow z-[1100]">
-        <div className="container mx-auto px-4">
+        <div className="max-w-[1440px] mx-auto px-4">
           <AppBar position="sticky" color="default" sx={{ bgcolor: "#fff", boxShadow: 0,top: 0,
               zIndex: 1100, }}>
-            <Toolbar sx={{ justifyContent: "space-between", px: { xs: 0, md: 6 }, py: { xs: 1 } }}>
+            <Toolbar sx={{ justifyContent: "space-between", px: { xs: 0, md: 0 }, py: { xs: 1 } }}>
               {/* Logo */}
           <Link href="/" className="relative inline-block w-[100px] h-[50px]">
   <Image
@@ -134,13 +134,17 @@ export default function Header() {
                   </Box>
                 ))}
                 {/* Other Links */}
-                {["/rkcl-network", "/gallery", "/contact"].map((path, idx) => {
-                  const name =
-                    path === "/rkcl-network"
-                      ? "RKCL network"
-                      : path === "/gallery"
-                      ? "Gallery"
-                      : "Contact Us";
+            {["/rkcl-network", "/gallery", "/blog", "/contact"].map((path, idx) => {
+  const name =
+    path === "/rkcl-network"
+      ? "RKCL network"
+      : path === "/gallery"
+      ? "Gallery"
+      : path === "/blog"
+      ? "Blogs"
+      : path === "/contact"
+      ? "Contact Us"
+      : "Unknown";
                   return (
                     <Button
                       key={idx}
