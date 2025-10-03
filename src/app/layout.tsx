@@ -1,26 +1,12 @@
-// RootLayout.tsx (Server Component)
+// app/layout.tsx (Server Component)
 import "./globals.css";
 import type { Metadata } from "next";
 import ClientProvider from "./ClientProvider";
-import api from "@/lib/axios"; 
-import 'react-quill-new/dist/quill.snow.css';
 import Script from "next/script";
-// Type for SEO
-interface SeoData {
-  title: string;
-  keywords: string;
-  description: string;
-}
+import { getSeo, SeoData } from "@/lib/getSeo";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  let seo: SeoData | null = null;
-
-  try {
-    const res = await api.get("/Seo"); 
-    seo = res.data.data; 
-  } catch (err) {
-    console.error("Failed to fetch SEO", err);
-  }
+  const seo: SeoData | null = await getSeo();
 
   const metadata: Metadata = {
     title: seo?.title || "Achariya Technologies Private Limited",
@@ -30,13 +16,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <head>
-      <title>{metadata.title as string}</title>
-      <meta name="description" content={metadata.description ?? ""} />
+        <title>{metadata.title as string}</title>
+        <meta name="description" content={metadata.description ?? ""} />
         {seo?.keywords && <meta name="keywords" content={seo.keywords} />}
       </head>
       <body>
         <ClientProvider>{children}</ClientProvider>
-        <Script id="tawk-to" strategy="afterInteractive">
+          <Script id="tawk-to" strategy="afterInteractive">
   {`
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function(){
@@ -57,8 +43,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     };
   `}
 </Script>
-
       </body>
     </html>
   );
 }
+
+
+    

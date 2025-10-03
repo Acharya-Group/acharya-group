@@ -6,12 +6,12 @@ const DirectorMessage = () => {
     <section className="bg-white py-16 relative overflow-hidden">
        <div className="bg-secondary h-[100px] w-[100px] absolute  opacity-10 top-[-40px] left-[-40px] rounded-full"></div>
  <div className="bg-secondary h-[100px] w-[100px] absolute  opacity-10 bottom-[-40px] right-[-40px] rounded-full"></div>
-      <div className="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center gap-10">
+      <div className="container mx-auto px-6 lg:px-12 flex flex-col-reverse md:flex-row items-center gap-10">
           {/* Message Content */}
         <div className="flex-1">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-            Director&apos;s Message
-          </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary lg:mb-4 mb-3">
+           Director&apos;s <span className="text-secondary">Message</span>
+        </h2>
 
           <div className="space-y-5 text-gray-700 leading-relaxed text-justify">
             <p>
@@ -64,7 +64,7 @@ const DirectorMessage = () => {
             />
           </div>
            {/* Signature */}
-          <div className="mt-8">
+          <div className="lg:mt-10 mt-4 flex flex-col gap-1">
             <p className="font-semibold text-lg text-gray-900">Yespal Singh</p>
             <p className="text-gray-500 italic mb-1">Managing Director</p>
             <p className="text-gray-500">director@Achariyagroup.com</p>

@@ -8,7 +8,7 @@ const AboutAchariya = () => {
 
       <div className="container mx-auto px-6 lg:px-12">
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-primary lg:mb-4 mb-3">
           About <span className="text-secondary">Achariya Group</span>
         </h2>
 

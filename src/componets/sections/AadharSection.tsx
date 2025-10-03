@@ -1,7 +1,7 @@
 import React from "react";
 import SubHeading from "../ui/SubHeading";
 import Link from "next/link";
-import { kisokConst } from "@/lib/utils";
+import Image from "next/image";
 
 const AadharSection = () => {
   return (
@@ -10,7 +10,8 @@ const AadharSection = () => {
         {/* Left Content */}
         <div className="lg:col-span-2 space-y-10">
           <div className="border-b pb-6">
-            <img
+            <Image
+            height={350}  width={992}
               src="/images/aadhaarCenter.jpg"
               alt="aadhar card"
               className="rounded-lg mb-4 w-full object-cover"
@@ -49,8 +50,9 @@ const AadharSection = () => {
                 className="text-start"
                 content="Claim Format for Operator/Supervisor (Activation Process for Aadhaar Operator ID)"
               />
-            <img
-              src="/images/document-aadhar.jpg"
+            <Image height={350}  width={992}
+
+             src="/images/document-aadhar.jpg"
               alt="aadhar card"
               className="rounded-lg mb-4 w-full object-cover"
             />

@@ -14,7 +14,6 @@ export const navdropdowns = [
     links: [
       { name: "About Us", href: "/about", type: "link" },
       { name: "Director's Message", href: "/directors-message", type: "link" },
-      { name: "Our Team", href: "/team", type: "link" },
     ],
   },
   {
@@ -38,7 +37,7 @@ export const navdropdowns = [
       { name: "Mantra MFS110 Driver", href: "/files/Mantra_MFS110.zip", type: "download" },
       { name: "Morpho Driver", href: "/files/morpho.zip", type: "download" },
       { name: "Starteck Driver", href: "/files/starteck.zip", type: "download" },
-      { name: "Kiosks Identity Card", href: "/downloads/Kiosk-id-card", type: "link" },
+      { name: "Kiosks Identity Card", href: "/Kiosk-id-card", type: "link" },
       { name: "E-Mitra Services Forms", href: "/downloads/e-mitra-services", type: "link" },
       { name: "Application Form For New e-Mitra Kiosk", href: "/files/Application Form For New e-Mitra Kiosk.pdf", type: "download" },
       { name: "RMGB Installation Process", href: "/files/rmgb_installation.docs", type: "download" },

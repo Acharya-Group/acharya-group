@@ -4,11 +4,12 @@ import { Mail, Phone, MapPin, Globe } from "lucide-react";
 import Link from "next/link";
 import { FaChalkboardTeacher, FaLaptopCode, FaHome, FaGlobe } from "react-icons/fa";
 import SubHeading from "../ui/SubHeading";
+import Image from "next/image";
 const AchariyaDrone = () => {
   return (
     <div className="container mx-auto px-4 py-10 space-y-12">
-<div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
-  <div className="order-2 md:order-1">
+<div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
+  <div className="order-2 lg:order-1">
     <SubHeading content="About Achariya Drones" className="text-start"/>
     <p className="text-base text-gray-700 mb-4">
       Welcome to Drone Pilot Training Institute. Achariya Technologies Pvt.
@@ -33,12 +34,12 @@ const AchariyaDrone = () => {
       career for our students.
     </p>
   </div>
-  <div className="flex justify-center order-1 md:order-2">
+  <div className="flex justify-center order-1 lg:order-2">
     <div>
-      <img
+      <Image height={400} width={1000}
         src="/images/achariya-drones.jpg"
         alt="Drone Training"
-        className="w-full h-[400px] object-cover rounded-2xl shadow-lg"
+        className="w-full h-[200] lg:h-[400px] object-cover rounded-2xl shadow-lg"
       />
     </div>
   </div>

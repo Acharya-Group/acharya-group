@@ -26,20 +26,8 @@ const documents = [
   return (
     <section className="bg-gray-50 py-12">
       <div className="container mx-auto px-4">
-        {/* Top Image */}
-        <div className="relative w-full h-72 md:h-96 rounded-2xl overflow-hidden shadow-lg">
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <h1 className="text-3xl md:text-5xl font-bold text-white text-center drop-shadow-lg">
-              e-Mitra Rajasthan <br />
-              <span className="text-yellow-400">
-                SINGLE WINDOW ACCESS TO ALL SERVICES
-              </span>
-            </h1>
-          </div>
-        </div>
-
         {/* English Content */}
-        <div className="mt-12">
+        <div>
           <h2 className="text-2xl font-bold text-gray-800 mb-4">
             About e-Mitra
           </h2>

@@ -85,7 +85,7 @@ const ContactForm = () => {
         
       <div className="container mx-auto px-4 max-w-5xl pb-12">
         <SubHeading content="Get in Touch" />
-          <p className="text-center text-gray-500 mb-6">
+          <p className="text-center text-gray-500 mb-0">
                 Reach out to us and we will respond as soon as possible.
               </p>
 

@@ -1,10 +1,10 @@
 "use client";
 
-import AdminLayout from '@/componets/admin/AdminLayout';
+import AdminLayout from "@/componets/admin/AdminLayout";
 import useDc from "@/hooks/dc";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import React from 'react';
+import React from "react";
 
 const Page = () => {
   const { createDc } = useDc();
@@ -31,9 +31,9 @@ const Page = () => {
       return toast.error("Please fill in all required fields!");
     }
 
-    // Send as JSON
     createDc.mutate(formData, {
       onSuccess: () => {
+        toast.success("DC added successfully ✅");
         setFormData({
           name: "",
           email: "",
@@ -43,7 +43,10 @@ const Page = () => {
           address: "",
         });
       },
-      onError: () => toast.error("Failed to create DC!"),
+       onError: (error) => {
+        toast.error("Error creating DC!");
+        console.error(error);
+      }
     });
   };
 
@@ -63,7 +66,7 @@ const Page = () => {
                   field === "email"
                     ? "email"
                     : field === "number"
-                    ? "number"
+                    ? "text" // ✅ better than number to allow +91, 0 prefixes
                     : "text"
                 }
                 name={field}
@@ -89,7 +92,6 @@ const Page = () => {
             />
           </div>
 
-          {/* ✅ Submit Button */}
           <button
             type="submit"
             disabled={createDc.isPending}
