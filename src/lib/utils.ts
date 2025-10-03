@@ -822,6 +822,10 @@ export const faqs = [
       "Yes, we help with the setup and management of kiosk banking and Bank BC services, including installation, RD service setup, and biometric device drivers.",
   },
   {
+  question: "How do I apply for a BC Point?",
+  answer: "To apply for a BC Point through Achariya Technologies, get approval from your local bank, then send your documents (Aadhaar, PAN, 10th marksheet, Police verification, etc.) to bankbc.org@gmail.com. Our team will handle registration and guide you through the setup process. For further information, contact us at +91 93404 02433."
+},
+  {
     question: "Can you help with biometric device installation and drivers?",
     answer:
       "Yes, we provide drivers and setup assistance for devices like Cogent, Mantra (MFS100, MFS110, Iris), Morpho, and Startek, along with complete installation support.",
