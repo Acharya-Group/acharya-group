@@ -812,6 +812,10 @@ export const faqs = [
     answer:
       "e-Mitra is a government initiative that allows citizens to access various services digitally. Through Achariya, you can apply for a new e-Mitra kiosk, get identity cards, access forms, and complete the installation process with proper guidance.",
   },
+{
+  question: "How do I apply for e-Mitra?",
+  answer: "To apply for e-Mitra, visit achariyagroup.in, fill out the e-Mitra kiosk form, and email it with the required documents to info@achariyagroup.com. They will process your application and guide you. For further information, contact us at +91 89019 03333."
+},
   {
     question: "Do you provide support for Kiosk Banking and Bank BC?",
     answer:
@@ -849,8 +853,6 @@ export const faqs = [
   },
 ];
 
-
-// footer data
 
 // footer array
 export const socialLinks = [
