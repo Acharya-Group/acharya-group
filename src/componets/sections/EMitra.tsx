@@ -41,7 +41,7 @@ const documents = [
           </p>
           <p className="text-gray-700 leading-relaxed mt-3">
             The services are delivered via counters known as{" "}
-            <strong>CSC (Common Service Center) e-Mitra Kiosks</strong> in rural
+            <strong> e-Mitra Kiosks</strong> in rural
             and urban areas. Committed to quick and convenient delivery of
             citizen services, Government of Rajasthan set up the e-Mitra
             platform of e-Governance way back in the year 2004.
