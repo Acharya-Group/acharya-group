@@ -12,7 +12,7 @@ const documents = [
   { name: "Bank Passbook" },
   { name: "Police Verification" },
   { name: "Passport Size Photo" },
-  { name: "Jan Aadhar Card" },
+  { name: "Jan Aadhaar Card" },
   { name: "Mobile Number" },
   { name: "Email ID" },
   { name: "Electricity bill" },

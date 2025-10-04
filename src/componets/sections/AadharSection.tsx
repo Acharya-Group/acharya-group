@@ -13,7 +13,7 @@ const AadharSection = () => {
             <Image
             height={350}  width={992}
               src="/images/aadhaarCenter.jpg"
-              alt="aadhar card"
+              alt="Aadhaar card"
               className="rounded-lg mb-4 w-full object-cover"
             />
             <SubHeading className="text-start" content="Our Company" />
@@ -53,7 +53,7 @@ const AadharSection = () => {
             <Image height={350}  width={992}
 
              src="/images/document-aadhar.jpg"
-              alt="aadhar card"
+              alt="Aadhaar card"
               className="rounded-lg mb-4 w-full object-cover"
             />
             <p className="text-gray-700 leading-relaxed">
@@ -85,7 +85,7 @@ const AadharSection = () => {
         <a href="/kiosk-banking" className="hover:underline">Kiosk Banking</a>
       </li>
       <li>
-        <a href="/aadhar" className="hover:underline">Aadhar</a>
+        <a href="/aadhar" className="hover:underline">Aadhaar</a>
       </li>
       <li>
         <a href="/fastag" className="hover:underline">Fastag</a>

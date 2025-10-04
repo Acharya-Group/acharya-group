@@ -69,16 +69,17 @@ export default function Footer() {
           <div className="md:col-span-2">
             <p className="text-lg font-semibold mb-3">Pages</p>
             <ul className="space-y-2 text-sm">
-              {pages.map((item, i) => (
-                <li key={i}>
-                  <Link
-                    href={item.url}
-                    className="transition-all hover:underline duration-300 opacity-75 hover:text-white hover:opacity-100"
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
+           {pages.map((item) => (
+  <li key={item.url}>
+    <Link
+      href={item.url}
+      className="transition-all hover:underline duration-300 opacity-75 hover:text-white hover:opacity-100"
+    >
+      {item.title}
+    </Link>
+  </li>
+))}
+
             </ul>
           </div>
 

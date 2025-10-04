@@ -31,7 +31,7 @@ const BlogDetailsPage: React.FC = () => {
 
           {/* Grid of blogs */}
           {blogs.length > 0 && (
-            <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
               {blogs.map((blog) => (
                 <div
                   key={blog._id}
@@ -39,12 +39,13 @@ const BlogDetailsPage: React.FC = () => {
                 >
                   <div className="bg-white rounded-xl shadow-md flex flex-col overflow-hidden h-full">
                     <Image
-                      src={blog.image}
-                      alt={blog.title}
-                      width={600}
-                      height={300}
-                      className="w-full h-48 object-cover"
-                    />
+  src={blog.image}
+  alt={blog.title}
+  width={600}
+  height={300}
+  className="w-full h-48 object-cover"
+/>
+
                     <div className="p-4 flex flex-col items-center text-center mt-auto">
                       <h3 className="text-lg font-semibold mb-2">{blog.title}</h3>
                                      <p className="text-gray-600 text-sm text-center mb-2 line-clamp-2">

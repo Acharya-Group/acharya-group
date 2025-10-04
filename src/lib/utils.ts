@@ -25,7 +25,7 @@ export const navdropdowns = [
       { name: "Achariya Drones", href: "/achariya-drones", type: "link" },
       { name: "RKCL", href: "/rkcl", type: "link" },
       { name: "School Easy", href: "/school-easy", type: "link" },
-      { name: "Mspl Yoga", href: "/yoga-certification", type: "link" },
+      { name: "Yoga certification", href: "/yoga-certification", type: "link" },
     ],
   },
   {
@@ -868,7 +868,6 @@ export const socialLinks = [
 ];
 
 
-// export const pages = ["About Us", "Careers", "Contact Us", "Media", "FAQ", "Privacy Policy"];
 export const pages = [
   { title: "Home", url: "/" }, 
   { url: "/about", title: "About Us" }, 
@@ -877,7 +876,7 @@ export const pages = [
    { url: "/gallery", title: "Gallery" },
    { url: "/fastag", title: "Fastag" }, 
    { url: "/blog", title: "Blogs" }, 
-   { url: "/aadhar", title: "Aadhar" }, 
+   { url: "/aadhar", title: "Aadhaar" }, 
    { url: "/validate-reference-letters", title: "Validate Reference Letters" },
     { title: "Complaint & Feedback", url: "complaint-feedback" },
     { title: "Order e-mitra Stationery", url: "order-e-mittra-stationery" }];
@@ -887,10 +886,10 @@ export const projectsLink = [
   { title: "Shopneo", url: "/shopneo" },
   { title: "e-Mitra", url: "/emitra" },
   { title: "Kiosk Banking", url: "/kiosk-banking" },
-  { title: "Achariya Droness", url: "/achariya-drones" },
+  { title: "Achariya Drones", url: "/achariya-drones" },
   { title: "RKCL", url: "/rkcl" },
   { title: "School Easy", url: "/school-easy" },
-  { title: "Mspl Yoga", url: "/yoga-certification" },
+  { title: "Yoga certification", url: "/yoga-certification" },
 
 ];
 

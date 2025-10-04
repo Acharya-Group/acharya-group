@@ -8,7 +8,7 @@ const page = () => {
   return (
     <>
     <Header/>
-    <CommonHero  title="MSPL Personnel Certification Body" />
+    <CommonHero  title="Yoga certification" />
     <YogaCertificate/>
     <Footer/>
     </>

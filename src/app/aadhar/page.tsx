@@ -8,7 +8,7 @@ const page = () => {
   return (
     <>
     <Header/>
-    <CommonHero title='Aadhar'/>
+    <CommonHero title='Aadhaar'/>
     <AadharSection/>
     <Footer/>
     </>
