@@ -24,7 +24,6 @@ const Shopneo = () => {
     <p className="text-center mt-2"><strong>Powered By ONDC</strong></p>
   </div>
 
-  {/* Text Content - 80% width - Comes SECOND in HTML but will be ABOVE on mobile */}
   <div className="lg:col-span-4 text-gray-700 leading-relaxed order-1 lg:order-2">
    <p className="text-gray-700 leading-relaxed">
   <strong>“ShopNeo.in”</strong> is the brand of Achariya Technologies Private Limited and serves as your ultimate online shopping destination, bringing together buyers and sellers across <strong>Pan India</strong> on a single, easy-to-use platform. Designed for convenience, efficiency, and security, ShopNeo.in allows customers to browse thousands of products across categories such as fashion, electronics, home essentials, personal care, and much more. The platform provides detailed product descriptions, customer reviews, personalized recommendations, and intuitive search and filter options to help shoppers make informed decisions.
