@@ -43,7 +43,7 @@ const BlogDetailsPage: React.FC = () => {
   alt={blog.title}
   width={600}
   height={300}
-  className="w-full h-48 object-cover"
+  className="w-full h-auto !max-h-48 object-contain "
 />
 
                     <div className="p-4 flex flex-col items-center text-center mt-auto">

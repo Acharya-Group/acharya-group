@@ -53,7 +53,7 @@ const BlogDetailsPage: React.FC = () => {
                   alt={blog.title}
                   width={1200}
                   height={400}
-                  className="w-full max-h-[350px] rounded-lg mb-6 object-cover"
+                  className="w-full max-h-[350px] rounded-lg mb-6 object-contain"
                 />
                 <p className="text-gray-700 mb-4 font-semibold">
                   {blog.shortDescription}
