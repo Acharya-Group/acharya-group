@@ -20,10 +20,11 @@ const Collaborations = () => {
               speed={1000}
               slidesPerView={8}
               breakpoints={{
-                1200: { slidesPerView: 7 },
-                992: { slidesPerView: 6 },
+                1200: { slidesPerView: 8 },
+                992: { slidesPerView: 7 },
                 768: { slidesPerView: 4 },
-                0: { slidesPerView: 3 },
+                500: { slidesPerView: 3 },
+                0: { slidesPerView: 2 },
               }}
               className="trusted_slider max-w-[2200px] mx-auto"
             >
@@ -37,7 +38,7 @@ const Collaborations = () => {
                     alt={`Logistics Partner ${idx + 1}`}
                     width={150}
                     height={80}
-                    className="object-contain w-full h-[80px] hover:scale-105 transition-transform duration-300"
+                    className="object-contain w-full h-[80px] lg:h-[50px] hover:scale-105 transition-transform duration-300"
                   />
                 </SwiperSlide>
               ))}

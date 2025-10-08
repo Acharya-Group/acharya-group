@@ -23,7 +23,7 @@ const services = [
   },
   {
     id: 3,
-    name: "Business Correspondent",
+    name: "Business Correspondent/Bank Bc",
     description: "Banking & financial services through our correspondent network.",
     icon: <FaUniversity className="w-10 h-10 text-purple-600" />,
     link: "/kiosk-banking",
