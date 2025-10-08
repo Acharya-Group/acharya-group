@@ -46,18 +46,21 @@ const AchariyaDrone = () => {
 </div>
 
 {/* Gallery */}
-<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-  <Image src="/images/drone-7.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
-  <Image src="/images/drone-8.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
-  <Image src="/images/drone-9.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
-  <Image src="/images/drone-10.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
-  <Image src="/images/drone-1.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
-  <Image src="/images/drone-2.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
-  <Image src="/images/drone-3.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
-  <Image src="/images/drone-4.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
-  <Image src="/images/drone-5.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
-  <Image src="/images/drone-6.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
-</div>
+<section>
+   <SubHeading content="OUR GALLERY" className="text-start"/>
+  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+    <Image src="/images/drone-7.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
+    <Image src="/images/drone-8.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
+    <Image src="/images/drone-9.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
+    <Image src="/images/drone-10.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
+    <Image src="/images/drone-1.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
+    <Image src="/images/drone-2.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
+    <Image src="/images/drone-3.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
+    <Image src="/images/drone-4.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
+    <Image src="/images/drone-5.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
+    <Image src="/images/drone-6.jpg" alt="gallery" width={400} height={400} className="rounded-lg max-h-[200px] object-cover" />
+  </div>
+</section>
 
       {/* Why Choose Us */}
       <section>
