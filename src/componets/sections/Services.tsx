@@ -16,7 +16,7 @@ const services = [
   },
   {
     id: 2,
-    name: "RKCL",
+    name: "RKCL/RSCIT/ITGK",
     description: "Rajasthan Knowledge Corporation Limited training & certification.",
     icon: <FaLaptopCode className="w-10 h-10 text-green-600" />,
     link: "/rkcl",
@@ -30,21 +30,21 @@ const services = [
   },
   {
     id: 4,
-    name: "Yoga Certification",
+    name: "Yoga Professional Certification",
     description: "Get certified in Yoga with recognized training programs.",
     icon: <FaSpa className="w-10 h-10 text-pink-600" />,
     link: "/yoga-certification",
   },
   {
     id: 5,
-    name: "Drone Services",
+    name: "Drones Services / DGCA Certified Drone Pilot (RPC)",
     description: "Drone training, certification & professional aerial solutions.",
     icon: <FaRobot className="w-10 h-10 text-red-600" />,
     link: "/achariya-drones",
   },
 {
   id: 6,
-  name: "Shopneo",
+  name: "ShopNeo/ONDC Marketplace",
   description: "Our exclusive e-commerce platform offering a wide range of products and services online.",
   icon: <FaShoppingCart className="w-10 h-10 text-yellow-400" />, 
   link: "/shopneo",
