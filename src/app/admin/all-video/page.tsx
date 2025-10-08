@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import AdminLayout from "@/componets/admin/AdminLayout";
 import { FaEdit, FaTrash, FaTimes } from "react-icons/fa";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useVideo, Video } from "@/hooks/video";
 
 const Page: React.FC = () => {
@@ -90,7 +90,6 @@ const Page: React.FC = () => {
 
   return (
     <AdminLayout>
-      <Toaster position="top-right" />
       <div className="bg-white p-6 rounded-2xl shadow-md">
         <h1 className="text-2xl font-bold mb-6">All Videos</h1>
 

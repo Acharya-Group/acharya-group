@@ -2,7 +2,7 @@
 
 import AdminLayout from "@/componets/admin/AdminLayout";
 import React, { useState, FormEvent } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useVideo } from "@/hooks/video";
 
 const Page: React.FC = () => {
@@ -33,7 +33,6 @@ const Page: React.FC = () => {
 
   return (
     <AdminLayout>
-      <Toaster position="top-right" />
       <div className="mx-auto bg-white p-6 rounded-2xl shadow-md max-w-2xl">
         <h1 className="text-2xl font-bold mb-6">Add Video</h1>
 

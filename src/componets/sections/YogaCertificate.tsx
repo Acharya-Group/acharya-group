@@ -194,12 +194,12 @@ const YogaCertificate = () => {
       <p>
         <strong>Website: </strong>
         <Link
-          href="https://msplyoga.com"
+          href="https://yogaexam.com"
           target="_blank"
           rel="noreferrer"
           className="text-blue-600 font-semibold hover:underline"
         >
-          https://msplyoga.com
+         https://yogaexam.com
         </Link>
       </p>
 
