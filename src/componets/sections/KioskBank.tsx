@@ -47,6 +47,20 @@ const bcServicesList = [
   "Sukanya Samriddhi Account",
 ];
 
+ const pdfLinks = {
+    banner: "/pdf/bob-posters.pdf",
+  };
+
+  // Function to download PDF
+  const handleDownload = (url: string) => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = url.split("/").pop() || "download.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
 export default function KioskBank() {
   return (
     <section className="max-w-7xl mx-auto p-6 md:p-10 bg-white rounded-2xl shadow-lg grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -55,13 +69,21 @@ export default function KioskBank() {
       <div className="lg:col-span-3 space-y-8">
 
         {/* Header */}
-        <header className="mb-8">
-          <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900">
-            Bank BC — Banking Services
-          </h1>
-          <p className="mt-2 text-sm text-gray-600">
-            Achariya Technologies Pvt. Ltd. — Financial & Social inclusion via BC Kiosks
-          </p>
+        <header className="mb-8 flex justify-between items-center flex-wrap gap-3">
+          <div>
+            <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900">
+              Bank BC — Banking Services
+            </h1>
+            <p className="mt-2 text-sm text-gray-600">
+              Achariya Technologies Pvt. Ltd. — Financial & Social inclusion via BC Kiosks
+            </p>
+          </div>
+            <button
+          onClick={() => handleDownload(pdfLinks.banner)}
+          className="bg-primary text-white text-sm font-semibold cursor-pointer px-4 py-2 rounded-lg shadow-lg hover:bg-secondary transition flex items-center gap-2"
+        >
+          📄Download Bank of Baroda banner
+        </button>
         </header>
 
         {/* Overview */}

@@ -4,7 +4,7 @@ import AdminLayout from '@/componets/admin/AdminLayout';
 import React, { useEffect, useState } from 'react';
 import { useGallery, Gallery } from '@/hooks/gallery';
 import Image from 'next/image';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import Link from 'next/link';
 
 const Page: React.FC = () => {
@@ -27,7 +27,6 @@ const Page: React.FC = () => {
 
   return (
     <AdminLayout>
-      <Toaster position="top-right" />
       <div className="mx-auto bg-white p-6 rounded-2xl shadow-md max-w-6xl">
         <h1 className="text-2xl font-bold mb-6">All Categories</h1>
 

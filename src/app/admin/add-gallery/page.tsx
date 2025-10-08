@@ -3,7 +3,7 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import AdminLayout from '@/componets/admin/AdminLayout';
 import Image from 'next/image';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { useGallery, Gallery } from '@/hooks/gallery';
 
 const AddGalleryPage: React.FC = () => {
@@ -81,7 +81,7 @@ const AddGalleryPage: React.FC = () => {
 
   return (
     <AdminLayout>
-      <Toaster position="top-right" />
+     
       <div className="mx-auto bg-white p-6 rounded-2xl shadow-md">
         <h1 className="text-2xl font-bold mb-4">Add Gallery Images</h1>
 

@@ -75,7 +75,7 @@ export default function Header() {
                   href="/"
                   sx={{
                     color: isLinkActive("/") ? "#7a0706" : "#261b7d",
-                    fontWeight: isLinkActive("/") ? 600 : 600,
+                    fontWeight: isLinkActive("/") ? 500 : 500,
                     borderBottom: isLinkActive("/") ? "2px solid #7a0706" : "2px solid transparent",
                     borderRadius: 0,
                     minWidth: "auto",
@@ -94,7 +94,7 @@ export default function Header() {
                       onClick={(e) => handleDropdownOpen(e, index)}
                       sx={{
                         color: isDropdownActive(dropdown.links) ? "#7a0706" : "#261b7d",
-                        fontWeight: isDropdownActive(dropdown.links) ? 600 : 600,
+                        fontWeight: isDropdownActive(dropdown.links) ? 500 : 500,
                         borderBottom: isDropdownActive(dropdown.links)
                           ? "2px solid #7a0706"
                           : "2px solid transparent",
@@ -123,7 +123,7 @@ export default function Header() {
                           onClick={handleDropdownClose}
                           sx={{
                             color: "#261b7d",
-                            fontWeight: 600,
+                            fontWeight: 500,
                             "&:hover": { backgroundColor: "rgba(220, 38, 38, 0.08)" },
                           }}
                         >
@@ -152,7 +152,7 @@ export default function Header() {
                       href={path}
                       sx={{
                         color: isLinkActive(path) ? "#7a0706" : "#261b7d",
-                        fontWeight: isLinkActive(path) ? 600 : 600,
+                        fontWeight: isLinkActive(path) ? 500 : 500,
                         borderBottom: isLinkActive(path)
                           ? "2px solid #7a0706"
                           : "2px solid transparent",
@@ -161,7 +161,7 @@ export default function Header() {
         
                         px: 1,
                         pb: 0.5,
-                        "&:hover": { color: "#7a0706", backgroundColor: "transparent",fontWeight: 600, },
+                        "&:hover": { color: "#7a0706", backgroundColor: "transparent",fontWeight: 500, },
                       }}
                     >
                       {name}
@@ -206,7 +206,7 @@ export default function Header() {
                   sx={{
                     borderRadius: 1,
                     color: isLinkActive("/") ? "#7a0706" : "#261b7d",
-                    fontWeight: isLinkActive("/") ? 600 : 400,
+                    fontWeight: isLinkActive("/") ? 500 : 400,
                     borderBottom: isLinkActive("/") ? "2px solid #7a0706" : "2px solid transparent",
                     "&.Mui-selected": { backgroundColor: "rgba(220, 38, 38, 0.08)" },
                   }}
@@ -224,7 +224,7 @@ export default function Header() {
                         borderRadius: 1,
                         justifyContent: "space-between",
                         color: isDropdownActive(dropdown.links) ? "#7a0706" : "#261b7d",
-                        fontWeight: isDropdownActive(dropdown.links) ? 600 : 400,
+                        fontWeight: isDropdownActive(dropdown.links) ? 500 : 400,
                         borderBottom: isDropdownActive(dropdown.links)
                           ? "2px solid #7a0706"
                           : "2px solid transparent",
@@ -276,7 +276,7 @@ export default function Header() {
                       sx={{
                         borderRadius: 1,
                         color: isLinkActive(path) ? "#7a0706" : "#261b7d",
-                        fontWeight: isLinkActive(path) ? 600 : 400,
+                        fontWeight: isLinkActive(path) ? 500 : 400,
                         borderBottom: isLinkActive(path) ? "2px solid #7a0706" : "2px solid transparent",
                         "&.Mui-selected": { backgroundColor: "rgba(220, 38, 38, 0.08)" },
                       }}

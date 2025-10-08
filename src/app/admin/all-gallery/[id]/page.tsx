@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import AdminLayout from "@/componets/admin/AdminLayout";
 import Image from "next/image";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { FaTrash, FaEdit, FaTimes } from "react-icons/fa";
 import { useGallery, ImageType } from "@/hooks/gallery";
 import { useParams } from "next/navigation";
@@ -72,7 +72,6 @@ const SingleCategoryPage: React.FC = () => {
   // -----------------------------
   return (
     <AdminLayout>
-      <Toaster position="top-right" />
       <div className="bg-white p-6 rounded-2xl shadow-md">
         <h1 className="text-2xl font-bold mb-6">{category.category}</h1>
 
