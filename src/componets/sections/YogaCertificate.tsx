@@ -199,7 +199,7 @@ const YogaCertificate = () => {
           rel="noreferrer"
           className="text-blue-600 font-semibold hover:underline"
         >
-         https://yogaexam.com
+          https://yogaexam.com
         </Link>
       </p>
 

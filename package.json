@@ -26,11 +26,11 @@
     "next": "^15.5.4",
     "postcss": "^8.5.6",
     "quill": "^2.0.3",
-    "react": "19.1.0",
+    "react": "^19.1.0",
     "react-countup": "^6.5.3",
     "react-csv": "^2.2.2",
     "react-data-table-component": "^7.7.0",
-    "react-dom": "19.1.0",
+    "react-dom": "^19.1.0",
     "react-hot-toast": "^2.6.0",
     "react-icons": "^5.5.0",
     "react-quill-new": "^3.6.0",
@@ -43,14 +43,14 @@
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4.1.13",
     "@types/draft-js": "^0.11.18",
-    "@types/node": "^20",
-    "@types/react": "^19",
+    "@types/node": "^20.19.19",
+    "@types/react": "^19.2.2",
     "@types/react-csv": "^1.1.10",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
     "tailwindcss": "^4.1.13",
     "tw-animate-css": "^1.3.8",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   }
 }
