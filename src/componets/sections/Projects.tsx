@@ -73,7 +73,7 @@ const Projects = () => {
                       <CardMedia
                         component="img"
                         height="180"
-                        className="max-h-[90px]"
+                        className="max-h-[90px] min-h-[90px]"
                         image={project.img}
                         alt={project.title}
                       />
