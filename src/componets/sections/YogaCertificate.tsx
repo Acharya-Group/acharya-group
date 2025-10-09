@@ -92,11 +92,7 @@ const YogaCertificate = () => {
               Our Vision
             </h3>
             <p className="text-gray-700 leading-relaxed">
-            We work to create peace in our world, communities and families by first
-        creating peace within ourselves. To provide the best of Yoga Education,
-        Training, Therapy and Research facilities to the aspirants, researchers
-        and practitioners of Yoga to meet the aspirations of modern age with
-        quality assessment of yoga professional.
+            We believe that peace within each person is the key to peace in families, communities, and the world. Our mission is to offer a trusted and thorough certification process for yoga professionals, students, and practitioners. Following the Professional Regulation Commission’s Yoga Certification Board (YCB) standards, we make sure certified yoga professionals meet high quality and ethical requirements. This helps develop skilled and responsible yoga practitioners who make a positive difference in society.
             </p>
           </div>
 
@@ -108,8 +104,7 @@ const YogaCertificate = () => {
               Our Mission
             </h3>
             <p className="text-gray-700 leading-relaxed">
-          Our mission is to promote & establishment ourself as one of the best
-        certification body for yoga professional with quality standards.
+         Our mission is to become one of the best certification bodies for yoga professionals by maintaining high quality standards. We are committed to providing clear and fair certification that helps yoga practitioners show their skills and professionalism.
             </p>
           </div>
         </div>
