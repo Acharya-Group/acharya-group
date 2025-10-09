@@ -10,6 +10,7 @@ const YogaCertificate = () => {
     guidance: "/images/mspl/Indian Candidate 2.pdf",
     registration: "/images/mspl/MSPL Exam Guideline.pdf",
     indianCandidate: "/images/mspl/Registration-Procees.pdf",
+    formCandidate: "/images/mspl/ForeignCandidate.pdf",
   };
 
   // Function to download PDF
@@ -185,6 +186,12 @@ const YogaCertificate = () => {
           className="bg-primary text-white font-semibold cursor-pointer px-6 py-3 rounded-lg shadow-lg hover:bg-secondary transition flex items-center gap-2"
         >
           📄 Indian Candidate Info
+        </button>
+        <button
+          onClick={() => handleDownload(pdfLinks.formCandidate)}
+          className="bg-primary text-white font-semibold cursor-pointer px-6 py-3 rounded-lg shadow-lg hover:bg-secondary transition flex items-center gap-2"
+        >
+          📄 Foregin Candidate Info
         </button>
       </div>
        <SubHeading className="!text-start" content="More Information"  />

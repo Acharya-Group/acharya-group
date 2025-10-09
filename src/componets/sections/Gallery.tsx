@@ -53,7 +53,7 @@ const Gallery = () => {
   return (
     <div className="container mx-auto px-4 py-12 relative">
       {/* Tabs Section */}
-      <div className="flex flex-wrap justify-center gap-3 mb-10">
+      <div className="flex flex-wrap justify-center gap-3 mb-0">
         {tabs.map((tab) => (
           <button
             key={tab.id}
