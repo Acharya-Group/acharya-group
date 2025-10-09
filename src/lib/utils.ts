@@ -807,7 +807,7 @@ export const faqs = [
   {
     question: "What services does Achariya  Private Limited provide?",
     answer:
-      "We provide a wide range of services including Shopneo e-commerce, e-Mitra services, kiosk banking/Bank BC, insurance solutions, RKCL training, School Easy software, Paytm registration, and technical support for biometric devices and banking kiosks.",
+      "We provide a wide range of services including Shopneo e-commerce, e-Mitra services, kiosk banking/Bank BC, RKCL training, School Easy software, Atpl Drone ,Yoga Drone Certification, and technical support for biometric devices and banking kiosks.",
   },
   {
     question: "How can I register for Shopneo through Achariya?",
@@ -847,11 +847,12 @@ export const faqs = [
     answer:
       "School Easy is our school management solution that helps schools manage student data, fees, communication, and administration digitally, making operations more efficient.",
   },
-  {
-    question: "How do I apply for insurance services?",
-    answer:
-      "Achariya provides insurance support for individuals and businesses. You can reach out to our team to explore suitable insurance plans and get registered.",
-  },
+ {
+  question: "How do I apply for Yoga Certification?",
+  answer:
+    "You can apply for Yoga Certification through Achariya by registering online on our official website(www.msplyoga.com). Fill out the application form, submit the required documents, and our team will guide you through the assessment and certification process.",
+},
+
   {
     question: "How long does it take to activate services like e-Mitra or Shopneo?",
     answer:
