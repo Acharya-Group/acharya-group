@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function TopBar() {
   return (
     <div className="bg-gradient-to-r from-[#7a0706] to-[#261b7d]">
-      <div className="container mx-auto  text-white font-semibold py-2 px-4 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-0">
+      <div className="container mx-auto  text-white font-normal py-2 px-4 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-0">
         {/* Left: Info text */}
          <p className="text-sm md:text-base text-center md:text-start">
         {"Note : Achariya Tech. doesn't accept any cash payments."}
@@ -20,13 +20,13 @@ export default function TopBar() {
         {/* The link */}
         <Link
           href="/order-e-mittra-stationery"
-          className="ms-2 hover:underline text-white font-semibold"
+          className="ms-2 hover:underline text-white font-normal"
         >
           Order e-mitra Stationery
         </Link>
         <Link
           href="/complaint-feedback"
-          className="sm:ms-6 ms-3 hover:underline  text-white font-semibold"
+          className="sm:ms-6 ms-3 hover:underline  text-white font-normal"
         >
           Complaint & Feedback
         </Link>
