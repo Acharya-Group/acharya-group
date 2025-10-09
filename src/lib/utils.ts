@@ -459,7 +459,7 @@ export const projectManagersContact = [
   {
     id: 46,
     mobile: "8930300623",
-    name: "Sumit",
+    name: "Sumit Chouhan",
     project: "Software",
     designation: "Developer",
     location: "Hisar",
@@ -792,6 +792,13 @@ export const projects = [
     desc: "School management system that streamlines administration, student tracking, and communication.",
     img: "/images/School-Easy.jpg",
     link: "/school-easy",
+  },
+  {
+    id: 7,
+    title: "Mspl Yoga Certification",
+    desc: "MSPL is a certified body dedicated to promoting authentic yoga education and global certification standards under the Ministry of AYUSH’s guidelines",
+    img: "/images/mspl-project.webp",
+    link: "/yoga-certification",
   },
 ];
 
