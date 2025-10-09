@@ -16,7 +16,7 @@ const services = [
   },
   {
     id: 2,
-    name: "RKCL/RSCIT/ITGK",
+    name: "RKCL / RSCIT / ITGK",
     description: "Rajasthan Knowledge Corporation Limited training & certification.",
     icon: <FaLaptopCode className="w-10 h-10 text-green-600" />,
     link: "/rkcl",
