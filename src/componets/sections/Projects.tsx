@@ -52,7 +52,7 @@ const Projects = () => {
             className="overflow-visible h-[240px]"
           >
             {projects.map((project) => (
-              <SwiperSlide data-aos="flip-right" data-aos-duration="1500" key={project.id}>
+              <SwiperSlide  key={project.id}>
                 <Link href={project.link} passHref>
                   <Card
                     sx={{
