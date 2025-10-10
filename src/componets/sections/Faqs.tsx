@@ -21,7 +21,7 @@ export default function Faqs() {
               {faqs.map((faq, index) => (
                 <div
                   data-aos="zoom-in"
-                  data-aos-duraction="3000"
+                  data-aos-duration="2000"
                   key={index}
                   className="bg-gradient-to-r from-[#261b7d] to-[#7a0706] px-4 py-3 rounded-lg cursor-pointer"
                 >

@@ -62,7 +62,7 @@ const Testimonials = () => {
       <h3 className="text-lg font-semibold text-center mb-2">
         {testimonial.name}
       </h3>
-      <div className="flex-grow flex items-center"> {/* Flex container for text */}
+      <div className="flex-grow flex items-center"> 
         <p className="text-gray-600 text-sm text-center italic line-clamp-3">
           "{testimonial.description}"
         </p>

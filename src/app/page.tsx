@@ -1,3 +1,8 @@
+"use client"
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Footer from "@/componets/layout/Footer";
 import Header from "@/componets/layout/Header";
 import About from "@/componets/sections/About";
@@ -13,6 +18,11 @@ import Testimonials from "@/componets/sections/Testimonials";
 import VerifyApply from "@/componets/sections/VerifyApply";
 
 export default function Home() {
+   useEffect(() => {
+    AOS.init({
+      once: true,    
+    });
+  }, []);
   return (
     <>
       <Header />

@@ -48,11 +48,11 @@ const Projects = () => {
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
               1280: { slidesPerView: 4 },
-            }}
+            }} 
             className="overflow-visible h-[240px]"
           >
             {projects.map((project) => (
-              <SwiperSlide key={project.id}>
+              <SwiperSlide data-aos="flip-right" data-aos-duration="1500" key={project.id}>
                 <Link href={project.link} passHref>
                   <Card
                     sx={{

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation,EffectFade } from "swiper/modules";
+import { Autoplay, Navigation, EffectFade } from "swiper/modules";
 import "swiper/css/effect-fade";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -12,7 +12,7 @@ import Link from "next/link";
 import { Slider, useSlider } from "@/hooks/slider";
 
 const Hero = () => {
-   const { allSliders } = useSlider();
+  const { allSliders } = useSlider();
   const [sliders, setSliders] = useState<Slider[]>([]);
 
   useEffect(() => {
@@ -21,9 +21,30 @@ const Hero = () => {
     }
   }, [allSliders.isSuccess, allSliders.data]);
 
-  if (allSliders.isLoading) return <p>Loading sliders...</p>;
-  if (allSliders.isError) return <p>Error: {allSliders.error?.message}</p>;
-  if (!sliders.length) return <p>No sliders found</p>;
+  // Handle loading, error, and empty states
+  if (allSliders.isLoading) {
+    return (
+      <div className="w-full h-[200px] lg:min-h-[400px] flex items-center justify-center">
+        <p>Loading sliders...</p>
+      </div>
+    );
+  }
+
+  if (allSliders.isError) {
+    return (
+      <div className="w-full h-[200px] lg:min-h-[400px] flex items-center justify-center">
+        <p>Error: {allSliders.error?.message}</p>
+      </div>
+    );
+  }
+
+  if (!sliders.length) {
+    return (
+      <div className="w-full h-[200px] lg:min-h-[400px] flex items-center justify-center">
+        <p>No sliders found</p>
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-full max-w-[1920px] mx-auto">
@@ -42,8 +63,7 @@ const Hero = () => {
           nextEl: ".hero-next",
           prevEl: ".hero-prev",
         }}
-        className="hero_slider w-full h-[160px] sm:h-[300px] min-[400px]:h-[220px]
- lg:min-h-[400px]"
+        className="hero_slider w-full h-[160px] sm:h-[300px] min-[400px]:h-[220px] lg:min-h-[400px]"
       >
         {sliders.map((slide, index) => (
           <SwiperSlide key={index}>

@@ -36,7 +36,7 @@ const VerifyApply = () => {
       <SubHeading content='Verify & Apply'/>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
         {cardsData.map((card) => (
-          <a 
+          <a  data-aos="flip-right" data-aos-duration="1500"
             key={card.id}
             href={card.link}
             target={card.external ? "_blank" : "_self"}
