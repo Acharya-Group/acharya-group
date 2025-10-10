@@ -31,7 +31,7 @@ const services = [
   {
     id: 4,
     name: "Yoga Professional Certification",
-    description: "Get certified in Yoga with recognized training programs.",
+    description: "Get certified in Yoga with government-recognized certification.",
     icon: <FaSpa className="w-10 h-10 text-pink-600" />,
     link: "/yoga-certification",
   },

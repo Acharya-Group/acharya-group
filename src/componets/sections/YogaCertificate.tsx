@@ -7,10 +7,10 @@ import Link from "next/link";
 
 const YogaCertificate = () => {
   const pdfLinks = {
-    guidance: "/images/mspl/Indian Candidate 2.pdf",
-    registration: "/images/mspl/MSPL Exam Guideline.pdf",
-    indianCandidate: "/images/mspl/Registration-Procees.pdf",
-    formCandidate: "/images/mspl/ForeignCandidate.pdf",
+    guidance: "/mspl/MSPL Exam Guideline.pdf",
+    registration: "/mspl/YOGA- MODISH SERVICE PRIVATE LIMITED.pptx",
+    indianCandidate: "/mspl/Indian Candidate 2.pdf",
+    formCandidate: "/mspl/ForeignCandidate.pdf",
   };
 
   // Function to download PDF
