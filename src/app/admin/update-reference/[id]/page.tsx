@@ -129,11 +129,11 @@ const UpdateReferencePage: React.FC = () => {
         <button
   type="submit"
   disabled={updateReference.status === "pending"} 
-  className={`w-full px-4 py-2 bg-[#7a0706] text-white rounded-lg hover:bg-[#5a0505] transition ${
+  className={`w-full px-4 py-2 bg-secondary text-white rounded-lg hover:bg-primary cursor-pointer transition ${
     updateReference.status === "pending" ? "opacity-50 cursor-not-allowed" : ""
   }`}
 >
-  {updateReference.status === "pending" ? "Saving..." : "Submit"}
+  {updateReference.status === "pending" ? "Saving..." : "Update Reference"}
 </button>
         </form>
       </div>

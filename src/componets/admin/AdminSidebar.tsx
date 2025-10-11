@@ -136,7 +136,7 @@ export default function AdminSidebar({ isSidebarOpen, onClose }: AdminSidebarPro
     >
       {/* Header */}
       <Link href="/admin" className="px-4 py-2 border-b border-gray-300 flex justify-between items-center">
-        <Image src="/images/logo.png" alt="Company Logo" width={90} height={35} className="object-cover" />
+        <Image unoptimized src="/images/logo.png" alt="Company Logo" width={90} height={35} className="object-cover" />
         <button onClick={onClose} className="md:hidden text-gray-800 hover:text-gray-600">
           <X className="w-6 h-6" />
         </button>

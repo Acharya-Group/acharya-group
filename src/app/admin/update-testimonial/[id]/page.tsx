@@ -156,8 +156,8 @@ const UpdateTestimonialPage = () => {
             type="submit"
             disabled={isSubmitting}
             className={`w-full ${
-              isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-[#7a0706] hover:bg-[#5a0505]"
-            } text-white py-3 px-4 rounded-lg shadow-md transition transform hover:scale-[1.01] font-medium`}
+              isSubmitting ? "bg-primary cursor-not-allowed" : "bg-secondary"
+            } text-white py-3 px-4 cursor-pointer rounded-lg shadow-md transition transform hover:bg-primary font-medium`}
           >
             {isSubmitting ? "Updating..." : "Update Testimonial"}
           </button>

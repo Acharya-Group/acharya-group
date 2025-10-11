@@ -57,8 +57,8 @@ const Page: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full bg-[#7a0706] cursor-pointer text-white py-2 px-4 rounded-lg 
-              shadow-md hover:bg-[#261b7d] transition transform hover:scale-[1.02] disabled:opacity-50`}
+            className={`w-full bg-secondary cursor-pointer text-white py-2 px-4 rounded-lg 
+              shadow-md hover:bg-primary transition transform hover:scale-[1.02] disabled:opacity-50`}
           >
             {loading ? "Adding..." : "Submit"}
           </button>

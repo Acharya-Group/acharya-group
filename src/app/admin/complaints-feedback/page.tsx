@@ -106,7 +106,7 @@ useEffect(() => {
                   <td className="px-4 py-2">
                     <button
                       onClick={() => handleDelete(entry._id)}
-                      className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
+                      className="p-2 cursor-pointer bg-red-500 text-white rounded hover:bg-red-600"
                     >
                       <FaTrash />
                     </button>

@@ -169,7 +169,7 @@ const Page: React.FC = () => {
               <h2 className="text-xl font-bold mb-4">Update Popup</h2>
 
               {/* Upload File */}
-              <input type="file" onChange={handleFileChange} className="mb-4 bg-secondary text-white rounded-2xl inline py-2 px-3 max-w-[320px]" />
+              <input type="file" onChange={handleFileChange} className="mb-4 cursor-pointer bg-secondary text-white rounded-2xl inline py-2 px-3 max-w-[320px]" />
 
               {/* Update Link */}
               <input
@@ -195,7 +195,7 @@ const Page: React.FC = () => {
               <button
                 onClick={handleUpdate}
                 disabled={updatePopup.status === "pending"}
-                className={`px-4 py-2 bg-secondary text-white rounded hover:bg-primary ${
+                className={`px-4 py-2 bg-secondary cursor-pointer text-white rounded hover:bg-primary ${
                   updatePopup.status === "pending"
                     ? "opacity-50 cursor-not-allowed"
                     : ""

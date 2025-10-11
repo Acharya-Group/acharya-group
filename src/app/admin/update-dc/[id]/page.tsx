@@ -190,8 +190,8 @@ const Page = () => {
           <button
             type="submit"
             disabled={updateDc.isPending}
-            className="w-full bg-[#7a0706] cursor-pointer text-white py-2 px-4 rounded-lg 
-              shadow-md hover:bg-[#5a0505] transition transform hover:scale-[1.02]"
+            className="w-full bg-secondary cursor-pointer text-white py-2 px-4 rounded-lg 
+              shadow-md hover:bg-primary transition transform"
           >
             {updateDc.isPending ? "Updating..." : "Update DC"}
           </button>

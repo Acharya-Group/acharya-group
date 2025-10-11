@@ -81,11 +81,11 @@ const Page: React.FC = () => {
  <button
   type="submit"
   disabled={createReference.status === "pending"} 
-  className={`w-full px-4 py-2 bg-[#7a0706] text-white rounded-lg hover:bg-[#5a0505] transition ${
+  className={`w-full px-4 py-2 bg-secondary text-white rounded-lg hover:bg-primary cursor-pointer transition ${
     createReference.status === "pending" ? "opacity-50 cursor-not-allowed" : ""
   }`}
 >
-  {createReference.status === "pending" ? "Saving..." : "Submit"}
+  {createReference.status === "pending" ? "Saving..." : "Add Reference"}
 </button>
 
 

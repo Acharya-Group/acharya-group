@@ -97,7 +97,7 @@ const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
             disabled={isLoading}
             whileHover={{ scale: 1.05, boxShadow: "0 0 15px #8b5cf6" }}
             whileTap={{ scale: 0.95 }}
-            className="w-full mt-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg disabled:opacity-50"
+            className="w-full mt-4 cursor-pointer py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg disabled:opacity-50"
           >
             {isLoading ? "Logging in..." : "Login"}
           </motion.button>

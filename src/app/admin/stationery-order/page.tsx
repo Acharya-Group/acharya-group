@@ -128,7 +128,7 @@ const OrdersPage: React.FC = () => {
                     <button
                       onClick={() => handleDelete(order._id)}
                       disabled={deleteOrder.isPending}
-                      className="p-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:opacity-50"
+                      className="p-2 cursor-pointer bg-red-500 text-white rounded hover:bg-red-600 disabled:opacity-50"
                     >
                       <FaTrash />
                     </button>

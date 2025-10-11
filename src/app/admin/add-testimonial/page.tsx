@@ -135,8 +135,8 @@ const Page = () => {
             type="submit"
             disabled={isSubmitting}
             className={`w-full ${
-              isSubmitting ? "bg-gray-400" : "bg-[#7a0706] hover:bg-[#5a0505]"
-            } text-white py-3 px-4 rounded-lg shadow-md transition transform hover:scale-[1.01] font-medium`}
+              isSubmitting ? "bg-primary" : "bg-secondary"
+            } text-white py-3 px-4 cursor-pointer rounded-lg hover:bg-primary shadow-md transition transform font-medium`}
           >
             {isSubmitting ? "Adding..." : "Add Testimonial"}
           </button>

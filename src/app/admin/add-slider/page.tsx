@@ -106,7 +106,7 @@ const AddSliderPage: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full bg-[#7a0706] text-white py-2 px-4 rounded-lg 
+            className={`w-full cursor-pointer bg-[#7a0706] text-white py-2 px-4 rounded-lg 
               shadow-md hover:bg-[#261b7d] transition transform hover:scale-[1.02] disabled:opacity-50`}
           >
             {loading ? "Uploading..." : "Submit"}

@@ -80,16 +80,16 @@ const Page: React.FC = () => {
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-2 mb-4">
-          <button onClick={copyData} className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">
+          <button onClick={copyData} className="px-4 py-2 cursor-pointer bg-gray-200 rounded hover:bg-gray-300 transition">
             Copy
           </button>
-          <CSVLink data={testimonials} filename="testimonials.csv" className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">
+          <CSVLink data={testimonials} filename="testimonials.csv" className="px-4 py-2 cursor-pointer bg-gray-200 rounded hover:bg-gray-300 transition">
             CSV
           </CSVLink>
-          <button onClick={exportPDF} className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">
+          <button onClick={exportPDF} className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 cursor-pointer transition">
             PDF
           </button>
-          <button onClick={() => window.print()} className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">
+          <button onClick={() => window.print()} className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 cursor-pointer transition">
             Print
           </button>
         </div>

@@ -131,7 +131,7 @@ const SingleCategoryPage: React.FC = () => {
 
               <h2 className="text-xl font-bold mb-4">Update Image</h2>
 
-                 <input type="file" onChange={handleFileChange} className="mb-4 bg-secondary text-white rounded-2xl inline py-2 px-3" />
+                 <input type="file" onChange={handleFileChange} className="mb-4 bg-secondary text-white rounded-2xl max-w-[300px] inline py-2 px-3" />
 
 
               {previewImage && (
@@ -146,7 +146,7 @@ const SingleCategoryPage: React.FC = () => {
 
               <button
                 onClick={handleUpdate}
-                className="px-4 py-2 bg-secondary text-white rounded hover:bg-primary"
+                className="px-4 py-2 bg-secondary cursor-pointer text-white rounded hover:bg-primary"
               >
                 Update
               </button>

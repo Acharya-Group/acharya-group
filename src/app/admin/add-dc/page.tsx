@@ -95,11 +95,11 @@ const Page = () => {
           <button
             type="submit"
             disabled={createDc.isPending}
-            className={`w-full px-4 py-2 bg-[#7a0706] text-white rounded-lg hover:bg-[#5a0505] transition ${
+            className={`w-full px-4 py-2 bg-secondary text-white rounded-lg hover:bg-primary cursor-pointer transition ${
               createDc.isPending ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
-            {createDc.isPending ? "Saving..." : "Submit"}
+            {createDc.isPending ? "Adding..." : "Add Dc"}
           </button>
         </form>
       </div>

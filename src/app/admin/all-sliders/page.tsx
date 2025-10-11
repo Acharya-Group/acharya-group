@@ -196,7 +196,7 @@ const Page: React.FC = () => {
               <button
                 onClick={handleUpdate}
                 disabled={updateSlider.status === "pending"}
-                className={`px-4 py-2 bg-secondary text-white rounded hover:bg-primary ${
+                className={`px-4 py-2 cursor-pointer bg-secondary text-white rounded hover:bg-primary ${
                   updateSlider.status === "pending"
                     ? "opacity-50 cursor-not-allowed"
                     : ""

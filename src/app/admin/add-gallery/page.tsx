@@ -107,7 +107,7 @@ const AddGalleryPage: React.FC = () => {
           <button
   onClick={handleAddCategory}
   disabled={createCategory.status === 'pending'}
-  className={`px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition ${
+  className={`px-4 py-2 bg-primary cursor-pointer text-white rounded-lg hover:bg-secondary transition ${
     createCategory.status === 'pending' ? 'opacity-50 cursor-not-allowed' : ''
   }`}
 >
@@ -122,7 +122,7 @@ const AddGalleryPage: React.FC = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a0706]"
+                className="w-full px-4 py-2 border cursor-pointer rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7a0706]"
               >
                 <option value="">Select Category</option>
                 {localGalleries.map((g) => (
@@ -162,7 +162,7 @@ const AddGalleryPage: React.FC = () => {
            <button
   onClick={handleAddImages}
   disabled={addImagesToCategory.status === 'pending'}
-  className={`w-full px-4 py-2 bg-[#7a0706] text-white rounded-lg hover:bg-[#5a0505] transition ${
+  className={`w-full px-4 py-2 bg-secondary text-white rounded-lg hover:bg-primary cursor-pointer transition ${
     addImagesToCategory.status === 'pending' ? 'opacity-50 cursor-not-allowed' : ''
   }`}
 >

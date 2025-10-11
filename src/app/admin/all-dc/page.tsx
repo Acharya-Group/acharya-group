@@ -17,6 +17,9 @@ const Page: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
+  // Search
+  const [searchQuery, setSearchQuery] = useState("");
+
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
@@ -24,6 +27,16 @@ const Page: React.FC = () => {
   if (allDc.isError) return <AdminLayout>Error loading DCs!</AdminLayout>;
 
   const dcs = allDc.data || [];
+
+  // Filtered DCs based on search query
+  const filteredDcs = dcs.filter(dc =>
+    dc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    dc.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    dc.number.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    dc.district.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    dc.state.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    dc.address.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   // Delete handler
   const handleDelete = (id: string) => {
@@ -64,8 +77,8 @@ const Page: React.FC = () => {
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = dcs.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(dcs.length / itemsPerPage);
+  const currentItems = filteredDcs.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredDcs.length / itemsPerPage);
 
   return (
     <AdminLayout>
@@ -78,6 +91,17 @@ const Page: React.FC = () => {
           <CSVLink data={dcs} filename="dc-list.csv" className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">CSV</CSVLink>
           <button onClick={exportPDF} className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">PDF</button>
           <button onClick={() => { if (typeof window !== "undefined") window.print(); }} className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">Print</button>
+        </div>
+
+        {/* Search input */}
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
+            className="w-full p-2 border border-gray-300 rounded"
+          />
         </div>
 
         {/* Table */}
@@ -104,20 +128,17 @@ const Page: React.FC = () => {
                   <td className="px-4 py-2">{dc.number}</td>
                   <td className="px-4 py-2">{dc.district}</td>
                   <td className="px-4 py-2">{dc.state}</td>
-
-                         <td className="px-4 py-2 max-w-[200px]">
-  <div className="max-h-[100px] overflow-y-auto whitespace-pre-line">
-    {dc.address}
-  </div>
-</td>
+                  <td className="px-4 py-2 max-w-[200px]">
+                    <div className="max-h-[100px] overflow-y-auto whitespace-pre-line">
+                      {dc.address}
+                    </div>
+                  </td>
                   <td className="px-4 py-2 flex gap-2">
-                    {/* Update: redirect with ID */}
                     <Link href={`/admin/update-dc/${dc._id}`}>
                       <button className="p-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600">
                         <FaEdit />
                       </button>
                     </Link>
-                    {/* Delete */}
                     <button onClick={() => handleDelete(dc._id!)} className="p-2 bg-red-500 text-white rounded hover:bg-red-600">
                       <FaTrash />
                     </button>
