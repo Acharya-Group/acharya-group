@@ -76,6 +76,7 @@ const Projects = () => {
                         className="max-h-[90px] min-h-[90px]"
                         image={project.img}
                         alt={project.title}
+                        
                       />
                       <CardContent sx={{ pt: 2 }}>
                         <Typography
