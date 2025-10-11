@@ -59,7 +59,7 @@ const BlogSection = () => {
                       width={600}
                       height={300}
                       unoptimized
-                      className="w-full h-48 object-cover"
+                      className="w-full h-40 object-cover"
                     />
                     <div className="p-4 flex flex-col items-center">
                       <h3 className="text-lg font-semibold text-center mb-2 line-clamp-1">
