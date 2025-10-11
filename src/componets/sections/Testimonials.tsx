@@ -51,15 +51,16 @@ const Testimonials = () => {
             {testimonials.map((testimonial) => (
               <SwiperSlide key={testimonial._id}>
   <div className="p-[2px] rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 bg-[length:200%_200%] animate-borderSpin">
-    <div className="bg-white p-6 rounded-xl shadow-md flex flex-col items-center h-60">
+    <div className="bg-white  text-white p-6 rounded-xl shadow-md flex flex-col items-center h-60">
       <Image
         height={80}
         width={80}
         src={testimonial.Image}
         alt={testimonial.name}
-        className="w-20 h-20 rounded-full mb-4 shadow-lg"
+        unoptimized
+        className="w-[80px] h-[80px] border object-cover border-white p-2 rounded-full mb-4 shadow-lg"
       />
-      <h3 className="text-lg font-semibold text-center mb-2">
+      <h3 className="text-lg text-primary font-semibold text-center mb-2">
         {testimonial.name}
       </h3>
       <div className="flex-grow flex items-center"> 

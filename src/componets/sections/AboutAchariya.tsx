@@ -1,19 +1,53 @@
-import Image from "next/image";
+"use client";
 import React from "react";
+import Image from "next/image";
+import { Typewriter } from "react-simple-typewriter";
+
 
 const AboutAchariya = () => {
+
   return (
-     <section className="bg-gray-50 py-12 relative overflow-hidden">
-      <Image className="absolute hidden sm:flex top-[20px] end-[-40px] animate-spin" src="/images/icons/red-circel.png" alt="Decorative Dots" width={100} height={100}  />
+    <section className="bg-gray-50 py-16 relative overflow-hidden">
+      {/* Background Decorative Image */}
+      <Image
+        className="absolute hidden sm:flex top-[20px] end-[-40px] animate-spin-slow"
+        src="/images/icons/red-circel.png"
+        alt="Decorative Dots"
+        width={100}
+        height={100}
+      />
 
       <div className="container mx-auto px-6 lg:px-12">
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-primary lg:mb-4 mb-3">
-          About <span className="text-secondary">Achariya Group</span>
+        <h2
+          data-aos="fade-down"
+          data-aos-duration="1000"
+          className="text-3xl md:text-4xl font-bold text-primary lg:mb-6 mb-4 flex flex-wrap items-center gap-2"
+        >
+          About <span className="text-secondary ml-2">Achariya</span>
+          <span className="text-secondary ml-2">
+            <Typewriter
+              words={[
+                "Empowering Digital Innovation",
+                "Building Smarter Solutions",
+                "Transforming Ideas Into Reality",
+              ]}
+              loop={true}
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1500}
+            />
+          </span>
         </h2>
 
-        {/* About Content */}
-        <div className="text-gray-700 leading-relaxed space-y-6">
+        {/* About Text */}
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1200"
+          className="text-gray-700 leading-relaxed space-y-6"
+        >
           <p>
             <strong>Achariya Technologies Private Limited</strong> commenced its
             operations in 2008. Since then, the company has evolved with an
@@ -53,11 +87,16 @@ const AboutAchariya = () => {
         </div>
 
         {/* Vision & Mission Section */}
-        <div className="mt-12 grid md:grid-cols-2 gap-8">
+        <div className="mt-16 grid md:grid-cols-2 gap-10">
           {/* Vision */}
-          <div className="bg-white shadow-md rounded-2xl p-8 border-l-4 border-primary relative overflow-hidden">
- <div className="bg-secondary h-[100px] w-[100px] absolute  opacity-10 top-[-40px] left-[-40px] rounded-full"></div>
- <div className="bg-secondary h-[100px] w-[100px] absolute  opacity-10 bottom-[-40px] right-[-40px] rounded-full"></div>
+          <div
+            data-aos="fade-right"
+            data-aos-duration="1400"
+            className="bg-white shadow-md rounded-2xl p-8 border-l-4 border-primary relative overflow-hidden"
+          >
+            <div className="bg-secondary h-[100px] w-[100px] absolute opacity-10 top-[-40px] left-[-40px] rounded-full"></div>
+            <div className="bg-secondary h-[100px] w-[100px] absolute opacity-10 bottom-[-40px] right-[-40px] rounded-full"></div>
+
             <h3 className="text-2xl font-semibold text-primary mb-4">
               Our Vision
             </h3>
@@ -70,9 +109,14 @@ const AboutAchariya = () => {
           </div>
 
           {/* Mission */}
-          <div className="bg-white shadow-md rounded-2xl p-8 border-l-4 border-secondary overflow-hidden relative">
-             <div className="bg-secondary h-[100px] w-[100px] absolute  opacity-10 top-[-40px] left-[-40px] rounded-full"></div>
- <div className="bg-secondary h-[100px] w-[100px] absolute  opacity-10 bottom-[-40px] right-[-40px] rounded-full"></div>
+          <div
+            data-aos="fade-left"
+            data-aos-duration="1600"
+            className="bg-white shadow-md rounded-2xl p-8 border-l-4 border-secondary relative overflow-hidden"
+          >
+            <div className="bg-secondary h-[100px] w-[100px] absolute opacity-10 top-[-40px] left-[-40px] rounded-full"></div>
+            <div className="bg-secondary h-[100px] w-[100px] absolute opacity-10 bottom-[-40px] right-[-40px] rounded-full"></div>
+
             <h3 className="text-2xl font-semibold text-secondary mb-4">
               Our Mission
             </h3>

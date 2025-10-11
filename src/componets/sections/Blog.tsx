@@ -58,6 +58,7 @@ const BlogSection = () => {
                       alt={blog.title}
                       width={600}
                       height={300}
+                      unoptimized
                       className="w-full h-48 object-cover"
                     />
                     <div className="p-4 flex flex-col items-center">

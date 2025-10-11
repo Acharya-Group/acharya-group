@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import ClientProvider from "./ClientProvider";
 import Script from "next/script";
 import { getSeo, SeoData } from "@/lib/getSeo";
+import AOSProvider from "@/providers/AOSProvider";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const seo: SeoData | null = await getSeo();
@@ -21,7 +22,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {seo?.keywords && <meta name="keywords" content={seo.keywords} />}
       </head>
       <body>
-        <ClientProvider>{children}</ClientProvider>
+        <ClientProvider>
+       <AOSProvider>{children}</AOSProvider>
+          </ClientProvider>
         <Script
         id="tawk-to"
         strategy="afterInteractive"

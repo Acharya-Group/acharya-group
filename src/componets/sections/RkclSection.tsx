@@ -10,11 +10,12 @@ const RkclSection = () => {
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
         <div className="mb-6">
           <Image
-            src="/images/rkcl-top-image.png"
+            src="/images/7000+ It Gyan Kendra.png"
             alt="Bank BC"
-            width={800}
-            height={400}
-            className="w-full h-auto rounded-lg"
+            width={1200}
+            height={304}
+            
+            className="w-[1200] h-[304] rounded-lg"
           />
         </div>
         

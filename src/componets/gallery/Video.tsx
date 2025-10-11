@@ -42,7 +42,7 @@ const Video = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4">
       {/* Grid of Videos or Skeleton Loaders */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {loading || allVideos.isLoading ? (

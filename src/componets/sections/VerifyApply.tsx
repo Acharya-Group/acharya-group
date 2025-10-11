@@ -41,12 +41,12 @@ const VerifyApply = () => {
             href={card.link}
             target={card.external ? "_blank" : "_self"}
             rel={card.external ? "noopener noreferrer" : ""}
-            className='group block p-4 border rounded-lg shadow hover:shadow-lg transition-all duration-300 hover:bg-[#261b7d]' // Using direct color code
+            className='group block bg-[url(/gif/verify.gif)] bg-no-repeat bg-cover p-4 border rounded-lg shadow hover:shadow-lg transition-all duration-300 hover:bg-[#261b7d]' // Using direct color code
           >
-            <div className="text-3xl group-hover:scale-110 group-hover:text-white mb-2 flex justify-center transition-transform duration-300">
+            <div className="text-3xl group-hover:scale-125 group-hover:text-white mb-2 flex justify-center transition-transform duration-300">
               {card.icon}
             </div>
-            <h3 className='text-xl font-semibold text-gray-800 text-center group-hover:text-white transition-colors duration-300'>
+            <h3 className='text-xl font-semibold text-center text-white transition-colors duration-300'>
               {card.title}
             </h3>
           </a>

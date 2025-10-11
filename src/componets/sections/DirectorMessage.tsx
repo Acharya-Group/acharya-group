@@ -8,10 +8,13 @@ const DirectorMessage = () => {
  <div className="bg-secondary h-[100px] w-[100px] absolute  opacity-10 bottom-[-40px] right-[-40px] rounded-full"></div>
       <div className="container mx-auto px-6 lg:px-12 flex flex-col-reverse md:flex-row items-center gap-10">
           {/* Message Content */}
-        <div className="flex-1">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary lg:mb-4 mb-3">
-           Director&apos;s <span className="text-secondary">Message</span>
-        </h2>
+        <div data-aos="fade-right" data-aod-duration="1500" className="flex-1">
+            <div className="flex">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary lg:mb-4 mb-3">
+                         Director&apos;s <span className="text-secondary">Message</span>
+                      </h2>
+                         <Image className="h-[40px] w-[40px]" height={40} width={40} src="/gif/pencil.gif" alt="pencil"/>
+            </div>
 
           <div className="space-y-5 text-gray-700 leading-relaxed text-justify">
             <p>
@@ -54,7 +57,7 @@ const DirectorMessage = () => {
         </div>
        
         {/* Director Image */}
-        <div className="flex-shrink-0 w-full md:w-1/3">
+        <div data-aos="fade-left" data-aod-duration="1500" className="flex-shrink-0 w-full md:w-1/3">
           <div className="relative w-full h-80 md:h-[450px]  rounded-xl overflow-hidden shadow-lg">
             <Image
             className="object-cover"
@@ -65,10 +68,10 @@ const DirectorMessage = () => {
           </div>
            {/* Signature */}
           <div className="lg:mt-10 mt-4 flex flex-col gap-1">
-            <p className="font-semibold text-lg text-gray-900">Yespal Singh</p>
-            <p className="text-gray-500 italic mb-1">Managing Director</p>
-            <p className="text-gray-500">director@Achariyagroup.com</p>
-            <p className="text-gray-500">Achariya Technologies Private Limited</p>
+            <p data-aos="fade-up" data-aod-delay="1500" data-aod-duration="0" className="font-semibold text-lg text-gray-900">Yespal Singh</p>
+            <p data-aos="fade-up" data-aod-delay="1500" data-aod-duration="1000" className="text-gray-500 italic mb-1">Managing Director</p>
+            <p data-aos="fade-up" data-aod-delay="1500" data-aod-duration="2000" className="text-gray-500">director@Achariyagroup.com</p>
+            <p data-aos="fade-up" data-aod-delay="1500" data-aod-duration="3000" className="text-gray-500">Achariya Technologies Private Limited</p>
           </div>
         </div>
 
