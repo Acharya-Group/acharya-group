@@ -3,14 +3,13 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 export interface StationeryItem {
   _id?: string;
-   type: string;
+  type: string;
   rateOnLessQuantity?: number;
   quantityThreshold?: number;
   rateOnGreaterQuantity?: number;
   quantity: number;
 }
 
-// Order type
 export interface StationeryOrder {
   _id: string;
   name: string;
@@ -19,12 +18,13 @@ export interface StationeryOrder {
   address: string;
   pinCode: string;
   items: StationeryItem[];
-  status?: string;  
+  status?: string;
+  transactionId?: string;
+  paymentStatus?: "unpaid" | "paid" | "failed" | "refunded";
   createdAt?: string;
   updatedAt?: string;
 }
 
-// Input type for creating order
 type CreateOrderInput = Omit<StationeryOrder, "_id" | "createdAt" | "updatedAt">;
 
 const useStationeryOrder = () => {
@@ -47,14 +47,11 @@ const useStationeryOrder = () => {
       return data.data;
     },
     onSuccess: (newOrder) => {
-      queryClient.setQueryData<StationeryOrder[]>(["stationeryOrders"], (old = []) => [
-        ...old,
-        newOrder,
-      ]);
+      queryClient.setQueryData<StationeryOrder[]>(["stationeryOrders"], (old = []) => [...old, newOrder]);
     },
   });
 
-  // ✅ Update order (status or any field)
+  // ✅ Update order
   const updateOrder = useMutation<StationeryOrder, Error, StationeryOrder>({
     mutationFn: async (updatedOrder) => {
       const { data } = await api.put(`/Order/${updatedOrder._id}`, updatedOrder);
@@ -80,11 +77,28 @@ const useStationeryOrder = () => {
     },
   });
 
+  // 💳 Initiate PayU payment
+const initiatePayment = useMutation<
+  { success: boolean; paymentUrl: string; payload: any },
+  Error,
+  string
+>({
+  mutationFn: async (orderId) => {
+    const { data } = await api.post("/Payment/initiate", { orderId });
+    if (!data.paymentUrl) {
+      throw new Error("Payment URL not returned by backend");
+    }
+    return data;
+  },
+});
+
+
   return {
     allOrders,
     createOrder,
     updateOrder,
     deleteOrder,
+    initiatePayment,
   };
 };
 

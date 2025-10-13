@@ -1,8 +1,17 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import useStationeryOrder from "@/hooks/stationeryOrder";
+import useStationery from "@/hooks/stationeryRate";
+
+interface CurrentItem {
+  stationery: string;
+  quantity: string;
+}
 
 const OrderStationery = () => {
+  const router = useRouter();
+  const { allStationery } = useStationery();
   const { createOrder } = useStationeryOrder();
 
   const [formData, setFormData] = useState({
@@ -13,17 +22,16 @@ const OrderStationery = () => {
     pinCode: "",
   });
 
-  const [currentItem, setCurrentItem] = useState({
+  const [currentItem, setCurrentItem] = useState<CurrentItem>({
     stationery: "",
     quantity: "",
   });
 
-  const [items, setItems] = useState<{ stationery: string; quantity: string }[]>([]);
-  const [success, setSuccess] = useState(false);
+  const [items, setItems] = useState<CurrentItem[]>([]);
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Handle input changes
+  // Handle input change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -46,11 +54,35 @@ const OrderStationery = () => {
 
   // Remove item
   const removeItem = (index: number) => {
-    const updated = items.filter((_, i) => i !== index);
-    setItems(updated);
+    setItems(items.filter((_, i) => i !== index));
   };
 
-  // Handle final form submit
+  // Calculate total with GST and courier
+  const calculateTotal = () => {
+    if (!allStationery?.data) return 0;
+
+    let total = 0;
+    items.forEach((it) => {
+      const stationery = allStationery.data.find((s: any) => s.name === it.stationery);
+      if (!stationery) return;
+
+      const qty = Number(it.quantity);
+      const rate =
+        qty <= stationery.quantityThreshold
+          ? stationery.rateOnLessQuantity
+          : stationery.rateOnGreaterQuantity;
+
+      const courier = qty <= stationery.quantityThreshold ? 50 : 100;
+      const itemTotal = rate * qty + courier;
+      const gst = 0.18 * itemTotal;
+
+      total += itemTotal + gst;
+    });
+
+    return Number(total.toFixed(2)); // return as number
+  };
+
+  // Handle submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -69,27 +101,32 @@ const OrderStationery = () => {
       return;
     }
 
+    const totalAmount = calculateTotal();
+
     try {
       // Prepare payload for backend
-    const payload = {
-  ...formData,
-  items: items.map((it) => ({
-    type: it.stationery,  
-    quantity: Number(it.quantity),
-  })),
-  status: "pending", 
-};
+      const payload = {
+        ...formData,
+        items: items.map((it) => ({
+          type: it.stationery,
+          quantity: Number(it.quantity),
+        })),
+        amount: totalAmount, // backend expects 'amount'
+        status: "pending",
+      };
 
-      await createOrder.mutateAsync(payload);
+      // Create order in backend
+      const savedOrder = await createOrder.mutateAsync(payload);
 
-      setSuccess(true);
-      setFormData({
-        name: "",
-        phoneNo: "",
-        kioskId: "",
-        address: "",
-        pinCode: "",
-      });
+      // Redirect to payment page with correct params
+      router.push(
+        `/payment-now?orderId=${savedOrder._id}&name=${encodeURIComponent(
+          formData.name
+        )}&email=${encodeURIComponent("yashsihag@gmail.com")}&amount=${totalAmount}`
+      );
+
+      // Reset form
+      setFormData({ name: "", phoneNo: "", kioskId: "", address: "", pinCode: "" });
       setItems([]);
       setCurrentItem({ stationery: "", quantity: "" });
     } catch (err) {
@@ -104,92 +141,71 @@ const OrderStationery = () => {
     <section className="bg-gray-50 py-10">
       <div className="container mx-auto px-4 max-w-4xl">
         <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-xl shadow-md">
-          {/* Top inputs */}
+          {/* Customer Info */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your full name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-300 outline-none rounded-lg p-3 focus:ring-2"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Phone No</label>
-              <input
-                type="number"
-                name="phoneNo"
-                placeholder="Phone number"
-                value={formData.phoneNo}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-300 outline-none rounded-lg p-3 focus:ring-2"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Kiosk Id</label>
-              <input
-                type="text"
-                name="kioskId"
-                placeholder="Kiosk identifier"
-                value={formData.kioskId}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-300 outline-none rounded-lg p-3 focus:ring-2"
-              />
-            </div>
+            {["name", "phoneNo", "kioskId"].map((field) => (
+              <div key={field}>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  {field === "name"
+                    ? "Name"
+                    : field === "phoneNo"
+                    ? "Phone No"
+                    : "Kiosk Id"}
+                </label>
+                <input
+                  type={field === "phoneNo" ? "number" : "text"}
+                  name={field}
+                  placeholder={field}
+                  value={(formData as any)[field]}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-gray-300 outline-none rounded-lg p-3 focus:ring-2"
+                />
+              </div>
+            ))}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>
-              <input
-                type="text"
-                name="address"
-                placeholder="Full address"
-                value={formData.address}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-300 outline-none rounded-lg p-3 focus:ring-2"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Pin Code</label>
-              <input
-                type="text"
-                name="pinCode"
-                placeholder="Postal code"
-                value={formData.pinCode}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-300 outline-none rounded-lg p-3 focus:ring-2"
-              />
-            </div>
+            {["address", "pinCode"].map((field) => (
+              <div key={field}>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  {field === "address" ? "Address" : "Pin Code"}
+                </label>
+                <input
+                  type="text"
+                  name={field}
+                  placeholder={field}
+                  value={(formData as any)[field]}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-gray-300 outline-none rounded-lg p-3 focus:ring-2"
+                />
+              </div>
+            ))}
           </div>
 
-          {/* Stationery Input Row */}
+          {/* Stationery Items */}
           <div className="bg-gray-50 p-4 rounded-lg">
             <h3 className="text-lg font-semibold mb-3 text-gray-800">Add Stationery Items</h3>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Stationery Type</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Stationery Type
+                </label>
                 <select
                   name="stationery"
                   value={currentItem.stationery}
                   onChange={handleItemChange}
                   className="w-full border border-gray-300 outline-none rounded-lg p-3"
                 >
-                  <option value="">Select Stationery</option>
-                  <option value="Digital Certificates">Digital Certificates</option>
-                  <option value="APL Ration Card (Blue)">APL Ration Card (Blue)</option>
-                  <option value="BPL Ration Card (Pink)">BPL Ration Card (Pink)</option>
-                  <option value="State BPL Ration Card (Green)">State BPL Ration Card (Green)</option>
-                  <option value="Antyodaya Ration Card (Yellow)">Antyodaya Ration Card (Yellow)</option>
+                  <option value="" disabled>
+                    Select Stationery
+                  </option>
+                  {allStationery.data?.map((item: any, idx: number) => (
+                    <option key={idx} value={item.name}>
+                      {item.name}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div>
@@ -210,20 +226,13 @@ const OrderStationery = () => {
                   onClick={addItem}
                   className="w-full bg-primary text-white px-4 py-3 rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path
-                      fillRule="evenodd"
-                      d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
                   ADD ITEM
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Added Items List */}
+          {/* Order Summary */}
           {items.length > 0 && (
             <div className="mt-6">
               <h4 className="font-semibold text-lg mb-3 text-gray-800">Order Summary</h4>
@@ -245,15 +254,8 @@ const OrderStationery = () => {
                           <button
                             type="button"
                             onClick={() => removeItem(idx)}
-                            className="text-red-500 hover:text-red-700 flex items-center"
+                            className="text-red-500 hover:text-red-700"
                           >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                              <path
-                                fillRule="evenodd"
-                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
                             Remove
                           </button>
                         </td>
@@ -262,15 +264,20 @@ const OrderStationery = () => {
                   </tbody>
                 </table>
               </div>
+              <div className="text-right mt-4 text-lg font-semibold text-gray-800">
+                Total Amount (Incl. GST & Courier): ₹{calculateTotal()}
+              </div>
             </div>
           )}
 
           {/* Error Message */}
           {error && (
             <div className="bg-red-50 text-red-700 p-4 rounded-lg border border-red-200">
-              <p className="font-medium">{error}</p>
+              {error}
             </div>
           )}
+
+          <p className="text-gray-600 text-sm">Note: Courier Charges & GST (18%) included</p>
 
           {/* Submit Button */}
           <div className="text-center pt-4">
@@ -279,72 +286,14 @@ const OrderStationery = () => {
               disabled={isSubmitting}
               className={`px-6 py-2 rounded-lg cursor-pointer text-white font-medium text-lg ${
                 isSubmitting
-                  ? "bg-gradient-to-r duration-300 from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d]"
-                  : "bg-gradient-to-r duration-300 from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d]"
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d]"
               } transition-colors flex items-center justify-center mx-auto`}
             >
-              {isSubmitting ? (
-                <>
-                  <svg
-                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                  PROCESSING...
-                </>
-              ) : (
-                "SUBMIT ORDER"
-              )}
+              {isSubmitting ? "PROCESSING..." : "SUBMIT ORDER"}
             </button>
           </div>
         </form>
-
-        {/* Success Popup */}
-        {success && (
-          <div className="fixed inset-0 flex items-center justify-center backdrop-blur-2xl bg-opacity-50 z-50">
-            <div className="bg-white p-8 rounded-xl shadow-lg text-center space-y-6 max-w-md">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-10 w-10 text-green-600"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800">Order Submitted Successfully!</h3>
-              <p className="text-gray-600">
-                Your stationery order has been received. We will process it and contact you shortly.
-              </p>
-              <button
-                onClick={() => setSuccess(false)}
-                className="px-6 py-2 cursor-pointer bg-primary text-white rounded-lg bg-gradient-to-r duration-300 from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d]"
-              >
-                Continue
-              </button>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
