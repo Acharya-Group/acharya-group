@@ -17,12 +17,21 @@ export interface StationeryOrder {
   kioskId: string;
   address: string;
   pinCode: string;
+  amount?: number;
   items: StationeryItem[];
   status?: string;
   transactionId?: string;
   paymentStatus?: "unpaid" | "paid" | "failed" | "refunded";
   createdAt?: string;
   updatedAt?: string;
+  email?: string; 
+}
+
+export interface PaymentDetails {
+  amount: number;
+  name: string;
+  email: string;
+  phone: string;
 }
 
 type CreateOrderInput = Omit<StationeryOrder, "_id" | "createdAt" | "updatedAt">;
@@ -79,19 +88,18 @@ const useStationeryOrder = () => {
 
   // 💳 Initiate PayU payment
 const initiatePayment = useMutation<
-  { success: boolean; paymentUrl: string; payload: any },
+  { success: boolean; data: any },
   Error,
-  string
+  PaymentDetails
 >({
-  mutationFn: async (orderId) => {
-    const { data } = await api.post("/Payment/initiate", { orderId });
-    if (!data.paymentUrl) {
-      throw new Error("Payment URL not returned by backend");
+  mutationFn: async (paymentDetails) => {
+    const { data } = await api.post("/Payment/initiate", paymentDetails);
+    if (!data.data?.action) {
+      throw new Error("Payment data not returned by backend");
     }
     return data;
   },
 });
-
 
   return {
     allOrders,

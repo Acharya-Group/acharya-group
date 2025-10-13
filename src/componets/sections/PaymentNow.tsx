@@ -8,18 +8,15 @@ import useStationeryOrder, { StationeryOrder } from "@/hooks/stationeryOrder";
 const PaymentNow: React.FC = () => {
   const params = useSearchParams();
   const orderId = params.get("orderId") || "";
-  const name = params.get("name") || "";
-  const email = params.get("email") || "";
-  const amount = params.get("amount") || "0";
 
   const { allOrders, initiatePayment } = useStationeryOrder();
   const [order, setOrder] = useState<StationeryOrder | null>(null);
   const [paidStatus, setPaidStatus] = useState<string>("Unpaid");
 
-  // Fetch order from your React Query hook
+  // Fetch order from React Query
   useEffect(() => {
     if (!orderId) return;
-    const found = allOrders.data?.find((o) => o._id === orderId);
+    const found = allOrders.data?.find((o: StationeryOrder) => o._id === orderId);
     if (found) {
       setOrder(found);
       setPaidStatus(found.paymentStatus || "Unpaid");
@@ -27,30 +24,56 @@ const PaymentNow: React.FC = () => {
   }, [allOrders.data, orderId]);
 
 const handlePayment = async () => {
-  if (!orderId) return;
+  if (!order) return alert("Order not loaded yet.");
+
   try {
-    const data = await initiatePayment.mutateAsync(orderId);
-    window.location.href = data.paymentUrl; 
+    // Send all required fields to backend
+    const response = await initiatePayment.mutateAsync({
+      amount: order.amount || 0,
+      name: order.name,
+      email: (order as any).email || "default@example.com", // make sure email exists
+      phone: order.phoneNo,
+    });
+
+    const paymentData = response.data;
+
+    if (!paymentData?.action) throw new Error("Payment data not returned from backend");
+
+    // Submit dynamically
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = paymentData.action;
+
+    Object.entries(paymentData).forEach(([key, value]) => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = key;
+      input.value = value as string;
+      form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
   } catch (err: any) {
     console.error("Payment failed", err);
-    alert(err.message);
+    alert(err.message || "Payment initiation failed");
   }
 };
+
 
 
   return (
     <div className="container mx-auto px-4 py-10">
       <div className="flex flex-col md:flex-row bg-white shadow-md rounded-xl overflow-hidden">
         <div className="md:w-1/2 p-6">
-          <h2 className="text-lg font-semibold mb-4 text-gray-700">Application Information</h2>
+          <h2 className="text-lg font-semibold mb-4 text-gray-700">Order Information</h2>
 
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <label className="block text-sm font-medium text-gray-600 max-w-[120px] min-w-[120px]">
-                Registration No
-              </label>
+              <label className="block text-sm font-medium text-gray-600 w-[120px]">Order ID</label>
               <input
                 type="text"
+                
                 value={order?._id || ""}
                 readOnly
                 className="w-full border rounded-md px-3 py-2 bg-gray-100 focus:outline-none"
@@ -58,45 +81,27 @@ const handlePayment = async () => {
             </div>
 
             <div className="flex items-center gap-2">
-              <label className="block text-sm font-medium text-gray-600 max-w-[120px] min-w-[120px]">
-                Name
-              </label>
+              <label className="block text-sm font-medium text-gray-600 w-[120px]">Name</label>
               <input
                 type="text"
-                value={name}
+                value={order?.name || ""}
                 readOnly
                 className="w-full border rounded-md px-3 py-2 bg-gray-100 focus:outline-none"
               />
             </div>
 
             <div className="flex items-center gap-2">
-              <label className="block text-sm font-medium text-gray-600 max-w-[120px] min-w-[120px]">
-                Email
-              </label>
-              <input
-                type="email"
-                value={email}
-                readOnly
-                className="w-full border rounded-md px-3 py-2 bg-gray-100 focus:outline-none"
-              />
-            </div>
-
-            <div className="flex items-center gap-2">
-              <label className="block text-sm font-medium text-gray-600 max-w-[120px] min-w-[120px]">
-                Total Fee
-              </label>
+              <label className="block text-sm font-medium text-gray-600 w-[120px]">Amount</label>
               <input
                 type="text"
-                value={`₹${amount}`}
+                value={`₹${order?.amount?.toFixed(2) || "0.00"}`}
                 readOnly
                 className="w-full border rounded-md px-3 py-2 bg-gray-100 focus:outline-none"
               />
             </div>
 
             <div className="flex items-center gap-2">
-              <label className="block text-sm font-medium text-gray-600 max-w-[120px] min-w-[120px]">
-                Paid Status
-              </label>
+              <label className="block text-sm font-medium text-gray-600 w-[120px]">Payment Status</label>
               <input
                 type="text"
                 value={paidStatus}
@@ -106,19 +111,18 @@ const handlePayment = async () => {
             </div>
 
             <div className="pt-4">
-             <button
-  type="button"
-  onClick={handlePayment}
-  disabled={initiatePayment.status === "pending"}
-  className={`px-6 py-2 rounded-lg cursor-pointer text-white font-medium text-lg ${
-    initiatePayment.status === "pending"
-      ? "bg-gray-400 cursor-not-allowed"
-      : "bg-gradient-to-r from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d]"
-  } transition-colors flex items-center justify-center mx-auto`}
->
-  {initiatePayment.status === "pending" ? "PROCESSING..." : "Pay Now"}
-</button>
-
+              <button
+                type="button"
+                onClick={handlePayment}
+                disabled={initiatePayment.status === "pending"}
+                className={`px-6 py-2 rounded-lg text-white font-medium text-lg ${
+                  initiatePayment.status === "pending"
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-gradient-to-r from-[#261b7d] to-[#7a0706] hover:from-[#7a0706] hover:to-[#261b7d]"
+                } transition-colors flex items-center justify-center mx-auto`}
+              >
+                {initiatePayment.status === "pending" ? "PROCESSING..." : "Pay Now"}
+              </button>
             </div>
           </div>
         </div>
@@ -127,7 +131,7 @@ const handlePayment = async () => {
           <Image
             unoptimized
             src="/images/payNow.jpg"
-            alt="Payment Card"
+            alt="Payment"
             width={400}
             height={400}
             className="rounded-lg shadow-md w-full"
