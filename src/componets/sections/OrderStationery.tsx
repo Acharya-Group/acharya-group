@@ -4,17 +4,35 @@ import { useRouter } from "next/navigation";
 import useStationeryOrder from "@/hooks/stationeryOrder";
 import useStationery from "@/hooks/stationeryRate";
 
+// ------------------ Types ------------------
+interface Stationery {
+  _id: string;
+  name: string;
+  rateOnLessQuantity: number;
+  rateOnGreaterQuantity: number;
+  quantityThreshold: number;
+}
+
 interface CurrentItem {
   stationery: string;
   quantity: string;
 }
 
-const OrderStationery = () => {
+interface FormData {
+  name: string;
+  phoneNo: string;
+  kioskId: string;
+  address: string;
+  pinCode: string;
+}
+
+// ------------------ Component ------------------
+const OrderStationery: React.FC = () => {
   const router = useRouter();
   const { allStationery } = useStationery();
   const { createOrder } = useStationeryOrder();
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     phoneNo: "",
     kioskId: "",
@@ -31,39 +49,41 @@ const OrderStationery = () => {
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Handle input change
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  // ------------------ Handlers ------------------
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle stationery row change
-  const handleItemChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+  const handleItemChange = (
+    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+  ) => {
     setCurrentItem({ ...currentItem, [e.target.name]: e.target.value });
   };
 
-  // Add item to list
   const addItem = () => {
     if (!currentItem.stationery || !currentItem.quantity) {
       setError("Please select stationery and enter quantity before adding.");
       return;
     }
-    setItems([...items, currentItem]);
+    setItems((prev) => [...prev, currentItem]);
     setCurrentItem({ stationery: "", quantity: "" });
     setError("");
   };
 
-  // Remove item
   const removeItem = (index: number) => {
-    setItems(items.filter((_, i) => i !== index));
+    setItems((prev) => prev.filter((_, i) => i !== index));
   };
 
-  // Calculate total with GST and courier
-  const calculateTotal = () => {
-    if (!allStationery?.data) return 0;
-
+  // ------------------ Total Calculation ------------------
+  const calculateTotal = (): number => {
+    const stationeryList: Stationery[] = allStationery?.data || [];
     let total = 0;
+
     items.forEach((it) => {
-      const stationery = allStationery.data.find((s: any) => s.name === it.stationery);
+      const stationery = stationeryList.find((s) => s.name === it.stationery);
       if (!stationery) return;
 
       const qty = Number(it.quantity);
@@ -79,10 +99,10 @@ const OrderStationery = () => {
       total += itemTotal + gst;
     });
 
-    return Number(total.toFixed(2)); // return as number
+    return Number(total.toFixed(2));
   };
 
-  // Handle submit
+  // ------------------ Submit ------------------
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -104,29 +124,30 @@ const OrderStationery = () => {
     const totalAmount = calculateTotal();
 
     try {
-      // Prepare payload for backend
       const payload = {
         ...formData,
         items: items.map((it) => ({
           type: it.stationery,
           quantity: Number(it.quantity),
         })),
-        amount: totalAmount, // backend expects 'amount'
-        status: "pending",
+        amount: totalAmount,
+        status: "pending" as const,
       };
 
-      // Create order in backend
       const savedOrder = await createOrder.mutateAsync(payload);
-
-      // Redirect to payment page with correct params
       router.push(
         `/payment-now?orderId=${savedOrder._id}&name=${encodeURIComponent(
           formData.name
         )}&email=${encodeURIComponent("yashsihag@gmail.com")}&amount=${totalAmount}`
       );
 
-      // Reset form
-      setFormData({ name: "", phoneNo: "", kioskId: "", address: "", pinCode: "" });
+      setFormData({
+        name: "",
+        phoneNo: "",
+        kioskId: "",
+        address: "",
+        pinCode: "",
+      });
       setItems([]);
       setCurrentItem({ stationery: "", quantity: "" });
     } catch (err) {
@@ -137,36 +158,42 @@ const OrderStationery = () => {
     }
   };
 
+  // ------------------ UI ------------------
   return (
     <section className="bg-gray-50 py-10">
       <div className="container mx-auto px-4 max-w-4xl">
-        <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-xl shadow-md">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6 bg-white p-8 rounded-xl shadow-md"
+        >
           {/* Customer Info */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {["name", "phoneNo", "kioskId"].map((field) => (
-              <div key={field}>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  {field === "name"
-                    ? "Name"
-                    : field === "phoneNo"
-                    ? "Phone No"
-                    : "Kiosk Id"}
-                </label>
-                <input
-                  type={field === "phoneNo" ? "number" : "text"}
-                  name={field}
-                  placeholder={field}
-                  value={(formData as any)[field]}
-                  onChange={handleChange}
-                  required
-                  className="w-full border border-gray-300 outline-none rounded-lg p-3 focus:ring-2"
-                />
-              </div>
-            ))}
+            {(Object.keys(formData) as (keyof FormData)[])
+              .slice(0, 3)
+              .map((field) => (
+                <div key={field}>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    {field === "name"
+                      ? "Name"
+                      : field === "phoneNo"
+                      ? "Phone No"
+                      : "Kiosk Id"}
+                  </label>
+                  <input
+                    type={field === "phoneNo" ? "number" : "text"}
+                    name={field}
+                    placeholder={field}
+                    value={formData[field]}
+                    onChange={handleChange}
+                    required
+                    className="w-full border border-gray-300 outline-none rounded-lg p-3 focus:ring-2"
+                  />
+                </div>
+              ))}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {["address", "pinCode"].map((field) => (
+            {(["address", "pinCode"] as (keyof FormData)[]).map((field) => (
               <div key={field}>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   {field === "address" ? "Address" : "Pin Code"}
@@ -175,7 +202,7 @@ const OrderStationery = () => {
                   type="text"
                   name={field}
                   placeholder={field}
-                  value={(formData as any)[field]}
+                  value={formData[field]}
                   onChange={handleChange}
                   required
                   className="w-full border border-gray-300 outline-none rounded-lg p-3 focus:ring-2"
@@ -186,7 +213,9 @@ const OrderStationery = () => {
 
           {/* Stationery Items */}
           <div className="bg-gray-50 p-4 rounded-lg">
-            <h3 className="text-lg font-semibold mb-3 text-gray-800">Add Stationery Items</h3>
+            <h3 className="text-lg font-semibold mb-3 text-gray-800">
+              Add Stationery Items
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -201,15 +230,17 @@ const OrderStationery = () => {
                   <option value="" disabled>
                     Select Stationery
                   </option>
-                  {allStationery.data?.map((item: any, idx: number) => (
-                    <option key={idx} value={item.name}>
+                  {allStationery.data?.map((item: Stationery) => (
+                    <option key={item._id} value={item.name}>
                       {item.name}
                     </option>
                   ))}
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Quantity
+                </label>
                 <input
                   type="number"
                   name="quantity"
@@ -235,7 +266,9 @@ const OrderStationery = () => {
           {/* Order Summary */}
           {items.length > 0 && (
             <div className="mt-6">
-              <h4 className="font-semibold text-lg mb-3 text-gray-800">Order Summary</h4>
+              <h4 className="font-semibold text-lg mb-3 text-gray-800">
+                Order Summary
+              </h4>
               <div className="border rounded-lg overflow-hidden">
                 <table className="w-full">
                   <thead className="bg-gray-100">
@@ -277,7 +310,9 @@ const OrderStationery = () => {
             </div>
           )}
 
-          <p className="text-gray-600 text-sm">Note: Courier Charges & GST (18%) included</p>
+          <p className="text-gray-600 text-sm">
+            Note: Courier Charges & GST (18%) included
+          </p>
 
           {/* Submit Button */}
           <div className="text-center pt-4">

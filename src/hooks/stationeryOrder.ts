@@ -24,7 +24,7 @@ export interface StationeryOrder {
   paymentStatus?: "unpaid" | "paid" | "failed" | "refunded";
   createdAt?: string;
   updatedAt?: string;
-  email?: string; 
+  email?: string;
 }
 
 export interface PaymentDetails {
@@ -33,6 +33,25 @@ export interface PaymentDetails {
   email: string;
   phone: string;
   orderId: string;
+}
+
+export interface PayUResponseData {
+  action: string;
+  key: string;
+  txnid: string;
+  amount: string;
+  firstname: string;
+  email: string;
+  phone: string;
+  productinfo: string;
+  surl: string;
+  furl: string;
+  hash: string;
+}
+
+export interface PayUResponse {
+  success: boolean;
+  data: PayUResponseData;
 }
 
 type CreateOrderInput = Omit<StationeryOrder, "_id" | "createdAt" | "updatedAt">;
@@ -57,7 +76,10 @@ const useStationeryOrder = () => {
       return data.data;
     },
     onSuccess: (newOrder) => {
-      queryClient.setQueryData<StationeryOrder[]>(["stationeryOrders"], (old = []) => [...old, newOrder]);
+      queryClient.setQueryData<StationeryOrder[]>(["stationeryOrders"], (old = []) => [
+        ...old,
+        newOrder,
+      ]);
     },
   });
 
@@ -87,20 +109,16 @@ const useStationeryOrder = () => {
     },
   });
 
-  // 💳 Initiate PayU payment
-const initiatePayment = useMutation<
-  { success: boolean; data: any },
-  Error,
-  PaymentDetails
->({
-  mutationFn: async (paymentDetails) => {
-    const { data } = await api.post("/Payment/initiate", paymentDetails);
-    if (!data.data?.action) {
-      throw new Error("Payment data not returned by backend");
-    }
-    return data;
-  },
-});
+  // 💳 Initiate PayU payment (strictly typed)
+  const initiatePayment = useMutation<PayUResponse, Error, PaymentDetails>({
+    mutationFn: async (paymentDetails) => {
+      const { data } = await api.post<PayUResponse>("/Payment/initiate", paymentDetails);
+      if (!data.data?.action) {
+        throw new Error("Payment data not returned by backend");
+      }
+      return data;
+    },
+  });
 
   return {
     allOrders,

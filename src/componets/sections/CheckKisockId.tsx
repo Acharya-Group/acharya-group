@@ -98,22 +98,6 @@ const CheckKioskId = () => {
     setRefNumber("");
   };
 
-  // Format date for better display
-  const formatDate = (dateString: string | number) => {
-    if (!dateString) return "N/A";
-    try {
-      // Excel dates ko handle karega
-      if (typeof dateString === 'number') {
-        const date = XLSX.SSF.parse_date_code(dateString);
-        return new Date(date.y, date.m - 1, date.d).toLocaleDateString('en-IN');
-      }
-      const date = new Date(dateString);
-      return isNaN(date.getTime()) ? String(dateString) : date.toLocaleDateString('en-IN');
-    } catch {
-      return String(dateString);
-    }
-  };
-
   // Safe value display function
   const safeDisplay = (value: string | number | undefined | null): string => {
     if (value === undefined || value === null) return "N/A";
