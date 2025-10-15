@@ -32,6 +32,7 @@ export interface PaymentDetails {
   name: string;
   email: string;
   phone: string;
+  orderId: string;
 }
 
 type CreateOrderInput = Omit<StationeryOrder, "_id" | "createdAt" | "updatedAt">;

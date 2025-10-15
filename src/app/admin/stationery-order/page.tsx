@@ -72,13 +72,16 @@ const OrdersPage: React.FC = () => {
         <h1 className="text-2xl font-bold mb-6">Orders</h1>
 
         <div className="overflow-x-auto">
-          <table className="min-w-[1300px] divide-y divide-gray-200">
+          <table className="min-w-[1500px] divide-y divide-gray-200">
             <thead className="bg-secondary text-white">
               <tr>
                 <th className="px-4 py-2 text-left">#</th>
                 <th className="px-4 py-2 text-left">Data</th>
                 <th className="px-4 py-2 text-left">Name</th>
                 <th className="px-4 py-2 text-left">Phone</th>
+                <th className="px-4 py-2 text-left">Amount</th>
+                <th className="px-4 py-2 text-left">Payment status</th>
+               <th className="px-4 py-2 text-left">Transaction ID</th>
                 <th className="px-4 py-2 text-left">Kiosk ID</th>
                 <th className="px-4 py-2 text-left">Address</th>
                 <th className="px-4 py-2 text-left">Pin Code</th>
@@ -96,6 +99,9 @@ const OrdersPage: React.FC = () => {
                   <td className="px-4 py-2">{order.createdAt?.split("T")[0]}</td>
                   <td className="px-4 py-2">{order.name}</td>
                   <td className="px-4 py-2">{order.phoneNo}</td>
+                  <td className="px-4 py-2">{order.amount}</td>
+                  <td className="px-4 py-2">{order.paymentStatus}</td>
+                  <td className="px-4 py-2">{order.transactionId}</td>
                   <td className="px-4 py-2">{order.kioskId}</td>
                     <td className="px-4 py-2">
                     <div className="w-30 h-20 p-2 border rounded overflow-y-auto">

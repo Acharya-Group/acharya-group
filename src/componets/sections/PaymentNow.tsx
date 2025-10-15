@@ -33,6 +33,7 @@ const handlePayment = async () => {
       name: order.name,
       email: (order as any).email || "default@example.com", // make sure email exists
       phone: order.phoneNo,
+      orderId: order._id,
     });
 
     const paymentData = response.data;
