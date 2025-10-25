@@ -1,16 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaBriefcase, FaEnvelope, FaPhone } from "react-icons/fa";
 import { districtCoordinators, projectManagersContact } from "@/lib/utils";
 import SubHeading from "../ui/SubHeading";
 import ContactForm from "./Contact";
+import useDc from "@/hooks/dc";
 
 const ContactUsPage = () => {
-
   const [success, setSuccess] = useState(false);
+  const { allDc } = useDc();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+
+  if (allDc.isLoading) return <div className="text-center p-8">Loading...</div>;
+  if (allDc.isError) return <div className="text-center p-8 text-red-500">Error loading data!</div>;
+
+  const dcs = allDc.data || [];
   
+
   const contactCards = [
     {
       id: 1,
@@ -63,9 +74,6 @@ const ContactUsPage = () => {
 
   return (
     <div className="container mx-auto px-4 py-12">
-  
-    
-
    <ContactForm/>
 
       {/* Success Popup */}
@@ -140,33 +148,44 @@ const ContactUsPage = () => {
       <div className="mt-10">
         <SubHeading content="District Co-Ordinators Contact Details :" />
         <div className="overflow-x-auto border rounded-[10px] border-gray-300">
-          <table className="border border-gray-300 rounded-lg overflow-hidden min-w-[400px] sm:min-w-full">
-            <thead className="bg-primary text-white">
-              <tr>
-                <th className="p-4 text-left">Sr.No.</th>
-                <th className="p-4 text-left">District</th>
-                <th className="p-4 text-left">PhNo</th>
-                <th className="p-4 text-left">Email Id</th>
-                <th className="p-4 text-left">Address</th>
-              </tr>
-            </thead>
-            <tbody>
-              {districtCoordinators.map((project, index) => (
+                 <table className="min-w-full border-collapse">
+          <thead className="bg-primary text-white">
+            <tr>
+              <th className="p-3 text-left">Sr.No.</th>
+              <th className="p-3 text-left">Name</th>
+              <th className="p-3 text-left">District</th>
+              <th className="p-3 text-left">Phone</th>
+              <th className="p-3 text-left">Email</th>
+              <th className="p-3 text-left">Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dcs.length > 0 ? (
+              dcs.map((dc, index) => (
                 <tr
-                  key={project.id || index}
-                  className={`border-b border-gray-200 hover:bg-gray-100 transition-colors duration-200 ${
-                    index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                  key={dc._id || index}
+                  className={`border-b border-gray-200 hover:bg-gray-50 transition ${
+                    index % 2 === 0 ? "bg-white" : "bg-gray-50"
                   }`}
                 >
-                  <td className="p-4">{index + 1}</td>
-                  <td className="p-4">{project.district}</td>
-                  <td className="p-4">{project.phNo}</td>
-                  <td className="p-4">{project.emailId}</td>
-                  <td className="p-4">{project.address}</td>
+                  <td className="p-3">{index + 1}</td>
+                  <td className="p-3">{dc.name}</td>
+                  <td className="p-3">{dc.district}</td>
+                  <td className="p-3">{dc.number}</td>
+                  <td className="p-3">{dc.email}</td>
+                  <td className="p-3 max-w-[250px] whitespace-pre-line">{dc.address}</td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={6} className="text-center p-6 text-gray-500">
+                  No District Coordinators found.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+
         </div>
       </div>
     </div>

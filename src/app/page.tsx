@@ -12,11 +12,12 @@ import Blog from "@/componets/sections/Blog";
 import Contact from "@/componets/sections/Contact";
 import Footer from "@/componets/layout/Footer";
 import Popup from "@/componets/sections/Popup";
-
+import { Analytics } from "@vercel/analytics/next"
 export default function Home() {
 
   return (
     <>
+    <Analytics/>
       <Header />
       <Hero />
       <VerifyApply />
