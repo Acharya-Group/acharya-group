@@ -33,7 +33,7 @@ const Page = () => {
 
     createDc.mutate(formData, {
       onSuccess: () => {
-        toast.success("DC added successfully ✅");
+        // toast.success("DC added successfully ✅");
         setFormData({
           name: "",
           email: "",
