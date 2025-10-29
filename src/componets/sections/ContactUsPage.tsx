@@ -153,8 +153,8 @@ const ContactUsPage = () => {
             <tr>
               <th className="p-3 text-left">Sr.No.</th>
               <th className="p-3 text-left">Name</th>
-              <th className="p-3 text-left">District</th>
               <th className="p-3 text-left">Phone</th>
+              <th className="p-3 text-left">District</th>
               <th className="p-3 text-left">Email</th>
               <th className="p-3 text-left">Address</th>
             </tr>
@@ -170,8 +170,8 @@ const ContactUsPage = () => {
                 >
                   <td className="p-3">{index + 1}</td>
                   <td className="p-3">{dc.name}</td>
-                  <td className="p-3">{dc.district}</td>
                   <td className="p-3">{dc.number}</td>
+                  <td className="p-3">{dc.district}</td>
                   <td className="p-3">{dc.email}</td>
                   <td className="p-3 max-w-[250px] whitespace-pre-line">{dc.address}</td>
                 </tr>

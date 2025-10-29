@@ -60,7 +60,7 @@ const DirectorMessage = () => {
         <div data-aos="fade-left" data-aod-duration="1500" className="flex-shrink-0 w-full md:w-1/3">
           <div className="relative w-full h-80 md:h-[450px]  rounded-xl overflow-hidden shadow-lg">
             <Image
-            className="object-cover"
+            className="sm:object-cover object-contain 2xl:object-contain"
               src="/images/directorImg.png"
               alt="Managing Director - Yespal Singh"
               layout="fill"

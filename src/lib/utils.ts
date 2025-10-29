@@ -19,6 +19,7 @@ export const navdropdowns = [
   {
     title: "Projects",
     links: [
+      { name: "Rajpay", href: "/rajpay", type: "link" },
       { name: "Shopneo", href: "/shopneo", type: "link" },
       { name: "e-Mitra", href: "/e-mitra", type: "link" },
       { name: "Kiosk Banking/BankBc", href: "/kiosk-banking", type: "link" },
@@ -800,12 +801,20 @@ export const projects = [
     img: "/images/mspl-project.webp",
     link: "/yoga-certification",
   },
+{
+  id: 8,
+  title: "Rajpay",
+  desc: "Rajpay is a secure and reliable digital payment platform by MSPL, designed to simplify financial transactions with speed, transparency, and trust. Empowering users with seamless payment solutions that align with modern financial standards.",
+  img: "/images/rajpay.jpg",
+  link: "/rajpay",
+},
+
 ];
 
 
 export const faqs = [
   {
-    question: "What services does Achariya  Private Limited provide?",
+    question: "What services does Achariya Technologies Private Limited provide?",
     answer:
       "We provide a wide range of services including Shopneo e-commerce, e-Mitra services, kiosk banking/Bank BC, RKCL training, School Easy software, Atpl Drone ,Yoga Drone Certification, and technical support for biometric devices and banking kiosks.",
   },
@@ -891,6 +900,7 @@ export const pages = [
 
 
 export const projectsLink = [
+  { title: "Rajpay", url: "/rajpay" },
   { title: "Shopneo", url: "/shopneo" },
   { title: "e-Mitra", url: "/emitra" },
   { title: "Kiosk Banking", url: "/kiosk-banking" },
