@@ -9,11 +9,7 @@ const page = () => {
     <>
     <Header/>
     <CommonHero title='Order e-Mitra Stationery'/>
-<<<<<<< HEAD
     <OrderStationery/>
-=======
-   <OrderStationery/> 
->>>>>>> 10bcdbc (updated code)
     <Footer/>
     </>
   )
