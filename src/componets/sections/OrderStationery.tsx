@@ -92,7 +92,11 @@ const OrderStationery: React.FC = () => {
           ? stationery.rateOnLessQuantity
           : stationery.rateOnGreaterQuantity;
 
+<<<<<<< HEAD
       const courier = qty <= stationery.quantityThreshold ? 50 : 100;
+=======
+      const courier = qty <= stationery.quantityThreshold ? 60 : 100;
+>>>>>>> 10bcdbc (updated code)
       const itemTotal = rate * qty + courier;
       const gst = 0.18 * itemTotal;
 

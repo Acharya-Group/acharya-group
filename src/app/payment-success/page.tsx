@@ -21,7 +21,11 @@ const PaymentFailedPage: React.FC = () => {
   return (
     <>
       <Header />
+<<<<<<< HEAD
       <CommonHero title="Payment Failed" />
+=======
+      <CommonHero title="Payment Success" />
+>>>>>>> 10bcdbc (updated code)
      <section>
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center min-h-[50vh] text-center">

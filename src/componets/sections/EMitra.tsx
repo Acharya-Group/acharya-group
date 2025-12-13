@@ -3,6 +3,10 @@ import Image from "next/image";
 import { FaRegCheckCircle } from "react-icons/fa";
 import EMitraForms from "./EMitraForms";
 import EMitraDownloads from "./EMitraDownloads";
+<<<<<<< HEAD
+=======
+import Link from "next/link";
+>>>>>>> 10bcdbc (updated code)
 
 export default function EMitra() {
 const documents = [
@@ -17,9 +21,14 @@ const documents = [
   { name: "Email ID" },
   { name: "Electricity bill" },
   { name: "Address of e-Mitra Kiosk (where you want to register)" },
+<<<<<<< HEAD
   { name: "e-Mitra Registration Fees: ₹1180" },
   { name: "Affidavit (₹50 Stamp Paper)" },
   { name: "RS-CIT Certificate" },
+=======
+  { name: "Affidavit (₹50 Stamp Paper)" },
+  { name: "ANNEXURE 15" },
+>>>>>>> 10bcdbc (updated code)
 ];
 
 
@@ -33,7 +42,11 @@ const documents = [
           </h2>
           <p className="text-gray-700 leading-relaxed">
             E-Mitra is an ambitious E-governance initiative of Government of
+<<<<<<< HEAD
             Rajasthan (GoR) which is being implemented in all 33 Districts of
+=======
+            Rajasthan (GoR) which is being implemented in all 41 Districts of
+>>>>>>> 10bcdbc (updated code)
             the state using Public-Private Partnership (PPP) model for
             convenience and transparency to citizens in availing various
             services of the Government and Private Sectors under a single roof
@@ -48,7 +61,11 @@ const documents = [
           </p>
           <p className="text-gray-700 leading-relaxed mt-3">
             Currently, <strong>over 600+ G2C and B2C services</strong> are being
+<<<<<<< HEAD
             provided through this platform across all rural & urban areas in 33
+=======
+            provided through this platform across all rural & urban areas in 41
+>>>>>>> 10bcdbc (updated code)
             districts of the State. These services include{" "}
             <em>
               utility bill payment, application & digitally signed certificate
@@ -77,7 +94,11 @@ const documents = [
             इन सभी सुविधा का लाभ राज्य के लोग{" "}
             <strong>ऑनलाइन पोर्टल या अपने नज़दीकी ई मित्र केंद्र</strong> से प्राप्त
             कर सकते है। इसके लिए प्रदेश भर में{" "}
+<<<<<<< HEAD
             <strong>70,000 से अधिक ई-मित्र केंद्र</strong> खोले गए हैं।
+=======
+            <strong>19,000 से अधिक ई-मित्र केंद्र</strong> खोले गए हैं।
+>>>>>>> 10bcdbc (updated code)
           </p>
           <p className="text-gray-700 leading-relaxed mt-3">
             ई-मित्र पर दी जाने वाली सभी सर्विसेज के लिए सरकार ने एक शुल्क
@@ -113,7 +134,11 @@ const documents = [
               ई-मित्र सेवा केंद्र के लिए एक फिक्स स्थान (छोटा दुकान या कार्यालय)।
             </li>
             <li>
+<<<<<<< HEAD
               यह सेवा केवल राजस्थान के 33 जिलों के लिए उपलब्ध है और केवल राजस्थान
+=======
+              यह सेवा केवल राजस्थान के 41 जिलों के लिए उपलब्ध है और केवल राजस्थान
+>>>>>>> 10bcdbc (updated code)
               के स्थायी निवासी ही उपयोग कर सकते हैं।
             </li>
           </ul>
@@ -140,6 +165,22 @@ const documents = [
     ))}
   </ul>
 </div>
+<<<<<<< HEAD
+=======
+<div className="mt-3">
+  <b>Note:</b> After uploading the document <b>ANNEXURE 4</b>
+  
+  <div className="mt-3">
+    <p>You can download ANNEXURE 4 and ANNEXURE 15 by clicking the buttons below:</p>
+
+    <div className="mt-3 flex gap-4">
+      <Link target="blank" className="bg-primary px-3 py-1 text-white rounded-3xl" href="/pdf/annexure4.pdf">ANNEXURE 4</Link>
+      <Link target="blank" className="bg-primary px-3 py-1 text-white rounded-3xl" href="/pdf/annexure15.pdf">ANNEXURE 15</Link>
+    </div>
+  </div>
+</div>
+
+>>>>>>> 10bcdbc (updated code)
 
 
         {/* download section */}
